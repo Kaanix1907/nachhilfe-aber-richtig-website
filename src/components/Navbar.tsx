@@ -1,87 +1,102 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { BUSINESS } from "@/lib/data";
 
 const navLinks = [
-  { href: "/", label: "Startseite" },
-  { href: "/leistungen", label: "Leistungen" },
-  { href: "/ueber-uns", label: "Über uns" },
-  { href: "/kontakt", label: "Kontakt" },
+  { href: "#hero", label: "Startseite" },
+  { href: "#leistungen", label: "Leistungen" },
+  { href: "#ueber-uns", label: "Über uns" },
+  { href: "#kontakt", label: "Kontakt" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
+      style={{
+        boxShadow: "0 1px 0 rgba(26,26,46,0.08), 0 4px 24px rgba(26,26,46,0.06)",
+      }}
+    >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <a href="#hero" className="flex items-center gap-3">
           <Image
-            src="/logo.jpeg"
+            src="/logo.png"
             alt={BUSINESS.name}
             width={120}
             height={48}
             className="object-contain h-12 w-auto"
           />
-        </Link>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
-              className="font-body text-dark hover:text-primary transition-colors font-medium"
+              className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
         {/* CTA Button */}
-        <Link
-          href="/kontakt"
-          className="hidden md:inline-flex items-center gap-2 bg-primary text-white font-body font-semibold px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all hover:shadow-md"
+        <a
+          href="#kontakt"
+          className="hidden md:inline-flex items-center gap-2 bg-primary text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow,background-color] duration-200 hover:bg-primary/90 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 active:scale-95"
+          style={{
+            boxShadow: "0 2px 8px rgba(37,171,214,0.30), 0 1px 2px rgba(37,171,214,0.20)",
+          }}
         >
           Gratis Probestunde
-        </Link>
+        </a>
 
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-dark"
+          className="md:hidden p-2 text-dark rounded-lg transition-[background-color] duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           aria-label="Menü öffnen"
         >
-          <div className="w-6 h-0.5 bg-current mb-1.5 transition-all" />
-          <div className="w-6 h-0.5 bg-current mb-1.5 transition-all" />
-          <div className="w-6 h-0.5 bg-current transition-all" />
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="2" y="5" width="16" height="1.5" rx="0.75" fill="currentColor"
+              className={`transition-[transform,opacity] duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[4.5px]" : ""}`}
+            />
+            <rect x="2" y="9.25" width="16" height="1.5" rx="0.75" fill="currentColor"
+              className={`transition-[opacity] duration-200 ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <rect x="2" y="13.5" width="16" height="1.5" rx="0.75" fill="currentColor"
+              className={`transition-[transform,opacity] duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[4.5px]" : ""}`}
+            />
+          </svg>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-3">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
-              className="font-body text-dark hover:text-primary transition-colors font-medium text-lg"
+              className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-base py-1"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
-          <Link
-            href="/kontakt"
-            className="inline-flex items-center justify-center bg-primary text-white font-body font-semibold px-5 py-3 rounded-full"
+          <a
+            href="#kontakt"
+            className="inline-flex items-center justify-center bg-primary text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,background-color] duration-200 active:scale-95"
             onClick={() => setMenuOpen(false)}
           >
             Gratis Probestunde buchen
-          </Link>
+          </a>
         </div>
       )}
     </header>

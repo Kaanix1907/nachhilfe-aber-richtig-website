@@ -37,7 +37,8 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 - **Body:** Cabin (Regular/Medium)
 
 ### Logo
-- Datei liegt im Projektordner: `logo_backup Kopie.jpeg`
+- Produktionsdatei: `/public/logo.png` (bereits freigestellt — weißer Hintergrund entfernt)
+- Original-Backup: `logo_backup Kopie.jpeg` im Projektroot
 
 ---
 
@@ -94,7 +95,22 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 ---
 
-## 7. Entwicklungsregeln
+## 7. Aktueller Projektstand
+- [x] Next.js Grundstruktur (App Router, TypeScript, Tailwind)
+- [x] Komponenten: Navbar, Hero, USPs, Footer, Contact
+- [x] KI-Chatbot (Floating Widget + `/api/chat`)
+- [x] Logo freigestellt (`/public/logo.png`)
+- [ ] Testimonials Sektion
+- [ ] Unterseiten: `/leistungen`, `/ueber-uns`, `/impressum`, `/datenschutz`
+- [ ] `.env.local` mit echtem `ANTHROPIC_API_KEY` befüllen
+- [ ] Vercel Deployment
+- [ ] Domain nachhilfe-aber-richtig.de verknüpfen
+
+---
+
+## 8. Entwicklungsregeln
+> Die allgemeinen Frontend-Regeln (Design Guardrails, Tech Stack, Bild-Befehle) stehen im übergeordneten Ordner: `../CLAUDE.md`
+
 
 - **Sprache:** Alle Kommentare und Commit-Messages auf Deutsch
 - **Komponenten:** Jede Sektion als eigene Komponente in `/components`

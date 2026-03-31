@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@400;700;800&family=Cabin:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@400;700;800&family=Cabin:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -16,8 +16,44 @@ body {
   font-family: 'Cabin', sans-serif;
   color: #444444;
   background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'BioRhyme', serif;
+  letter-spacing: -0.03em;
+}
+
+/* Grain-Textur via SVG-Filter */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* Layered shadows */
+.shadow-primary {
+  box-shadow:
+    0 1px 2px rgba(37, 171, 214, 0.08),
+    0 4px 16px rgba(37, 171, 214, 0.14),
+    0 12px 40px rgba(37, 171, 214, 0.10);
+}
+
+.shadow-card {
+  box-shadow:
+    0 1px 2px rgba(26, 26, 46, 0.06),
+    0 4px 12px rgba(26, 26, 46, 0.08),
+    0 16px 32px rgba(26, 26, 46, 0.06);
+}
+
+.shadow-card-hover {
+  box-shadow:
+    0 2px 4px rgba(26, 26, 46, 0.08),
+    0 8px 24px rgba(37, 171, 214, 0.14),
+    0 24px 48px rgba(26, 26, 46, 0.10);
 }

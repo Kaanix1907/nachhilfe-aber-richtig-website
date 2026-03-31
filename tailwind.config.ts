@@ -12,7 +12,8 @@ const config: Config = {
         primary: "#25abd6",
         secondary: "#655c9e",
         accent: "#00aa00",
-        dark: "#444444",
+        dark: "#1a1a2e",
+        muted: "#444444",
       },
       fontFamily: {
         heading: ["BioRhyme", "serif"],
