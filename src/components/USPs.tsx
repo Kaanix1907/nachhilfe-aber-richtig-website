@@ -2,108 +2,171 @@
 
 import { UPSPS } from "@/lib/data";
 
-const uspIcons = [
-  // Kostenlose Probestunde
-  <svg key="0" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="currentColor" strokeWidth="1.4"/>
-    <path d="M6.5 10l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>,
-  // Geprüfte Lehrer
-  <svg key="1" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M10 2l1.8 3.6 4 .6-2.9 2.8.7 4L10 11l-3.6 1.9.7-4L4.2 6.2l4-.6L10 2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-  </svg>,
-  // Staatlich gefördert
-  <svg key="2" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M3 9h14M3 9l7-6 7 6M5 9v7h10V9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>,
-  // Faire Verträge
-  <svg key="3" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="1.4"/>
-    <path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-  </svg>,
+const uspConfig = [
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="11" stroke="#00aa00" strokeWidth="1.8"/>
+        <path d="M9 14l3.5 3.5 6.5-6.5" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    accent: "#00aa00",
+    accentBg: "rgba(0,170,0,0.08)",
+    accentBorder: "rgba(0,170,0,0.18)",
+    featured: true,
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 3l2.5 5 5.5.8-4 3.9 1 5.5L14 15.5l-5 2.7 1-5.5-4-3.9 5.5-.8L14 3z" stroke="#25abd6" strokeWidth="1.8" strokeLinejoin="round"/>
+      </svg>
+    ),
+    accent: "#25abd6",
+    accentBg: "rgba(37,171,214,0.08)",
+    accentBorder: "rgba(37,171,214,0.18)",
+    featured: false,
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M4 13h20M4 13l10-9 10 9M6 13v10h16V13" stroke="#655c9e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    accent: "#655c9e",
+    accentBg: "rgba(101,92,158,0.08)",
+    accentBorder: "rgba(101,92,158,0.18)",
+    featured: false,
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="#25abd6" strokeWidth="1.8"/>
+        <path d="M9 10h10M9 14h10M9 18h6" stroke="#25abd6" strokeWidth="1.8" strokeLinecap="round"/>
+      </svg>
+    ),
+    accent: "#25abd6",
+    accentBg: "rgba(37,171,214,0.08)",
+    accentBorder: "rgba(37,171,214,0.18)",
+    featured: false,
+  },
 ];
 
 export default function USPs() {
-  return (
-    <section
-      id="ueber-uns"
-      className="relative grain py-28 overflow-hidden"
-      style={{
-        background: "linear-gradient(160deg, #1a1040 0%, #2d1f5e 50%, #1e3a4f 100%)",
-      }}
-    >
-      {/* Hintergrund-Glow */}
-      <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(37,171,214,0.12) 0%, transparent 65%)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(101,92,158,0.18) 0%, transparent 65%)",
-        }}
-      />
+  const featured = UPSPS[0];
+  const rest = UPSPS.slice(1);
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+  return (
+    <section id="ueber-uns" className="py-28 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-white/8 text-white/60 font-body font-medium text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
+        <div className="mb-16">
+          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Unsere Stärken
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Warum Nachhilfe, aber richtig!?
-          </h2>
-          <p className="font-body text-white/55 text-lg max-w-xl mx-auto leading-[1.75]">
-            Wir gehen weit über das schlichte Notenverbessern hinaus — und
-            begleiten dein Kind ganzheitlich.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-dark max-w-lg"
+              style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+              Warum{" "}
+              <span style={{ color: "#25abd6" }}>Nachhilfe,<br />aber richtig!</span>?
+            </h2>
+            <p className="font-body text-muted/65 text-base leading-[1.7] max-w-sm md:text-right">
+              Wir begleiten dein Kind nicht nur beim Lernen — sondern auf dem Weg zu echtem Selbstvertrauen.
+            </p>
+          </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-5">
-          {UPSPS.map((usp, index) => (
-            <div
-              key={index}
-              className="group relative rounded-2xl p-7 border border-white/8 transition-[transform,border-color] duration-300 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(37,171,214,0.25)";
-                (e.currentTarget as HTMLElement).style.background = "rgba(37,171,214,0.06)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
-              }}
-            >
-              {/* Icon */}
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 text-primary"
-                style={{ background: "rgba(37,171,214,0.15)" }}
-              >
-                {uspIcons[index]}
-              </div>
+        {/* Layout: Feature-Card links + 3 Karten rechts */}
+        <div className="grid md:grid-cols-2 gap-5">
 
-              <h3 className="font-heading font-bold text-xl text-white mb-2.5">
-                {usp.title}
-              </h3>
-              <p className="font-body text-white/55 leading-[1.75] text-sm">
-                {usp.description}
-              </p>
+          {/* Feature-Card — Kostenlose Probestunde */}
+          <div
+            className="relative rounded-3xl p-10 flex flex-col justify-between min-h-[320px] overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #00aa00 0%, #007a00 100%)",
+              boxShadow: "0 8px 40px rgba(0,170,0,0.25), 0 2px 8px rgba(0,0,0,0.08)",
+            }}
+          >
+            {/* Hintergrund-Kreis */}
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full pointer-events-none"
+              style={{ background: "rgba(255,255,255,0.07)" }} />
+            <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full pointer-events-none"
+              style={{ background: "rgba(255,255,255,0.05)" }} />
 
-              {/* Subtiler Index */}
-              <span
-                className="absolute top-6 right-7 font-heading font-extrabold text-6xl text-white/4 select-none"
-                style={{ letterSpacing: "-0.05em", lineHeight: 1 }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-auto"
+              style={{ background: "rgba(255,255,255,0.15)" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="1.8"/>
+                <path d="M8 12l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
-          ))}
+
+            <div className="mt-8">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-4"
+                style={{ background: "rgba(255,255,255,0.15)" }}>
+                <span className="font-body font-bold text-white text-xs tracking-widest uppercase">Kein Risiko</span>
+              </div>
+              <h3 className="font-heading font-extrabold text-white text-2xl mb-3"
+                style={{ letterSpacing: "-0.02em" }}>
+                {featured.title}
+              </h3>
+              <p className="font-body text-white/75 leading-[1.7]">{featured.description}</p>
+            </div>
+          </div>
+
+          {/* Rechte Spalte — 3 kompakte Karten */}
+          <div className="flex flex-col gap-5">
+            {rest.map((usp, i) => {
+              const cfg = uspConfig[i + 1];
+              return (
+                <div
+                  key={i}
+                  className="group rounded-2xl p-6 border flex items-start gap-5 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
+                  style={{
+                    borderColor: cfg.accentBorder,
+                    background: cfg.accentBg,
+                    boxShadow: "0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${cfg.accentBg.replace("0.08", "0.15")}, 0 8px 32px rgba(0,0,0,0.06)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04)";
+                  }}
+                >
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: cfg.accentBg, border: `1px solid ${cfg.accentBorder}` }}>
+                    {cfg.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-dark text-lg mb-1.5">{usp.title}</h3>
+                    <p className="font-body text-muted/65 text-sm leading-[1.7]">{usp.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
+
+        {/* CTA */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#kontakt"
+            className="inline-flex items-center gap-2 text-white font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg,#00aa00,#008a00)",
+              boxShadow: "0 4px 20px rgba(0,170,0,0.35)",
+            }}
+          >
+            Gratis Probestunde buchen
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+          <p className="font-body text-muted/45 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
+        </div>
+
       </div>
     </section>
   );
