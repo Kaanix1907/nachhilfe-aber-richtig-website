@@ -58,16 +58,16 @@ h1, h2, h3, h4, h5, h6 {
     0 24px 48px rgba(26, 26, 46, 0.10);
 }
 
-/* Reviews Ticker */
-@keyframes reviews-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(calc(-100% / 3)); }
+/* Reviews vertikaler Scroll im Hero */
+@keyframes reviews-vertical {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
-.reviews-ticker {
-  animation: reviews-scroll 35s linear infinite;
+.reviews-vertical {
+  animation: reviews-vertical 18s linear infinite;
 }
 
-.reviews-ticker:hover {
+.reviews-vertical:hover {
   animation-play-state: paused;
 }

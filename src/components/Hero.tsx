@@ -130,7 +130,7 @@ export default async function Hero() {
           </div>
         </div>
 
-        {/* Rechts — Echte Google Bewertungen */}
+        {/* Rechts — Vertikal scrollende Google Bewertungen */}
         <div className="hidden md:flex flex-col gap-4">
           {/* Google-Header */}
           <div className="flex items-center gap-3 mb-1">
@@ -153,37 +153,50 @@ export default async function Hero() {
             </div>
           </div>
 
-          {reviews.map((r, idx) => (
-            <div key={idx}
-              className="rounded-2xl p-5 transition-[transform,border-color] duration-300 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.09)",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-              }}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-body font-bold text-white text-xs"
-                    style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
-                    {r.name.charAt(0)}
+          {/* Scroll-Container */}
+          <div className="relative overflow-hidden" style={{ height: 380 }}>
+            {/* Fade oben */}
+            <div className="absolute top-0 left-0 right-0 h-10 z-10 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, #0f0c29, transparent)" }} />
+            {/* Fade unten */}
+            <div className="absolute bottom-0 left-0 right-0 h-10 z-10 pointer-events-none"
+              style={{ background: "linear-gradient(to top, #1e3a4f, transparent)" }} />
+
+            {/* Scrollende Karten — doppelt für nahtlosen Loop */}
+            <div className="reviews-vertical flex flex-col gap-4">
+              {[...reviews, ...reviews].map((r, idx) => (
+                <div key={idx}
+                  className="rounded-2xl p-5"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.09)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center font-body font-bold text-white text-xs shrink-0"
+                        style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
+                        {r.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-body font-semibold text-white text-sm">{r.name}</div>
+                        <div className="font-body text-white/30 text-xs">{r.time}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-0.5 shrink-0">
+                      {[...Array(r.stars)].map((_, i) => (
+                        <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
+                          <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
+                        </svg>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-body font-semibold text-white text-sm">{r.name}</div>
-                    <div className="font-body text-white/30 text-xs">{r.time}</div>
-                  </div>
+                  <p className="font-body text-white/60 text-sm leading-[1.6]">&ldquo;{r.text}&rdquo;</p>
                 </div>
-                <div className="flex items-center gap-0.5">
-                  {[...Array(r.stars)].map((_, i) => (
-                    <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
-                      <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="font-body text-white/60 text-sm leading-[1.6]">&ldquo;{r.text}&rdquo;</p>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
       </div>
