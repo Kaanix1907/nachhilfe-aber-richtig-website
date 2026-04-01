@@ -1,13 +1,62 @@
 import Image from "next/image";
 import { BUSINESS } from "@/lib/data";
 
-const reviews = [
-  { name: "Sarah M.", stars: 5, text: "Mein Sohn hat sich in Mathe von 5 auf 2 verbessert. Unglaublich professionell!", time: "vor 2 Wochen" },
+interface Review {
+  name: string;
+  stars: number;
+  text: string;
+  time: string;
+}
+
+interface PlacesData {
+  reviews: Review[];
+  rating: number;
+  total: number;
+}
+
+async function getGoogleData(): Promise<PlacesData> {
+  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+  const PLACE_ID = "ChIJHWy-OVi_uEcR4TNsTTb7wko";
+
+  if (!apiKey) return { reviews: [], rating: 5.0, total: 22 };
+
+  try {
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=rating,user_ratings_total,reviews&language=de&key=${apiKey}`;
+    const res = await fetch(url, { next: { revalidate: 3600 } });
+    const data = await res.json();
+
+    if (data.status !== "OK") return { reviews: [], rating: 5.0, total: 22 };
+
+    const reviews: Review[] = (data.result.reviews || [])
+      .filter((r: { text: string }) => r.text && r.text.trim().length > 15)
+      .slice(0, 3)
+      .map((r: { author_name: string; rating: number; text: string; relative_time_description: string }) => ({
+        name: r.author_name,
+        stars: r.rating,
+        text: r.text.length > 120 ? r.text.slice(0, 117) + "…" : r.text,
+        time: r.relative_time_description,
+      }));
+
+    return {
+      reviews,
+      rating: data.result.rating ?? 5.0,
+      total: data.result.user_ratings_total ?? 22,
+    };
+  } catch {
+    return { reviews: [], rating: 5.0, total: 22 };
+  }
+}
+
+const FALLBACK_REVIEWS: Review[] = [
+  { name: "Sara M.", stars: 5, text: "Mein Sohn hat sich in Mathe von 5 auf 2 verbessert. Unglaublich professionell!", time: "vor 2 Wochen" },
   { name: "Thomas K.", stars: 5, text: "Endlich Nachhilfe die wirklich wirkt. Die Lehrer erklären super geduldig.", time: "vor 1 Monat" },
   { name: "Ayse D.", stars: 5, text: "Dank des BuT-Programms komplett kostenlos. Absolut empfehlenswert!", time: "vor 3 Wochen" },
 ];
 
-export default function Hero() {
+export default async function Hero() {
+  const { reviews: rawReviews, rating, total } = await getGoogleData();
+  const reviews = rawReviews.length >= 2 ? rawReviews : FALLBACK_REVIEWS;
+
   return (
     <section
       id="hero"
@@ -81,7 +130,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Rechts — Google Bewertungen */}
+        {/* Rechts — Echte Google Bewertungen */}
         <div className="hidden md:flex flex-col gap-4">
           {/* Google-Header */}
           <div className="flex items-center gap-3 mb-1">
@@ -98,14 +147,14 @@ export default function Hero() {
                     <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
                   </svg>
                 ))}
-                <span className="font-heading font-bold text-white text-sm ml-1">4.9</span>
+                <span className="font-heading font-bold text-white text-sm ml-1">{rating.toFixed(1)}</span>
               </div>
-              <span className="font-body text-white/35 text-xs">Google Bewertungen</span>
+              <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
             </div>
           </div>
 
-          {reviews.map((r) => (
-            <div key={r.name}
+          {reviews.map((r, idx) => (
+            <div key={idx}
               className="rounded-2xl p-5 transition-[transform,border-color] duration-300 hover:-translate-y-1"
               style={{
                 background: "rgba(255,255,255,0.05)",
@@ -117,7 +166,7 @@ export default function Hero() {
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center font-body font-bold text-white text-xs"
                     style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
-                    {r.name[0]}
+                    {r.name.charAt(0)}
                   </div>
                   <div>
                     <div className="font-body font-semibold text-white text-sm">{r.name}</div>

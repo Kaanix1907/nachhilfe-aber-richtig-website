@@ -57,3 +57,17 @@ h1, h2, h3, h4, h5, h6 {
     0 8px 24px rgba(37, 171, 214, 0.14),
     0 24px 48px rgba(26, 26, 46, 0.10);
 }
+
+/* Reviews Ticker */
+@keyframes reviews-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}
+
+.reviews-ticker {
+  animation: reviews-scroll 35s linear infinite;
+}
+
+.reviews-ticker:hover {
+  animation-play-state: paused;
+}
