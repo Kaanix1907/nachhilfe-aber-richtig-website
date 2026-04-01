@@ -56,33 +56,24 @@ export default function USPs() {
   return (
     <section
       id="ueber-uns"
-      className="relative grain py-28 overflow-hidden"
-      style={{ background: "linear-gradient(160deg, #0f0c29 0%, #1e1550 45%, #1a2e42 100%)" }}
+      className="relative py-28 overflow-hidden bg-white"
     >
-      {/* Glows */}
-      <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(37,171,214,0.10) 0%, transparent 65%)" }} />
-      <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(101,92,158,0.15) 0%, transparent 65%)" }} />
-      {/* Trennlinie oben */}
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(37,171,214,0.25), transparent)" }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
 
         {/* Header */}
         <div className="text-center mb-20">
-          <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-6 border border-white/10 tracking-widest uppercase">
+          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-6 border border-primary/12 tracking-widest uppercase">
             Unsere Stärken
           </span>
           <h2
-            className="font-heading font-extrabold text-white mb-5"
+            className="font-heading font-extrabold text-dark mb-5"
             style={{ fontSize: "clamp(2.4rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}
           >
             Warum{" "}
             <span style={{ color: "#25abd6" }}>Nachhilfe,<br className="hidden sm:block" />aber richtig!</span>?
           </h2>
-          <p className="font-body text-white/50 text-lg max-w-lg mx-auto leading-[1.75]">
+          <p className="font-body text-muted/60 text-lg max-w-lg mx-auto leading-[1.75]">
             Wir gehen weit über das schlichte Notenverbessern hinaus — und begleiten dein Kind ganzheitlich.
           </p>
         </div>
@@ -96,17 +87,19 @@ export default function USPs() {
                 key={index}
                 className="group relative rounded-3xl p-8 border transition-[transform,background] duration-300 hover:-translate-y-1.5 overflow-hidden"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  borderColor: "rgba(255,255,255,0.08)",
-                  boxShadow: "0 2px 4px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.15)",
+                  background: "#ffffff",
+                  borderColor: "rgba(26,26,46,0.08)",
+                  boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 16px rgba(26,26,46,0.06)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = cfg.glow;
                   (e.currentTarget as HTMLElement).style.borderColor = cfg.border;
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${cfg.bg}`;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
+                  (e.currentTarget as HTMLElement).style.background = "#ffffff";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(26,26,46,0.08)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 3px rgba(26,26,46,0.06), 0 4px 16px rgba(26,26,46,0.06)";
                 }}
               >
                 {/* Großer Index im Hintergrund */}
@@ -125,11 +118,11 @@ export default function USPs() {
                   {cfg.icon}
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-white mb-3"
+                <h3 className="font-heading font-bold text-xl text-dark mb-3"
                   style={{ letterSpacing: "-0.01em" }}>
                   {usp.title}
                 </h3>
-                <p className="font-body text-white/55 leading-[1.75] text-[0.95rem]">
+                <p className="font-body text-muted/65 leading-[1.75] text-[0.95rem]">
                   {usp.description}
                 </p>
               </div>
@@ -152,14 +145,11 @@ export default function USPs() {
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
-          <p className="font-body text-white/35 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
+          <p className="font-body text-muted/45 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
         </div>
 
       </div>
 
-      {/* Trennlinie unten */}
-      <div className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(101,92,158,0.25), transparent)" }} />
     </section>
   );
 }
