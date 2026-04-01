@@ -36,7 +36,7 @@ export default function Hero() {
               <circle cx="5" cy="5" r="3" fill="#25abd6"/>
               <circle cx="5" cy="5" r="5" fill="#25abd6" fillOpacity="0.2"/>
             </svg>
-            Duisburg-Rheinhausen
+            Duisburg
           </span>
 
           <h1 className="font-heading text-5xl md:text-[3.75rem] font-extrabold text-white leading-[1.05] mb-6">
@@ -71,41 +71,48 @@ export default function Hero() {
             </a>
             <a
               href="#leistungen"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white/80 font-body font-semibold text-base px-8 py-4 rounded-full transition-[border-color,background-color,color] duration-200 hover:border-white/50 hover:bg-white/8 hover:text-white"
+              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+              style={{
+                background: "rgba(255,255,255,0.10)",
+                border: "1.5px solid rgba(255,255,255,0.30)",
+                color: "#ffffff",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+                backdropFilter: "blur(8px)",
+              }}
             >
               Unsere Leistungen
             </a>
           </div>
 
           {/* Gefördert-durch Sticker */}
-          <div className="mt-10 flex flex-wrap items-center gap-2.5">
-            <span className="font-body text-xs text-white/35 uppercase tracking-widest">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <span className="font-body text-sm text-white/45 tracking-wide">
               Gefördert durch
             </span>
             <div
-              className="inline-flex items-center px-3 py-1.5 rounded-full bg-white"
-              style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}
+              className="inline-flex items-center px-4 py-2 rounded-xl bg-white"
+              style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.30)" }}
             >
               <Image
                 src="/logo-jobcenter.jpeg"
                 alt="Jobcenter Duisburg"
-                width={100}
-                height={26}
+                width={130}
+                height={34}
                 className="object-contain"
-                style={{ height: 22, width: "auto" }}
+                style={{ height: 30, width: "auto" }}
               />
             </div>
             <div
-              className="inline-flex items-center px-3 py-1.5 rounded-full bg-white"
-              style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}
+              className="inline-flex items-center px-4 py-2 rounded-xl bg-white"
+              style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.30)" }}
             >
               <Image
                 src="/logo-stadt-duisburg.png"
                 alt="Stadt Duisburg"
-                width={80}
-                height={26}
+                width={110}
+                height={34}
                 className="object-contain"
-                style={{ height: 22, width: "auto" }}
+                style={{ height: 30, width: "auto" }}
               />
             </div>
           </div>
