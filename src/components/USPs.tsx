@@ -6,14 +6,15 @@ const uspConfig = [
   {
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9" stroke="#00aa00" strokeWidth="1.6"/>
-        <path d="M8 12l3 3 5-5" stroke="#00aa00" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#25abd6" strokeWidth="1.6"/>
+        <path d="M3 9h18M8 2v4M16 2v4" stroke="#25abd6" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M7 14h2M11 14h2M15 14h2M7 17.5h2M11 17.5h2" stroke="#25abd6" strokeWidth="1.6" strokeLinecap="round"/>
       </svg>
     ),
-    color: "#00aa00",
-    bg: "rgba(0,170,0,0.12)",
-    border: "rgba(0,170,0,0.20)",
-    glow: "rgba(0,170,0,0.08)",
+    color: "#25abd6",
+    bg: "rgba(37,171,214,0.12)",
+    border: "rgba(37,171,214,0.20)",
+    glow: "rgba(37,171,214,0.08)",
   },
   {
     icon: (
