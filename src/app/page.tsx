@@ -12,8 +12,8 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <USPs />
         <BildungTeilhabe />
+        <USPs />
         <Contact />
       </main>
       <Footer />
