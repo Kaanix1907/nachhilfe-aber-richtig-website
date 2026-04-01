@@ -58,8 +58,11 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3">
             <a
               href="#kontakt"
-              className="inline-flex items-center justify-center gap-2 bg-white text-dark font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95"
-              style={{ boxShadow: "0 4px 16px rgba(255,255,255,0.15), 0 1px 4px rgba(0,0,0,0.2)" }}
+              className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
+                boxShadow: "0 4px 20px rgba(0,170,0,0.40), 0 1px 4px rgba(0,0,0,0.2)",
+              }}
             >
               Gratis Probestunde buchen
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -80,12 +83,8 @@ export default function Hero() {
               Gefördert durch
             </span>
             <div
-              className="inline-flex items-center px-3 py-1.5 rounded-full"
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.14)",
-                backdropFilter: "blur(10px)",
-              }}
+              className="inline-flex items-center px-3 py-1.5 rounded-full bg-white"
+              style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}
             >
               <Image
                 src="/logo-jobcenter.jpeg"
@@ -97,19 +96,15 @@ export default function Hero() {
               />
             </div>
             <div
-              className="inline-flex items-center px-3 py-1.5 rounded-full"
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.14)",
-                backdropFilter: "blur(10px)",
-              }}
+              className="inline-flex items-center px-3 py-1.5 rounded-full bg-white"
+              style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}
             >
               <Image
                 src="/logo-stadt-duisburg.png"
                 alt="Stadt Duisburg"
                 width={80}
                 height={26}
-                className="object-contain brightness-0 invert"
+                className="object-contain"
                 style={{ height: 22, width: "auto" }}
               />
             </div>

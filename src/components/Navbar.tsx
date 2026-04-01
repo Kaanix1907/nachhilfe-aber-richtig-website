@@ -49,9 +49,10 @@ export default function Navbar() {
         {/* CTA Button */}
         <a
           href="#kontakt"
-          className="hidden md:inline-flex items-center gap-2 bg-primary text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow,background-color] duration-200 hover:bg-primary/90 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 active:scale-95"
+          className="hidden md:inline-flex items-center gap-2 text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 active:scale-95"
           style={{
-            boxShadow: "0 2px 8px rgba(37,171,214,0.30), 0 1px 2px rgba(37,171,214,0.20)",
+            background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
+            boxShadow: "0 2px 10px rgba(0,170,0,0.35), 0 1px 2px rgba(0,0,0,0.1)",
           }}
         >
           Gratis Probestunde
@@ -92,7 +93,11 @@ export default function Navbar() {
           ))}
           <a
             href="#kontakt"
-            className="inline-flex items-center justify-center bg-primary text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,background-color] duration-200 active:scale-95"
+            className="inline-flex items-center justify-center text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,box-shadow] duration-200 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
+              boxShadow: "0 2px 10px rgba(0,170,0,0.35)",
+            }}
             onClick={() => setMenuOpen(false)}
           >
             Gratis Probestunde buchen

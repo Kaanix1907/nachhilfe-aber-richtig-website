@@ -80,23 +80,40 @@ export default function BildungTeilhabe() {
         </div>
 
         {/* CTA */}
-        <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-          <a
-            href="#kontakt"
-            className="inline-flex items-center gap-2 font-body font-semibold text-sm text-white px-6 py-3 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+        <div className="mt-10 space-y-4">
+          <div
+            className="inline-flex items-start gap-3 px-5 py-4 rounded-2xl border w-full sm:w-auto"
             style={{
-              background: "linear-gradient(135deg, #25abd6 0%, #1d8fb5 100%)",
-              boxShadow: "0 4px 14px rgba(37,171,214,0.30)",
+              background: "rgba(0,170,0,0.05)",
+              borderColor: "rgba(0,170,0,0.18)",
             }}
           >
-            Jetzt anfragen
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <path d="M3 7.5h9M8 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
+              <path d="M10 2l2 4 4.5.6-3.25 3.1.77 4.5L10 12 6 14.2l.77-4.5L3.5 6.6 8 6l2-4z" fill="#00aa00" fillOpacity="0.15" stroke="#00aa00" strokeWidth="1.4" strokeLinejoin="round"/>
             </svg>
-          </a>
-          <p className="font-body text-sm text-muted/55">
-            Wir helfen euch, den Antrag unkompliziert zu stellen.
-          </p>
+            <div>
+              <p className="font-body font-semibold text-dark text-sm">Wir helfen beim Antrag</p>
+              <p className="font-body text-muted/65 text-sm leading-[1.6]">
+                Den Antrag auf Bildung &amp; Teilhabe stellen viele Familien nie — weil sie nicht wissen wie.
+                Wir erklären euch den Ablauf Schritt für Schritt.
+              </p>
+            </div>
+          </div>
+          <div>
+            <a
+              href="#kontakt"
+              className="inline-flex items-center gap-2 font-body font-semibold text-sm text-white px-6 py-3 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, #25abd6 0%, #1d8fb5 100%)",
+                boxShadow: "0 4px 14px rgba(37,171,214,0.30)",
+              }}
+            >
+              Jetzt anfragen
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M3 7.5h9M8 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
       </div>
