@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BUSINESS } from "@/lib/data";
 
 const subjects = ["Mathe", "Deutsch", "Englisch", "Physik", "Chemie", "Bio"];
@@ -73,11 +74,45 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-2 text-white/35 font-body text-sm">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7l3.5 3.5L12 3" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Gefördert durch das Bildungspaket des Bundesministeriums
+          {/* Gefördert-durch Sticker */}
+          <div className="mt-10 flex flex-wrap items-center gap-2.5">
+            <span className="font-body text-xs text-white/35 uppercase tracking-widest">
+              Gefördert durch
+            </span>
+            <div
+              className="inline-flex items-center px-3 py-1.5 rounded-full"
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <Image
+                src="/logo-jobcenter.jpeg"
+                alt="Jobcenter Duisburg"
+                width={100}
+                height={26}
+                className="object-contain"
+                style={{ height: 22, width: "auto" }}
+              />
+            </div>
+            <div
+              className="inline-flex items-center px-3 py-1.5 rounded-full"
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <Image
+                src="/logo-stadt-duisburg.png"
+                alt="Stadt Duisburg"
+                width={80}
+                height={26}
+                className="object-contain brightness-0 invert"
+                style={{ height: 22, width: "auto" }}
+              />
+            </div>
           </div>
         </div>
 

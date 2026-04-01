@@ -7,43 +7,18 @@ export default function BildungTeilhabe() {
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-4xl mx-auto px-4">
 
-        {/* Sticker-Zeile */}
-        <div className="flex flex-wrap items-center gap-3 mb-10">
-          <span className="font-body text-xs font-semibold text-gray-400 uppercase tracking-widest">
-            Gefördert durch
+        {/* Überschrift */}
+        <div className="mb-10">
+          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+            Bildung &amp; Teilhabe
           </span>
-          <div
-            className="inline-flex items-center px-4 py-2 rounded-full border bg-white"
-            style={{
-              borderColor: "rgba(30,40,100,0.15)",
-              boxShadow: "0 1px 4px rgba(30,40,100,0.08)",
-            }}
-          >
-            <Image
-              src="/logo-jobcenter.jpeg"
-              alt="Jobcenter Duisburg"
-              width={120}
-              height={32}
-              className="object-contain"
-              style={{ height: 28, width: "auto" }}
-            />
-          </div>
-          <div
-            className="inline-flex items-center px-4 py-2 rounded-full border bg-white"
-            style={{
-              borderColor: "rgba(30,40,100,0.15)",
-              boxShadow: "0 1px 4px rgba(30,40,100,0.08)",
-            }}
-          >
-            <Image
-              src="/logo-stadt-duisburg.png"
-              alt="Stadt Duisburg"
-              width={100}
-              height={32}
-              className="object-contain"
-              style={{ height: 28, width: "auto" }}
-            />
-          </div>
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-dark mb-3" style={{ letterSpacing: "-0.03em" }}>
+            Nachhilfe kostenlos — für berechtigte Familien
+          </h2>
+          <p className="font-body text-muted/65 text-lg leading-[1.7] max-w-2xl">
+            Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung &amp; Teilhabe</strong> können
+            berechtigte Familien unsere Nachhilfe vollständig kostenlos in Anspruch nehmen.
+          </p>
         </div>
 
         {/* Zwei Karten */}
@@ -70,7 +45,7 @@ export default function BildungTeilhabe() {
             </div>
             <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
               Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
-              sind über das Jobcenter Duisburg für Bildung &amp; Teilhabe berechtigt — und können
+              sind über das Jobcenter Duisburg für Bildung &amp; Teilhabe berechtigt und können
               unsere Nachhilfe <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
             </p>
           </div>
@@ -95,10 +70,10 @@ export default function BildungTeilhabe() {
               />
             </div>
             <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
-              Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder{" "}
+              Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
               <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der Stadt
-              Duisburg erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — inklusive
-              kostenfreier Nachhilfe.
+              Duisburg erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit
+              auf kostenfreie Nachhilfe.
             </p>
           </div>
 
