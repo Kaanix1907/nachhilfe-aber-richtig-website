@@ -132,20 +132,6 @@ export default function USPs() {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#kontakt"
-            className="inline-flex items-center gap-2 text-white font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-            style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
-          >
-            Gratis Probestunde buchen
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-          <p className="font-body text-white/30 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
-        </div>
 
       </div>
 
