@@ -69,25 +69,18 @@ export default function USPs() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
 
-        {/* Header — zweispaltig für mehr Wucht */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
-              Unsere Stärken
-            </span>
-            <h2
-              className="font-heading font-extrabold text-white"
-              style={{ fontSize: "clamp(2.6rem, 5vw, 3.75rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}
-            >
-              Warum{" "}
-              <span style={{ color: "#25abd6" }}>Nachhilfe,</span>
-              <br />
-              <span style={{ color: "#25abd6" }}>aber richtig!</span>?
-            </h2>
-          </div>
-          <p className="font-body text-white/45 text-base leading-[1.75] max-w-xs md:text-right md:pb-1">
-            Wir begleiten dein Kind weit über das Notenverbessern hinaus — ganzheitlich und persönlich.
-          </p>
+        {/* Header */}
+        <div className="mb-16">
+          <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
+            Unsere Stärken
+          </span>
+          <h2
+            className="font-heading font-extrabold text-white"
+            style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", lineHeight: 1.0, letterSpacing: "-0.04em" }}
+          >
+            Warum{" "}
+            <span style={{ color: "#25abd6" }}>Nachhilfe, aber richtig!</span>?
+          </h2>
         </div>
 
         {/* Karten */}
