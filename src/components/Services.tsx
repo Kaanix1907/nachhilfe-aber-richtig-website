@@ -38,31 +38,19 @@ const serviceIcons: Record<string, JSX.Element> = {
 
 export default function Services() {
   return (
-    <section
-      id="leistungen"
-      className="relative grain py-28 overflow-hidden"
-      style={{ background: "linear-gradient(160deg, #0f0c29 0%, #1e1550 45%, #1a2e42 100%)" }}
-    >
-      {/* Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(37,171,214,0.10) 0%, transparent 65%)" }} />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(101,92,158,0.15) 0%, transparent 65%)" }} />
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(37,171,214,0.25), transparent)" }} />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+    <section id="leistungen" className="py-28 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
+          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Was wir anbieten
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-white mb-4"
-            style={{ letterSpacing: "-0.03em" }}>
+          <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-4">
             Unsere Leistungen
           </h2>
-          <p className="font-body text-white/55 text-lg max-w-xl mx-auto leading-[1.7]">
-            Wir bieten die passende Lösung für jedes Kind — flexibel, fair und mit echtem Mehrwert.
+          <p className="font-body text-muted/70 text-lg max-w-xl mx-auto leading-[1.7]">
+            Wir bieten die passende Lösung für jedes Kind — flexibel, fair und
+            mit echtem Mehrwert.
           </p>
         </div>
 
@@ -71,36 +59,40 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group relative rounded-2xl p-6 border border-white/8 transition-[transform,border-color,background] duration-300 hover:-translate-y-1.5 cursor-default"
-              style={{ background: "rgba(255,255,255,0.04)" }}
+              className="group relative bg-white rounded-2xl p-6 border border-gray-100 transition-[transform,border-color] duration-300 hover:-translate-y-1.5 cursor-default"
+              style={{
+                boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)",
+              }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(37,171,214,0.25)";
-                (e.currentTarget as HTMLElement).style.background = "rgba(37,171,214,0.07)";
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "0 2px 4px rgba(26,26,46,0.08), 0 8px 24px rgba(37,171,214,0.12), 0 24px 40px rgba(26,26,46,0.08)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(37,171,214,0.2)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgb(243,244,246)";
               }}
             >
+              {/* Icon */}
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 text-primary transition-[background-color,color] duration-300 group-hover:bg-primary group-hover:text-white"
-                style={{ background: "rgba(37,171,214,0.15)" }}
+                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 text-primary transition-[background-color] duration-300 group-hover:bg-primary group-hover:text-white"
+                style={{ background: "rgba(37,171,214,0.10)" }}
               >
                 {serviceIcons[service.id]}
               </div>
-              <h3 className="font-heading font-bold text-lg text-white mb-2.5 group-hover:text-primary transition-[color] duration-300">
+
+              <h3 className="font-heading font-bold text-lg text-dark mb-2.5 group-hover:text-primary transition-[color] duration-300">
                 {service.title}
               </h3>
-              <p className="font-body text-white/55 text-sm leading-[1.7]">
+              <p className="font-body text-muted/65 text-sm leading-[1.7]">
                 {service.description}
               </p>
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(101,92,158,0.25), transparent)" }} />
+      </div>
     </section>
   );
 }

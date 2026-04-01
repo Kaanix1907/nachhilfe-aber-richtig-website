@@ -5,50 +5,50 @@ import { UPSPS } from "@/lib/data";
 const uspConfig = [
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#25abd6" strokeWidth="1.6"/>
-        <path d="M3 9h18M8 2v4M16 2v4" stroke="#25abd6" strokeWidth="1.6" strokeLinecap="round"/>
-        <path d="M7 14h2M11 14h2M15 14h2M7 17.5h2M11 17.5h2" stroke="#25abd6" strokeWidth="1.6" strokeLinecap="round"/>
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect x="3" y="3" width="20" height="20" rx="3" stroke="#25abd6" strokeWidth="1.7"/>
+        <path d="M3 10h20M9 3v7" stroke="#25abd6" strokeWidth="1.7" strokeLinecap="round"/>
+        <path d="M8 16l3 3 7-6" stroke="#25abd6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
     color: "#25abd6",
     bg: "rgba(37,171,214,0.12)",
-    border: "rgba(37,171,214,0.20)",
-    glow: "rgba(37,171,214,0.08)",
+    border: "rgba(37,171,214,0.22)",
+    glow: "rgba(37,171,214,0.07)",
   },
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2l2.2 4.4 4.8.7-3.5 3.4.83 4.86L12 13l-4.33 2.4.83-4.86L5 7.1l4.8-.7L12 2z" stroke="#25abd6" strokeWidth="1.6" strokeLinejoin="round"/>
-      </svg>
-    ),
-    color: "#25abd6",
-    bg: "rgba(37,171,214,0.12)",
-    border: "rgba(37,171,214,0.20)",
-    glow: "rgba(37,171,214,0.08)",
-  },
-  {
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M3 11h18M3 11L12 4l9 7M5 11v9h14v-9" stroke="#a78bfa" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M13 2.5l2.4 4.8 5.3.77-3.85 3.75.91 5.28L13 14.5l-4.81 2.6.91-5.28L5.3 8.07l5.3-.77L13 2.5z" stroke="#a78bfa" strokeWidth="1.7" strokeLinejoin="round"/>
       </svg>
     ),
     color: "#a78bfa",
     bg: "rgba(167,139,250,0.12)",
-    border: "rgba(167,139,250,0.20)",
-    glow: "rgba(167,139,250,0.08)",
+    border: "rgba(167,139,250,0.22)",
+    glow: "rgba(167,139,250,0.07)",
   },
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#25abd6" strokeWidth="1.6"/>
-        <path d="M8 8h8M8 12h8M8 16h5" stroke="#25abd6" strokeWidth="1.6" strokeLinecap="round"/>
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M4 12.5h18M4 12.5L13 5l9 7.5M6 12.5v9h14v-9" stroke="#25abd6" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
     color: "#25abd6",
     bg: "rgba(37,171,214,0.12)",
-    border: "rgba(37,171,214,0.20)",
-    glow: "rgba(37,171,214,0.08)",
+    border: "rgba(37,171,214,0.22)",
+    glow: "rgba(37,171,214,0.07)",
+  },
+  {
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect x="4" y="3" width="18" height="20" rx="3" stroke="#a78bfa" strokeWidth="1.7"/>
+        <path d="M9 9h8M9 13h8M9 17h5" stroke="#a78bfa" strokeWidth="1.7" strokeLinecap="round"/>
+      </svg>
+    ),
+    color: "#a78bfa",
+    bg: "rgba(167,139,250,0.12)",
+    border: "rgba(167,139,250,0.22)",
+    glow: "rgba(167,139,250,0.07)",
   },
 ];
 
@@ -56,25 +56,37 @@ export default function USPs() {
   return (
     <section
       id="ueber-uns"
-      className="relative py-28 overflow-hidden bg-white"
+      className="relative grain py-28 overflow-hidden"
+      style={{ background: "linear-gradient(160deg, #0f0c29 0%, #1e1550 45%, #1a2e42 100%)" }}
     >
+      {/* Glows */}
+      <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(37,171,214,0.10) 0%, transparent 65%)" }} />
+      <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(101,92,158,0.15) 0%, transparent 65%)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(37,171,214,0.3), transparent)" }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
 
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-6 border border-primary/12 tracking-widest uppercase">
-            Unsere Stärken
-          </span>
-          <h2
-            className="font-heading font-extrabold text-dark mb-5"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}
-          >
-            Warum{" "}
-            <span style={{ color: "#25abd6" }}>Nachhilfe,<br className="hidden sm:block" />aber richtig!</span>?
-          </h2>
-          <p className="font-body text-muted/60 text-lg max-w-lg mx-auto leading-[1.75]">
-            Wir gehen weit über das schlichte Notenverbessern hinaus — und begleiten dein Kind ganzheitlich.
+        {/* Header — zweispaltig für mehr Wucht */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div>
+            <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
+              Unsere Stärken
+            </span>
+            <h2
+              className="font-heading font-extrabold text-white"
+              style={{ fontSize: "clamp(2.6rem, 5vw, 3.75rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}
+            >
+              Warum{" "}
+              <span style={{ color: "#25abd6" }}>Nachhilfe,</span>
+              <br />
+              <span style={{ color: "#25abd6" }}>aber richtig!</span>?
+            </h2>
+          </div>
+          <p className="font-body text-white/45 text-base leading-[1.75] max-w-xs md:text-right md:pb-1">
+            Wir begleiten dein Kind weit über das Notenverbessern hinaus — ganzheitlich und persönlich.
           </p>
         </div>
 
@@ -85,44 +97,41 @@ export default function USPs() {
             return (
               <div
                 key={index}
-                className="group relative rounded-3xl p-8 border transition-[transform,background] duration-300 hover:-translate-y-1.5 overflow-hidden"
+                className="group relative rounded-3xl p-8 border transition-[transform,background,border-color] duration-300 hover:-translate-y-1.5 overflow-hidden cursor-default"
                 style={{
-                  background: "#ffffff",
-                  borderColor: "rgba(26,26,46,0.08)",
-                  boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 16px rgba(26,26,46,0.06)",
+                  background: "rgba(255,255,255,0.04)",
+                  borderColor: "rgba(255,255,255,0.08)",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.12)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = cfg.glow;
                   (e.currentTarget as HTMLElement).style.borderColor = cfg.border;
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${cfg.bg}`;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#ffffff";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(26,26,46,0.08)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 3px rgba(26,26,46,0.06), 0 4px 16px rgba(26,26,46,0.06)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
                 }}
               >
-                {/* Großer Index im Hintergrund */}
+                {/* Große Nummer im Hintergrund */}
                 <span
-                  className="absolute top-4 right-6 font-heading font-extrabold select-none pointer-events-none"
-                  style={{ fontSize: "7rem", lineHeight: 1, letterSpacing: "-0.06em", color: `${cfg.color}08` }}
+                  className="absolute -bottom-4 -right-2 font-heading font-extrabold select-none pointer-events-none leading-none"
+                  style={{ fontSize: "9rem", color: `${cfg.color}09`, letterSpacing: "-0.06em" }}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
                 {/* Icon */}
                 <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                  className="w-13 h-13 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-[background] duration-300"
                   style={{ background: cfg.bg, border: `1px solid ${cfg.border}` }}
                 >
                   {cfg.icon}
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-dark mb-3"
-                  style={{ letterSpacing: "-0.01em" }}>
+                <h3 className="font-heading font-bold text-xl text-white mb-3" style={{ letterSpacing: "-0.01em" }}>
                   {usp.title}
                 </h3>
-                <p className="font-body text-muted/65 leading-[1.75] text-[0.95rem]">
+                <p className="font-body text-white/55 leading-[1.75] text-[0.95rem]">
                   {usp.description}
                 </p>
               </div>
@@ -135,21 +144,20 @@ export default function USPs() {
           <a
             href="#kontakt"
             className="inline-flex items-center gap-2 text-white font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-            style={{
-              background: "linear-gradient(135deg,#00aa00,#008a00)",
-              boxShadow: "0 4px 20px rgba(0,170,0,0.40)",
-            }}
+            style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
           >
             Gratis Probestunde buchen
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
-          <p className="font-body text-muted/45 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
+          <p className="font-body text-white/30 text-sm">Keine Verpflichtung — einfach ausprobieren.</p>
         </div>
 
       </div>
 
+      <div className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(101,92,158,0.3), transparent)" }} />
     </section>
   );
 }
