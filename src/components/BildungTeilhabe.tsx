@@ -44,7 +44,7 @@ export default function BildungTeilhabe() {
               />
             </div>
             <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
-              Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
+              Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong>{" "}beziehen,
               sind über das Jobcenter Duisburg für Bildung &amp; Teilhabe berechtigt und können
               unsere Nachhilfe <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
             </p>
