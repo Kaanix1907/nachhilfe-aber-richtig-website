@@ -92,51 +92,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Stay in School Banner */}
-        <div
-          className="mt-10 relative overflow-hidden rounded-3xl p-8 md:p-10"
-          style={{
-            background: "linear-gradient(135deg, rgba(37,171,214,0.07) 0%, rgba(101,92,158,0.07) 100%)",
-            border: "1px solid rgba(37,171,214,0.12)",
-          }}
-        >
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            {/* Icon */}
-            <div
-              className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
-              style={{ background: "rgba(37,171,214,0.12)" }}
-            >
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-                <path d="M13 3L3 8l10 5 10-5-10-5z" stroke="#25abd6" strokeWidth="1.5" strokeLinejoin="round"/>
-                <path d="M3 13l10 5 10-5" stroke="#25abd6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 18l10 5 10-5" stroke="#25abd6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-heading font-bold text-xl text-dark mb-1.5">
-                Stay in School — für Schulen & Vereine
-              </h3>
-              <p className="font-body text-muted/70 leading-[1.7]">
-                Unser innovatives Programm ist durch das Bildungspaket des
-                Bundesministeriums{" "}
-                <strong className="text-accent font-semibold">vollständig kostenlos</strong>{" "}
-                für Schulen und Vereine.
-              </p>
-            </div>
-            <a
-              href="#kontakt"
-              className="shrink-0 ml-auto inline-flex items-center gap-2 bg-primary text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px active:scale-95"
-              style={{
-                boxShadow: "0 2px 8px rgba(37,171,214,0.30)",
-              }}
-            >
-              Mehr erfahren
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
