@@ -1,8 +1,9 @@
 "use client";
 
+import React from "react";
 import { SERVICES } from "@/lib/data";
 
-const serviceIcons: Record<string, JSX.Element> = {
+const serviceIcons: Record<string, React.ReactElement> = {
   gruppe: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M17 20c0-2.21-2.24-4-5-4s-5 1.79-5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
