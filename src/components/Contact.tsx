@@ -26,7 +26,7 @@ export default function Contact() {
     "w-full border border-gray-200 rounded-xl px-4 py-3 font-body text-dark text-sm bg-white transition-[border-color,box-shadow] duration-200 focus:outline-none focus:border-primary focus:ring-0 placeholder:text-gray-300";
 
   return (
-    <section id="kontakt" className="py-28 bg-white">
+    <section id="kontakt" className="py-28 bg-white border-t-2 border-gray-100">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
