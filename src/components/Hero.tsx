@@ -84,42 +84,43 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Gefördert-durch Sticker */}
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <span className="font-body text-sm text-white/45 tracking-wide">
+        </div>
+
+        {/* Right — Booking Card */}
+        <div className="hidden md:flex flex-col items-center justify-center gap-6 py-10">
+          {/* Gefördert-durch Sticker — oben rechts */}
+          <div className="flex items-center gap-2.5 self-end">
+            <span className="font-body text-xs text-white/40 tracking-wide whitespace-nowrap">
               Gefördert durch
             </span>
             <div
-              className="inline-flex items-center px-4 py-2 rounded-xl bg-white"
-              style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.30)" }}
+              className="inline-flex items-center px-3.5 py-2 rounded-xl bg-white"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
             >
               <Image
                 src="/logo-jobcenter.jpeg"
                 alt="Jobcenter Duisburg"
-                width={130}
-                height={34}
+                width={120}
+                height={32}
                 className="object-contain"
-                style={{ height: 30, width: "auto" }}
+                style={{ height: 28, width: "auto" }}
               />
             </div>
             <div
-              className="inline-flex items-center px-4 py-2 rounded-xl bg-white"
-              style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.30)" }}
+              className="inline-flex items-center px-3.5 py-2 rounded-xl bg-white"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
             >
               <Image
                 src="/logo-stadt-duisburg.png"
                 alt="Stadt Duisburg"
-                width={110}
-                height={34}
+                width={100}
+                height={32}
                 className="object-contain"
-                style={{ height: 30, width: "auto" }}
+                style={{ height: 28, width: "auto" }}
               />
             </div>
           </div>
-        </div>
 
-        {/* Right — Booking Card */}
-        <div className="hidden md:flex items-center justify-center py-10">
           <div className="relative w-full max-w-sm">
 
             {/* Floating Badge oben links */}

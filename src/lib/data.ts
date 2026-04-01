@@ -21,13 +21,14 @@ export const BUSINESS = {
   },
   hours: [
     { day: "Montag", time: "13:00–17:00" },
-    { day: "Dienstag", time: "13:00–18:30" },
-    { day: "Mittwoch", time: "13:00–18:30" },
-    { day: "Donnerstag", time: "Geschlossen" },
+    { day: "Dienstag", time: "13:00–17:00" },
+    { day: "Mittwoch", time: "13:00–17:00" },
+    { day: "Donnerstag", time: "13:00–17:00" },
     { day: "Freitag", time: "13:00–17:00" },
     { day: "Samstag", time: "Geschlossen" },
     { day: "Sonntag", time: "Geschlossen" },
   ],
+  serviceHours: "Mo–Fr, 10:00–20:00 Uhr",
   social: {
     facebook: "https://www.facebook.com",
     instagram: "https://www.instagram.com",

@@ -230,6 +230,12 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <div className="flex justify-between items-center font-body text-sm">
+                  <span className="text-dark/55">Kundenservice</span>
+                  <span className="font-semibold text-primary tabular-nums">{BUSINESS.serviceHours}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
