@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import StayInSchool from "@/components/StayInSchool";
+import BildungTeilhabe from "@/components/BildungTeilhabe";
 import USPs from "@/components/USPs";
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <StayInSchool />
+        <BildungTeilhabe />
         <USPs />
         <Contact />
       </main>
