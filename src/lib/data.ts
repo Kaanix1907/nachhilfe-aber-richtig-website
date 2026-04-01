@@ -3,6 +3,7 @@
 
 export const BUSINESS = {
   name: "Nachhilfe, aber richtig!",
+  owner: "Mustafa Kaan Güneren",
   slogan: "In Rekordzeit zu besseren Noten!",
   email: "info@nachhilfe-aber-richtig.de",
   phone: "+49 157 53337648",
