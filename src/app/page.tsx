@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import ReviewsTicker from "@/components/ReviewsTicker";
 import Services from "@/components/Services";
 import BildungTeilhabe from "@/components/BildungTeilhabe";
 import USPs from "@/components/USPs";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <ReviewsTicker />
         <Services />
         <BildungTeilhabe />
         <USPs />
