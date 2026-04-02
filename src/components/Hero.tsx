@@ -63,18 +63,6 @@ export default async function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
       style={{ background: "linear-gradient(135deg, #0f0c29 0%, #1a1040 30%, #2d1f5e 65%, #1e3a4f 100%)" }}
     >
-      {/* Logo-Wasserzeichen */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <Image
-          src="/logo.png"
-          alt=""
-          width={520}
-          height={520}
-          className="object-contain select-none"
-          style={{ opacity: 0.04, filter: "grayscale(1) brightness(10)" }}
-        />
-      </div>
-
       {/* Radiale Glows */}
       <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(101,92,158,0.35) 0%, transparent 70%)" }} />
