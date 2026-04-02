@@ -108,7 +108,19 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 ---
 
-## 8. Entwicklungsregeln
+## 8. Session-Start (PFLICHT)
+
+**Am Anfang jeder Session automatisch ausführen:**
+1. Dev-Server starten: `npm run dev` (falls nicht bereits aktiv)
+2. Screenshot aufnehmen: `node screenshot.mjs http://localhost:3000`
+3. Screenshot analysieren — aktuellen Stand sofort im Blick haben
+4. Erst danach auf die Anfrage von Mustafa eingehen
+
+**Ziel:** Mustafa sieht immer sofort die neueste Version, ohne selbst den Server starten zu müssen.
+
+---
+
+## 9. Entwicklungsregeln
 > Die allgemeinen Frontend-Regeln (Design Guardrails, Tech Stack, Bild-Befehle) stehen im übergeordneten Ordner: `../CLAUDE.md`
 
 
