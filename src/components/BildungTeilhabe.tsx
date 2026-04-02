@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function BildungTeilhabe() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
 
         {/* Überschrift */}
         <div className="mb-10">

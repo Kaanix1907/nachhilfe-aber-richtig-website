@@ -14,7 +14,7 @@ export default function StayInSchool() {
         }}
       />
       
-      <div className="relative max-w-5xl mx-auto px-4">
+      <div className="relative max-w-6xl mx-auto px-4">
         {/* Oberster Sticker direkt am Anfang */}
         <div className="flex justify-center mb-12">
           <div

@@ -30,24 +30,15 @@ const outputPath = path.join(screenshotDir, filename);
 const browser = await puppeteer.launch({
   headless: true,
   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  protocolTimeout: 60000,
 });
 
 const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
-// networkidle0 = warten bis ALLE Requests (inkl. next/image) fertig sind
-await page.goto(url, { waitUntil: "networkidle0", timeout: 20000 });
+await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
-// Warten bis alle Bilder vollständig geladen sind
-await page.evaluate(() =>
-  Promise.all(
-    Array.from(document.images)
-      .filter(img => !img.complete)
-      .map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))
-  )
-);
-
-// Fonts & Animationen abwarten
-await new Promise(r => setTimeout(r, 800));
+// Fonts, Bilder & Animationen abwarten
+await new Promise(r => setTimeout(r, 2000));
 
 await page.screenshot({ path: outputPath, fullPage: false });
 await browser.close();
