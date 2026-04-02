@@ -116,7 +116,9 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 3. Screenshot analysieren — aktuellen Stand sofort im Blick haben
 4. Erst danach auf die Anfrage von Mustafa eingehen
 
-**Ziel:** Mustafa sieht immer sofort die neueste Version, ohne selbst den Server starten zu müssen.
+**Nach jeder Änderung:** `open http://localhost:3000` ausführen — Mustafa soll die Seite nie selbst öffnen müssen.
+
+**Ziel:** Mustafa sieht immer sofort die neueste Version, ohne selbst den Server starten oder die URL öffnen zu müssen.
 
 ---
 
