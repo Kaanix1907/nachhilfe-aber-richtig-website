@@ -73,14 +73,6 @@ export default async function Hero() {
 
         {/* Links — Text */}
         <div>
-          <span className="inline-flex items-center gap-1.5 bg-white/8 text-white/60 font-body font-medium text-xs px-3.5 py-1.5 rounded-full mb-6 border border-white/10 tracking-widest uppercase">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <circle cx="5" cy="5" r="3" fill="#25abd6"/>
-              <circle cx="5" cy="5" r="5" fill="#25abd6" fillOpacity="0.2"/>
-            </svg>
-            Duisburg
-          </span>
-
           <h1 className="font-heading text-5xl md:text-[3.75rem] font-extrabold text-white mb-6"
             style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
