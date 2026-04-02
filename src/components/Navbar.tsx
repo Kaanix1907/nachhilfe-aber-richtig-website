@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { BUSINESS } from "@/lib/data";
 
 const navLinks = [
@@ -13,6 +14,9 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isSubpage = pathname !== "/";
+  const prefix = isSubpage ? "/" : "";
 
   return (
     <header
@@ -23,7 +27,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-3">
+        <a href={`${prefix}#hero`} className="flex items-center gap-3">
           <Image
             src="/logo.png"
             alt={BUSINESS.name}
@@ -38,7 +42,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`${prefix}${link.href}`}
               className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide"
             >
               {link.label}
@@ -48,7 +52,7 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <a
-          href="#kontakt"
+          href={`${prefix}#kontakt`}
           className="hidden md:inline-flex items-center gap-2 text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 active:scale-95"
           style={{
             background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
@@ -84,7 +88,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`${prefix}${link.href}`}
               className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-base py-1"
               onClick={() => setMenuOpen(false)}
             >
@@ -92,7 +96,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#kontakt"
+            href={`${prefix}#kontakt`}
             className="inline-flex items-center justify-center text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,box-shadow] duration-200 active:scale-95"
             style={{
               background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
