@@ -15,8 +15,8 @@ export const BUSINESS = {
       label: "Lernort",
     },
     geschaeft: {
-      street: "Rheinstraße 19",
-      city: "47226 Duisburg",
+      street: "Steinacker 29",
+      city: "47228 Duisburg",
       label: "Geschäftsadresse",
     },
   },

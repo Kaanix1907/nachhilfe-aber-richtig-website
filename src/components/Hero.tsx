@@ -81,6 +81,15 @@ export default async function Hero() {
             Duisburg
           </span>
 
+          <Image
+            src="/logo.png"
+            alt="Nachhilfe, aber richtig! Logo"
+            width={56}
+            height={56}
+            className="object-contain mb-4"
+            style={{ filter: "drop-shadow(0 0 14px rgba(37,171,214,0.55))", opacity: 0.92 }}
+          />
+
           <h1 className="font-heading text-5xl md:text-[3.75rem] font-extrabold text-white mb-6"
             style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
