@@ -72,7 +72,7 @@ export default async function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Links — Text */}
-        <div>
+        <div className="flex flex-col">
           <h1 className="font-heading text-5xl md:text-[3.75rem] font-extrabold text-white mb-6"
             style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
@@ -120,29 +120,126 @@ export default async function Hero() {
               <Image src="/logo-stadt-duisburg.png" alt="Stadt Duisburg" width={110} height={34} className="object-contain" style={{ height: 30, width: "auto" }} />
             </div>
           </div>
+
+          {/* Mobile-only: Google Bewertungen horizontal scrollend */}
+          <div className="md:hidden mt-10">
+            {/* Google-Header */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <svg viewBox="0 0 48 48" width="26" height="26">
+                  <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                  <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
+                  <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
+                  <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
+                </svg>
+                <div>
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} width="13" height="13" viewBox="0 0 12 12" fill="#f59e0b">
+                        <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
+                      </svg>
+                    ))}
+                    <span className="font-heading font-bold text-white text-sm ml-1">{rating.toFixed(1)}</span>
+                  </div>
+                  <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
+                </div>
+              </div>
+              {/* Verifikations-Link */}
+              <a
+                href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 font-body text-xs text-white/40 hover:text-white/70 transition-[color] duration-200"
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                Prüfen
+              </a>
+            </div>
+
+            {/* Horizontal-Scroll-Container */}
+            <div className="relative overflow-hidden">
+              <div className="absolute left-0 top-0 bottom-0 w-8 z-10 pointer-events-none"
+                style={{ background: "linear-gradient(to right, #0f0c29, transparent)" }} />
+              <div className="absolute right-0 top-0 bottom-0 w-8 z-10 pointer-events-none"
+                style={{ background: "linear-gradient(to left, #1e3a4f, transparent)" }} />
+              <div className="reviews-horizontal flex gap-3">
+                {[...reviews, ...reviews].map((r, idx) => (
+                  <div key={idx}
+                    className="shrink-0 w-72 rounded-2xl p-4"
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center font-body font-bold text-white text-xs shrink-0"
+                          style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
+                          {r.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="font-body font-semibold text-white text-xs">{r.name}</div>
+                          <div className="font-body text-white/30 text-xs">{r.time}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-0.5 shrink-0">
+                        {[...Array(r.stars)].map((_, i) => (
+                          <svg key={i} width="11" height="11" viewBox="0 0 12 12" fill="#f59e0b">
+                            <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="font-body text-white/60 text-xs leading-[1.6]">&ldquo;{r.text}&rdquo;</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Rechts — Vertikal scrollende Google Bewertungen */}
         <div className="hidden md:flex flex-col gap-4">
           {/* Google-Header */}
-          <div className="flex items-center gap-3 mb-1">
-            <svg viewBox="0 0 48 48" width="30" height="30">
-              <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
-              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
-              <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
-              <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
-            </svg>
-            <div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="#f59e0b">
-                    <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                  </svg>
-                ))}
-                <span className="font-heading font-bold text-white text-sm ml-1">{rating.toFixed(1)}</span>
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 48 48" width="30" height="30">
+                <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
+                <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
+              </svg>
+              <div>
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="#f59e0b">
+                      <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
+                    </svg>
+                  ))}
+                  <span className="font-heading font-bold text-white text-sm ml-1">{rating.toFixed(1)}</span>
+                </div>
+                <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
               </div>
-              <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
             </div>
+            {/* Verifikations-Link zu Google Maps */}
+            <a
+              href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 font-body text-xs text-white/40 hover:text-white/70 transition-[color] duration-200 group"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Auf Google prüfen
+            </a>
           </div>
 
           {/* Scroll-Container */}

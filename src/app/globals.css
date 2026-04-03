@@ -71,3 +71,13 @@ h1, h2, h3, h4, h5, h6 {
 .reviews-vertical:hover {
   animation-play-state: paused;
 }
+
+/* Reviews horizontaler Scroll im Hero (Mobile) */
+@keyframes reviews-horizontal {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.reviews-horizontal {
+  animation: reviews-horizontal 20s linear infinite;
+}
