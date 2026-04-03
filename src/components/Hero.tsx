@@ -72,9 +72,9 @@ export default async function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Links — Text */}
-        <div className="flex flex-col">
-          <h1 className="font-heading text-5xl md:text-[3.75rem] font-extrabold text-white mb-6"
-            style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+        <div className="flex flex-col min-w-0">
+          <h1 className="font-heading text-[2.2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-6 break-words"
+            style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
           </h1>
 

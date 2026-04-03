@@ -14,6 +14,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const url = process.argv[2] || "http://localhost:3000";
 const label = process.argv[3] || "";
+const viewportWidth = parseInt(process.argv[4]) || 1440;
+const viewportHeight = parseInt(process.argv[5]) || 900;
 
 // Screenshots-Ordner im aufrufenden Projektverzeichnis
 const screenshotDir = path.join(process.cwd(), "screenshots");
@@ -34,7 +36,7 @@ const browser = await puppeteer.launch({
 });
 
 const page = await browser.newPage();
-await page.setViewport({ width: 1440, height: 900 });
+await page.setViewport({ width: viewportWidth, height: viewportHeight });
 await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
 // Fonts, Bilder & Animationen abwarten
