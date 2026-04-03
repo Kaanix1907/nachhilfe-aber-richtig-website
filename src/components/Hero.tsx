@@ -149,9 +149,10 @@ export default async function Hero() {
                 href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 font-body text-xs text-white/40 hover:text-white/70 transition-[color] duration-200"
+                className="flex items-center gap-1 font-body text-xs font-semibold px-2.5 py-1 rounded-full transition-[opacity] duration-200 hover:opacity-80"
+                style={{ background: "rgba(37,171,214,0.15)", border: "1px solid rgba(37,171,214,0.35)", color: "#25abd6" }}
               >
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
                   <polyline points="15 3 21 3 21 9"/>
                   <line x1="10" y1="14" x2="21" y2="3"/>
@@ -231,9 +232,10 @@ export default async function Hero() {
               href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 font-body text-xs text-white/40 hover:text-white/70 transition-[color] duration-200 group"
+              className="flex items-center gap-1.5 font-body text-xs font-semibold px-3 py-1.5 rounded-full transition-[opacity,transform] duration-200 hover:opacity-80 hover:-translate-y-px"
+              style={{ background: "rgba(37,171,214,0.15)", border: "1px solid rgba(37,171,214,0.35)", color: "#25abd6" }}
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
                 <polyline points="15 3 21 3 21 9"/>
                 <line x1="10" y1="14" x2="21" y2="3"/>
