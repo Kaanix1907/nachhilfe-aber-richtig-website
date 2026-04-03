@@ -120,6 +120,16 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 **Ziel:** Mustafa sieht immer sofort die neueste Version, ohne selbst den Server starten oder die URL öffnen zu müssen.
 
+**PFLICHT — Selbst-Verifikation vor jeder Rückmeldung:**
+Bevor ich Mustafa sage "es ist fertig" oder "es funktioniert", MUSS ich:
+1. Screenshot Desktop (1440px): `node screenshot.mjs http://localhost:3000 verify-desktop 1440 900`
+2. Screenshot Mobile (390px): `node screenshot.mjs http://localhost:3000 verify-mobile 390 844`
+3. Beide Screenshots mit Read-Tool öffnen und das gewünschte Element **mit eigenen Augen bestätigen**
+4. Erst wenn ich es im Screenshot sehe → Rückmeldung an Mustafa
+
+Wenn der Cache alt ist: `.next` löschen, Server neu starten, dann nochmals Screenshot.
+Kein "sollte funktionieren" — nur "ich habe es im Screenshot gesehen".
+
 ---
 
 ## 9. Entwicklungsregeln
