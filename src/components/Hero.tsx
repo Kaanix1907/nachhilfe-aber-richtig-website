@@ -22,7 +22,7 @@ async function getGoogleData(): Promise<PlacesData> {
 
   try {
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=rating,user_ratings_total,reviews&language=de&key=${apiKey}`;
-    const res = await fetch(url, { next: { revalidate: 3600 } });
+    const res = await fetch(url, { cache: "no-store" });
     const data = await res.json();
 
     if (data.status !== "OK") return { reviews: [], rating: 5.0, total: 22 };
@@ -48,9 +48,9 @@ async function getGoogleData(): Promise<PlacesData> {
 }
 
 const FALLBACK_REVIEWS: Review[] = [
-  { name: "Sara M.", stars: 5, text: "Mein Sohn hat sich in Mathe von 5 auf 2 verbessert. Unglaublich professionell!", time: "vor 2 Wochen" },
-  { name: "Thomas K.", stars: 5, text: "Endlich Nachhilfe die wirklich wirkt. Die Lehrer erklären super geduldig.", time: "vor 1 Monat" },
-  { name: "Ayse D.", stars: 5, text: "Dank des BuT-Programms komplett kostenlos. Absolut empfehlenswert!", time: "vor 3 Wochen" },
+  { name: "Burak Murat", stars: 5, text: "Ich bin sehr zufrieden mit der Nachhilfe! Der Unterricht ist super verständlich aufgebaut, geduldig erklärt und genau auf meine Bedürfnisse abgestimmt.", time: "vor 6 Monaten" },
+  { name: "Celina Matthay", stars: 5, text: "Meine Kinder gehen gerne zur Nachhilfe, aber richtig! Innerhalb kurzer Zeit hat sich meine Tochter um eine Note auf 2 verbessert.", time: "vor 6 Monaten" },
+  { name: "Esmere Islamaj", stars: 5, text: "Meine Tochter ist schon paar Monate dabei und ihre Noten sind viel viel besser geworden. Jetzt habe ich auch meinen Sohn angemeldet.", time: "vor 6 Monaten" },
 ];
 
 export default async function Hero() {

@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import BildungTeilhabe from "@/components/BildungTeilhabe";
