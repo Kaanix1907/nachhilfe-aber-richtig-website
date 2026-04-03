@@ -69,26 +69,26 @@ export default async function Hero() {
       <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(37,171,214,0.15) 0%, transparent 70%)" }} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-20 grid md:grid-cols-2 gap-8 md:gap-16 items-center">
 
         {/* Links — Text */}
         <div className="flex flex-col min-w-0">
-          <h1 className="font-heading text-[2.2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-6 break-words"
+          <h1 className="font-heading text-[2.2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-4 md:mb-6 break-words"
             style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
           </h1>
 
-          <p className="font-body text-xl text-white/65 mb-3 leading-[1.75]">
+          <p className="font-body text-lg md:text-xl text-white/65 mb-2 md:mb-3 leading-[1.7]">
             Professionelle Nachhilfe für Schüler{" "}
             <span className="font-semibold text-white">ab Klasse 1 bis Abitur</span>{" "}
             — in allen Fächern, persönlich betreut.
           </p>
 
-          <p className="font-body text-base text-white/35 mb-10 tracking-wide">
+          <p className="font-body text-base text-white/35 mb-5 md:mb-10 tracking-wide">
             {BUSINESS.slogan}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mb-10">
+          <div className="flex flex-col sm:flex-row gap-3 mb-5 md:mb-10">
             <a
               href="#kontakt"
               className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
@@ -122,7 +122,7 @@ export default async function Hero() {
           </div>
 
           {/* Mobile-only: Google Bewertungen horizontal scrollend */}
-          <div className="md:hidden mt-10">
+          <div className="md:hidden mt-6">
             {/* Google-Header */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
