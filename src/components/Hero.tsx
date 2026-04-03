@@ -207,8 +207,7 @@ export default async function Hero() {
         {/* Rechts — Vertikal scrollende Google Bewertungen */}
         <div className="hidden md:flex flex-col gap-4">
           {/* Google-Header */}
-          <div className="flex items-center justify-between mb-1">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mb-1">
               <svg viewBox="0 0 48 48" width="30" height="30">
                 <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
                 <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
@@ -226,22 +225,6 @@ export default async function Hero() {
                 </div>
                 <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
               </div>
-            </div>
-            {/* Verifikations-Link zu Google Maps */}
-            <a
-              href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 font-body text-xs font-semibold px-3 py-1.5 rounded-full transition-[opacity,transform] duration-200 hover:opacity-80 hover:-translate-y-px"
-              style={{ background: "rgba(37,171,214,0.15)", border: "1px solid rgba(37,171,214,0.35)", color: "#25abd6" }}
-            >
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-              Auf Google prüfen
-            </a>
           </div>
 
           {/* Scroll-Container */}
