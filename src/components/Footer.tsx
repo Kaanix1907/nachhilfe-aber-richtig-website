@@ -91,7 +91,7 @@ export default function Footer() {
                     <span className="tabular-nums text-white/55">{h.time}</span>
                   </div>
                 ))}
-              <div className="text-white/25 text-xs mt-1">Do, Sa & So: Geschlossen</div>
+              <div className="text-white/25 text-xs mt-1">Sa & So: Geschlossen</div>
             </div>
           </div>
         </div>

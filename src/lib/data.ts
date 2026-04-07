@@ -113,7 +113,7 @@ Wir bieten professionelle Nachhilfe für Schüler ab der 1. Klasse bis zum Abitu
 - Montag: 13:00–17:00
 - Dienstag: 13:00–18:30
 - Mittwoch: 13:00–18:30
-- Donnerstag: Geschlossen
+- Donnerstag: 13:00–17:00
 - Freitag: 13:00–17:00
 - Samstag & Sonntag: Geschlossen
 

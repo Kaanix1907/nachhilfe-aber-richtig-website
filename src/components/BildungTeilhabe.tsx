@@ -13,7 +13,7 @@ export default function BildungTeilhabe() {
             Bildung &amp; Teilhabe
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-dark mb-3" style={{ letterSpacing: "-0.03em" }}>
-            Nachhilfe kostenlos — für berechtigte Familien
+            Bildung &amp; Teilhabe — Nachhilfe kostenlos nutzen
           </h2>
           <p className="font-body text-muted/65 text-lg leading-[1.7] max-w-2xl">
             Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung &amp; Teilhabe</strong> können
@@ -28,9 +28,9 @@ export default function BildungTeilhabe() {
           <div
             className="rounded-2xl p-7 border"
             style={{
-              borderColor: "rgba(30,40,100,0.10)",
-              background: "rgba(30,40,100,0.025)",
-              boxShadow: "0 1px 3px rgba(30,40,100,0.06), 0 4px 16px rgba(30,40,100,0.06)",
+              borderColor: "rgba(37,171,214,0.18)",
+              background: "rgba(37,171,214,0.04)",
+              boxShadow: "0 1px 3px rgba(37,171,214,0.08), 0 4px 16px rgba(37,171,214,0.08)",
             }}
           >
             <div className="mb-5 h-10 flex items-center">
@@ -45,9 +45,9 @@ export default function BildungTeilhabe() {
             </div>
             <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
               Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
-              sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong> für
-              Bildung &amp; Teilhabe berechtigt und können unsere Nachhilfe{" "}
-              <strong className="font-semibold" style={{ color: "#25abd6" }}>kostenfrei</strong> nutzen.
+              sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong>{" "}
+              für Bildung &amp; Teilhabe berechtigt und können unsere Nachhilfe{" "}
+              <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
             </p>
           </div>
 
@@ -55,9 +55,9 @@ export default function BildungTeilhabe() {
           <div
             className="rounded-2xl p-7 border"
             style={{
-              borderColor: "rgba(30,40,100,0.10)",
-              background: "rgba(30,40,100,0.025)",
-              boxShadow: "0 1px 3px rgba(30,40,100,0.06), 0 4px 16px rgba(30,40,100,0.06)",
+              borderColor: "rgba(101,92,158,0.18)",
+              background: "rgba(101,92,158,0.04)",
+              boxShadow: "0 1px 3px rgba(101,92,158,0.08), 0 4px 16px rgba(101,92,158,0.08)",
             }}
           >
             <div className="mb-5 h-10 flex items-center">
@@ -73,9 +73,9 @@ export default function BildungTeilhabe() {
             <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
               Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
               <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der{" "}
-              <strong className="text-dark font-semibold">Stadt Duisburg</strong> erhält,
-              hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit auf{" "}
-              <strong className="font-semibold" style={{ color: "#25abd6" }}>kostenfreie</strong> Nachhilfe.
+              <strong className="text-dark font-semibold">Stadt Duisburg</strong>{" "}
+              erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit auf{" "}
+              <strong className="text-dark font-semibold">kostenfreie</strong> Nachhilfe.
             </p>
           </div>
 
