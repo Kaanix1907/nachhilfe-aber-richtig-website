@@ -88,7 +88,7 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 | Montag | 13:00–17:00 |
 | Dienstag | 13:00–18:30 |
 | Mittwoch | 13:00–18:30 |
-| Donnerstag | Geschlossen |
+| Donnerstag | 13:00–17:00 |
 | Freitag | 13:00–17:00 |
 | Samstag | Geschlossen |
 | Sonntag | Geschlossen |
@@ -144,3 +144,35 @@ Kein "sollte funktionieren" — nur "ich habe es im Screenshot gesehen".
 - **Kein Hardcoding** von Business-Daten — zentrale Konstanten-Datei (`/lib/data.ts`)
 - **Barrierefreiheit:** Semantisches HTML, ARIA-Labels wo nötig
 - **SEO:** Jede Seite bekommt Metadata via Next.js `generateMetadata`
+
+---
+
+## 10. SEO-Pflichtcheckliste (bei jeder neuen Seite & vor jedem Deployment)
+
+### Neue Seite hinzufügen
+- [ ] `export const metadata: Metadata` oder `generateMetadata()` mit `title` und `description`
+- [ ] `title` folgt dem Template `"%s | Nachhilfe, aber richtig!"` aus `layout.tsx`
+- [ ] `robots: { index: false }` nur für `/impressum` und `/datenschutz`
+- [ ] Canonical URL via `alternates: { canonical: "..." }` wenn nötig
+
+### Bei Deployment (PFLICHT)
+- [ ] `layout.tsx` — `metadataBase` zeigt auf `https://nachhilfe-aber-richtig.de`
+- [ ] `og:image` vorhanden: `/public/og-image.png` (1200×630px)
+- [ ] `sitemap.ts` aktuell — alle öffentlichen Routen gelistet
+- [ ] `robots.ts` korrekt — `/api/*` ausgeschlossen
+- [ ] JSON-LD Schema in `page.tsx` — Öffnungszeiten & Adresse stimmen
+- [ ] Build-Test: `npm run build` — keine TypeScript/Metadata-Fehler
+
+### Struktur (bereits implementiert, nicht anfassen ohne Grund)
+| Datei | Zweck |
+|---|---|
+| `src/app/layout.tsx` | Global: title-Template, OG, Twitter, robots, metadataBase |
+| `src/app/sitemap.ts` | Automatische `/sitemap.xml` für Google |
+| `src/app/robots.ts` | Automatische `/robots.txt` |
+| `src/app/page.tsx` | JSON-LD LocalBusiness Schema (EducationalOrganization) |
+
+### OG-Image erstellen (wenn noch nicht vorhanden)
+```bash
+# Placeholder aus Logo generieren (1200×630):
+/opt/homebrew/bin/magick /public/logo.png -resize 400x400 -gravity center -background white -extent 1200x630 public/og-image.png
+```
