@@ -7,26 +7,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: SITE_URL,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${SITE_URL}/leistungen`,
+      url: `${SITE_URL}/#leistungen`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/ueber-uns`,
+      url: `${SITE_URL}/#kontakt`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: `${SITE_URL}/kontakt`,
+      url: `${SITE_URL}/impressum`,
       lastModified: new Date(),
       changeFrequency: "yearly",
-      priority: 0.7,
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/datenschutz`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

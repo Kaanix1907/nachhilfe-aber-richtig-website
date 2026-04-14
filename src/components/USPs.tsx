@@ -75,8 +75,8 @@ export default function USPs() {
             Unsere Stärken
           </span>
           <h2
-            className="font-heading font-extrabold text-white whitespace-nowrap"
-            style={{ fontSize: "clamp(1.6rem, 3.4vw, 3.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}
+            className="font-heading font-extrabold text-white"
+            style={{ fontSize: "clamp(1.5rem, 3.4vw, 3.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}
           >
             Warum{" "}
             <span style={{ color: "#25abd6" }}>Nachhilfe, aber richtig!</span>?

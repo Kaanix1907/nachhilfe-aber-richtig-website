@@ -1,21 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-interface Review {
-  name: string;
-  stars: number;
-  text: string;
-  time: string;
-}
-
-const FALLBACK: Review[] = [
-  { name: "Sara M.", stars: 5, text: "Mein Sohn hat sich in Mathe von 5 auf 2 verbessert. Die Lehrer sind unglaublich geduldig.", time: "vor 2 Wochen" },
-  { name: "Thomas K.", stars: 5, text: "Endlich Nachhilfe, die wirklich wirkt. Absolute Weiterempfehlung!", time: "vor 1 Monat" },
-  { name: "Ayse D.", stars: 5, text: "Dank des BuT-Programms für uns komplett kostenlos. Top Betreuung!", time: "vor 3 Wochen" },
-  { name: "Markus R.", stars: 5, text: "Sehr professionell und individuell. Unsere Tochter ist viel motivierter.", time: "vor 2 Monaten" },
-  { name: "Fatma B.", stars: 5, text: "Die Lehrer erklären super verständlich. Klare Empfehlung!", time: "vor 1 Woche" },
-];
+import { ALL_REVIEWS } from "@/lib/data";
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -29,7 +14,7 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
-function ReviewCard({ review }: { review: Review }) {
+function ReviewCard({ review }: { review: typeof ALL_REVIEWS[number] }) {
   return (
     <div
       className="flex-shrink-0 w-72 rounded-2xl p-5 border border-gray-100"
@@ -63,24 +48,9 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function ReviewsTicker() {
-  const [reviews, setReviews] = useState<Review[]>(FALLBACK);
-  const [rating, setRating] = useState(5.0);
-  const [total, setTotal] = useState(22);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch("/api/reviews")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.reviews && data.reviews.length >= 3) {
-          setReviews(data.reviews);
-          setRating(data.rating);
-          setTotal(data.total);
-        }
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
-  }, []);
+  const reviews = ALL_REVIEWS;
+  const rating = 5.0;
+  const total = 23;
 
   // Zum nahtlosen Loop: dreifach duplizieren
   const loopItems = [...reviews, ...reviews, ...reviews];
@@ -112,9 +82,6 @@ export default function ReviewsTicker() {
           <span className="font-body text-muted/50 text-sm sm:ml-1">
             Basierend auf <strong className="text-dark/70 font-semibold">{total} echten Bewertungen</strong> auf Google
           </span>
-          {!loaded && (
-            <span className="font-body text-xs text-primary/60 animate-pulse">Lädt Bewertungen…</span>
-          )}
         </div>
       </div>
 

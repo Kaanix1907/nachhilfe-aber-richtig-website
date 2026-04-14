@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reviews-vertical {
-  animation: reviews-vertical 18s linear infinite;
+  animation: reviews-vertical 90s linear infinite;
 }
 
 .reviews-vertical:hover {
@@ -79,5 +79,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reviews-horizontal {
-  animation: reviews-horizontal 20s linear infinite;
+  animation: reviews-horizontal 120s linear infinite;
 }
