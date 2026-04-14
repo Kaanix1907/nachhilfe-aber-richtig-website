@@ -1,6 +1,7 @@
 "use client";
 
 import { UPSPS } from "@/lib/data";
+import FadeIn from "./FadeIn";
 
 const uspConfig = [
   {
@@ -70,7 +71,7 @@ export default function USPs() {
       <div className="relative z-10 max-w-6xl mx-auto px-4">
 
         {/* Header */}
-        <div className="mb-16">
+        <FadeIn className="mb-16">
           <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
             Unsere Stärken
           </span>
@@ -81,15 +82,14 @@ export default function USPs() {
             Warum{" "}
             <span style={{ color: "#25abd6" }}>Nachhilfe, aber richtig!</span>?
           </h2>
-        </div>
+        </FadeIn>
 
         {/* Karten */}
         <div className="grid sm:grid-cols-2 gap-5">
           {UPSPS.map((usp, index) => {
             const cfg = uspConfig[index];
             return (
-              <div
-                key={index}
+              <FadeIn key={index} delay={index * 120} direction="up"><div
                 className="group relative rounded-3xl p-8 border transition-[transform,background,border-color] duration-300 hover:-translate-y-1.5 overflow-hidden cursor-default"
                 style={{
                   background: "rgba(255,255,255,0.04)",
@@ -127,7 +127,7 @@ export default function USPs() {
                 <p className="font-body text-white/55 leading-[1.75] text-[0.95rem]">
                   {usp.description}
                 </p>
-              </div>
+              </div></FadeIn>
             );
           })}
         </div>

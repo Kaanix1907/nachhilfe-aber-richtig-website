@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BUSINESS } from "@/lib/data";
+import FadeIn from "./FadeIn";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", phone: "", message: "", consent: false });
@@ -29,7 +30,7 @@ export default function Contact() {
     <section id="kontakt" className="py-28 bg-white border-t-2 border-gray-100">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-16">
           <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Jetzt starten
           </span>
@@ -39,9 +40,9 @@ export default function Contact() {
           <p className="font-body text-muted/60 text-lg max-w-xl mx-auto leading-[1.7]">
             Kontaktiere uns — wir melden uns innerhalb eines Werktages bei dir.
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid md:grid-cols-5 gap-6">
+        <FadeIn className="grid md:grid-cols-5 gap-6" delay={150}>
           {/* Formular — 3/5 Breite */}
           <div
             className="md:col-span-3 bg-white rounded-3xl p-8"
@@ -238,7 +239,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

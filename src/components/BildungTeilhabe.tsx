@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FadeIn from "./FadeIn";
 
 export default function BildungTeilhabe() {
   return (
@@ -8,7 +9,7 @@ export default function BildungTeilhabe() {
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Überschrift */}
-        <div className="mb-10">
+        <FadeIn className="mb-10">
           <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Bildung &amp; Teilhabe
           </span>
@@ -19,7 +20,7 @@ export default function BildungTeilhabe() {
             Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung &amp; Teilhabe</strong> können
             berechtigte Familien unsere Nachhilfe vollständig kostenlos in Anspruch nehmen.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Zwei Karten */}
         <div className="grid md:grid-cols-2 gap-6 items-start">

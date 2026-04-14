@@ -2,6 +2,7 @@
 
 import React from "react";
 import { SERVICES } from "@/lib/data";
+import FadeIn from "./FadeIn";
 
 const serviceIcons: Record<string, React.ReactElement> = {
   gruppe: (
@@ -37,62 +38,79 @@ const serviceIcons: Record<string, React.ReactElement> = {
   ),
 };
 
+const cardAccents = [
+  { gradient: "linear-gradient(135deg, #25abd6, #1d8fb5)", glow: "rgba(37,171,214,0.08)" },
+  { gradient: "linear-gradient(135deg, #655c9e, #8b5cf6)", glow: "rgba(101,92,158,0.08)" },
+  { gradient: "linear-gradient(135deg, #25abd6, #655c9e)", glow: "rgba(37,171,214,0.06)" },
+  { gradient: "linear-gradient(135deg, #00aa00, #008a00)", glow: "rgba(0,170,0,0.06)" },
+];
+
 export default function Services() {
   return (
-    <section id="leistungen" className="py-28 bg-white">
+    <section id="leistungen" className="relative py-24 md:py-28 bg-white overflow-hidden">
+      {/* Subtiler Übergang vom Hero */}
+      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, rgba(15,12,41,0.03), transparent)" }} />
+
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-14 md:mb-16">
           <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Was wir anbieten
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-4">
+          <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             Unsere Leistungen
           </h2>
-          <p className="font-body text-muted/70 text-lg max-w-xl mx-auto leading-[1.7]">
+          <p className="font-body text-muted/70 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
             Wir bieten die passende Lösung für jedes Kind — flexibel, fair und
             mit echtem Mehrwert.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {SERVICES.map((service) => (
-            <div
-              key={service.id}
-              className="group relative bg-white rounded-2xl p-6 border border-gray-100 transition-[transform,border-color] duration-300 hover:-translate-y-1.5 cursor-default"
-              style={{
-                boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 2px 4px rgba(26,26,46,0.08), 0 8px 24px rgba(37,171,214,0.12), 0 24px 40px rgba(26,26,46,0.08)";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(37,171,214,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgb(243,244,246)";
-              }}
-            >
-              {/* Icon */}
+          {SERVICES.map((service, index) => (
+            <FadeIn key={service.id} delay={index * 100} direction="up">
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 text-primary transition-[background-color] duration-300 group-hover:bg-primary group-hover:text-white"
-                style={{ background: "rgba(37,171,214,0.10)" }}
+                className="group relative bg-white rounded-2xl p-6 border border-gray-100 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-2 cursor-default h-full"
+                style={{
+                  boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.boxShadow = `0 2px 4px rgba(26,26,46,0.08), 0 8px 24px ${cardAccents[index].glow}, 0 24px 48px rgba(26,26,46,0.08)`;
+                  el.style.borderColor = "rgba(37,171,214,0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.boxShadow = "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.06)";
+                  el.style.borderColor = "rgb(243,244,246)";
+                }}
               >
-                {serviceIcons[service.id]}
-              </div>
+                {/* Accent Line oben */}
+                <div
+                  className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-[opacity] duration-300"
+                  style={{ background: cardAccents[index].gradient }}
+                />
 
-              <h3 className="font-heading font-bold text-lg text-dark mb-2.5 group-hover:text-primary transition-[color] duration-300">
-                {service.title}
-              </h3>
-              <p className="font-body text-muted/65 text-sm leading-[1.7]">
-                {service.description}
-              </p>
-            </div>
+                {/* Icon */}
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 text-primary transition-[background-color,color] duration-300 group-hover:bg-primary group-hover:text-white"
+                  style={{ background: "rgba(37,171,214,0.10)" }}
+                >
+                  {serviceIcons[service.id]}
+                </div>
+
+                <h3 className="font-heading font-bold text-lg text-dark mb-2.5 group-hover:text-primary transition-[color] duration-300" style={{ letterSpacing: "-0.01em" }}>
+                  {service.title}
+                </h3>
+                <p className="font-body text-muted/65 text-sm leading-[1.7]">
+                  {service.description}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
-
       </div>
     </section>
   );
