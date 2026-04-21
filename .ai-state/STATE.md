@@ -32,9 +32,10 @@ _Nichts bekannt_
 _Diese Sektion wird am Ende jeder Session aktualisiert._
 
 **Stand 2026-04-21:**
-- USPs-Sektion Fix: Karte 4 "Faire Verträge" war niedriger als Karte 3 "Staatlich gefördert"
-- Ursache: FadeIn-Wrapper + Card-Div hatten kein `h-full`, Grid-Row-Stretch griff nicht durch
-- Fix (Commit d83e068): `h-full` auf FadeIn und Card — alle 4 Karten jetzt exakt 239px (verifiziert 1100–1920px)
+- USPs-Fix (d83e068): `h-full` auf FadeIn + Card — alle 4 Karten exakt 239px (verifiziert 1100–1920px)
+- Öffnungszeiten (996d86a): Di + Mi von 13–18:30 auf 13–17 angepasst — alle Mo–Fr jetzt 13:00–17:00 (data.ts, page.tsx JSON-LD, CLAUDE.md)
+- Bildung & Teilhabe (2b1965b): Jobcenter-Karte von Cyan auf Lila (Stadt-Duisburg-Farbe) für konsistente Optik
+- **Noch nicht deployed** — Änderungen liegen nur auf main lokal, kein git push
 
 **Stand 2026-04-14:**
 - Alle 18 Google-Reviews mit Text extrahiert (via Puppeteer), rechtschreibkorrigiert, zentral in `data.ts`
