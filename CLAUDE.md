@@ -86,8 +86,8 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 | Tag | Zeiten |
 |---|---|
 | Montag | 13:00–17:00 |
-| Dienstag | 13:00–18:30 |
-| Mittwoch | 13:00–18:30 |
+| Dienstag | 13:00–17:00 |
+| Mittwoch | 13:00–17:00 |
 | Donnerstag | 13:00–17:00 |
 | Freitag | 13:00–17:00 |
 | Samstag | Geschlossen |

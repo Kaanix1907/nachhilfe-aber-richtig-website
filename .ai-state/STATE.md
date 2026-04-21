@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-14
+**Zuletzt aktualisiert:** 2026-04-21
 
 ## Aktueller Focus
 Website ist live auf https://nachhilfe-aber-richtig.de — Production-Deploy abgeschlossen.
@@ -30,6 +30,11 @@ _Nichts bekannt_
 ---
 ## Handoff (letzter Stand für nächste Session)
 _Diese Sektion wird am Ende jeder Session aktualisiert._
+
+**Stand 2026-04-21:**
+- USPs-Sektion Fix: Karte 4 "Faire Verträge" war niedriger als Karte 3 "Staatlich gefördert"
+- Ursache: FadeIn-Wrapper + Card-Div hatten kein `h-full`, Grid-Row-Stretch griff nicht durch
+- Fix (Commit d83e068): `h-full` auf FadeIn und Card — alle 4 Karten jetzt exakt 239px (verifiziert 1100–1920px)
 
 **Stand 2026-04-14:**
 - Alle 18 Google-Reviews mit Text extrahiert (via Puppeteer), rechtschreibkorrigiert, zentral in `data.ts`

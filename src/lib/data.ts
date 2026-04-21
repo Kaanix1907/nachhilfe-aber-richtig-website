@@ -22,8 +22,8 @@ export const BUSINESS = {
   },
   hours: [
     { day: "Montag", time: "13:00–17:00" },
-    { day: "Dienstag", time: "13:00–18:30" },
-    { day: "Mittwoch", time: "13:00–18:30" },
+    { day: "Dienstag", time: "13:00–17:00" },
+    { day: "Mittwoch", time: "13:00–17:00" },
     { day: "Donnerstag", time: "13:00–17:00" },
     { day: "Freitag", time: "13:00–17:00" },
     { day: "Samstag", time: "Geschlossen" },
@@ -230,8 +230,8 @@ Wir bieten professionelle Nachhilfe für Schüler ab der 1. Klasse bis zum Abitu
 
 ## Öffnungszeiten
 - Montag: 13:00–17:00
-- Dienstag: 13:00–18:30
-- Mittwoch: 13:00–18:30
+- Dienstag: 13:00–17:00
+- Mittwoch: 13:00–17:00
 - Donnerstag: 13:00–17:00
 - Freitag: 13:00–17:00
 - Samstag & Sonntag: Geschlossen
