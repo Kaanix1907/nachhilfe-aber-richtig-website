@@ -29,9 +29,9 @@ export default function BildungTeilhabe() {
           <div
             className="rounded-2xl p-7 border"
             style={{
-              borderColor: "rgba(37,171,214,0.18)",
-              background: "rgba(37,171,214,0.04)",
-              boxShadow: "0 1px 3px rgba(37,171,214,0.08), 0 4px 16px rgba(37,171,214,0.08)",
+              borderColor: "rgba(101,92,158,0.18)",
+              background: "rgba(101,92,158,0.04)",
+              boxShadow: "0 1px 3px rgba(101,92,158,0.08), 0 4px 16px rgba(101,92,158,0.08)",
             }}
           >
             <div className="mb-5 h-10 flex items-center">
