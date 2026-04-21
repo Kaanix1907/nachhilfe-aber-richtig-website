@@ -89,8 +89,8 @@ export default function USPs() {
           {UPSPS.map((usp, index) => {
             const cfg = uspConfig[index];
             return (
-              <FadeIn key={index} delay={index * 120} direction="up"><div
-                className="group relative rounded-3xl p-8 border transition-[transform,background,border-color] duration-300 hover:-translate-y-1.5 overflow-hidden cursor-default"
+              <FadeIn key={index} delay={index * 120} direction="up" className="h-full"><div
+                className="group relative h-full rounded-3xl p-8 border transition-[transform,background,border-color] duration-300 hover:-translate-y-1.5 overflow-hidden cursor-default"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   borderColor: "rgba(255,255,255,0.08)",
