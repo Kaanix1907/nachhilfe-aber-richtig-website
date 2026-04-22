@@ -3,6 +3,10 @@
 **Format:** [ ] TODO | [~] IN_PROGRESS | [x] DONE
 
 ## Aktiv
+- [~] Lexi KI-Lernhilfe (Phase 1, 9/12 Tasks erledigt — siehe `../Lexi/` und Plan in `docs/superpowers/plans/`)
+  - [ ] Task 10: Vercel Deploy + Subdomain (blockiert durch fehlende Keys)
+  - [ ] Task 12: Abnahme-Checkliste
+- [ ] Lexi Phase 2 planen (Dashboard, Rate Limit, Foto) — nach Phase-1-Abnahme
 - [ ] Unterseiten /leistungen und /ueber-uns bauen
 - [ ] ANTHROPIC_API_KEY als Vercel Env-Variable setzen
 - [ ] Google Search Console einrichten + Sitemap einreichen

@@ -1,9 +1,10 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-21
+**Zuletzt aktualisiert:** 2026-04-23
 
 ## Aktueller Focus
-Website ist live auf https://nachhilfe-aber-richtig.de — Production-Deploy abgeschlossen.
+Website ist live auf https://nachhilfe-aber-richtig.de.
+**Neues Parallel-Projekt gestartet:** Lexi — KI-Lernhilfe als Marketing-Arm (`../Lexi/`, eigenes GitHub-Repo `Kaanix1907/Lexi`). Spec + Phase-1-Plan geschrieben, 9 von 12 Tasks implementiert.
 
 ## Was funktioniert
 - [x] Hero mit 18 echten Google-Bewertungen (vertikal Desktop, horizontal Mobile)
@@ -30,6 +31,40 @@ _Nichts bekannt_
 ---
 ## Handoff (letzter Stand für nächste Session)
 _Diese Sektion wird am Ende jeder Session aktualisiert._
+
+**Stand 2026-04-23 (Lexi-Projekt gestartet):**
+
+Komplettes Brainstorming + Phase-1-Implementierung für **Lexi KI-Lernhilfe** durchgeführt.
+- Spec: `Nachhilfe/docs/superpowers/specs/2026-04-23-lexi-ki-lernhilfe-design.md`
+- Plan: `Nachhilfe/docs/superpowers/plans/2026-04-23-lexi-phase-1-grundgeruest.md`
+- Neues Repo: `../Lexi/` (GitHub: Kaanix1907/Lexi, privat, NICHT gepusht)
+
+**Phase-1 Status — 9/12 Tasks erledigt** (alle non-key-Code):
+- ✅ Lexi-Repo + GitHub + CLAUDE.md (commit 8c92d35)
+- ✅ Dependencies: Clerk 7.2.5, Drizzle 0.45, AI SDK 6, Vitest (f444465)
+- ✅ Clerk-Code: Middleware + Layout + Sign-In/Up Pages (70be1d8)
+- ✅ Neon DB Schema (users, chats, messages) + Drizzle Client (626fe11) — DB-Push pending
+- ✅ Clerk-Webhook-Route mit svix (64284a9)
+- ✅ System-Prompt v1 + 6 TDD-Tests grün (f33536c)
+- ✅ /api/chat Streaming-Route + 2 Input-Tests grün (40c0303) = 8 Tests total
+- ✅ Chat-UI mit Streaming-Reader (b416148)
+- ✅ Landing-Page mit Hero + Features (ac209b9)
+- ✅ README + .env.local.example (4dd96df)
+
+**Blocker für Task 10 (Vercel Deploy) — wartet auf Mustafa:**
+1. Clerk-Account anlegen (clerk.com) + API-Keys kopieren
+2. Neon-DB via Vercel Marketplace provisionieren → DATABASE_URL
+3. DNS-Setup für `lexi.nachhilfe-aber-richtig.de` (Vercel macht das semi-auto)
+
+**Wichtige Plan-Abweichung (bereits gefixt):**
+- Clerk v7 exportiert `SignedIn`/`SignedOut` nicht mehr als React-Components → stattdessen `<Show when="signed-in">` verwenden
+- Plan-Dokument für zukünftige Sessions: Clerk v7 kennt `<Show>` statt `<SignedIn>/<SignedOut>`
+
+**Nächste Session:**
+1. Mustafa liefert Keys → ich führe Task 10 + 12 durch (Deploy + Abnahme)
+2. Phase-2-Plan schreiben (Dashboard-Sidebar, Rate Limit, Foto-Upload, anonymer Modus)
+
+---
 
 **Stand 2026-04-21:**
 - USPs-Fix (d83e068): `h-full` auf FadeIn + Card — alle 4 Karten exakt 239px (verifiziert 1100–1920px)
