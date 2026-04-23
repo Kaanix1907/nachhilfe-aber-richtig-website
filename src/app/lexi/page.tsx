@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import FadeIn from "@/components/FadeIn";
 
-const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de";
+const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/chat";
 const PAGE_URL = "https://nachhilfe-aber-richtig.de/lexi";
 
 export const metadata: Metadata = {
@@ -217,8 +217,6 @@ export default function LexiPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 mb-10 md:mb-12">
               <a
                 href={LEXI_URL}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-6 md:px-8 py-3.5 md:py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
                 style={{
                   background: "linear-gradient(135deg,#25abd6,#655c9e)",
@@ -367,8 +365,6 @@ export default function LexiPage() {
                   </p>
                   <a
                     href={LEXI_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 font-body font-bold text-white text-sm md:text-base px-7 md:px-8 py-3.5 md:py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
                     style={{
                       background: "linear-gradient(135deg,#25abd6,#655c9e)",

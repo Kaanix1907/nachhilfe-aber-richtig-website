@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de";
+const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/chat";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,8 +77,6 @@ export default function ChatWidget() {
 
             <a
               href={LEXI_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-body font-bold text-white text-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
               style={{
                 background: "linear-gradient(135deg,#25abd6,#655c9e)",
