@@ -3,10 +3,9 @@
 **Format:** [ ] TODO | [~] IN_PROGRESS | [x] DONE
 
 ## Aktiv
-- [ ] Lexi Phase 2 planen (Rate Limit via Upstash, anonymer Modus, Dashboard-Polish)
+- [ ] **Lexi Phase 2 Live-Abnahme** (Code deployed, Flow-Test offen — Inkognito 2 Fragen → Modal → Sign-Up → Migration → Rate-Limit)
 - [ ] Unterseiten /leistungen und /ueber-uns auf Nachhilfe bauen
 - [ ] Google Search Console einrichten + beide Sitemaps einreichen (Nachhilfe + Lexi)
-- [ ] Vercel CLI auf v52 upgraden (Preview-Env-Bug)
 - [ ] Duplikat-Blob-Store + leeres Projekt `lexi-qs7w` via Vercel-Dashboard löschen
 
 ## Backlog
@@ -15,6 +14,8 @@
 - [ ] Social Media Links (Facebook, Instagram) mit echten URLs befüllen
 
 ## Abgeschlossen
+- [x] Lexi Phase 2 Code: Rate Limit (Upstash), Anonymer Modus + Migration, Usage-Counter — deployed
+- [x] Vercel CLI v52 Upgrade
 - [x] Lexi Phase 1 komplett: Auth, Chat, Persistenz, Sidebar, Foto-Upload, Vision-Mode, Markdown+LaTeX, Subdomain, SEO
 - [x] Nachhilfe-Integration: /lexi Seite, Hero-Badge, Navbar-Link, ChatWidget als Lexi-Teaser
 - [x] Lexi System-Prompt v2 (kleinschrittig, pädagogisch, Probe am Ende)

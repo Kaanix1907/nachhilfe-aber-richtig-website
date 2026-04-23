@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-23 (dritte Session — Lexi live + integriert)
+**Zuletzt aktualisiert:** 2026-04-23 (vierte Session — Lexi Phase 2 deployed, Live-Abnahme offen)
 
 ## Aktueller Focus
 Beide Projekte live.
@@ -32,6 +32,42 @@ _Nichts bekannt_
 ---
 ## Handoff (letzter Stand für nächste Session)
 _Diese Sektion wird am Ende jeder Session aktualisiert._
+
+**Stand 2026-04-23 (vierte Session — Phase 2 Code fertig + deployed):**
+
+**Was erledigt:**
+- Vercel CLI auf v52 upgraded (fixt preview-env-Bug für später)
+- Lexi Phase 2 Spec + Implementation Plan geschrieben (`docs/superpowers/specs/2026-04-23-lexi-phase-2-design.md` + `docs/superpowers/plans/2026-04-23-lexi-phase-2.md`)
+- Phase 2 Features implementiert + deployed auf `lexi.nachhilfe-aber-richtig.de`:
+  - Upstash Redis via `vercel integration add upstash/upstash-kv` (Store `upstash-kv-bronze-horizon`)
+  - DB-Schema `anon_chats` + `anon_messages` (mit Index auf anon_id)
+  - Libs: `berlin-time.ts`, `anon-cookie.ts`, `rate-limit.ts`, `migrate-anon.ts` — alle TDD, 28 Tests grün
+  - API-Routes: `/api/chat` Dual-Mode, `/api/chats*` Anon-Fallback, `/api/usage`, `/api/migrate-anon`
+  - Middleware: `/chat` nicht mehr Clerk-protected, setzt Cookie bei Anon
+  - UI-Komponenten: `UsageCounter`, `RateLimitBanner`, `AnonSignUpModal`, `useAnonMigration` Hook
+  - ChatSidebar zeigt Counter + SignInButton bei Anon
+  - Chat.tsx handled 429, Banner, Gate-Modal, migration
+
+**Live aber NICHT abgenommen:**
+Mustafa hat die Abnahme-Checkliste (Task 32) nicht final durchgegangen. Beim nächsten Mal:
+1. Inkognito auf `/chat` → 2 anon Fragen → Modal sollte erscheinen
+2. Sign-Up → Migration-Reload → Counter zeigt user-mode
+3. 11. Frage als User → RateLimitBanner + Probestunde-Button
+
+**Wichtige Entscheidungen:**
+- Upstash env-vars sind `KV_REST_API_URL/TOKEN` (nicht UPSTASH_REDIS_*) — `Redis.fromEnv()` erkennt beide automatisch.
+- `anon_messages` hat KEIN `attachment_url` — anonyme User dürfen nicht uploaden (Missbrauchsschutz).
+- IP-Limit für Anon: 20/Tag/IP als zweites Netz gegen Cookie-Farming.
+- `vi.hoisted()` nötig für Mock-Setup in vitest 4.x (sonst ReferenceError bei Mock-Funktionen).
+
+**Offen für nächste Session:**
+1. **Live-Abnahme Phase 2** — der Mustafa-Test-Flow oben
+2. Google Search Console einrichten (beide Domains + Sitemaps)
+3. Unterseiten `/leistungen` + `/ueber-uns` auf Nachhilfe bauen
+4. Duplikat-Blob-Store `store_SzMjqlTSUFa3HNjq` löschen (via Dashboard)
+5. Altes Vercel-Projekt `lexi-qs7w` (leer) löschen
+
+---
 
 **Stand 2026-04-23 (dritte Session — Lexi live + Nachhilfe-Integration):**
 
