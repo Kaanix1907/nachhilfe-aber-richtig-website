@@ -8,7 +8,7 @@ import { BUSINESS } from "@/lib/data";
 const navLinks = [
   { href: "#hero", label: "Startseite" },
   { href: "#leistungen", label: "Leistungen" },
-  { href: "#ueber-uns", label: "Über uns" },
+  { href: "/lexi", label: "Lexi KI", badge: "NEU" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
@@ -39,15 +39,31 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={`${prefix}${link.href}`}
-              className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isAbsolute = link.href.startsWith("/") && !link.href.startsWith("#");
+            const href = isAbsolute ? link.href : `${prefix}${link.href}`;
+            return (
+              <a
+                key={link.href}
+                href={href}
+                className="relative font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1.5"
+              >
+                {link.label}
+                {link.badge && (
+                  <span
+                    className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-heading font-extrabold tracking-wider"
+                    style={{
+                      background: "linear-gradient(135deg,#25abd6,#655c9e)",
+                      color: "white",
+                      boxShadow: "0 2px 6px rgba(37,171,214,0.35)",
+                    }}
+                  >
+                    {link.badge}
+                  </span>
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* CTA Button */}
@@ -85,16 +101,28 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={`${prefix}${link.href}`}
-              className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-base py-1"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isAbsolute = link.href.startsWith("/") && !link.href.startsWith("#");
+            const href = isAbsolute ? link.href : `${prefix}${link.href}`;
+            return (
+              <a
+                key={link.href}
+                href={href}
+                className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-base py-1 inline-flex items-center gap-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+                {link.badge && (
+                  <span
+                    className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-heading font-extrabold tracking-wider text-white"
+                    style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}
+                  >
+                    {link.badge}
+                  </span>
+                )}
+              </a>
+            );
+          })}
           <a
             href={`${prefix}#kontakt`}
             className="inline-flex items-center justify-center text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,box-shadow] duration-200 active:scale-95"

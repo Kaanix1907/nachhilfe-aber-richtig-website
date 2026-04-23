@@ -22,6 +22,44 @@ export default function Hero() {
 
         {/* Links — Text */}
         <div className="flex flex-col min-w-0">
+          {/* Lexi KI-Badge */}
+          <a
+            href="/lexi"
+            className="group inline-flex items-center gap-2 self-start mb-4 md:mb-6 pl-1.5 pr-4 py-1.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:scale-[1.02]"
+            style={{
+              background: "rgba(37,171,214,0.12)",
+              border: "1px solid rgba(37,171,214,0.35)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 4px 20px rgba(37,171,214,0.15)",
+            }}
+          >
+            <span
+              className="inline-flex items-center justify-center w-6 h-6 rounded-full font-heading font-extrabold text-white text-[11px]"
+              style={{
+                background: "linear-gradient(135deg,#25abd6,#655c9e)",
+                boxShadow: "0 2px 8px rgba(37,171,214,0.5)",
+              }}
+            >
+              L
+            </span>
+            <span className="font-body text-[12px] md:text-[13px] font-semibold tracking-wide text-white">
+              <span style={{ color: "#25abd6" }}>NEU:</span> Lexi — KI-Lernhilfe · gratis ausprobieren
+            </span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white/75 transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+
           <h1 className="font-heading text-[2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-3 md:mb-6 break-words"
             style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
