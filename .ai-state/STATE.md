@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-25 (fünfte Session — Chatbot-Tracking + Lexi SEO Schemas)
+**Zuletzt aktualisiert:** 2026-04-26 (sechste Session — Incident: API-Key-Leak in Claude Code, Chatbot-Outage)
 
 ## Aktueller Focus
 Beide Projekte live.
@@ -254,3 +254,36 @@ Komplettes Brainstorming + Phase-1-Implementierung für **Lexi KI-Lernhilfe** du
 - Design-Polish: FadeIn-Scroll-Animationen, Services-Karten Accent-Lines
 - Production-Deploy: Commit 629a96c, Build OK (Next.js 16.2.1, Turbopack)
 - Domain: nachhilfe-aber-richtig.de zeigt auf Vercel
+
+---
+
+## Stand 2026-04-26 (Session 6 — Incident: API-Key-Leak in Claude Code)
+
+Ausgangs-Frage „wie viele Leute haben meine KI benutzt?" → Stats-Endpoint zeigte 0/0/0. Eskalation zu Multi-Bug-Befund.
+
+**Bug 1 — Chatbot kaputt seit Tracking-Deploy:**
+`ANTHROPIC_API_KEY` fehlte komplett in Vercel-Production. Jeder `/api/chat`-Call → 500. `trackChat()` läuft erst nach erfolgreichem Anthropic-Call, daher nie ausgelöst. Echte Antwort auf Ausgangsfrage: 0 erfolgreiche Conversations weil Bot komplett offline.
+
+**Bug 2 — 0 Credits:**
+Lexi-Key in Vercel-Prod (`vercel env add`) + lokale `.env.local` (Placeholder ersetzt) eingetragen, Redeploy. Immer noch 500. Direkt-Probe gegen `api.anthropic.com` zeigte: **Anthropic-Konto auf 0 Credits.**
+
+**Bug 3 — SECURITY-INCIDENT (Wurzel des Credit-Verbrauchs):**
+- `~/.claude.json` → `customApiKeyResponses.approved` enthielt **4 Hashes** → Claude Code (CLI) nutzte diese Keys statt Max-Abo → API-Credits verbraten.
+- `~/.zshenv` exportierte global `ANTHROPIC_API_KEY` → jeder neue `claude`-Prozess sah einen API-Key.
+- **Fix:** `approved`-Liste auf `[]` gesetzt + Export aus `~/.zshenv` entfernt.
+- Backups: `~/.claude.json.backup-20260426-094827`, `~/.zshenv.backup-20260426-094827`.
+
+**Key-Inventur (alle 3 lokal getestet):**
+| Key | Status |
+|---|---|
+| Faceless YT | lebt, 0 Credits |
+| Nachhilfe Agent | TOT (von Mustafa gelöscht) |
+| Lexi (= aktuell Vercel-Prod-Nachhilfe + Lexi-App) | lebt, 0 Credits |
+
+**Pending Mustafa-Actions:**
+1. Anthropic-Konto Credits aufladen (https://console.anthropic.com/settings/billing)
+2. Alle laufenden `claude`-Prozesse beenden + neu starten + `/login` (Max-Abo OAuth statt API-Key)
+3. Bei jedem zukünftigen „Approve API key from ENV?"-Prompt → IMMER Nein
+4. Anthropic Console → Usage prüfen (welcher Key war Spike-Verursacher)
+
+**Production-Status Nachhilfe-Chatbot:** Code läuft, Vercel-Env hat Lexi-Key, **wartet auf Credits**. Sobald aufgeladen → Bot funktioniert sofort, Tracking zählt.
