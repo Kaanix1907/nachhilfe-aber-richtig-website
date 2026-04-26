@@ -155,9 +155,109 @@ const faqs = [
   },
 ];
 
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Lexi — KI-Lernhilfe",
+  alternateName: "Lexi",
+  applicationCategory: "EducationalApplication",
+  applicationSubCategory: "Hausaufgaben-Hilfe",
+  operatingSystem: "Web (Browser)",
+  url: PAGE_URL,
+  description:
+    "Kostenlose KI-Lernhilfe für Schüler. Erklärt Hausaufgaben Schritt für Schritt in allen Fächern von Klasse 1 bis Abitur — sokratisch, pädagogisch, ohne Spickzettel.",
+  inLanguage: "de-DE",
+  isAccessibleForFree: true,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+  audience: {
+    "@type": "EducationalAudience",
+    educationalRole: "student",
+  },
+  featureList: [
+    "Hausaufgaben-Hilfe in Mathe, Deutsch, Englisch, Physik, Chemie, Biologie, Geschichte",
+    "Sokratische Lernmethode — keine fertigen Lösungen zum Abschreiben",
+    "Verfügbar 24/7",
+    "LaTeX-Darstellung für mathematische Formeln",
+    "Persönlicher Chat-Verlauf",
+    "Keine Kreditkarte, keine Anmeldung am Telefon",
+  ],
+  provider: {
+    "@type": "EducationalOrganization",
+    name: "Nachhilfe, aber richtig!",
+    url: "https://nachhilfe-aber-richtig.de",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Was ist Lexi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lexi ist eine kostenlose KI-Lernhilfe für Schüler von Klasse 1 bis Abitur. Sie hilft bei Hausaufgaben in allen Schulfächern und erklärt Lösungswege Schritt für Schritt — pädagogisch und geduldig, ohne fertige Antworten zum Abschreiben.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was kostet Lexi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lexi ist komplett kostenlos. Keine Kreditkarte, kein Abo, kein verstecktes Limit. Einfach kostenlos registrieren und sofort loslegen.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "In welchen Fächern hilft Lexi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lexi hilft in allen Schulfächern: Mathematik, Deutsch, Englisch, Französisch, Physik, Chemie, Biologie, Geschichte, Erdkunde, Politik, Religion und Informatik. Egal ob Grundschule, Mittelstufe oder Abitur.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Schreibt Lexi Hausaufgaben für mich?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nein. Lexi ist kein Spickzettel-Tool. Statt fertige Lösungen zu liefern erklärt Lexi Schritt für Schritt den Lösungsweg, sodass du die Aufgabe verstehst und beim nächsten Mal alleine lösen kannst.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wann kann ich Lexi nutzen?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "24 Stunden am Tag, 7 Tage die Woche. Auch abends, am Wochenende oder kurz vor der Klausur. Lexi antwortet sofort — ohne Termin, ohne Wartezeit.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wer steht hinter Lexi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lexi ist ein Projekt von Nachhilfe, aber richtig! — einem Nachhilfeinstitut in Duisburg-Rheinhausen mit jahrelanger Erfahrung in Gruppen-, Einzel- und Online-Nachhilfe.",
+      },
+    },
+  ],
+};
+
 export default function LexiPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
 
       <main>

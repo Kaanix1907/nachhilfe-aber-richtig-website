@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { CHATBOT_SYSTEM_PROMPT } from "@/lib/data";
+import { trackChat } from "@/lib/track";
 
 const client = new Anthropic();
 
@@ -60,6 +61,8 @@ export async function POST(req: Request) {
     if (content.type !== "text") {
       return Response.json({ error: "Unexpected response type" }, { status: 500 });
     }
+
+    trackChat(ip, messages.length);
 
     return Response.json({ message: content.text });
   } catch {

@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-23 (vierte Session — Lexi Phase 2 deployed, Live-Abnahme offen)
+**Zuletzt aktualisiert:** 2026-04-25 (fünfte Session — Chatbot-Tracking + Lexi SEO Schemas)
 
 ## Aktueller Focus
 Beide Projekte live.
@@ -32,6 +32,51 @@ _Nichts bekannt_
 ---
 ## Handoff (letzter Stand für nächste Session)
 _Diese Sektion wird am Ende jeder Session aktualisiert._
+
+**Stand 2026-04-25 (fünfte Session — Chatbot-Tracking + SEO Lexi):**
+
+**Was erledigt:**
+- **Chatbot-Tracking** auf Nachhilfe `/api/chat` eingebaut (`src/lib/track.ts`):
+  - Upstash Redis (Lexi-Store mitgenutzt, Key-Prefix `chat:` — kollidiert nicht)
+  - Counter: `chat:total`, `chat:msgs:total`, `chat:daily:YYYY-MM-DD`, `chat:ips:YYYY-MM-DD` (Set, gehashte IPs, 90 Tage TTL)
+  - Fire-and-forget — blockiert Chat-Antwort nie
+  - DSGVO: IPs mit SHA256 + IP_SALT gehasht, kein Klartext
+- **Stats-Endpoint** `/api/admin/stats` mit Token-Auth (`STATS_TOKEN` in env, Header `x-stats-token` oder `?token=`)
+- **Lexi SEO-Schemas** auf `/lexi`:
+  - `SoftwareApplication` (kostenlose EducationalApplication, EUR 0, deutsch)
+  - `FAQPage` mit 6 Fragen (Was ist Lexi, Kosten, Fächer, Schreibt Hausaufgaben?, Verfügbarkeit, Anbieter)
+  - Verifiziert live: 6 JSON-LD Blöcke im HTML
+- Vercel Env-Vars für Production+Preview+Development gesetzt: KV_*, REDIS_URL, STATS_TOKEN, IP_SALT
+- `~/.zshenv` synced via `sync_project_keys.sh` — ich kann jederzeit Stats curlen
+
+**KRITISCH offen — Bot Prod-Funktionalität:**
+`ANTHROPIC_API_KEY` ist überall ein Placeholder (`dein-api-key-hier`):
+- in `.env.local`
+- in `~/.zshenv`
+- War **nie** in Vercel Production gesetzt → der Chatbot auf nachhilfe-aber-richtig.de hat live noch nie geantwortet, alle Calls geben 500
+- Mein Versuch ihn zu setzen hat den Placeholder reingeschoben → wieder entfernt aus Vercel
+- **Mustafa muss echten Key generieren** (https://console.anthropic.com/settings/keys), in `.env.local` ersetzen, dann „key drin" sagen → ich pushe + redeploye
+
+**Wie Stats abgerufen werden (sobald Bot läuft):**
+```
+curl "https://nachhilfe-aber-richtig.de/api/admin/stats?token=$STATS_TOKEN"
+```
+Liefert: `{total, totalMessages, today: {date, calls, uniqueUsers}, last30Days: [...]}`
+STATS_TOKEN steht in `.env.local` und in Vercel Production.
+
+**Wichtige Entscheidungen:**
+- KV-Vars in `.env.local` (von Lexi kopiert) hatten Anführungszeichen umrandet — beim ersten `vercel env add` als String-Wert mit Quotes übernommen → Build-Fehler. Fix: Quotes vor Push strippen.
+- `Redis.fromEnv()` muss lazy initialisiert werden (Funktion-Wrapper), sonst wird's beim Next.js-Build evaluiert → crasht beim Page-Data-Sammeln.
+- Lexi-Redis-Store wird jetzt von zwei Apps genutzt — sauber via Key-Prefixes getrennt. Falls in Zukunft Konflikt: separater Store via `vercel integration add upstash/upstash-kv` für Nachhilfe.
+
+**Offen für nächste Session:**
+1. **ANTHROPIC_API_KEY** echt setzen → Bot live machen
+2. Search Console: `/lexi` URL-Inspection + Indexierung beantragen (Schemas sollten dann in 1–3 Tagen sichtbar sein)
+3. Rich Results Test prüfen: https://search.google.com/test/rich-results?url=https%3A%2F%2Fnachhilfe-aber-richtig.de%2Flexi
+4. Live-Abnahme Lexi Phase 2 (steht seit 2026-04-23 offen)
+5. Unterseiten `/leistungen`, `/ueber-uns`
+
+---
 
 **Stand 2026-04-23 (vierte Session — Phase 2 Code fertig + deployed):**
 
