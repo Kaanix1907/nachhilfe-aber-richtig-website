@@ -14,6 +14,7 @@
 - [ ] Social Media Links (Facebook, Instagram) mit echten URLs befüllen
 
 ## Abgeschlossen
+- [x] Mobile-Hero-Cleanup (Glows mobil verkleinert, Text-Opacities erhöht, Cards heller) + Marquee-Bug-Fix (`w-max` ergänzt, Animation 60s, prefers-reduced-motion) — deployed 2026-05-03
 - [x] Lexi Phase 2 Code: Rate Limit (Upstash), Anonymer Modus + Migration, Usage-Counter — deployed
 - [x] Vercel CLI v52 Upgrade
 - [x] Lexi Phase 1 komplett: Auth, Chat, Persistenz, Sidebar, Foto-Upload, Vision-Mode, Markdown+LaTeX, Subdomain, SEO

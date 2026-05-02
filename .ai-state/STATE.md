@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-04-26 (sechste Session — Incident: API-Key-Leak in Claude Code, Chatbot-Outage)
+**Zuletzt aktualisiert:** 2026-05-03 (siebte Session — Mobile-Hero-Cleanup + Marquee-Bug-Fix)
 
 ## Aktueller Focus
 Beide Projekte live.
@@ -287,3 +287,29 @@ Lexi-Key in Vercel-Prod (`vercel env add`) + lokale `.env.local` (Placeholder er
 4. Anthropic Console → Usage prüfen (welcher Key war Spike-Verursacher)
 
 **Production-Status Nachhilfe-Chatbot:** Code läuft, Vercel-Env hat Lexi-Key, **wartet auf Credits**. Sobald aufgeladen → Bot funktioniert sofort, Tracking zählt.
+
+---
+
+**Stand 2026-05-03 (siebte Session — Mobile-Hero-Cleanup + Marquee-Bug-Fix):**
+
+**Was erledigt:**
+- **Mobile Hero entrümpelt** (`src/components/Hero.tsx`):
+  - Radial-Glows auf Mobile von 600/500px → 320/260px (vorher größer als Viewport, Hintergrund wirkte diffus)
+  - Text-Opacities erhöht: Slogan `white/35→/55`, Sponsor-Label `white/40→/60`, Reviews-Meta `white/30→/55`, Description `white/65→/80`
+  - Mobile-Review-Cards: Background 5%→9%, Border 9%→14%, etwas breitere Karten + heller Reviewtext
+- **Mobile-Reviews-Marquee Bug-Fix** (`Hero.tsx` + `globals.css`):
+  - **Root Cause:** `.reviews-horizontal` Flex-Container ohne `w-max` → nur Viewport-Breite (~358px) statt Inhalt-Breite (~8990px). `translateX(-50%)` verschob nur ~180px statt ~4500px → wirkte stehend.
+  - Fix: `w-max` auf Container ergänzt + Animation 120s → 60s + `will-change: transform` + Hover-Pause + `prefers-reduced-motion: reduce` Respekt
+  - Verifiziert per Puppeteer: Transform geht von -55px → -167px in 1.5s (~75px/s), Frame-Diff auf zwei Mobile-Screenshots zeigt Karten verschoben
+- **Tote Komponente entfernt:** `src/components/ReviewsTicker.tsx` war im Repo aber nirgends importiert — gelöscht
+- **`puppeteer` als devDep wieder rein** — vorher in Commit `1623d98` als unused entfernt, aber `screenshot.mjs` braucht es. devDep heißt: nicht in production-Bundle.
+- **`/screenshots`-Ordner** zu `.gitignore` ergänzt (lokale Verify-Artefakte)
+- **Codex-Review** (`codex:rescue`) bestätigt Fixes als korrekt; Hinweis auf ~5px Gap-Seam pro Loop-Cycle (akzeptabel bei 60s).
+- **Deployed:** Commit `1906eaa`, Vercel Production Build 30s, live bestätigt — HTML enthält `reviews-horizontal flex gap-2.5 w-max`.
+
+**Wichtige Erkenntnis Dev-Setup:**
+- Auf Port 3000 läuft bei Mustafa **`vercel dev`** (vermutlich Lexi-Workflow), gibt für dieses Projekt 404. Für Nachhilfe-Website **immer `next dev -p 3030`** (oder anderer freier Port) starten.
+- Mustafa testet meist auf echtem Handy → `localhost`-Tests sind irreführend. Production-Deploy + Hard-Reload ist der echte Verify-Pfad.
+
+**Nächste Session — offen:**
+- Sonst nichts neues; alte Backlog gilt weiter (Unterseiten, Search Console, Impressum/Datenschutz).
