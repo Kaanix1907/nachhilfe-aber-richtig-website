@@ -12,11 +12,11 @@ export default function Hero() {
       className="relative md:min-h-screen flex items-center overflow-hidden pt-20"
       style={{ background: "linear-gradient(135deg, #0f0c29 0%, #1a1040 30%, #2d1f5e 65%, #1e3a4f 100%)" }}
     >
-      {/* Radiale Glows */}
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(101,92,158,0.35) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(37,171,214,0.15) 0%, transparent 70%)" }} />
+      {/* Radiale Glows — auf Mobile bewusst kleiner, damit der Hintergrund klar bleibt */}
+      <div className="absolute top-[-15%] right-[-25%] w-[320px] h-[320px] md:w-[600px] md:h-[600px] md:right-[-5%] md:top-[-10%] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(101,92,158,0.30) 0%, transparent 70%)" }} />
+      <div className="absolute bottom-[-10%] left-[-25%] w-[260px] h-[260px] md:w-[500px] md:h-[500px] md:left-[-5%] md:bottom-[-5%] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(37,171,214,0.12) 0%, transparent 70%)" }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-20 grid md:grid-cols-2 gap-6 md:gap-16 items-center w-full">
 
@@ -65,13 +65,13 @@ export default function Hero() {
             {BUSINESS.name}
           </h1>
 
-          <p className="font-body text-base md:text-xl text-white/65 mb-1.5 md:mb-3 leading-[1.7]">
+          <p className="font-body text-base md:text-xl text-white/80 md:text-white/65 mb-1.5 md:mb-3 leading-[1.7]">
             Professionelle Nachhilfe für Schüler{" "}
             <span className="font-semibold text-white">ab Klasse 1 bis Abitur</span>{" "}
             — in allen Fächern, persönlich betreut.
           </p>
 
-          <p className="font-body text-sm md:text-base text-white/35 mb-4 md:mb-10 tracking-wide">
+          <p className="font-body text-sm md:text-base text-white/55 md:text-white/35 mb-4 md:mb-10 tracking-wide">
             {BUSINESS.slogan}
           </p>
 
@@ -97,7 +97,7 @@ export default function Hero() {
 
           {/* Gefördert-durch Sticker */}
           <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
-            <span className="font-body text-xs md:text-sm text-white/40 tracking-wide">Gefördert durch</span>
+            <span className="font-body text-xs md:text-sm text-white/60 md:text-white/40 tracking-wide">Gefördert durch</span>
             <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white"
               style={{ boxShadow: "0 4px 14px rgba(0,0,0,0.35)" }}>
               <Image src="/logo-jobcenter.jpeg" alt="Jobcenter Duisburg" width={130} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
@@ -128,7 +128,7 @@ export default function Hero() {
                     ))}
                     <span className="font-heading font-bold text-white text-xs ml-1">{rating.toFixed(1)}</span>
                   </div>
-                  <span className="font-body text-white/35 text-[10px]">{total} Google Bewertungen</span>
+                  <span className="font-body text-white/55 text-[10px]">{total} Google Bewertungen</span>
                 </div>
               </div>
               <a
@@ -153,25 +153,25 @@ export default function Hero() {
                 style={{ background: "linear-gradient(to right, #0f0c29, transparent)" }} />
               <div className="absolute right-0 top-0 bottom-0 w-6 z-10 pointer-events-none"
                 style={{ background: "linear-gradient(to left, #1e3a4f, transparent)" }} />
-              <div className="reviews-horizontal flex gap-2.5">
+              <div className="reviews-horizontal flex gap-2.5 w-max">
                 {[...reviews, ...reviews].map((r, idx) => (
                   <div key={idx}
-                    className="shrink-0 w-56 rounded-xl p-3"
+                    className="shrink-0 w-60 rounded-xl p-3.5"
                     style={{
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.09)",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                      background: "rgba(255,255,255,0.09)",
+                      border: "1px solid rgba(255,255,255,0.14)",
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.22)",
                     }}
                   >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center gap-1.5">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
                         <div className="w-6 h-6 rounded-full flex items-center justify-center font-body font-bold text-white text-[10px] shrink-0"
                           style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
                           {r.name.charAt(0)}
                         </div>
-                        <div>
-                          <div className="font-body font-semibold text-white text-[11px] leading-tight">{r.name}</div>
-                          <div className="font-body text-white/30 text-[10px]">{r.time}</div>
+                        <div className="min-w-0">
+                          <div className="font-body font-semibold text-white text-[11.5px] leading-tight truncate">{r.name}</div>
+                          <div className="font-body text-white/55 text-[10px]">{r.time}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-px shrink-0">
@@ -182,7 +182,7 @@ export default function Hero() {
                         ))}
                       </div>
                     </div>
-                    <p className="font-body text-white/55 text-[11px] leading-[1.5] line-clamp-3">&ldquo;{r.text}&rdquo;</p>
+                    <p className="font-body text-white/75 text-[11.5px] leading-[1.55] line-clamp-3">&ldquo;{r.text}&rdquo;</p>
                   </div>
                 ))}
               </div>

@@ -79,5 +79,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reviews-horizontal {
-  animation: reviews-horizontal 120s linear infinite;
+  animation: reviews-horizontal 60s linear infinite;
+  will-change: transform;
+}
+
+.reviews-horizontal:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-vertical,
+  .reviews-horizontal {
+    animation: none;
+  }
 }

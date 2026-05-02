@@ -14,6 +14,9 @@
 # production
 /build
 
+# screenshots (lokale Verify-Artefakte)
+/screenshots
+
 # misc
 .DS_Store
 *.pem
