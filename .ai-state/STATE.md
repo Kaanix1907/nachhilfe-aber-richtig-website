@@ -1,6 +1,6 @@
 # State — Nachhilfe Website
 
-**Zuletzt aktualisiert:** 2026-05-03 (siebte Session — Mobile-Hero-Cleanup + Marquee-Bug-Fix)
+**Zuletzt aktualisiert:** 2026-05-03 (achte Session — Bilder-Recherche abgebrochen, keine Code-Änderungen)
 
 ## Aktueller Focus
 Beide Projekte live.
@@ -313,3 +313,21 @@ Lexi-Key in Vercel-Prod (`vercel env add`) + lokale `.env.local` (Placeholder er
 
 **Nächste Session — offen:**
 - Sonst nichts neues; alte Backlog gilt weiter (Unterseiten, Search Console, Impressum/Datenschutz).
+
+---
+
+**Stand 2026-05-03 (achte Session — Bilder-Recherche, abgebrochen):**
+
+**Was lief:**
+- Mustafa fragte nach realistischen Bildern (Hero-Bereich + zweite Sektion) — Person, die jemandem etwas beibringt, "als wäre es da passiert".
+- Empfehlung gegeben: KI-Bilder von Personen sind bei Vertrauens-Dienstleistung riskant (uncanny). Beste Reihenfolge: echte Fotos vom Lernort > Stock (Pexels/Unsplash) > KI nur für Nicht-Personen.
+- 5 Pexels-Kandidaten recherchiert + im Browser geöffnet:
+  - `/photo/6502728/` (ThirdMan), `/photo/8617761/` (YankRukov), `/photo/9158794/` (Mikhail Nilov), `/photo/7979767/` (KindelMedia), `/photo/8055133/` (Father+Daughter)
+- Layout-Analyse Hero: 2-Spalten (Text+Reviews) ist voll, kein Platz ohne Umbau. Vorschlag war: neue Bild-Sektion direkt unter Hero (full-width mit Text-Overlay-Quote), zweites Bild zwischen Bildung & Teilhabe und USPs.
+- Mustafa hat abgebrochen ("scheiß auf Bilder") bevor entschieden/gebaut wurde.
+
+**Code-Änderungen:** Keine. Nur Hero.tsx + USPs.tsx gelesen für Layout-Analyse.
+
+**Nächste Session — offen:**
+- Bilder-Idee liegt auf Eis. Falls später aufgegriffen: Pexels-Kandidaten-Liste oben, Layout-Vorschlag steht.
+- Backlog unverändert: Unterseiten (/leistungen, /ueber-uns), Impressum/Datenschutz prüfen, Search Console.
