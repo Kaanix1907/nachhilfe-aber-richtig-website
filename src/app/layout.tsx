@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { BUSINESS } from "@/lib/data";
 
@@ -73,6 +74,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "kLCggrg73BDCufBVV56CufQeyyJ2jjjR0v86Cp4JCGU",
+  },
 };
 
 export default function RootLayout({
@@ -82,7 +86,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {/* SimpleAnalytics — privacy-first, kein Cookie-Banner nötig */}
+        <Script
+          async
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+          strategy="afterInteractive"
+        />
+        {children}
+      </body>
     </html>
   );
 }
