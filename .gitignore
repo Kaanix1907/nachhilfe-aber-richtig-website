@@ -16,6 +16,7 @@
 
 # screenshots (lokale Verify-Artefakte)
 /screenshots
+Bildschirmfoto*.png
 
 # misc
 .DS_Store
