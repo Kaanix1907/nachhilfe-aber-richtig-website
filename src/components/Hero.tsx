@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { BUSINESS, ALL_REVIEWS } from "@/lib/data";
+import { GoogleGLogo, ExternalLinkIcon, ReviewCard, GoogleHeader } from "./Hero.parts";
+
+const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko";
 
 export default function Hero() {
   const reviews = ALL_REVIEWS;
@@ -112,37 +116,15 @@ export default function Hero() {
           <div className="md:hidden mt-5">
             {/* Google-Header */}
             <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2.5">
-                <svg viewBox="0 0 48 48" width="22" height="22">
-                  <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
-                  <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
-                  <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
-                  <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
-                </svg>
-                <div>
-                  <div className="flex items-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
-                        <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                      </svg>
-                    ))}
-                    <span className="font-heading font-bold text-white text-xs ml-1">{rating.toFixed(1)}</span>
-                  </div>
-                  <span className="font-body text-white/55 text-[10px]">{total} Google Bewertungen</span>
-                </div>
-              </div>
+              <GoogleHeader rating={rating} total={total} variant="mobile" />
               <a
-                href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
+                href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 font-body text-[10px] font-semibold px-2 py-0.5 rounded-full transition-[opacity] duration-200 hover:opacity-80"
                 style={{ background: "rgba(37,171,214,0.15)", border: "1px solid rgba(37,171,214,0.35)", color: "#25abd6" }}
               >
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
+                <ExternalLinkIcon size={9} />
                 Prüfen
               </a>
             </div>
@@ -155,35 +137,7 @@ export default function Hero() {
                 style={{ background: "linear-gradient(to left, #1e3a4f, transparent)" }} />
               <div className="reviews-horizontal flex gap-2.5 w-max">
                 {[...reviews, ...reviews].map((r, idx) => (
-                  <div key={idx}
-                    className="shrink-0 w-60 rounded-xl p-3.5"
-                    style={{
-                      background: "rgba(255,255,255,0.09)",
-                      border: "1px solid rgba(255,255,255,0.14)",
-                      boxShadow: "0 4px 16px rgba(0,0,0,0.22)",
-                    }}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-1.5 min-w-0">
-                        <div className="w-6 h-6 rounded-full flex items-center justify-center font-body font-bold text-white text-[10px] shrink-0"
-                          style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
-                          {r.name.charAt(0)}
-                        </div>
-                        <div className="min-w-0">
-                          <div className="font-body font-semibold text-white text-[11.5px] leading-tight truncate">{r.name}</div>
-                          <div className="font-body text-white/55 text-[10px]">{r.time}</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-px shrink-0">
-                        {[...Array(r.stars)].map((_, i) => (
-                          <svg key={i} width="9" height="9" viewBox="0 0 12 12" fill="#f59e0b">
-                            <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                    <p className="font-body text-white/75 text-[11.5px] leading-[1.55] line-clamp-3">&ldquo;{r.text}&rdquo;</p>
-                  </div>
+                  <ReviewCard key={idx} review={r} variant="mobile" />
                 ))}
               </div>
             </div>
@@ -192,26 +146,7 @@ export default function Hero() {
 
         {/* Rechts — Desktop: Vertikal scrollende Google Bewertungen */}
         <div className="hidden md:flex flex-col gap-4">
-          {/* Google-Header */}
-          <div className="flex items-center gap-3 mb-1">
-              <svg viewBox="0 0 48 48" width="30" height="30">
-                <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
-                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
-                <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
-                <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
-              </svg>
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="#f59e0b">
-                      <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                    </svg>
-                  ))}
-                  <span className="font-heading font-bold text-white text-sm ml-1">{rating.toFixed(1)}</span>
-                </div>
-                <span className="font-body text-white/35 text-xs">{total} Google Bewertungen</span>
-              </div>
-          </div>
+          <GoogleHeader rating={rating} total={total} variant="desktop" />
 
           {/* Scroll-Container */}
           <div className="relative overflow-hidden" style={{ height: 440 }}>
@@ -222,59 +157,22 @@ export default function Hero() {
 
             <div className="reviews-vertical flex flex-col gap-4">
               {[...reviews, ...reviews].map((r, idx) => (
-                <div key={idx}
-                  className="rounded-2xl p-5"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.09)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-                  }}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center font-body font-bold text-white text-xs shrink-0"
-                        style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}>
-                        {r.name.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="font-body font-semibold text-white text-sm">{r.name}</div>
-                        <div className="font-body text-white/30 text-xs">{r.time}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-0.5 shrink-0">
-                      {[...Array(r.stars)].map((_, i) => (
-                        <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
-                          <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9L2 4l2.9-.4L6 1z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="font-body text-white/60 text-sm leading-[1.6]">&ldquo;{r.text}&rdquo;</p>
-                </div>
+                <ReviewCard key={idx} review={r} variant="desktop" />
               ))}
             </div>
           </div>
 
           {/* Google-Link */}
           <a
-            href="https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko"
+            href={GOOGLE_REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 font-body font-semibold text-sm py-3 rounded-xl transition-[opacity,transform] duration-200 hover:opacity-80 hover:-translate-y-px"
             style={{ background: "rgba(37,171,214,0.12)", border: "1px solid rgba(37,171,214,0.3)", color: "#25abd6" }}
           >
-            <svg viewBox="0 0 48 48" width="16" height="16">
-              <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
-              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c2.8 0 5.3 1 7.2 2.7l5.7-5.7C33.5 7.3 29 5 24 5 16.3 5 9.7 9 6.3 14.7z"/>
-              <path fill="#4CAF50" d="M24 45c4.9 0 9.3-1.8 12.7-4.8l-5.9-5c-1.8 1.3-4.1 2.1-6.8 2.1-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.5 41.1 16.2 45 24 45z"/>
-              <path fill="#1565C0" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.4l5.9 5C40 35.6 44 30.8 44 25c0-1.3-.1-2.6-.4-3.9z"/>
-            </svg>
+            <GoogleGLogo size={16} />
             Alle {total} Bewertungen auf Google ansehen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
+            <ExternalLinkIcon size={14} />
           </a>
         </div>
 
