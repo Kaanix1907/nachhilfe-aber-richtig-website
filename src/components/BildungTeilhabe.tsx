@@ -1,14 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import FadeIn from "./FadeIn";
+import { FoerderCard } from "./BildungTeilhabe.parts";
 
 export default function BildungTeilhabe() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-6xl mx-auto px-4">
 
-        {/* Überschrift */}
         <FadeIn className="mb-10">
           <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Bildung &amp; Teilhabe
@@ -22,67 +21,23 @@ export default function BildungTeilhabe() {
           </p>
         </FadeIn>
 
-        {/* Zwei Karten */}
         <div className="grid md:grid-cols-2 gap-6 items-start">
+          <FoerderCard logo={{ src: "/logo-jobcenter.jpeg", alt: "Jobcenter Duisburg", width: 140 }}>
+            Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
+            sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong>{" "}
+            für Bildung &amp; Teilhabe berechtigt und können unsere Nachhilfe{" "}
+            <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
+          </FoerderCard>
 
-          {/* Jobcenter */}
-          <div
-            className="rounded-2xl p-7 border"
-            style={{
-              borderColor: "rgba(101,92,158,0.18)",
-              background: "rgba(101,92,158,0.04)",
-              boxShadow: "0 1px 3px rgba(101,92,158,0.08), 0 4px 16px rgba(101,92,158,0.08)",
-            }}
-          >
-            <div className="mb-5 h-10 flex items-center">
-              <Image
-                src="/logo-jobcenter.jpeg"
-                alt="Jobcenter Duisburg"
-                width={140}
-                height={40}
-                className="object-contain object-left"
-                style={{ height: 36, width: "auto" }}
-              />
-            </div>
-            <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
-              Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
-              sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong>{" "}
-              für Bildung &amp; Teilhabe berechtigt und können unsere Nachhilfe{" "}
-              <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
-            </p>
-          </div>
-
-          {/* Stadt Duisburg */}
-          <div
-            className="rounded-2xl p-7 border"
-            style={{
-              borderColor: "rgba(101,92,158,0.18)",
-              background: "rgba(101,92,158,0.04)",
-              boxShadow: "0 1px 3px rgba(101,92,158,0.08), 0 4px 16px rgba(101,92,158,0.08)",
-            }}
-          >
-            <div className="mb-5 h-10 flex items-center">
-              <Image
-                src="/logo-stadt-duisburg.png"
-                alt="Stadt Duisburg"
-                width={120}
-                height={40}
-                className="object-contain object-left"
-                style={{ height: 36, width: "auto" }}
-              />
-            </div>
-            <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">
-              Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
-              <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der{" "}
-              <strong className="text-dark font-semibold">Stadt Duisburg</strong>{" "}
-              erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit auf{" "}
-              <strong className="text-dark font-semibold">kostenfreie</strong> Nachhilfe.
-            </p>
-          </div>
-
+          <FoerderCard logo={{ src: "/logo-stadt-duisburg.png", alt: "Stadt Duisburg", width: 120 }}>
+            Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
+            <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der{" "}
+            <strong className="text-dark font-semibold">Stadt Duisburg</strong>{" "}
+            erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit auf{" "}
+            <strong className="text-dark font-semibold">kostenfreie</strong> Nachhilfe.
+          </FoerderCard>
         </div>
 
-        {/* CTA */}
         <div className="mt-10 space-y-4">
           <div
             className="inline-flex items-start gap-3 px-5 py-4 rounded-2xl border w-full sm:w-auto"
