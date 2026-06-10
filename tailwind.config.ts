@@ -16,8 +16,8 @@ const config: Config = {
         muted: "#444444",
       },
       fontFamily: {
-        heading: ["BioRhyme", "serif"],
-        body: ["Cabin", "sans-serif"],
+        heading: ["var(--font-biorhyme)", "BioRhyme", "serif"],
+        body: ["var(--font-cabin)", "Cabin", "sans-serif"],
       },
     },
   },

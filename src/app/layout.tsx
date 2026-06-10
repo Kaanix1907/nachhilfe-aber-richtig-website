@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { BioRhyme, Cabin } from "next/font/google";
 import "./globals.css";
 import { BUSINESS } from "@/lib/data";
+
+const bioRhyme = BioRhyme({
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  variable: "--font-biorhyme",
+  display: "swap",
+});
+
+const cabin = Cabin({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cabin",
+  display: "swap",
+});
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
 
@@ -85,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" className={`${bioRhyme.variable} ${cabin.variable}`}>
       <body className="antialiased">
         {/* SimpleAnalytics — privacy-first, kein Cookie-Banner nötig */}
         <Script

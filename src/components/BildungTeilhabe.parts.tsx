@@ -25,7 +25,7 @@ export function FoerderCard({ logo, children }: FoerderCardProps) {
           style={{ height: 36, width: "auto" }}
         />
       </div>
-      <p className="font-body text-muted/70 leading-[1.7] text-[0.95rem]">{children}</p>
+      <p className="font-body text-muted/80 leading-[1.7] text-[0.95rem]">{children}</p>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt={BUSINESS.name}
-            width={120}
+            width={54}
             height={48}
             className="object-contain h-12 w-auto"
           />

@@ -51,7 +51,7 @@ export default function BildungTeilhabe() {
             </svg>
             <div>
               <p className="font-body font-semibold text-dark text-sm">Wir helfen beim Antrag</p>
-              <p className="font-body text-muted/65 text-sm leading-[1.6]">
+              <p className="font-body text-muted/80 text-sm leading-[1.6]">
                 Den Antrag auf Bildung &amp; Teilhabe stellen viele Familien nie — weil sie nicht wissen wie.
                 Wir erklären euch den Ablauf Schritt für Schritt.
               </p>
