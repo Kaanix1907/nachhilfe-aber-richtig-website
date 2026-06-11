@@ -6,7 +6,8 @@ import { BUSINESS } from "@/lib/data";
 
 const bioRhyme = BioRhyme({
   subsets: ["latin"],
-  weight: ["400", "700", "800"],
+  // 400 ist nirgends im Einsatz — alle font-heading-Stellen sind bold/extrabold
+  weight: ["700", "800"],
   variable: "--font-biorhyme",
   display: "swap",
 });
