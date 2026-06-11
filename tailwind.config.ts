@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#25abd6",
+        // WCAG-AA-taugliches Cyan fuer Text auf hellen Hintergruenden (>=4.5:1)
+        "primary-deep": "#177494",
         secondary: "#655c9e",
         accent: "#00aa00",
         dark: "#1a1a2e",

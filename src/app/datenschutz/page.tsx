@@ -32,7 +32,7 @@ export default function Datenschutz() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">
-            <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+            <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
               Rechtliches
             </span>
             <h1 className="font-heading text-4xl font-extrabold text-dark" style={{ letterSpacing: "-0.03em" }}>
@@ -55,7 +55,7 @@ export default function Datenschutz() {
                 {owner}<br />
                 {addr.street}<br />
                 {addr.city}<br />
-                E-Mail: <a href={`mailto:${email}`} className="text-primary hover:underline">{email}</a>
+                E-Mail: <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>
               </p>
             </Section>
 
@@ -91,7 +91,7 @@ export default function Datenschutz() {
               </p>
               <p>
                 Weitere Informationen:{" "}
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
                   policies.google.com/privacy
                 </a>
               </p>
@@ -125,7 +125,7 @@ export default function Datenschutz() {
               </ul>
               <p>
                 Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{" "}
-                <a href={`mailto:${email}`} className="text-primary hover:underline">{email}</a>
+                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>
               </p>
               <p>
                 Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs steht Ihnen

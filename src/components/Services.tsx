@@ -55,7 +55,7 @@ export default function Services() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <FadeIn className="text-center mb-14 md:mb-16">
-          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+          <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Was wir anbieten
           </span>
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>

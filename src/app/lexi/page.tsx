@@ -362,7 +362,7 @@ export default function LexiPage() {
               <div className="text-center mb-12 md:mb-16">
                 <div
                   className="inline-block px-3 py-1 rounded-full mb-4 font-body text-[11px] font-bold tracking-[0.15em] uppercase"
-                  style={{ background: "rgba(37,171,214,0.1)", color: "#25abd6" }}
+                  style={{ background: "rgba(37,171,214,0.1)", color: "#177494" }}
                 >
                   Was Lexi kann
                 </div>
@@ -489,7 +489,7 @@ export default function LexiPage() {
               <div className="text-center mb-10 md:mb-14">
                 <div
                   className="inline-block px-3 py-1 rounded-full mb-4 font-body text-[11px] font-bold tracking-[0.15em] uppercase"
-                  style={{ background: "rgba(37,171,214,0.1)", color: "#25abd6" }}
+                  style={{ background: "rgba(37,171,214,0.1)", color: "#177494" }}
                 >
                   FAQ
                 </div>
@@ -518,7 +518,7 @@ export default function LexiPage() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className="shrink-0 transition-transform duration-200 group-open:rotate-180"
-                        style={{ color: "#25abd6" }}
+                        style={{ color: "#177494" }}
                       >
                         <polyline points="6 9 12 15 18 9" />
                       </svg>

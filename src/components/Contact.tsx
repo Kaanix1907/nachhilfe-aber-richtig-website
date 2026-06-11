@@ -31,7 +31,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <FadeIn className="text-center mb-16">
-          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+          <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Jetzt starten
           </span>
           <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-4">
@@ -234,7 +234,7 @@ export default function Contact() {
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <div className="flex justify-between items-center font-body text-sm">
                   <span className="text-dark/55">Kundenservice</span>
-                  <span className="font-semibold text-primary tabular-nums">{BUSINESS.serviceHours}</span>
+                  <span className="font-semibold text-primary-deep tabular-nums">{BUSINESS.serviceHours}</span>
                 </div>
               </div>
             </div>

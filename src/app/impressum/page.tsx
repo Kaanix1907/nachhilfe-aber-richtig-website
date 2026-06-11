@@ -32,7 +32,7 @@ export default function Impressum() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">
-            <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+            <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
               Rechtliches
             </span>
             <h1 className="font-heading text-4xl font-extrabold text-dark" style={{ letterSpacing: "-0.03em" }}>
@@ -54,8 +54,8 @@ export default function Impressum() {
             </Section>
 
             <Section title="Kontakt">
-              <p>Telefon: <a href={`tel:${phone}`} className="text-primary hover:underline">{phoneDisplay}</a></p>
-              <p>E-Mail: <a href={`mailto:${email}`} className="text-primary hover:underline">{email}</a></p>
+              <p>Telefon: <a href={`tel:${phone}`} className="text-primary-deep hover:underline">{phoneDisplay}</a></p>
+              <p>E-Mail: <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a></p>
             </Section>
 
             <Section title="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV">

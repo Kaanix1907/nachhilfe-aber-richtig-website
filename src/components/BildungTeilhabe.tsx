@@ -9,7 +9,7 @@ export default function BildungTeilhabe() {
       <div className="max-w-6xl mx-auto px-4">
 
         <FadeIn className="mb-10">
-          <span className="inline-block bg-primary/8 text-primary font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
+          <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
             Bildung &amp; Teilhabe
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-dark mb-3" style={{ letterSpacing: "-0.03em" }}>
