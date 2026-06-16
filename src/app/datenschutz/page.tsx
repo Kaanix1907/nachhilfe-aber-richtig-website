@@ -83,21 +83,57 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="4. Google Places API">
+            <Section title="4. Web-Analyse (Simple Analytics)">
               <p>
-                Wir verwenden die Google Places API (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA),
-                um Bewertungen unseres Unternehmens auf der Website anzuzeigen. Dabei werden Daten an Google-Server
-                übertragen. Google kann diese Daten seinen eigenen Datenschutzbestimmungen entsprechend verarbeiten.
+                Zur Reichweitenmessung verwenden wir Simple Analytics, einen cookielosen Web-Analyse-Dienst der
+                Simple Analytics B.V. (Niederlande, EU). Simple Analytics setzt keine Cookies und erstellt keine
+                personenbezogenen Profile; es werden ausschließlich aggregierte, anonyme Statistiken über die
+                Nutzung unserer Website erhoben.
+              </p>
+              <p>
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer datensparsamen
+                Reichweitenmessung).
               </p>
               <p>
                 Weitere Informationen:{" "}
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  policies.google.com/privacy
+                <a href="https://simpleanalytics.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  simpleanalytics.com/privacy-policy
                 </a>
               </p>
             </Section>
 
-            <Section title="5. Hosting">
+            <Section title="5. KI-Chatbot (Anthropic)">
+              <p>
+                Auf unserer Website bieten wir einen KI-Chatbot zur Beantwortung von Fragen an. Ihre Eingaben im
+                Chat werden zur Generierung der Antworten an die Anthropic API (Anthropic PBC, San Francisco, USA)
+                übermittelt und dort verarbeitet. Es handelt sich um einen Drittlandtransfer in die USA, der auf
+                Grundlage von Standardvertragsklauseln (Standard Contractual Clauses, SCC) erfolgt.
+              </p>
+              <p>
+                Bitte geben Sie im Chat keine besonderen Kategorien personenbezogener Daten (z.&nbsp;B.
+                Gesundheitsdaten) oder sonstige sensible Informationen ein.
+              </p>
+              <p>
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer effizienten
+                Beantwortung von Anfragen) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+              </p>
+            </Section>
+
+            <Section title="6. Missbrauchsschutz (Upstash)">
+              <p>
+                Zur Absicherung des Chatbots gegen Missbrauch und zur Durchsetzung von Anfrage-Limits (Rate
+                Limiting) speichern wir pseudonymisierte, mittels SHA-256 gehashte IP-Adressen. Die Speicherung
+                erfolgt bei Upstash Inc. (USA) für eine Dauer von 90&nbsp;Tagen. Aus den gespeicherten Hashwerten
+                lassen sich die ursprünglichen IP-Adressen nicht ohne Weiteres rekonstruieren.
+              </p>
+              <p>
+                Es handelt sich um einen Drittlandtransfer in die USA, der auf Grundlage von
+                Standardvertragsklauseln (SCC) erfolgt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+                (berechtigtes Interesse an der Sicherheit und Verfügbarkeit unserer Dienste).
+              </p>
+            </Section>
+
+            <Section title="7. Hosting">
               <p>
                 Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA gehostet.
                 Beim Aufruf der Website werden automatisch Server-Logfiles (IP-Adresse, Browsertyp, Referrer,
@@ -106,14 +142,16 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="6. Cookies">
+            <Section title="8. Cookies">
               <p>
                 Diese Website setzt keine Tracking- oder Marketing-Cookies ein. Es werden ausschließlich
                 technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
+                Auch der eingesetzte Web-Analyse-Dienst (Simple Analytics) arbeitet cookielos, sodass für die
+                Reichweitenmessung kein Cookie-Einwilligungsbanner erforderlich ist.
               </p>
             </Section>
 
-            <Section title="7. Ihre Rechte">
+            <Section title="9. Ihre Rechte">
               <p>Sie haben jederzeit das Recht auf:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -134,9 +172,9 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="8. Aktualität">
+            <Section title="10. Aktualität">
               <p>
-                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand April 2026. Durch die
+                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juni 2026. Durch die
                 Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es
                 notwendig werden, diese Datenschutzerklärung zu ändern.
               </p>

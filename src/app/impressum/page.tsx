@@ -22,7 +22,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 export default function Impressum() {
-  const { owner, addresses, email, phone, phoneDisplay } = BUSINESS;
+  const { owner, addresses, email, phone, phoneDisplay, vatId } = BUSINESS;
   const addr = addresses.geschaeft;
 
   return (
@@ -58,7 +58,13 @@ export default function Impressum() {
               <p>E-Mail: <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a></p>
             </Section>
 
-            <Section title="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV">
+            <Section title="Umsatzsteuer-ID">
+              <p>
+                Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: {vatId}
+              </p>
+            </Section>
+
+            <Section title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
               <p className="font-semibold text-dark">{owner}</p>
               <p>{addr.street}</p>
               <p>{addr.city}</p>

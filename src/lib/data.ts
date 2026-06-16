@@ -6,8 +6,9 @@ export const BUSINESS = {
   owner: "Mustafa Kaan Güneren",
   slogan: "In Rekordzeit zu besseren Noten!",
   email: "info@nachhilfe-aber-richtig.de",
-  phone: "+49 157 53337648",
-  phoneDisplay: "+49 157 533 37648",
+  phone: "+49 152 0885 4910",
+  phoneDisplay: "+49 152 0885 4910",
+  vatId: "DE331112267",
   addresses: {
     lernort: {
       street: "Friedrich-Alfred-Straße 14",
@@ -225,7 +226,7 @@ Wir bieten professionelle Nachhilfe für Schüler ab der 1. Klasse bis zum Abitu
 
 ## Kontakt
 - E-Mail: info@nachhilfe-aber-richtig.de
-- Telefon: +49 157 53337648
+- Telefon: +49 152 0885 4910
 - Lernort: Friedrich-Alfred-Straße 14, 47226 Duisburg
 
 ## Öffnungszeiten

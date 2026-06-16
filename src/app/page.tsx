@@ -25,7 +25,7 @@ const jsonLd = {
   url: "https://nachhilfe-aber-richtig.de",
   logo: "https://nachhilfe-aber-richtig.de/logo.png",
   image: "https://nachhilfe-aber-richtig.de/og-image.png",
-  telephone: "+4915753337648",
+  telephone: "+4915208854910",
   email: "info@nachhilfe-aber-richtig.de",
   founder: {
     "@type": "Person",
