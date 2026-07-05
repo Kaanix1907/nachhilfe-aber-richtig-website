@@ -144,6 +144,9 @@ Kein "sollte funktionieren" — nur "ich habe es im Screenshot gesehen".
 - **Kein Hardcoding** von Business-Daten — zentrale Konstanten-Datei (`/lib/data.ts`)
 - **Barrierefreiheit:** Semantisches HTML, ARIA-Labels wo nötig
 - **SEO:** Jede Seite bekommt Metadata via Next.js `generateMetadata`
+- **Git-Workflow: PR statt direktem main-Push (Abweichung von globalem §4).** Live-Website,
+  öffentlich erreichbar. Änderungen auf Feature-Branch, `gh pr create`, kurzes OK von
+  Mustafa vor Merge. Reine Konvention, keine harte Branch-Protection.
 
 ---
 
