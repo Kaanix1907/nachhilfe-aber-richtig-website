@@ -147,6 +147,10 @@ Kein "sollte funktionieren" — nur "ich habe es im Screenshot gesehen".
 - **Git-Workflow: PR statt direktem main-Push (Abweichung von globalem §4).** Live-Website,
   öffentlich erreichbar. Änderungen auf Feature-Branch, `gh pr create`, kurzes OK von
   Mustafa vor Merge. Reine Konvention, keine harte Branch-Protection.
+- **CodeScene-Check ist Pflicht vor "fertig"** (2026-07-05): nach `gh pr create` NICHT
+  direkt als fertig melden. Aktiv `gh api repos/Kaanix1907/nachhilfe-aber-richtig-website/commits/<branch>/check-runs`
+  prüfen. Findings selbst lesen und fixen, erneut pushen, bis Check grün ist. Sobald
+  CodeScene-MCP verfügbar: `code_health_review` schon lokal vor dem Push laufen lassen.
 
 ---
 
