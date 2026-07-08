@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  # puppeteer (devDep) würde sonst beim npm ci Chromium ziehen (langsam/flaky) — nicht nötig fürs Build.
+  PUPPETEER_SKIP_DOWNLOAD: "1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      # next build baut UND typecheckt (strict). Kein `next lint` (in Next 16 entfernt), keine Tests vorhanden.
+      - name: Build
+        run: npm run build
