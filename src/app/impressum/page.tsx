@@ -47,7 +47,7 @@ export default function Impressum() {
               boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 8px 32px rgba(26,26,46,0.06)",
             }}
           >
-            <Section title="Angaben gemäß § 5 TMG">
+            <Section title="Angaben gemäß § 5 DDG">
               <p className="font-semibold text-dark">{owner}</p>
               <p>{addr.street}</p>
               <p>{addr.city}</p>
@@ -72,8 +72,8 @@ export default function Impressum() {
 
             <Section title="Haftung für Inhalte">
               <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den
-                allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+                allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
                 verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
                 zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
               </p>
@@ -92,6 +92,13 @@ export default function Impressum() {
                 Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
                 Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
                 Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+              </p>
+            </Section>
+
+            <Section title="Verbraucherstreitbeilegung">
+              <p>
+                Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+                Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).
               </p>
             </Section>
           </div>
