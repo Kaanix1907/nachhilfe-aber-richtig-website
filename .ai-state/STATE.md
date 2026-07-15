@@ -1,6 +1,51 @@
-# State — Nachhilfe Website
+# State — Nachhilfe, aber richtig! (Website)
 
-**Zuletzt aktualisiert:** 2026-05-03 (achte Session — Bilder-Recherche abgebrochen, keine Code-Änderungen)
+**Zuletzt aktualisiert:** 2026-07-16
+
+## ▶ RESUME HERE (2026-07-16) — Chat-Cluster zurückgebaut, Repo entschlackt; 2 PRs warten auf Mustafa
+
+Teil des 9-Phasen-Sanierungs-Rollouts. Was passiert ist:
+
+**PR #6 — Repo-Diät (Checks grün).** 100 getrackte Screenshots enttrackt (`/screenshots` stand in
+.gitignore, aber das wirkt nur auf untracked Files) + 4 Root-Duplikate gelöscht. Jede per SHA als
+byte-identisch belegt: `Logo_Stadt-Duibsurg (1).png` == `public/logo-stadt-duisburg.png`,
+`images.jpeg` == `public/logo-jobcenter.jpeg`, `logo_backup Kopie.jpeg` == `public/logo.jpeg`.
+`screenshot Kopie.mjs` war die ältere Variante ohne Viewport-Args. **Kein History-Rewrite** (bewusst).
+
+**PR #7 — Chat-Rückbau (Mustafa-Entscheid 16.07.).** `/api/chat` war ein öffentlich erreichbarer
+Claude-Proxy ohne einen einzigen Frontend-Aufrufer. Live gemessen: POST → **HTTP 500**, der
+ANTHROPIC_API_KEY ist in Vercel nicht gesetzt — latent, nicht brennend. Entfernt: `/api/chat`,
+`/api/reviews` (toter Zwilling, ALL_REVIEWS wird statisch gerendert), `/api/admin/stats`,
+`track.ts`, `CHATBOT_SYSTEM_PROMPT`, `@anthropic-ai/sdk`, `@upstash/redis`.
+**Die Seite ist jetzt rein statisch** (Build: 11 Routen mit dynamischen → 9, alle `○ Static`).
+⚠️ **Wartet auf Mustafas Freigabe des Datenschutz-Texts** (DSGVO wird nicht delegiert).
+
+**Nebenbefund, live bestätigt:** der ChatWidget-CTA auf `/lexi` zeigte auf
+`lexi.nachhilfe-aber-richtig.de/chat` → **404**. Der Chat liegt auf der Wurzel der Lexi-App. In #7 gefixt.
+
+## Wartet auf Mustafa
+
+1. **PR #7 Datenschutz-Text freigeben**, dann mergen.
+2. **PR #4 (Sentry) auf GlitchTip umbiegen** — Entscheid 16.07. Der PR liest
+   `NEXT_PUBLIC_SENTRY_DSN` und nimmt damit JEDE DSN, auch die des self-hosted GlitchTip auf
+   `errors.klartext-digital.com`. Nötig: GlitchTip-Projekt `nachhilfe` anlegen (**existiert noch
+   nicht** — Nachhilfe war am 15.07. bewusst vertagt) + **dash-lose DSN** (sonst schaltet das
+   JS-SDK den Transport still ab, siehe Memory `feedback_glitchtip_dsn_dashes_break_js_sdk`) +
+   Datenschutz-Sektion „Fehler-Monitoring". Session-Replay ist NICHT aktiv (nur transitiv im
+   Lockfile — geprüft).
+3. 🚩 **Lexi hat weder Impressum noch Datenschutzerklärung** (beide 404), ist aber öffentlich
+   erreichbar → §5 DDG / §18 MStV. **Anderes Repo, eigener Vorgang.**
+
+## Benannt, nicht erledigt
+
+`npm run lint` ist tot (`next lint` in Next 16 entfernt, eslint-config-next 15.2.4, keine Config) ·
+Social-Links sind Platzhalter (`data.ts`) · Unterseiten `/leistungen` + `/ueber-uns` stehen in
+CLAUDE.md §4, wurden nie gebaut (Produkt-Entscheid) · Vercel-Env-Inventur nach dem Rückbau
+(ANTHROPIC_API_KEY / KV_* / STATS_TOKEN / IP_SALT können weg) · stale Branch
+`claude/happy-planck-4868k8` (durch main-Commit 7b06cc1 überholt) · Dependabot-postcss-Run vom
+08.07. fehlgeschlagen, Ursache ungeprüft.
+
+---
 
 ## Aktueller Focus
 Beide Projekte live.
