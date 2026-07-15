@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/chat";
+// Der Chat liegt auf der Wurzel der Lexi-App. /chat gab es nie — der Link lief bis
+// 2026-07-16 live in einen 404 (gemessen, nicht vermutet).
+const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
