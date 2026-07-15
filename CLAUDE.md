@@ -38,7 +38,8 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 ### Logo
 - Produktionsdatei: `/public/logo.png` (bereits freigestellt — weißer Hintergrund entfernt)
-- Original-Backup: `logo_backup Kopie.jpeg` im Projektroot
+- Original-Backup: `/public/logo.jpeg` (unfreigestellt). Lag bis 2026-07-16 zusätzlich als
+  `logo_backup Kopie.jpeg` im Projektroot — byte-identisch, deshalb entfernt.
 
 ---
 
