@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   images: {
@@ -28,4 +29,14 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Sentry-Wrapper: injiziert SDK + App-Router-Instrumentation. Source-Map-Upload deaktiviert
+// (kein SENTRY_AUTH_TOKEN in CI/Vercel → Build bleibt grün); für symbolisierte Stacktraces
+// später Token setzen + sourcemaps.disable entfernen. Das Runtime-Monitoring läuft DSN-gated
+// über die instrumentation*-Dateien, unabhängig von diesem Build-Wrapper.
+export default withSentryConfig(nextConfig, {
+  org: "hoherr",
+  project: "nachhilfe-website",
+  sourcemaps: { disable: true },
+  // Kein Build-Metadaten-Versand des Sentry-Plugins an Sentry (öffentliche DE-Seite).
+  telemetry: false,
+});
