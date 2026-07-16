@@ -102,38 +102,16 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="5. KI-Chatbot (Anthropic)">
+            <Section title="5. KI-Lernhilfe „Lexi“">
               <p>
-                Auf unserer Website bieten wir einen KI-Chatbot zur Beantwortung von Fragen an. Ihre Eingaben im
-                Chat werden zur Generierung der Antworten an die Anthropic API (Anthropic PBC, San Francisco, USA)
-                übermittelt und dort verarbeitet. Es handelt sich um einen Drittlandtransfer in die USA, der auf
-                Grundlage von Standardvertragsklauseln (Standard Contractual Clauses, SCC) erfolgt.
-              </p>
-              <p>
-                Bitte geben Sie im Chat keine besonderen Kategorien personenbezogener Daten (z.&nbsp;B.
-                Gesundheitsdaten) oder sonstige sensible Informationen ein.
-              </p>
-              <p>
-                Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer effizienten
-                Beantwortung von Anfragen) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+                Unsere KI-Lernhilfe „Lexi“ ist eine eigenständige Anwendung unter der Adresse
+                lexi.nachhilfe-aber-richtig.de. Auf dieser Website werden keine Chat-Eingaben
+                entgegengenommen, verarbeitet oder an Dritte übermittelt — wir verlinken lediglich dorthin.
+                Welche Daten Lexi selbst verarbeitet, richtet sich nach den dort veröffentlichten Angaben.
               </p>
             </Section>
 
-            <Section title="6. Missbrauchsschutz (Upstash)">
-              <p>
-                Zur Absicherung des Chatbots gegen Missbrauch und zur Durchsetzung von Anfrage-Limits (Rate
-                Limiting) speichern wir pseudonymisierte, mittels SHA-256 gehashte IP-Adressen. Die Speicherung
-                erfolgt bei Upstash Inc. (USA) für eine Dauer von 90&nbsp;Tagen. Aus den gespeicherten Hashwerten
-                lassen sich die ursprünglichen IP-Adressen nicht ohne Weiteres rekonstruieren.
-              </p>
-              <p>
-                Es handelt sich um einen Drittlandtransfer in die USA, der auf Grundlage von
-                Standardvertragsklauseln (SCC) erfolgt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
-                (berechtigtes Interesse an der Sicherheit und Verfügbarkeit unserer Dienste).
-              </p>
-            </Section>
-
-            <Section title="7. Hosting">
+            <Section title="6. Hosting">
               <p>
                 Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA gehostet.
                 Beim Aufruf der Website werden automatisch Server-Logfiles (IP-Adresse, Browsertyp, Referrer,
@@ -142,7 +120,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="8. Cookies">
+            <Section title="7. Cookies">
               <p>
                 Diese Website setzt keine Tracking- oder Marketing-Cookies ein. Es werden ausschließlich
                 technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
@@ -151,7 +129,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="9. Ihre Rechte">
+            <Section title="8. Ihre Rechte">
               <p>Sie haben jederzeit das Recht auf:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -172,9 +150,9 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="10. Aktualität">
+            <Section title="9. Aktualität">
               <p>
-                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juni 2026. Durch die
+                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juli 2026. Durch die
                 Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es
                 notwendig werden, diese Datenschutzerklärung zu ändern.
               </p>

@@ -15,9 +15,12 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 - **Framework:** Next.js (App Router)
 - **Styling:** Tailwind CSS
 - **Sprache:** TypeScript
-- **KI-Chatbot:** Claude API (Anthropic) via Next.js API Route
 - **Deployment:** Vercel (Standard für Next.js)
-- **Schriften:** BioRhyme (Headings), Cabin (Body) — via Google Fonts
+- **Schriften:** BioRhyme (Headings), Cabin (Body) — **self-hosted via `next/font`**
+  (Build-Time-Download, kein Runtime-Request an Google; Commit 6194b9d schloss das
+  Google-Fonts-Abmahnrisiko, §10a.3)
+- **Keine API-Routes mehr:** seit 2026-07-16 ist die Seite rein statisch (Rückbau des
+  Chat-Clusters, siehe §5)
 
 ---
 
@@ -56,14 +59,24 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 ---
 
-## 5. KI-Chatbot Feature
+## 5. KI-Lernhilfe „Lexi" — eigene App, NICHT hier
 
-- Floating Chat-Widget (rechts unten)
-- Backend: `/api/chat` Route → Claude API
-- System-Prompt enthält alle Business-Infos (Fächer, Preise, Ablauf, Kontakt)
-- Der Bot beantwortet Fragen zu Nachhilfeangebot, Buchung, Preisen etc.
-- Nutze `claude-haiku-4-5-20251001` für schnelle, günstige Antworten
-- ANTHROPIC_API_KEY via `.env.local`
+**Der On-Site-Chatbot ist am 2026-07-16 zurückgebaut worden.** Lexi lebt als eigenständige
+Anwendung auf `lexi.nachhilfe-aber-richtig.de`. Diese Website verlinkt nur dorthin
+(`src/components/ChatWidget.tsx`, gemountet auf `/lexi`).
+
+Entfernt wurden: `/api/chat`, `/api/reviews` (toter Zwilling — Reviews werden aus
+`ALL_REVIEWS` statisch gerendert), `/api/admin/stats`, `src/lib/track.ts`,
+`CHATBOT_SYSTEM_PROMPT` sowie die Dependencies `@anthropic-ai/sdk` und `@upstash/redis`.
+
+**Warum:** kein einziger Frontend-Aufrufer existierte mehr, aber der Claude-Proxy war
+öffentlich erreichbar. Der ANTHROPIC_API_KEY war in Vercel nie gesetzt (live gemessen:
+HTTP 500) — hätte ihn jemand „repariert", wäre es ein anonym nutzbarer Token-Burner
+gewesen, dessen In-Memory-Rate-Limit auf Serverless ohnehin pro Instanz gilt und durch
+paralleles Fan-out umgangen wird.
+
+**Wenn der Chatbot je zurück auf diese Seite soll:** nicht die alten Routen wiederbeleben.
+Persistentes Rate-Limit (Upstash) ist dann Pflicht, nicht optional.
 
 ---
 
@@ -96,16 +109,25 @@ Inhalt und Struktur basieren auf der bestehenden Seite (nachhilfe-aber-richtig.d
 
 ---
 
-## 7. Aktueller Projektstand
+## 7. Aktueller Projektstand (Stand 2026-07-16)
+
+Die Seite ist **live** unter https://nachhilfe-aber-richtig.de.
+
 - [x] Next.js Grundstruktur (App Router, TypeScript, Tailwind)
 - [x] Komponenten: Navbar, Hero, USPs, Footer, Contact
-- [x] KI-Chatbot (Floating Widget + `/api/chat`)
 - [x] Logo freigestellt (`/public/logo.png`)
-- [ ] Testimonials Sektion
-- [ ] Unterseiten: `/leistungen`, `/ueber-uns`, `/impressum`, `/datenschutz`
-- [ ] `.env.local` mit echtem `ANTHROPIC_API_KEY` befüllen
-- [ ] Vercel Deployment
-- [ ] Domain nachhilfe-aber-richtig.de verknüpfen
+- [x] Vercel Deployment + Domain verknüpft
+- [x] `/impressum` + `/datenschutz` (§5 DDG, §18 MStV, DSGVO — Legal-Update TMG→DDG 13.07.)
+- [x] Fonts self-hosted, Security-Header, WCAG-Kontraste
+- [x] CI (`.github/workflows/ci.yml`): `npm ci` + `next build` (baut UND typecheckt strict)
+- [x] Chat-Cluster zurückgebaut (§5) — Seite ist rein statisch
+- [ ] Unterseiten `/leistungen`, `/ueber-uns` — in §4 beschrieben, nie gebaut.
+      **Produkt-Entscheid offen:** bauen oder aus §4 streichen
+- [ ] Social-Links sind Platzhalter (`data.ts`: generisches facebook.com/instagram.com)
+- [ ] `npm run lint` ist tot: `next lint` gibt es in Next 16 nicht mehr, `eslint-config-next`
+      steht auf 15.2.4, es existiert keine ESLint-Config. Entweder Flat-Config nachziehen
+      oder das Script entfernen
+- [ ] **Keine Tests.** Für eine statische Marketing-Site vertretbar — der Build ist das Gate
 
 ---
 
