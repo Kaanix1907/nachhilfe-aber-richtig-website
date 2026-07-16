@@ -20,6 +20,12 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
-      # next build baut UND typecheckt (strict). Kein `next lint` (in Next 16 entfernt), keine Tests vorhanden.
+      # next build baut UND typecheckt (strict). Kein `next lint` (in Next 16 entfernt).
       - name: Build
         run: npm run build
+
+      # Der Build prüft Typen, aber keine Ziele: ein Link auf einen fremden Pfad, den es
+      # nicht gibt, ist für TypeScript ein gültiger String. Genau so zeigte der Lexi-CTA
+      # (inkl. JSON-LD an Google) auf einen 404. Dependency-frei, kein Netz-Request.
+      - name: Lexi-Links
+        run: node tools/check-lexi-links.mjs
