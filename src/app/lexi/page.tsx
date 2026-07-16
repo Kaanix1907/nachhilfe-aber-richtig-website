@@ -4,7 +4,10 @@ import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import FadeIn from "@/components/FadeIn";
 
-const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/chat";
+// Wurzel, nicht /chat: den Pfad gibt es in der Lexi-App nicht (gemessen: HTTP 404).
+// Die Konstante speist beide CTAs UND das SoftwareApplication-JSON-LD — ein falscher
+// Wert meldet Google eine tote URL als kanonische Adresse der App.
+const LEXI_URL = "https://lexi.nachhilfe-aber-richtig.de/";
 const PAGE_URL = "https://nachhilfe-aber-richtig.de/lexi";
 
 export const metadata: Metadata = {
