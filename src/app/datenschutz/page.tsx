@@ -118,6 +118,19 @@ export default function Datenschutz() {
                 Datum/Uhrzeit) erfasst. Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und
                 nach spätestens 30 Tagen gelöscht.
               </p>
+              <p>
+                Vercel verarbeitet diese Daten in unserem Auftrag. Wir haben mit Vercel einen Vertrag zur
+                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Vercel Inc. ihren Sitz in den USA
+                hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC) der
+                EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
+                (berechtigtes Interesse an einem sicheren und leistungsfähigen Betrieb dieser Website).
+              </p>
+              <p>
+                Datenschutzerklärung von Vercel:{" "}
+                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  vercel.com/legal/privacy-policy
+                </a>
+              </p>
             </Section>
 
             <Section title="7. Cookies">
