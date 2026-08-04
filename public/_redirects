@@ -1,0 +1,7 @@
+# Cloudflare Pages liest diese Datei beim Ausliefern.
+#
+# /lexi stand bis 2026-08-04 in der Sitemap und ist bei Google indexiert.
+# Die Seite ist mit der Abschaltung von Lexi entfallen — ohne diese Regel
+# liefe jeder Treffer aus dem Suchindex in einen 404.
+/lexi / 301
+/lexi/* / 301

@@ -102,16 +102,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="5. KI-Lernhilfe „Lexi“">
-              <p>
-                Unsere KI-Lernhilfe „Lexi“ ist eine eigenständige Anwendung unter der Adresse
-                lexi.nachhilfe-aber-richtig.de. Auf dieser Website werden keine Chat-Eingaben
-                entgegengenommen, verarbeitet oder an Dritte übermittelt — wir verlinken lediglich dorthin.
-                Welche Daten Lexi selbst verarbeitet, richtet sich nach den dort veröffentlichten Angaben.
-              </p>
-            </Section>
-
-            <Section title="6. Hosting">
+            <Section title="5. Hosting">
               <p>
                 Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
                 gehostet (Dienst „Cloudflare Pages"). Beim Aufruf der Website werden automatisch
@@ -133,7 +124,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="7. Cookies">
+            <Section title="6. Cookies">
               <p>
                 Diese Website setzt keine Tracking- oder Marketing-Cookies ein. Es werden ausschließlich
                 technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
@@ -142,7 +133,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="8. Ihre Rechte">
+            <Section title="7. Ihre Rechte">
               <p>Sie haben jederzeit das Recht auf:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -163,7 +154,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="9. Aktualität">
+            <Section title="8. Aktualität">
               <p>
                 Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juli 2026. Durch die
                 Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es

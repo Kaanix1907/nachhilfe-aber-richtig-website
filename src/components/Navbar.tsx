@@ -5,10 +5,9 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { BUSINESS } from "@/lib/data";
 
-const navLinks = [
+const navLinks: { href: string; label: string; badge?: string }[] = [
   { href: "#hero", label: "Startseite" },
   { href: "#leistungen", label: "Leistungen" },
-  { href: "/lexi", label: "Lexi KI", badge: "NEU" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

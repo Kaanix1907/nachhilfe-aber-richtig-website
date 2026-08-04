@@ -1,6 +1,5 @@
 import { BUSINESS, ALL_REVIEWS } from "@/lib/data";
 import {
-  LexiBadge,
   GefoerdertDurchRow,
   MobileReviewsScroll,
   DesktopReviewsScroll,
@@ -28,8 +27,6 @@ export default function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-20 grid md:grid-cols-2 gap-6 md:gap-16 items-center w-full">
 
         <div className="flex flex-col min-w-0">
-          <LexiBadge />
-
           <h1 className="font-heading text-[2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-3 md:mb-6 break-words"
             style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }}>
             {BUSINESS.name}
