@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
+import { SeoBlock, SchrittListe, PillenReihe, WeiterLink } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
 import type { FaqItem } from "@/lib/faq";
@@ -158,6 +158,134 @@ const ABLAUF = [
   },
 ];
 
+function WasAndersIst() {
+  return (
+    <SeoBlock kicker="Worum es geht" title="Was bei den Zentralen Prüfungen anders ist">
+      <p>
+        Bei einer normalen Klassenarbeit stellt die eigene Lehrkraft die Aufgaben. Sie
+        weiß, was im Unterricht behandelt wurde, und fragt genau das ab. Bei den{" "}
+        <strong className="text-dark font-semibold">Zentralen Prüfungen</strong> kommen die
+        Aufgaben landesweit einheitlich vom Schulministerium.
+      </p>
+      <p>
+        Das ist der ganze Unterschied, und er ist größer als er klingt: Es reicht nicht,
+        den Stoff der letzten Wochen zu können. Gefragt ist der Stoff mehrerer Schuljahre,
+        in Aufgabenformaten, die im Unterricht nicht unbedingt vorkamen.
+      </p>
+      <p>
+        Deshalb ist ZAP-Vorbereitung etwas anderes als Nachhilfe für die nächste Arbeit.
+        Sie braucht einen Plan über Monate, nicht über Tage.
+      </p>
+    </SeoBlock>
+  );
+}
+
+// Eigener Abschnitt statt SeoBlock: die Fachkarten stehen direkt unter der
+// Ueberschrift, deshalb mb-6 und kein Textcontainer.
+function DreiFaecher() {
+  return (
+    <SeoBlock kicker="Die drei Fächer" title="Worauf es je Fach ankommt" roh titelAbstand="weit">
+      <div className="grid gap-4">
+        {PRUEFUNGSFAECHER.map((p) => (
+          <div
+            key={p.slug}
+            className="rounded-2xl p-6 bg-white"
+            style={{
+              border: "1px solid rgba(26,26,46,0.07)",
+              boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
+            }}
+          >
+            <h3 className="font-heading font-bold text-dark text-[1.05rem] mb-2.5" style={{ letterSpacing: "-0.01em" }}>
+              {p.fach}
+            </h3>
+            <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
+            <WeiterLink href={`/nachhilfe/${p.slug}`} groesse="0.92rem">
+              Zur {p.fach}-Nachhilfe
+            </WeiterLink>
+          </div>
+        ))}
+      </div>
+    </SeoBlock>
+  );
+}
+
+function WieWirVorbereiten() {
+  return (
+    <SeoBlock kicker="Ablauf" title="Wie wir vorbereiten" roh titelAbstand="weit">
+      <SchrittListe schritte={ABLAUF} />
+    </SeoBlock>
+  );
+}
+
+function Material() {
+  return (
+    <SeoBlock kicker="Material" title="Eigene Aufgabenhefte statt loser Kopien">
+      <p>
+        Wir haben die Prüfungsaufgaben vergangener Jahrgänge zu eigenen Aufgaben- und
+        Lösungsheften zusammengestellt und dabei{" "}
+        <strong className="text-dark font-semibold">nach Themengebiet sortiert statt nach Prüfungsjahr</strong>.
+      </p>
+      <p>
+        Das klingt nach einer Kleinigkeit und ist im Training der entscheidende
+        Unterschied: Wer bei quadratischen Funktionen unsicher ist, übt zwanzig Aufgaben
+        zu quadratischen Funktionen am Stück — statt sie über acht Prüfungsjahrgänge
+        zusammenzusuchen und dazwischen Themen zu rechnen, die längst sitzen.
+      </p>
+    </SeoBlock>
+  );
+}
+
+function Foerderung() {
+  return (
+    <SeoBlock kicker="Förderung" title="Prüfungsvorbereitung über Bildung und Teilhabe">
+      <p>
+        Auch die Vorbereitung auf die Zentralen Prüfungen kann als außerschulische
+        Lernförderung über das Bildungspaket laufen, wenn die Schule Förderbedarf im
+        jeweiligen Fach bestätigt. Wir rechnen direkt mit dem Jobcenter Duisburg
+        beziehungsweise der Stadt Duisburg ab.
+      </p>
+      <WeiterLink href="/bildung-und-teilhabe">So läuft der Antrag auf Lernförderung</WeiterLink>
+    </SeoBlock>
+  );
+}
+
+function WeitereFaecher() {
+  return (
+    <SeoBlock kicker="Weitere Fächer" title="Nachhilfe über die Prüfungsfächer hinaus" roh>
+      <PillenReihe eintraege={FAECHER.map((f) => ({ href: `/nachhilfe/${f.slug}`, label: f.name }))} />
+    </SeoBlock>
+  );
+}
+
+function Abschluss() {
+  return (
+    <FadeIn direction="up">
+      <div
+        className="rounded-3xl p-8 md:p-10 text-center"
+        style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
+      >
+        <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
+          Mit einer Standortbestimmung anfangen
+        </h2>
+        <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
+          Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht
+          und wie viel Zeit noch nötig ist.
+        </p>
+        <a
+          href="/#kontakt"
+          className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+          style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+        >
+          Termin vereinbaren
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </FadeIn>
+  );
+}
+
 export default function ZapVorbereitung() {
   return (
     <>
@@ -175,193 +303,13 @@ export default function ZapVorbereitung() {
 
         <section className="bg-white py-20 md:py-24">
           <div className="max-w-3xl mx-auto px-4">
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Worum es geht
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Was bei den Zentralen Prüfungen anders ist
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Bei einer normalen Klassenarbeit stellt die eigene Lehrkraft die Aufgaben. Sie
-                  weiß, was im Unterricht behandelt wurde, und fragt genau das ab. Bei den{" "}
-                  <strong className="text-dark font-semibold">Zentralen Prüfungen</strong> kommen die
-                  Aufgaben landesweit einheitlich vom Schulministerium.
-                </p>
-                <p>
-                  Das ist der ganze Unterschied, und er ist größer als er klingt: Es reicht nicht,
-                  den Stoff der letzten Wochen zu können. Gefragt ist der Stoff mehrerer Schuljahre,
-                  in Aufgabenformaten, die im Unterricht nicht unbedingt vorkamen.
-                </p>
-                <p>
-                  Deshalb ist ZAP-Vorbereitung etwas anderes als Nachhilfe für die nächste Arbeit.
-                  Sie braucht einen Plan über Monate, nicht über Tage.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Die drei Fächer
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-6" style={{ letterSpacing: "-0.025em" }}>
-                Worauf es je Fach ankommt
-              </h2>
-              <div className="grid gap-4">
-                {PRUEFUNGSFAECHER.map((p) => (
-                  <div
-                    key={p.slug}
-                    className="rounded-2xl p-6 bg-white"
-                    style={{
-                      border: "1px solid rgba(26,26,46,0.07)",
-                      boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
-                    }}
-                  >
-                    <h3 className="font-heading font-bold text-dark text-[1.05rem] mb-2.5" style={{ letterSpacing: "-0.01em" }}>
-                      {p.fach}
-                    </h3>
-                    <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
-                    <Link
-                      href={`/nachhilfe/${p.slug}`}
-                      className="inline-flex items-center gap-2 font-body font-semibold text-primary-deep text-[0.92rem] hover:gap-3 transition-[gap] duration-200"
-                    >
-                      Zur {p.fach}-Nachhilfe
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Ablauf
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-6" style={{ letterSpacing: "-0.025em" }}>
-                Wie wir vorbereiten
-              </h2>
-              <ol className="space-y-4">
-                {ABLAUF.map((s, i) => (
-                  <li
-                    key={s.titel}
-                    className="flex items-start gap-4 rounded-2xl p-5 md:p-6 bg-white"
-                    style={{
-                      border: "1px solid rgba(26,26,46,0.07)",
-                      boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
-                    }}
-                  >
-                    <span
-                      className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-heading font-extrabold text-sm text-white"
-                      style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}
-                    >
-                      {i + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-heading font-bold text-dark text-[1.02rem] mb-1.5" style={{ letterSpacing: "-0.01em" }}>
-                        {s.titel}
-                      </h3>
-                      <p className="font-body text-muted/70 leading-[1.75] text-[0.94rem]">{s.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Material
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Eigene Aufgabenhefte statt loser Kopien
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Wir haben die Prüfungsaufgaben vergangener Jahrgänge zu eigenen Aufgaben- und
-                  Lösungsheften zusammengestellt und dabei{" "}
-                  <strong className="text-dark font-semibold">nach Themengebiet sortiert statt nach Prüfungsjahr</strong>.
-                </p>
-                <p>
-                  Das klingt nach einer Kleinigkeit und ist im Training der entscheidende
-                  Unterschied: Wer bei quadratischen Funktionen unsicher ist, übt zwanzig Aufgaben
-                  zu quadratischen Funktionen am Stück — statt sie über acht Prüfungsjahrgänge
-                  zusammenzusuchen und dazwischen Themen zu rechnen, die längst sitzen.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Förderung
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Prüfungsvorbereitung über Bildung und Teilhabe
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Auch die Vorbereitung auf die Zentralen Prüfungen kann als außerschulische
-                  Lernförderung über das Bildungspaket laufen, wenn die Schule Förderbedarf im
-                  jeweiligen Fach bestätigt. Wir rechnen direkt mit dem Jobcenter Duisburg
-                  beziehungsweise der Stadt Duisburg ab.
-                </p>
-                <Link
-                  href="/bildung-und-teilhabe"
-                  className="inline-flex items-center gap-2 font-body font-semibold text-primary-deep text-[0.97rem] hover:gap-3 transition-[gap] duration-200"
-                >
-                  So läuft der Antrag auf Lernförderung
-                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Weitere Fächer
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Nachhilfe über die Prüfungsfächer hinaus
-              </h2>
-              <div className="flex flex-wrap gap-2.5">
-                {FAECHER.map((f) => (
-                  <Link
-                    key={f.slug}
-                    href={`/nachhilfe/${f.slug}`}
-                    className="inline-flex items-center font-body font-semibold text-[0.9rem] text-dark px-5 py-2.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-                  >
-                    {f.name}
-                  </Link>
-                ))}
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="up">
-              <div
-                className="rounded-3xl p-8 md:p-10 text-center"
-                style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
-              >
-                <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
-                  Mit einer Standortbestimmung anfangen
-                </h2>
-                <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
-                  Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht
-                  und wie viel Zeit noch nötig ist.
-                </p>
-                <Link
-                  href="/#kontakt"
-                  className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-                  style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
-                >
-                  Termin vereinbaren
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
-              </div>
-            </FadeIn>
+            <WasAndersIst />
+            <DreiFaecher />
+            <WieWirVorbereiten />
+            <Material />
+            <Foerderung />
+            <WeitereFaecher />
+            <Abschluss />
           </div>
         </section>
 

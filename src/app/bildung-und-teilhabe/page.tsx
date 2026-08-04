@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
+import { SeoBlock, SchrittListe, PillenReihe } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER, ORTE } from "@/lib/seo-pages";
 import type { FaqItem } from "@/lib/faq";
@@ -107,6 +108,141 @@ const SCHRITTE = [
   },
 ];
 
+const ANSPRUCHSGRUENDE = [
+  "Bürgergeld (früher Arbeitslosengeld II)",
+  "Sozialhilfe nach dem SGB XII",
+  "Wohngeld",
+  "Kinderzuschlag",
+  "Leistungen nach dem Asylbewerberleistungsgesetz",
+];
+
+function Ueberblick() {
+  return (
+    <SeoBlock kicker="Worum es geht" title="Was Bildung und Teilhabe für Nachhilfe bedeutet">
+      <p>
+        Das Bildungspaket des Bundes umfasst mehrere Leistungen für Kinder aus Familien
+        mit geringem Einkommen. Eine davon heißt im Amtsdeutsch{" "}
+        <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>{" "}
+        — gemeint ist Nachhilfe.
+      </p>
+      <p>
+        Diese Leistung wird nicht ausgezahlt, sondern direkt mit dem Anbieter abgerechnet.
+        Deshalb ist es wichtig, dass die Nachhilfe bei einer Stelle stattfindet, die mit
+        dem Amt abrechnen kann. Wir tun das seit Jahren — sowohl mit dem Jobcenter
+        Duisburg als auch mit der Stadt Duisburg.
+      </p>
+      <p>Für die Familie heißt das: kein Vorstrecken, keine Rechnung, keine Zuzahlung.</p>
+    </SeoBlock>
+  );
+}
+
+function Anspruch() {
+  return (
+    <SeoBlock kicker="Anspruch" title="Wer Anspruch auf Lernförderung hat">
+      <p>Anspruch besteht, wenn die Familie eine dieser Leistungen bezieht:</p>
+      <ul className="space-y-2.5">
+        {ANSPRUCHSGRUENDE.map((l) => (
+          <li key={l} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>{l}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Dazu muss die Schule bestätigen, dass Ihr Kind Förderbedarf hat. Ein drohendes
+        Sitzenbleiben ist dafür nicht mehr nötig — es genügt, dass wesentliche Lernziele
+        gefährdet sind.
+      </p>
+    </SeoBlock>
+  );
+}
+
+function Ablauf() {
+  return (
+    <SeoBlock kicker="Ablauf" title="Der Antrag in fünf Schritten" roh titelAbstand="weit">
+      <SchrittListe schritte={SCHRITTE} />
+    </SeoBlock>
+  );
+}
+
+function Zustaendigkeit() {
+  const kasten = {
+    border: "1px solid rgba(26,26,46,0.07)",
+    boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
+  };
+  return (
+    <SeoBlock kicker="Zuständigkeit" title="Jobcenter Duisburg oder Stadt Duisburg?">
+      <p>Welche Stelle zuständig ist, hängt allein davon ab, welche Leistung Sie beziehen:</p>
+      <div className="grid sm:grid-cols-2 gap-4 pt-1">
+        <div className="rounded-2xl p-6" style={kasten}>
+          <h3 className="font-heading font-bold text-dark text-base mb-2">Jobcenter Duisburg</h3>
+          <p className="text-[0.93rem]">
+            Bei Bezug von Bürgergeld. Ihre Teamnummer steht oben rechts auf dem Bewilligungsbescheid.
+          </p>
+        </div>
+        <div className="rounded-2xl p-6" style={kasten}>
+          <h3 className="font-heading font-bold text-dark text-base mb-2">Stadt Duisburg</h3>
+          <p className="text-[0.93rem]">
+            Bei Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem Asylbewerberleistungsgesetz.
+          </p>
+        </div>
+      </div>
+      <p>
+        Wenn Sie nicht sicher sind, bringen Sie den Bescheid einfach mit. Wir sehen in
+        zwei Minuten nach, wohin der Antrag muss.
+      </p>
+    </SeoBlock>
+  );
+}
+
+function FaecherUndOrte() {
+  return (
+    <SeoBlock kicker="Fächer und Orte" title="Wofür die Förderung bei uns gilt">
+      <p>Gefördert werden die Fächer, für die die Schule Bedarf bestätigt. Bei uns unterrichtet werden:</p>
+      <PillenReihe eintraege={FAECHER.map((f) => ({ href: `/nachhilfe/${f.slug}`, label: f.name }))} />
+      <p className="pt-2">Unser Einzugsgebiet:</p>
+      <PillenReihe eintraege={ORTE.map((o) => ({ href: `/nachhilfe/${o.slug}`, label: o.name }))} />
+    </SeoBlock>
+  );
+}
+
+// Eigener Abschluss statt AbschlussKarte: hier stehen zwei Knoepfe
+// nebeneinander, Telefon und Nachricht.
+function Abschluss() {
+  return (
+    <FadeIn direction="up">
+      <div
+        className="rounded-3xl p-8 md:p-10 text-center"
+        style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
+      >
+        <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
+          Wir helfen beim Antrag
+        </h2>
+        <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
+          Bringen Sie den Bescheid mit, den Rest sortieren wir gemeinsam. Die Probestunde
+          ist kostenlos — auch bevor der Antrag durch ist.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href={`tel:${BUSINESS.phone}`}
+            className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+            style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+          >
+            {BUSINESS.phoneDisplay}
+          </a>
+          <Link
+            href="/#kontakt"
+            className="inline-flex items-center justify-center font-body font-semibold text-sm md:text-base px-8 py-4 rounded-full text-white transition-[transform,border-color] duration-200 hover:-translate-y-0.5"
+            style={{ background: "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.28)" }}
+          >
+            Nachricht schreiben
+          </Link>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+
 export default function BildungUndTeilhabe() {
   return (
     <>
@@ -123,205 +259,12 @@ export default function BildungUndTeilhabe() {
 
         <section className="bg-white py-20 md:py-24">
           <div className="max-w-3xl mx-auto px-4">
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Worum es geht
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Was Bildung und Teilhabe für Nachhilfe bedeutet
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Das Bildungspaket des Bundes umfasst mehrere Leistungen für Kinder aus Familien
-                  mit geringem Einkommen. Eine davon heißt im Amtsdeutsch{" "}
-                  <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>{" "}
-                  — gemeint ist Nachhilfe.
-                </p>
-                <p>
-                  Diese Leistung wird nicht ausgezahlt, sondern direkt mit dem Anbieter abgerechnet.
-                  Deshalb ist es wichtig, dass die Nachhilfe bei einer Stelle stattfindet, die mit
-                  dem Amt abrechnen kann. Wir tun das seit Jahren — sowohl mit dem Jobcenter
-                  Duisburg als auch mit der Stadt Duisburg.
-                </p>
-                <p>
-                  Für die Familie heißt das: kein Vorstrecken, keine Rechnung, keine Zuzahlung.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Anspruch
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Wer Anspruch auf Lernförderung hat
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>Anspruch besteht, wenn die Familie eine dieser Leistungen bezieht:</p>
-                <ul className="space-y-2.5">
-                  {[
-                    "Bürgergeld (früher Arbeitslosengeld II)",
-                    "Sozialhilfe nach dem SGB XII",
-                    "Wohngeld",
-                    "Kinderzuschlag",
-                    "Leistungen nach dem Asylbewerberleistungsgesetz",
-                  ].map((l) => (
-                    <li key={l} className="flex items-start gap-3">
-                      <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
-                      <span>{l}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p>
-                  Dazu muss die Schule bestätigen, dass Ihr Kind Förderbedarf hat. Ein drohendes
-                  Sitzenbleiben ist dafür nicht mehr nötig — es genügt, dass wesentliche Lernziele
-                  gefährdet sind.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Ablauf
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-6" style={{ letterSpacing: "-0.025em" }}>
-                Der Antrag in fünf Schritten
-              </h2>
-              <ol className="space-y-4">
-                {SCHRITTE.map((s, i) => (
-                  <li
-                    key={s.titel}
-                    className="flex items-start gap-4 rounded-2xl p-5 md:p-6 bg-white"
-                    style={{
-                      border: "1px solid rgba(26,26,46,0.07)",
-                      boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
-                    }}
-                  >
-                    <span
-                      className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-heading font-extrabold text-sm text-white"
-                      style={{ background: "linear-gradient(135deg,#25abd6,#655c9e)" }}
-                    >
-                      {i + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-heading font-bold text-dark text-[1.02rem] mb-1.5" style={{ letterSpacing: "-0.01em" }}>
-                        {s.titel}
-                      </h3>
-                      <p className="font-body text-muted/70 leading-[1.75] text-[0.94rem]">{s.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Zuständigkeit
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Jobcenter Duisburg oder Stadt Duisburg?
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Welche Stelle zuständig ist, hängt allein davon ab, welche Leistung Sie beziehen:
-                </p>
-                <div className="grid sm:grid-cols-2 gap-4 pt-1">
-                  <div
-                    className="rounded-2xl p-6"
-                    style={{
-                      border: "1px solid rgba(26,26,46,0.07)",
-                      boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
-                    }}
-                  >
-                    <h3 className="font-heading font-bold text-dark text-base mb-2">Jobcenter Duisburg</h3>
-                    <p className="text-[0.93rem]">Bei Bezug von Bürgergeld. Ihre Teamnummer steht oben rechts auf dem Bewilligungsbescheid.</p>
-                  </div>
-                  <div
-                    className="rounded-2xl p-6"
-                    style={{
-                      border: "1px solid rgba(26,26,46,0.07)",
-                      boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)",
-                    }}
-                  >
-                    <h3 className="font-heading font-bold text-dark text-base mb-2">Stadt Duisburg</h3>
-                    <p className="text-[0.93rem]">Bei Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem Asylbewerberleistungsgesetz.</p>
-                  </div>
-                </div>
-                <p>
-                  Wenn Sie nicht sicher sind, bringen Sie den Bescheid einfach mit. Wir sehen in
-                  zwei Minuten nach, wohin der Antrag muss.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn className="mb-14" direction="up">
-              <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase border border-primary/12">
-                Fächer und Orte
-              </span>
-              <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.025em" }}>
-                Wofür die Förderung bei uns gilt
-              </h2>
-              <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">
-                <p>
-                  Gefördert werden die Fächer, für die die Schule Bedarf bestätigt. Bei uns
-                  unterrichtet werden:
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  {FAECHER.map((f) => (
-                    <Link
-                      key={f.slug}
-                      href={`/nachhilfe/${f.slug}`}
-                      className="inline-flex items-center font-body font-semibold text-[0.9rem] text-dark px-5 py-2.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-                    >
-                      {f.name}
-                    </Link>
-                  ))}
-                </div>
-                <p className="pt-2">Unser Einzugsgebiet:</p>
-                <div className="flex flex-wrap gap-2.5">
-                  {ORTE.map((o) => (
-                    <Link
-                      key={o.slug}
-                      href={`/nachhilfe/${o.slug}`}
-                      className="inline-flex items-center font-body font-semibold text-[0.9rem] text-dark px-5 py-2.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-                    >
-                      {o.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="up">
-              <div
-                className="rounded-3xl p-8 md:p-10 text-center"
-                style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
-              >
-                <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
-                  Wir helfen beim Antrag
-                </h2>
-                <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
-                  Bringen Sie den Bescheid mit, den Rest sortieren wir gemeinsam. Die Probestunde
-                  ist kostenlos — auch bevor der Antrag durch ist.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <a
-                    href={`tel:${BUSINESS.phone}`}
-                    className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-                    style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
-                  >
-                    {BUSINESS.phoneDisplay}
-                  </a>
-                  <Link
-                    href="/#kontakt"
-                    className="inline-flex items-center justify-center font-body font-semibold text-sm md:text-base px-8 py-4 rounded-full text-white transition-[transform,border-color] duration-200 hover:-translate-y-0.5"
-                    style={{ background: "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.28)" }}
-                  >
-                    Nachricht schreiben
-                  </Link>
-                </div>
-              </div>
-            </FadeIn>
+            <Ueberblick />
+            <Anspruch />
+            <Ablauf />
+            <Zustaendigkeit />
+            <FaecherUndOrte />
+            <Abschluss />
           </div>
         </section>
 

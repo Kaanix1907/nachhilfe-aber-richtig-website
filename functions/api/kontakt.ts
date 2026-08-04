@@ -30,6 +30,20 @@ type Ctx = {
   env: Env;
 };
 
+type Anfrage = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
+
+// "still" = wie Erfolg aussehen lassen, aber nichts verschicken. Gilt fuer
+// Bots; wer eine echte Fehlermeldung bekommt, variiert seinen Versuch.
+type Pruefung =
+  | { art: "still" }
+  | { art: "fehler"; text: string }
+  | { art: "ok"; anfrage: Anfrage };
+
 const ABSENDER = { name: "Website-Formular", email: "formular@nachhilfe-aber-richtig.de" };
 const EMPFAENGER = { email: "info@nachhilfe-aber-richtig.de" };
 
@@ -54,6 +68,94 @@ function istMail(v: string): boolean {
   return v.length > 4 && v.includes("@") && !v.includes(" ") && v.indexOf("@") < v.lastIndexOf(".");
 }
 
+function istBot(daten: Record<string, unknown>): boolean {
+  // Honigtopf: ein Feld, das im Formular per CSS versteckt ist. Menschen
+  // fuellen es nie aus, viele Bots schon.
+  if (sauber(daten.website, 50)) return true;
+  // Wer in unter drei Sekunden absendet, hat nicht getippt.
+  const gestartet = Number(daten.startedAt);
+  return Number.isFinite(gestartet) && Date.now() - gestartet < 3000;
+}
+
+function leseAnfrage(daten: Record<string, unknown>): Anfrage {
+  return {
+    name: sauber(daten.name, GRENZEN.name),
+    email: sauber(daten.email, GRENZEN.email),
+    phone: sauber(daten.phone, GRENZEN.phone),
+    message: sauber(daten.message, GRENZEN.message),
+  };
+}
+
+// Die Regeln stehen einzeln, damit die Pruefkette nicht zu einer Funktion mit
+// neun Verzweigungen anwaechst. Reihenfolge und Wortlaut der Meldungen sind
+// dieselben wie zuvor — sie entscheiden, was der Besucher zuerst liest.
+function fehlendePflichtangabe(a: Anfrage): string | null {
+  if (!a.name || !a.message) return "Bitte Name und Nachricht ausfüllen.";
+  return null;
+}
+
+function fehlendeZustimmung(daten: Record<string, unknown>): string | null {
+  return daten.consent === true ? null : "Bitte der Datenschutzerklärung zustimmen.";
+}
+
+// Ohne Rueckkanal ist die Anfrage wertlos: das alte Formular liess sich mit
+// Name und Nachricht allein abschicken, die Telefonnummer war freiwillig.
+function fehlenderRueckkanal(a: Anfrage): string | null {
+  if (!a.phone && !istMail(a.email)) {
+    return "Bitte Telefonnummer oder E-Mail angeben, sonst können wir nicht antworten.";
+  }
+  if (a.email && !istMail(a.email)) return "Die E-Mail-Adresse sieht nicht richtig aus.";
+  return null;
+}
+
+function pruefeEingaben(daten: Record<string, unknown>): Pruefung {
+  if (istBot(daten)) return { art: "still" };
+
+  const anfrage = leseAnfrage(daten);
+  const fehler =
+    fehlendePflichtangabe(anfrage) ?? fehlendeZustimmung(daten) ?? fehlenderRueckkanal(anfrage);
+
+  return fehler ? { art: "fehler", text: fehler } : { art: "ok", anfrage };
+}
+
+async function versende(a: Anfrage, apiKey: string): Promise<boolean> {
+  const text = [
+    `Name: ${a.name}`,
+    `Telefon: ${a.phone || "–"}`,
+    `E-Mail: ${a.email || "–"}`,
+    "",
+    "Nachricht:",
+    a.message,
+  ].join("\n");
+
+  try {
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": apiKey,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify({
+        sender: ABSENDER,
+        to: [EMPFAENGER],
+        subject: `Anfrage über die Website – ${a.name}`,
+        textContent: text,
+        // Antworten geht direkt an die Familie, sofern eine Adresse da ist.
+        ...(istMail(a.email) ? { replyTo: { email: a.email, name: a.name } } : {}),
+      }),
+    });
+    if (res.ok) return true;
+    // Statuscode protokollieren, aber keine Formularinhalte: im Log haben
+    // Namen, Nummern und Nachrichten von Familien nichts zu suchen.
+    console.error(`Brevo antwortete mit ${res.status}`);
+    return false;
+  } catch {
+    console.error("Brevo nicht erreichbar");
+    return false;
+  }
+}
+
 export async function onRequestPost(ctx: Ctx): Promise<Response> {
   let daten: Record<string, unknown>;
   try {
@@ -62,42 +164,9 @@ export async function onRequestPost(ctx: Ctx): Promise<Response> {
     return antwort(400, { ok: false, fehler: "Ungültige Anfrage." });
   }
 
-  // Honigtopf: ein Feld, das im Formular per CSS versteckt ist. Menschen
-  // fuellen es nie aus, viele Bots schon.
-  if (sauber(daten.website, 50)) {
-    // Fuer den Bot wie ein Erfolg aussehen lassen, damit er nicht variiert.
-    return antwort(200, { ok: true });
-  }
-
-  // Wer in unter drei Sekunden absendet, hat nicht getippt.
-  const gestartet = Number(daten.startedAt);
-  if (Number.isFinite(gestartet) && Date.now() - gestartet < 3000) {
-    return antwort(200, { ok: true });
-  }
-
-  const name = sauber(daten.name, GRENZEN.name);
-  const email = sauber(daten.email, GRENZEN.email);
-  const phone = sauber(daten.phone, GRENZEN.phone);
-  const message = sauber(daten.message, GRENZEN.message);
-  const consent = daten.consent === true;
-
-  if (!name || !message) {
-    return antwort(400, { ok: false, fehler: "Bitte Name und Nachricht ausfüllen." });
-  }
-  if (!consent) {
-    return antwort(400, { ok: false, fehler: "Bitte der Datenschutzerklärung zustimmen." });
-  }
-  // Ohne Rueckkanal ist die Anfrage wertlos: das alte Formular liess sich mit
-  // Name und Nachricht allein abschicken, die Telefonnummer war freiwillig.
-  if (!phone && !istMail(email)) {
-    return antwort(400, {
-      ok: false,
-      fehler: "Bitte Telefonnummer oder E-Mail angeben, sonst können wir nicht antworten.",
-    });
-  }
-  if (email && !istMail(email)) {
-    return antwort(400, { ok: false, fehler: "Die E-Mail-Adresse sieht nicht richtig aus." });
-  }
+  const pruefung = pruefeEingaben(daten);
+  if (pruefung.art === "still") return antwort(200, { ok: true });
+  if (pruefung.art === "fehler") return antwort(400, { ok: false, fehler: pruefung.text });
 
   if (!ctx.env.BREVO_API_KEY) {
     // Kein Schluessel hinterlegt: ehrlich scheitern statt Erfolg vorzugaukeln.
@@ -107,44 +176,7 @@ export async function onRequestPost(ctx: Ctx): Promise<Response> {
     });
   }
 
-  const text = [
-    `Name: ${name}`,
-    `Telefon: ${phone || "–"}`,
-    `E-Mail: ${email || "–"}`,
-    "",
-    "Nachricht:",
-    message,
-  ].join("\n");
-
-  try {
-    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "api-key": ctx.env.BREVO_API_KEY,
-        "content-type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        sender: ABSENDER,
-        to: [EMPFAENGER],
-        subject: `Anfrage über die Website – ${name}`,
-        textContent: text,
-        // Antworten geht direkt an die Familie, sofern eine Adresse da ist.
-        ...(istMail(email) ? { replyTo: { email, name } } : {}),
-      }),
-    });
-
-    if (!res.ok) {
-      // Statuscode protokollieren, aber keine Formularinhalte: im Log haben
-      // Namen, Nummern und Nachrichten von Familien nichts zu suchen.
-      console.error(`Brevo antwortete mit ${res.status}`);
-      return antwort(502, {
-        ok: false,
-        fehler: "Die Nachricht konnte nicht zugestellt werden. Bitte ruf uns kurz an.",
-      });
-    }
-  } catch {
-    console.error("Brevo nicht erreichbar");
+  if (!(await versende(pruefung.anfrage, ctx.env.BREVO_API_KEY))) {
     return antwort(502, {
       ok: false,
       fehler: "Die Nachricht konnte nicht zugestellt werden. Bitte ruf uns kurz an.",
