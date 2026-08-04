@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: nimmt das Kontaktformular entgegen und schickt
-// die Anfrage per Resend an das Postfach.
+// die Anfrage per Brevo an das Postfach.
 //
 // Warum es das gibt: Der Kontaktbereich war bis 2026-08-04 kein Formular,
 // sondern ein mailto-Absprung — und meldete bedingungslos Erfolg, auch wenn
@@ -7,15 +7,22 @@
 // Instagram/Facebook). Anfragen gingen still verloren, ohne dass eine der
 // beiden Seiten es merkte.
 //
+// Warum Brevo und nicht Resend: Resends kostenloser Tarif erlaubt genau eine
+// verifizierte Domain, und die ist mit klartext-digital.com belegt — eine
+// zweite kostet 20 USD im Monat. Brevo ist kostenlos (300 Mails taeglich,
+// eigene Absenderdomain inklusive) und sitzt in Frankreich. Der EU-Sitz ist
+// der eigentliche Gewinn: keine Drittlandsuebermittlung, damit entfaellt die
+// ganze Passage zu Standardvertragsklauseln in der Datenschutzerklaerung.
+//
 // Diese Datei liegt bewusst ausserhalb von src/ und ist in tsconfig.json
 // ausgeschlossen: Cloudflare uebersetzt sie selbst, `next build` soll sie
 // nicht anfassen.
 //
-// Secret: RESEND_API_KEY wird als Environment-Variable im Cloudflare-Pages-
+// Secret: BREVO_API_KEY wird als Environment-Variable im Cloudflare-Pages-
 // Projekt hinterlegt (Typ "Secret"), niemals im Repo.
 
 type Env = {
-  RESEND_API_KEY: string;
+  BREVO_API_KEY: string;
 };
 
 type Ctx = {
@@ -23,24 +30,8 @@ type Ctx = {
   env: Env;
 };
 
-// Absender laeuft ueber klartext-digital.com, nicht ueber die eigene Domain.
-// Zwei Gruende, beide zwingend:
-//
-// 1. Resends kostenloser Tarif erlaubt genau EINE verifizierte Domain, und die
-//    ist seit Mai mit klartext-digital.com belegt. Eine zweite kostet 20 USD
-//    im Monat — mehr als der gesamte IONOS-Vertrag, den wir gerade gekuendigt
-//    haben. Verifiziert sein muss nur der Absender; der Empfaenger darf jede
-//    beliebige Adresse sein.
-// 2. Damit bleibt der SPF-Eintrag von nachhilfe-aber-richtig.de
-//    ("v=spf1 include:_spf-eu.ionos.com ~all") voellig unberuehrt. Wer ihn
-//    fuer einen zweiten Versender aufbohrt, riskiert die gesamte
-//    Geschaeftspost im Spam.
-//
-// Die Familie sieht diese Adresse nie — sie fuellt ein Formular aus, die Mail
-// geht an uns. Nur im eigenen Posteingang steht ein fremder Absender.
-// Geantwortet wird ueber reply_to direkt an die Familie.
-const VON = "Nachhilfe Website <formular@klartext-digital.com>";
-const AN = "info@nachhilfe-aber-richtig.de";
+const ABSENDER = { name: "Website-Formular", email: "formular@nachhilfe-aber-richtig.de" };
+const EMPFAENGER = { email: "info@nachhilfe-aber-richtig.de" };
 
 const GRENZEN = { name: 100, email: 200, phone: 40, message: 5000 } as const;
 
@@ -108,7 +99,7 @@ export async function onRequestPost(ctx: Ctx): Promise<Response> {
     return antwort(400, { ok: false, fehler: "Die E-Mail-Adresse sieht nicht richtig aus." });
   }
 
-  if (!ctx.env.RESEND_API_KEY) {
+  if (!ctx.env.BREVO_API_KEY) {
     // Kein Schluessel hinterlegt: ehrlich scheitern statt Erfolg vorzugaukeln.
     return antwort(503, {
       ok: false,
@@ -126,33 +117,34 @@ export async function onRequestPost(ctx: Ctx): Promise<Response> {
   ].join("\n");
 
   try {
-    const res = await fetch("https://api.resend.com/emails", {
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
-        authorization: `Bearer ${ctx.env.RESEND_API_KEY}`,
+        "api-key": ctx.env.BREVO_API_KEY,
         "content-type": "application/json",
+        accept: "application/json",
       },
       body: JSON.stringify({
-        from: VON,
-        to: [AN],
+        sender: ABSENDER,
+        to: [EMPFAENGER],
         subject: `Anfrage über die Website – ${name}`,
-        text,
+        textContent: text,
         // Antworten geht direkt an die Familie, sofern eine Adresse da ist.
-        ...(istMail(email) ? { reply_to: email } : {}),
+        ...(istMail(email) ? { replyTo: { email, name } } : {}),
       }),
     });
 
     if (!res.ok) {
       // Statuscode protokollieren, aber keine Formularinhalte: im Log haben
       // Namen, Nummern und Nachrichten von Familien nichts zu suchen.
-      console.error(`Resend antwortete mit ${res.status}`);
+      console.error(`Brevo antwortete mit ${res.status}`);
       return antwort(502, {
         ok: false,
         fehler: "Die Nachricht konnte nicht zugestellt werden. Bitte ruf uns kurz an.",
       });
     }
   } catch {
-    console.error("Resend nicht erreichbar");
+    console.error("Brevo nicht erreichbar");
     return antwort(502, {
       ok: false,
       fehler: "Die Nachricht konnte nicht zugestellt werden. Bitte ruf uns kurz an.",

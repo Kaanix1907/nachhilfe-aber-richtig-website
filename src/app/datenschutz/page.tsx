@@ -133,21 +133,22 @@ export default function Datenschutz() {
             <Section title="6. E-Mail-Versand des Kontaktformulars">
               <p>
                 Für die Zustellung der über das Kontaktformular abgesendeten Anfragen an unser Postfach nutzen
-                wir den Versanddienst Resend, betrieben von der Resend, Inc., 2261 Market Street, San Francisco,
-                CA 94114, USA. Übermittelt werden ausschließlich die von Ihnen im Formular eingegebenen Angaben
-                (Name, Telefonnummer, E-Mail-Adresse, Nachricht).
+                wir den Versanddienst Brevo, betrieben von der Brevo GmbH, Köpenicker Straße 126,
+                10179 Berlin (Tochtergesellschaft der Sendinblue SAS, 17 rue de Salneuve, 75017 Paris,
+                Frankreich). Übermittelt werden ausschließlich die von Ihnen im Formular eingegebenen
+                Angaben (Name, Telefonnummer, E-Mail-Adresse, Nachricht).
               </p>
               <p>
-                Resend verarbeitet diese Daten in unserem Auftrag. Wir haben mit Resend einen Vertrag zur
-                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Resend, Inc. ihren Sitz in den USA
-                hat, ist die Datenübermittlung in ein Drittland über die Standardvertragsklauseln (SCC) der
-                EU-Kommission abgesichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung
-                beim Absenden des Formulars) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+                Brevo verarbeitet diese Daten in unserem Auftrag. Wir haben mit Brevo einen Vertrag zur
+                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Die Verarbeitung findet auf Servern
+                innerhalb der Europäischen Union statt; eine Übermittlung in ein Drittland ist damit nicht
+                verbunden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden
+                des Formulars) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
               </p>
               <p>
-                Datenschutzerklärung von Resend:{" "}
-                <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  resend.com/legal/privacy-policy
+                Datenschutzerklärung von Brevo:{" "}
+                <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  brevo.com/de/legal/privacypolicy
                 </a>
               </p>
               <p>
