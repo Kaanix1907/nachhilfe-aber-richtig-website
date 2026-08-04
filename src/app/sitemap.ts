@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/zap-vorbereitung`,
+      lastModified: stand,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     ...ORTE.map((o) => ({
       url: `${SITE_URL}/nachhilfe/${o.slug}`,
       lastModified: stand,

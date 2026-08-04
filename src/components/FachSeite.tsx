@@ -83,6 +83,28 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
               </div>
             </Block>
 
+            {/* Nur die drei Pruefungsfaecher der ZP10 verlinken auf die
+                ZAP-Seite — bei Physik oder Biologie waere der Hinweis falsch. */}
+            {["mathe", "deutsch", "englisch"].includes(fach.slug) && (
+              <Block kicker="Klasse 10" title={`${fach.name} in den Zentralen Prüfungen`}>
+                <p>
+                  {fach.name} ist eines der drei Fächer, in denen am Ende der Klasse 10 in
+                  Nordrhein-Westfalen zentral geprüft wird. Die Aufgaben kommen landesweit
+                  einheitlich vom Schulministerium, nicht von der eigenen Lehrkraft — geprüft wird
+                  der Stoff mehrerer Schuljahre.
+                </p>
+                <Link
+                  href="/zap-vorbereitung"
+                  className="inline-flex items-center gap-2 font-body font-semibold text-primary-deep text-[0.97rem] hover:gap-3 transition-[gap] duration-200"
+                >
+                  Zur ZAP-Vorbereitung
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </Block>
+            )}
+
             <Block kicker="Unser Ansatz" title={`Wie wir ${fach.name} unterrichten`}>
               <p>{fach.ansatz}</p>
               <p>
