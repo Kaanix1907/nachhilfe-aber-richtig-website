@@ -1,0 +1,33 @@
+# Cloudflare Pages liest diese Datei beim Ausliefern.
+# Ersetzt die fruehere headers()-Funktion aus next.config.ts, die mit
+# output: "export" nicht mehr erlaubt ist.
+#
+# Achtung: Hier gelten Glob-Muster, keine Regex-Gruppen — jede Endung
+# braucht ihre eigene Regel.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Public-Assets aendern sich praktisch nie — lange cachen.
+# HTML-Seiten bekommen bewusst KEIN no-store (bricht bfcache).
+
+/*.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/*.jpeg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/*.jpg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/*.webp
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/*.ico
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/*.svg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000

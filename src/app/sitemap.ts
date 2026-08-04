@@ -2,6 +2,11 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
 
+// Pflicht bei output: "export" — sonst bricht der Build ab.
+// lastModified friert damit auf den Build-Zeitpunkt ein, was fuer eine
+// statische Seite genau richtig ist.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
