@@ -65,7 +65,7 @@ export default function Datenschutz() {
               <p>
                 Wir erheben personenbezogene Daten nur, wenn Sie uns diese im Rahmen einer Kontaktaufnahme
                 (Kontaktformular, E-Mail, Telefon) freiwillig mitteilen. Dazu gehören insbesondere: Name,
-                Telefonnummer und Nachrichteninhalt.
+                Telefonnummer, E-Mail-Adresse und Nachrichteninhalt.
               </p>
               <p>
                 Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte
@@ -76,8 +76,12 @@ export default function Datenschutz() {
             <Section title="3. Kontaktformular">
               <p>
                 Wenn Sie uns über das Kontaktformular eine Anfrage senden, werden Ihre Angaben aus dem Formular
-                (Name, Telefon, Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen
-                gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                (Name, Telefonnummer, E-Mail-Adresse, Nachricht) zur Bearbeitung der Anfrage und für den Fall
+                von Anschlussfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+              </p>
+              <p>
+                Die Übermittlung an unser Postfach erfolgt über einen Dienstleister für den E-Mail-Versand;
+                Einzelheiten dazu finden Sie in Abschnitt 6.
               </p>
               <p>
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. b DSGVO
@@ -126,7 +130,34 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="6. Cookies">
+            <Section title="6. E-Mail-Versand des Kontaktformulars">
+              <p>
+                Für die Zustellung der über das Kontaktformular abgesendeten Anfragen an unser Postfach nutzen
+                wir den Versanddienst Resend, betrieben von der Resend, Inc., 2261 Market Street, San Francisco,
+                CA 94114, USA. Übermittelt werden ausschließlich die von Ihnen im Formular eingegebenen Angaben
+                (Name, Telefonnummer, E-Mail-Adresse, Nachricht).
+              </p>
+              <p>
+                Resend verarbeitet diese Daten in unserem Auftrag. Wir haben mit Resend einen Vertrag zur
+                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Resend, Inc. ihren Sitz in den USA
+                hat, ist die Datenübermittlung in ein Drittland über die Standardvertragsklauseln (SCC) der
+                EU-Kommission abgesichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung
+                beim Absenden des Formulars) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+              </p>
+              <p>
+                Datenschutzerklärung von Resend:{" "}
+                <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  resend.com/legal/privacy-policy
+                </a>
+              </p>
+              <p>
+                Wenn Sie diese Übermittlung vermeiden möchten, erreichen Sie uns jederzeit auch direkt
+                telefonisch oder per E-Mail an{" "}
+                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>.
+              </p>
+            </Section>
+
+            <Section title="7. Cookies">
               <p>
                 Diese Website setzt keine Tracking- oder Marketing-Cookies ein. Es werden ausschließlich
                 technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
@@ -135,7 +166,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="7. Ihre Rechte">
+            <Section title="8. Ihre Rechte">
               <p>Sie haben jederzeit das Recht auf:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -156,7 +187,7 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="8. Aktualität">
+            <Section title="9. Aktualität">
               <p>
                 Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juli 2026. Durch die
                 Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es
