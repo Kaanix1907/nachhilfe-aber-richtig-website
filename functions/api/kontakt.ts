@@ -23,11 +23,23 @@ type Ctx = {
   env: Env;
 };
 
-// Absender laeuft ueber eine Unterdomain. Der SPF-Eintrag der Hauptdomain
-// ("v=spf1 include:_spf-eu.ionos.com ~all") bleibt damit unangetastet — wer
-// ihn fuer Resend aufbohrt, riskiert, dass die normale Geschaeftspost im
-// Spam landet.
-const VON = "Website-Formular <formular@send.nachhilfe-aber-richtig.de>";
+// Absender laeuft ueber klartext-digital.com, nicht ueber die eigene Domain.
+// Zwei Gruende, beide zwingend:
+//
+// 1. Resends kostenloser Tarif erlaubt genau EINE verifizierte Domain, und die
+//    ist seit Mai mit klartext-digital.com belegt. Eine zweite kostet 20 USD
+//    im Monat — mehr als der gesamte IONOS-Vertrag, den wir gerade gekuendigt
+//    haben. Verifiziert sein muss nur der Absender; der Empfaenger darf jede
+//    beliebige Adresse sein.
+// 2. Damit bleibt der SPF-Eintrag von nachhilfe-aber-richtig.de
+//    ("v=spf1 include:_spf-eu.ionos.com ~all") voellig unberuehrt. Wer ihn
+//    fuer einen zweiten Versender aufbohrt, riskiert die gesamte
+//    Geschaeftspost im Spam.
+//
+// Die Familie sieht diese Adresse nie — sie fuellt ein Formular aus, die Mail
+// geht an uns. Nur im eigenen Posteingang steht ein fremder Absender.
+// Geantwortet wird ueber reply_to direkt an die Familie.
+const VON = "Nachhilfe Website <formular@klartext-digital.com>";
 const AN = "info@nachhilfe-aber-richtig.de";
 
 const GRENZEN = { name: 100, email: 200, phone: 40, message: 5000 } as const;
