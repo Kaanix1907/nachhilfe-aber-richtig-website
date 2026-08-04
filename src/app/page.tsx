@@ -6,6 +6,8 @@ import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
+import AngebotUebersicht from "@/components/AngebotUebersicht";
+import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
 import type { Metadata } from "next";
@@ -130,8 +132,10 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <AngebotUebersicht />
         <BildungTeilhabe />
         <USPs />
+        <Lehrkraefte />
         <FAQ />
         <Contact />
       </main>
