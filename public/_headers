@@ -5,11 +5,20 @@
 # Achtung: Hier gelten Glob-Muster, keine Regex-Gruppen — jede Endung
 # braucht ihre eigene Regel.
 
+# Zu Strict-Transport-Security unten — die drei Auslassungen sind Absicht:
+# Kein `includeSubDomains`: autodiscover.nachhilfe-aber-richtig.de zeigt auf
+# IONOS und wird von Mailprogrammen auch ueber http abgefragt; die Direktive
+# wuerde die Kontoeinrichtung im Mailclient brechen.
+# Kein `preload`: der Eintrag in der Browser-Preloadliste ist nur ueber ein
+# Antragsverfahren wieder loesbar.
+# 180 Tage statt einem Jahr, damit ein Fehler nicht ein Jahr nachwirkt.
+
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=15552000
 
 # Public-Assets aendern sich praktisch nie — lange cachen.
 # HTML-Seiten bekommen bewusst KEIN no-store (bricht bfcache).
