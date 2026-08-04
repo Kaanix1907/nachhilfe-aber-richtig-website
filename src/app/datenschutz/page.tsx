@@ -113,22 +113,22 @@ export default function Datenschutz() {
 
             <Section title="6. Hosting">
               <p>
-                Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA gehostet.
-                Beim Aufruf der Website werden automatisch Server-Logfiles (IP-Adresse, Browsertyp, Referrer,
-                Datum/Uhrzeit) erfasst. Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und
-                nach spätestens 30 Tagen gelöscht.
+                Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
+                gehostet (Dienst „Cloudflare Pages"). Beim Aufruf der Website werden automatisch
+                Server-Logfiles (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
+                nicht mit anderen Datenquellen zusammengeführt und nach spätestens 30 Tagen gelöscht.
               </p>
               <p>
-                Vercel verarbeitet diese Daten in unserem Auftrag. Wir haben mit Vercel einen Vertrag zur
-                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Vercel Inc. ihren Sitz in den USA
-                hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC) der
-                EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
+                Cloudflare verarbeitet diese Daten in unserem Auftrag. Wir haben mit Cloudflare einen Vertrag
+                zur Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Cloudflare, Inc. ihren Sitz in
+                den USA hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC)
+                der EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
                 (berechtigtes Interesse an einem sicheren und leistungsfähigen Betrieb dieser Website).
               </p>
               <p>
-                Datenschutzerklärung von Vercel:{" "}
-                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  vercel.com/legal/privacy-policy
+                Datenschutzerklärung von Cloudflare:{" "}
+                <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  cloudflare.com/privacypolicy
                 </a>
               </p>
             </Section>
