@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import FadeIn from "./FadeIn";
 import { FoerderCard } from "./BildungTeilhabe.parts";
 
@@ -10,14 +11,20 @@ export default function BildungTeilhabe() {
 
         <FadeIn className="mb-10">
           <span className="inline-block bg-primary/8 text-primary-deep font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-primary/12">
-            Bildung &amp; Teilhabe
+            Bildung und Teilhabe
           </span>
+          {/* Ausgeschrieben statt "&": gesucht wird "Bildung und Teilhabe".
+              Das kaufmaennische Und stand vorher an jeder Stelle der Seite,
+              der Suchbegriff selbst kam damit null Mal vor. Dazu der
+              Amtsbegriff "Lernfoerderung", unter dem Stadt und Jobcenter die
+              Leistung fuehren — der fehlte bisher komplett. */}
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-dark mb-3" style={{ letterSpacing: "-0.03em" }}>
-            Bildung &amp; Teilhabe — Nachhilfe kostenlos nutzen
+            Bildung und Teilhabe: Nachhilfe in Duisburg kostenlos
           </h2>
           <p className="font-body text-muted/65 text-lg leading-[1.7] max-w-2xl">
-            Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung &amp; Teilhabe</strong> können
-            berechtigte Familien unsere Nachhilfe vollständig kostenlos in Anspruch nehmen.
+            Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung und Teilhabe</strong> können
+            berechtigte Familien unsere Nachhilfe vollständig kostenlos nutzen. Im Amtsdeutsch
+            heißt die Leistung <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>.
           </p>
         </FadeIn>
 
@@ -25,7 +32,7 @@ export default function BildungTeilhabe() {
           <FoerderCard logo={{ src: "/logo-jobcenter.jpeg", alt: "Jobcenter Duisburg", width: 140 }}>
             Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
             sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong>{" "}
-            für Bildung &amp; Teilhabe berechtigt und können unsere Nachhilfe{" "}
+            für Bildung und Teilhabe berechtigt und können unsere Nachhilfe{" "}
             <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
           </FoerderCard>
 
@@ -33,7 +40,7 @@ export default function BildungTeilhabe() {
             Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
             <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der{" "}
             <strong className="text-dark font-semibold">Stadt Duisburg</strong>{" "}
-            erhält, hat ebenfalls Anspruch auf Bildung &amp; Teilhabe — und damit auf{" "}
+            erhält, hat ebenfalls Anspruch auf Bildung und Teilhabe und damit auf{" "}
             <strong className="text-dark font-semibold">kostenfreie</strong> Nachhilfe.
           </FoerderCard>
         </div>
@@ -52,15 +59,15 @@ export default function BildungTeilhabe() {
             <div>
               <p className="font-body font-semibold text-dark text-sm">Wir helfen beim Antrag</p>
               <p className="font-body text-muted/80 text-sm leading-[1.6]">
-                Den Antrag auf Bildung &amp; Teilhabe stellen viele Familien nie — weil sie nicht wissen wie.
-                Wir erklären euch den Ablauf Schritt für Schritt.
+                Den Antrag auf Lernförderung stellen viele Familien nie, weil sie nicht wissen wie.
+                Wir erklären euch den Ablauf Schritt für Schritt und füllen den Anbieterteil aus.
               </p>
             </div>
           </div>
-          <div>
+          <div className="flex flex-col sm:flex-row gap-3">
             <a
               href="#kontakt"
-              className="inline-flex items-center gap-2 font-body font-semibold text-sm text-white px-6 py-3 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-white px-6 py-3 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
               style={{
                 background: "linear-gradient(135deg, #25abd6 0%, #1d8fb5 100%)",
                 boxShadow: "0 4px 14px rgba(37,171,214,0.30)",
@@ -71,6 +78,15 @@ export default function BildungTeilhabe() {
                 <path d="M3 7.5h9M8 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
+            <Link
+              href="/bildung-und-teilhabe"
+              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-dark px-6 py-3 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+            >
+              So läuft der Antrag
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M3 7.5h9M8 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
           </div>
         </div>
 

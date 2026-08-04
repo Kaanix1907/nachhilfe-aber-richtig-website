@@ -1,4 +1,25 @@
+import Link from "next/link";
 import { BUSINESS } from "@/lib/data";
+import { ORTE, FAECHER } from "@/lib/seo-pages";
+
+function ColumnHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h4 className="font-body font-semibold text-white/80 text-xs tracking-widest uppercase mb-4">
+      {children}
+    </h4>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="text-white/40 hover:text-white transition-[color] duration-200 w-fit"
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default function Footer() {
   return (
@@ -17,7 +38,10 @@ export default function Footer() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-14 pb-8">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
+        {/* Vier Spalten statt drei: Orts- und Fachseiten brauchen eine feste
+            interne Verlinkung, sonst findet der Crawler sie nur ueber die
+            Sitemap und sie bekommen kein Gewicht von der Startseite ab. */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
           {/* Brand */}
           <div>
             <h3
@@ -27,11 +51,9 @@ export default function Footer() {
               {BUSINESS.name}
             </h3>
             <p className="font-body text-white/40 text-sm leading-[1.75] mb-5">
-              Professionelle Nachhilfe in Duisburg-Rheinhausen — von Klasse 1
-              bis Abitur.
+              Nachhilfe in Duisburg-Rheinhausen, von Klasse 1 bis Abitur.
             </p>
-            {/* Kontakt kompakt */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 mb-6">
               <a
                 href={`tel:${BUSINESS.phone}`}
                 className="font-body text-white/40 text-xs hover:text-primary transition-[color] duration-200 flex items-center gap-2"
@@ -52,46 +74,55 @@ export default function Footer() {
                 {BUSINESS.email}
               </a>
             </div>
-          </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="font-body font-semibold text-white/80 text-xs tracking-widest uppercase mb-4">
-              Navigation
-            </h4>
-            <div className="flex flex-col gap-2.5 font-body text-sm">
-              {[
-                { href: "#hero", label: "Startseite" },
-                { href: "#leistungen", label: "Leistungen" },
-                { href: "#ueber-uns", label: "Über uns" },
-                { href: "#kontakt", label: "Kontakt" },
-              ].map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-white/40 hover:text-white transition-[color] duration-200 w-fit"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Öffnungszeiten kompakt */}
-          <div>
-            <h4 className="font-body font-semibold text-white/80 text-xs tracking-widest uppercase mb-4">
-              Öffnungszeiten
-            </h4>
+            <ColumnHeading>Öffnungszeiten</ColumnHeading>
             <div className="flex flex-col gap-2 font-body text-xs">
               {BUSINESS.hours
                 .filter((h) => h.time !== "Geschlossen")
                 .map((h) => (
-                  <div key={h.day} className="flex justify-between text-white/40">
+                  <div key={h.day} className="flex justify-between text-white/40 max-w-[190px]">
                     <span>{h.day}</span>
                     <span className="tabular-nums text-white/55">{h.time}</span>
                   </div>
                 ))}
-              <div className="text-white/25 text-xs mt-1">Sa & So: Geschlossen</div>
+              <div className="text-white/25 text-xs mt-1">Sa &amp; So: Geschlossen</div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <ColumnHeading>Navigation</ColumnHeading>
+            <div className="flex flex-col gap-2.5 font-body text-sm">
+              <FooterLink href="/">Startseite</FooterLink>
+              <FooterLink href="/#leistungen">Leistungen</FooterLink>
+              <FooterLink href="/#ueber-uns">Über uns</FooterLink>
+              <FooterLink href="/#faq">Häufige Fragen</FooterLink>
+              <FooterLink href="/bildung-und-teilhabe">Bildung und Teilhabe</FooterLink>
+              <FooterLink href="/#kontakt">Kontakt</FooterLink>
+            </div>
+          </div>
+
+          {/* Standorte */}
+          <div>
+            <ColumnHeading>Standorte</ColumnHeading>
+            <div className="flex flex-col gap-2.5 font-body text-sm">
+              {ORTE.map((o) => (
+                <FooterLink key={o.slug} href={`/nachhilfe/${o.slug}`}>
+                  Nachhilfe {o.name}
+                </FooterLink>
+              ))}
+            </div>
+          </div>
+
+          {/* Fächer */}
+          <div>
+            <ColumnHeading>Fächer</ColumnHeading>
+            <div className="flex flex-col gap-2.5 font-body text-sm">
+              {FAECHER.map((f) => (
+                <FooterLink key={f.slug} href={`/nachhilfe/${f.slug}`}>
+                  {f.name}
+                </FooterLink>
+              ))}
             </div>
           </div>
         </div>
@@ -106,12 +137,12 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 font-body text-xs text-white/25">
           <span>© {new Date().getFullYear()} {BUSINESS.name}</span>
           <div className="flex gap-6">
-            <a href="/impressum" className="hover:text-white/60 transition-[color] duration-200">
+            <Link href="/impressum" className="hover:text-white/60 transition-[color] duration-200">
               Impressum
-            </a>
-            <a href="/datenschutz" className="hover:text-white/60 transition-[color] duration-200">
+            </Link>
+            <Link href="/datenschutz" className="hover:text-white/60 transition-[color] duration-200">
               Datenschutz
-            </a>
+            </Link>
           </div>
         </div>
       </div>

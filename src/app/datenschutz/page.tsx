@@ -3,9 +3,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
+// Nur "Datenschutz": das Template im Root-Layout haengt den Firmennamen an.
 export const metadata: Metadata = {
-  title: "Datenschutz — Nachhilfe, aber richtig!",
-  robots: { index: false },
+  title: "Datenschutz",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "https://nachhilfe-aber-richtig.de/datenschutz" },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

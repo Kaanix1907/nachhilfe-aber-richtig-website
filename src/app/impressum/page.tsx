@@ -3,9 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
+// Nur "Impressum": das Template im Root-Layout haengt " | Nachhilfe, aber
+// richtig!" an. Der Firmenname stand vorher zweimal im Titel.
 export const metadata: Metadata = {
-  title: "Impressum — Nachhilfe, aber richtig!",
-  robots: { index: false },
+  title: "Impressum",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "https://nachhilfe-aber-richtig.de/impressum" },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

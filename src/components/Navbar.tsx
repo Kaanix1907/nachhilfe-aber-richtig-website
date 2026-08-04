@@ -8,6 +8,9 @@ import { BUSINESS } from "@/lib/data";
 const navLinks: { href: string; label: string; badge?: string }[] = [
   { href: "#hero", label: "Startseite" },
   { href: "#leistungen", label: "Leistungen" },
+  // Absoluter Pfad: die Seite ist der staerkste Suchbegriff des Angebots und
+  // bekommt hier ihren Ankertext. Die Praefix-Logik unten laesst "/" in Ruhe.
+  { href: "/bildung-und-teilhabe", label: "Bildung und Teilhabe" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

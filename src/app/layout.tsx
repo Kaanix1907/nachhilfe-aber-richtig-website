@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Nachhilfe, aber richtig!",
   },
   description:
-    "Professionelle Nachhilfe in Duisburg-Rheinhausen für Schüler ab Klasse 1 bis Abitur. Gruppen- & Einzelnachhilfe, Bildung & Teilhabe möglich. Jetzt kostenlose Probestunde buchen!",
+    "Nachhilfe in Duisburg-Rheinhausen, Klasse 1 bis Abitur. Einzel- und Gruppenunterricht in allen Fächern, kostenlos über Bildung und Teilhabe möglich.",
   keywords: [
     "Nachhilfe Duisburg",
     "Nachhilfe Rheinhausen",
@@ -53,9 +53,11 @@ export const metadata: Metadata = {
   authors: [{ name: BUSINESS.name }],
   creator: BUSINESS.name,
   publisher: BUSINESS.name,
-  alternates: {
-    canonical: SITE_URL,
-  },
+  // Kein globales `alternates.canonical`: Next vererbt es an jede Unterseite,
+  // die keines setzt. Impressum und Datenschutz zeigten dadurch auf die
+  // Startseite — und jede neue Orts-/Fachseite haette sich selbst als Kopie
+  // der Startseite ausgewiesen und waere nie gerankt worden. Jede Seite setzt
+  // ihr Canonical selbst.
   openGraph: {
     type: "website",
     locale: "de_DE",

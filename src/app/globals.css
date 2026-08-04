@@ -8,6 +8,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Die Kopfleiste ist fixiert und rund 72px hoch. Ohne diesen Versatz landet
+     jeder Sprungmarken-Link (#leistungen, #kontakt, #faq) so, dass die
+     Ueberschrift hinter der Leiste verschwindet. */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
