@@ -1,31 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Cloudflare Pages liefert reine Dateien aus — es gibt keinen Next-Server mehr.
+  // Der Build schreibt nach out/ statt .next/.
+  output: "export",
   images: {
-    formats: ["image/webp"],
-    minimumCacheTTL: 2678400,
+    // Der Bild-Optimizer ist ein Server-Feature und faellt mit dem Export weg.
+    // formats/minimumCacheTTL waeren damit wirkungslos und sind deshalb raus.
+    unoptimized: true,
   },
-  async headers() {
-    return [
-      {
-        // Public-Assets ändern sich praktisch nie — lange cachen statt no-store.
-        // HTML-Seiten bekommen bewusst KEINEN no-store mehr (bricht bfcache).
-        source: "/:file*.(png|jpeg|jpg|webp|ico|svg)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=2592000" },
-        ],
-      },
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-        ],
-      },
-    ];
-  },
+  // Security- und Cache-Header stehen jetzt in public/_headers.
+  // headers() ist mit output: "export" nicht erlaubt und liesse den Build scheitern.
 };
 
 export default nextConfig;

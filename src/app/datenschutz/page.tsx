@@ -3,9 +3,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
+// Nur "Datenschutz": das Template im Root-Layout haengt den Firmennamen an.
 export const metadata: Metadata = {
-  title: "Datenschutz — Nachhilfe, aber richtig!",
-  robots: { index: false },
+  title: "Datenschutz",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "https://nachhilfe-aber-richtig.de/datenschutz" },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -63,7 +65,7 @@ export default function Datenschutz() {
               <p>
                 Wir erheben personenbezogene Daten nur, wenn Sie uns diese im Rahmen einer Kontaktaufnahme
                 (Kontaktformular, E-Mail, Telefon) freiwillig mitteilen. Dazu gehören insbesondere: Name,
-                Telefonnummer und Nachrichteninhalt.
+                Telefonnummer, E-Mail-Adresse und Nachrichteninhalt.
               </p>
               <p>
                 Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte
@@ -74,8 +76,12 @@ export default function Datenschutz() {
             <Section title="3. Kontaktformular">
               <p>
                 Wenn Sie uns über das Kontaktformular eine Anfrage senden, werden Ihre Angaben aus dem Formular
-                (Name, Telefon, Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen
-                gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                (Name, Telefonnummer, E-Mail-Adresse, Nachricht) zur Bearbeitung der Anfrage und für den Fall
+                von Anschlussfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+              </p>
+              <p>
+                Die Übermittlung an unser Postfach erfolgt über einen Dienstleister für den E-Mail-Versand;
+                Einzelheiten dazu finden Sie in Abschnitt 6.
               </p>
               <p>
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. b DSGVO
@@ -102,34 +108,53 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="5. KI-Lernhilfe „Lexi“">
+            <Section title="5. Hosting">
               <p>
-                Unsere KI-Lernhilfe „Lexi“ ist eine eigenständige Anwendung unter der Adresse
-                lexi.nachhilfe-aber-richtig.de. Auf dieser Website werden keine Chat-Eingaben
-                entgegengenommen, verarbeitet oder an Dritte übermittelt — wir verlinken lediglich dorthin.
-                Welche Daten Lexi selbst verarbeitet, richtet sich nach den dort veröffentlichten Angaben.
-              </p>
-            </Section>
-
-            <Section title="6. Hosting">
-              <p>
-                Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA gehostet.
-                Beim Aufruf der Website werden automatisch Server-Logfiles (IP-Adresse, Browsertyp, Referrer,
-                Datum/Uhrzeit) erfasst. Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und
-                nach spätestens 30 Tagen gelöscht.
+                Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
+                gehostet (Dienst „Cloudflare Pages"). Beim Aufruf der Website werden automatisch
+                Server-Logfiles (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
+                nicht mit anderen Datenquellen zusammengeführt und nach spätestens 30 Tagen gelöscht.
               </p>
               <p>
-                Vercel verarbeitet diese Daten in unserem Auftrag. Wir haben mit Vercel einen Vertrag zur
-                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Vercel Inc. ihren Sitz in den USA
-                hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC) der
-                EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
+                Cloudflare verarbeitet diese Daten in unserem Auftrag. Wir haben mit Cloudflare einen Vertrag
+                zur Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Cloudflare, Inc. ihren Sitz in
+                den USA hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC)
+                der EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
                 (berechtigtes Interesse an einem sicheren und leistungsfähigen Betrieb dieser Website).
               </p>
               <p>
-                Datenschutzerklärung von Vercel:{" "}
-                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  vercel.com/legal/privacy-policy
+                Datenschutzerklärung von Cloudflare:{" "}
+                <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  cloudflare.com/privacypolicy
                 </a>
+              </p>
+            </Section>
+
+            <Section title="6. E-Mail-Versand des Kontaktformulars">
+              <p>
+                Für die Zustellung der über das Kontaktformular abgesendeten Anfragen an unser Postfach nutzen
+                wir den Versanddienst Brevo, betrieben von der Brevo GmbH, Köpenicker Straße 126,
+                10179 Berlin (Tochtergesellschaft der Sendinblue SAS, 17 rue de Salneuve, 75017 Paris,
+                Frankreich). Übermittelt werden ausschließlich die von Ihnen im Formular eingegebenen
+                Angaben (Name, Telefonnummer, E-Mail-Adresse, Nachricht).
+              </p>
+              <p>
+                Brevo verarbeitet diese Daten in unserem Auftrag. Wir haben mit Brevo einen Vertrag zur
+                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Die Verarbeitung findet auf Servern
+                innerhalb der Europäischen Union statt; eine Übermittlung in ein Drittland ist damit nicht
+                verbunden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden
+                des Formulars) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+              </p>
+              <p>
+                Datenschutzerklärung von Brevo:{" "}
+                <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
+                  brevo.com/de/legal/privacypolicy
+                </a>
+              </p>
+              <p>
+                Wenn Sie diese Übermittlung vermeiden möchten, erreichen Sie uns jederzeit auch direkt
+                telefonisch oder per E-Mail an{" "}
+                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>.
               </p>
             </Section>
 

@@ -5,22 +5,33 @@ import USPs from "@/components/USPs";
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FAQ from "@/components/FAQ";
+import AngebotUebersicht from "@/components/AngebotUebersicht";
+import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
+import { FAQ_ITEMS } from "@/lib/faq";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Nachhilfe in Duisburg-Rheinhausen | Ab Klasse 1 bis Abitur",
   description:
-    "Professionelle Nachhilfe in Duisburg-Rheinhausen: Gruppen- & Einzelnachhilfe, alle Fächer, Klasse 1 bis Abitur. 5.0 Sterne auf Google. Bildung & Teilhabe möglich — kostenlose Probestunde buchen!",
+    "Nachhilfe in Duisburg-Rheinhausen: Einzel- und Gruppenunterricht, alle Fächer, Klasse 1 bis Abitur. 5,0 Sterne bei Google. Probestunde kostenlos.",
   alternates: {
     canonical: "https://nachhilfe-aber-richtig.de",
   },
 };
 
-// JSON-LD Schema — alle echten Google-Reviews eingebunden
+// JSON-LD Schema — alle echten Google-Reviews eingebunden.
+//
+// Der Doppeltyp ist Absicht: EducationalOrganization beschreibt, was wir sind,
+// aber Google wertet fuer den lokalen Kartenblock LocalBusiness aus — und
+// EducationalOrganization ist davon kein Untertyp, sondern haengt an einem
+// anderen Ast. Ohne LocalBusiness bleiben Adresse, Oeffnungszeiten und
+// Bewertungen fuer die lokale Suche wirkungslos.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
+  "@id": "https://nachhilfe-aber-richtig.de/#business",
   name: "Nachhilfe, aber richtig!",
   url: "https://nachhilfe-aber-richtig.de",
   logo: "https://nachhilfe-aber-richtig.de/logo.png",
@@ -90,76 +101,20 @@ const jsonLd = {
   ],
 };
 
-// FAQ-Schema — erweitert für bessere Google-Snippets
+// FAQ-Schema aus derselben Quelle wie die sichtbare FAQ-Sektion.
+//
+// Vorher standen die Fragen ausschliesslich hier im JSON-LD und nirgends auf
+// der Seite. Google verlangt fuer FAQ-Markup sichtbaren Seiteninhalt;
+// unsichtbare Auszeichnung riskiert eine manuelle Massnahme. Beides liest
+// jetzt FAQ_ITEMS — auseinanderlaufen kann es nicht mehr.
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Ist die Nachhilfe kostenlos?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, über das Bildung-und-Teilhabe-Programm können berechtigte Familien (Bürgergeld, Wohngeld, Kinderzuschlag) unsere Nachhilfe komplett kostenlos nutzen. Wir helfen auch beim Antrag.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Welche Fächer werden angeboten?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Wir bieten Nachhilfe in allen Fächern an — von Mathe, Deutsch und Englisch bis zu Naturwissenschaften und Fremdsprachen. Von Klasse 1 bis Abitur.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Gibt es eine kostenlose Probestunde?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, die erste Probestunde ist kostenlos und unverbindlich. So können Schüler und Eltern sich ein Bild von unserem Unterricht machen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wo findet die Nachhilfe statt?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Unser Lernort befindet sich in der Friedrich-Alfred-Straße 14, 47226 Duisburg (Rheinhausen). Alternativ bieten wir auch Onlinenachhilfe an.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie groß sind die Gruppen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Unsere Gruppen bestehen aus 3 bis 5 Schülern. So bekommt jeder Schüler individuelle Aufmerksamkeit und profitiert gleichzeitig vom gemeinsamen Lernen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wer sind die Nachhilfelehrer?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Alle unsere Lehrkräfte sind geprüfte Lehramtsstudenten mit erweitertem Führungszeugnis. Sie werden sorgfältig ausgewählt und regelmäßig geschult.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie kann ich Bildung und Teilhabe beantragen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Wenn Sie Bürgergeld, Wohngeld oder Kinderzuschlag beziehen, haben Sie Anspruch auf Bildung und Teilhabe. Wir helfen Ihnen Schritt für Schritt beim Antrag — einfach anrufen oder vorbeikommen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Gibt es Nachhilfe auch online?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, wir bieten professionelle Onlinenachhilfe an — ideal für Schüler mit weiterem Wohnort oder flexiblem Zeitplan. Die Qualität ist die gleiche wie vor Ort.",
-      },
-    },
-  ],
+  mainEntity: FAQ_ITEMS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function Home() {
@@ -177,8 +132,11 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <AngebotUebersicht />
         <BildungTeilhabe />
         <USPs />
+        <Lehrkraefte />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

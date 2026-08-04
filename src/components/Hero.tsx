@@ -1,6 +1,5 @@
 import { BUSINESS, ALL_REVIEWS } from "@/lib/data";
 import {
-  LexiBadge,
   GefoerdertDurchRow,
   MobileReviewsScroll,
   DesktopReviewsScroll,
@@ -28,17 +27,24 @@ export default function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-20 grid md:grid-cols-2 gap-6 md:gap-16 items-center w-full">
 
         <div className="flex flex-col min-w-0">
-          <LexiBadge />
-
-          <h1 className="font-heading text-[2rem] sm:text-[2.8rem] md:text-[3.75rem] font-extrabold text-white mb-3 md:mb-6 break-words"
-            style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }}>
-            {BUSINESS.name}
+          {/* Die H1 trug bisher nur den Firmennamen. Die wichtigste Ueberschrift
+              der Seite enthielt damit kein einziges Wort, nach dem jemand sucht.
+              Marke bleibt visuell dominant, der Suchbegriff steht jetzt mit drin. */}
+          <h1 className="font-heading font-extrabold text-white mb-3 md:mb-6 break-words"
+            style={{ letterSpacing: "-0.03em" }}>
+            <span className="block text-[2rem] sm:text-[2.8rem] md:text-[3.75rem]" style={{ lineHeight: 1.08 }}>
+              {BUSINESS.name}
+            </span>
+            <span className="block font-body font-semibold text-[1.08rem] sm:text-xl md:text-2xl text-white/85 mt-2.5 md:mt-4"
+              style={{ letterSpacing: "-0.01em", lineHeight: 1.35 }}>
+              Nachhilfe in Duisburg-Rheinhausen, Klasse 1 bis Abitur
+            </span>
           </h1>
 
           <p className="font-body text-base md:text-xl text-white/80 md:text-white/65 mb-1.5 md:mb-3 leading-[1.7]">
-            Professionelle Nachhilfe für Schüler{" "}
-            <span className="font-semibold text-white">ab Klasse 1 bis Abitur</span>{" "}
-            — in allen Fächern, persönlich betreut.
+            Einzel- und Gruppenunterricht in allen Fächern, persönlich betreut.
+            Für berechtigte Familien{" "}
+            <span className="font-semibold text-white">kostenlos über Bildung und Teilhabe</span>.
           </p>
 
           <p className="font-body text-sm md:text-base text-white/55 md:text-white/35 mb-4 md:mb-10 tracking-wide">

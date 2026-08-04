@@ -134,47 +134,6 @@ export function GoogleHeader({ rating, total, variant }: GoogleHeaderProps) {
   );
 }
 
-export function LexiBadge() {
-  return (
-    <a
-      href="/lexi"
-      className="group inline-flex items-center gap-2 self-start mb-4 md:mb-6 pl-1.5 pr-4 py-1.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:scale-[1.02]"
-      style={{
-        background: "rgba(37,171,214,0.12)",
-        border: "1px solid rgba(37,171,214,0.35)",
-        backdropFilter: "blur(12px)",
-        boxShadow: "0 4px 20px rgba(37,171,214,0.15)",
-      }}
-    >
-      <span
-        className="inline-flex items-center justify-center w-6 h-6 rounded-full font-heading font-extrabold text-white text-[11px]"
-        style={{
-          background: "linear-gradient(135deg,#25abd6,#655c9e)",
-          boxShadow: "0 2px 8px rgba(37,171,214,0.5)",
-        }}
-      >
-        L
-      </span>
-      <span className="font-body text-[12px] md:text-[13px] font-semibold tracking-wide text-white">
-        <span style={{ color: "#25abd6" }}>NEU:</span> Lexi — KI-Lernhilfe · gratis ausprobieren
-      </span>
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-white/75 transition-transform duration-200 group-hover:translate-x-0.5"
-      >
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
-    </a>
-  );
-}
-
 const FUNDING_PILL_STYLE: CSSProperties = { boxShadow: "0 4px 14px rgba(0,0,0,0.35)" };
 
 export function GefoerdertDurchRow() {

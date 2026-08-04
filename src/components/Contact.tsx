@@ -1,26 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BUSINESS } from "@/lib/data";
 import FadeIn from "./FadeIn";
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "", consent: false });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+const LEER = { name: "", email: "", phone: "", message: "", consent: false, website: "" };
 
+export default function Contact() {
+  const [form, setForm] = useState(LEER);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [fehler, setFehler] = useState("");
+  // Zeitpunkt des ersten Tastendrucks — die Funktion weist Absendungen unter
+  // drei Sekunden ab, weil dort niemand getippt haben kann.
+  const startedAt = useRef<number | null>(null);
+
+  function aendern(feld: keyof typeof LEER, wert: string | boolean) {
+    if (startedAt.current === null) startedAt.current = Date.now();
+    setForm((f) => ({ ...f, [feld]: wert }));
+  }
+
+  // Bis 2026-08-04 sprang diese Funktion nur auf mailto: und meldete danach
+  // bedingungslos Erfolg — auch wenn sich nie ein Mailprogramm oeffnete
+  // (Handy ohne Mailkonto, In-App-Browser von Instagram oder Facebook).
+  // Die Felder wurden dabei sofort geleert, die Anfrage war weg und beide
+  // Seiten hielten sie fuer zugestellt. Jetzt entscheidet der Server.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!form.phone.trim() && !form.email.trim()) {
+      setStatus("error");
+      setFehler("Bitte Telefonnummer oder E-Mail angeben, sonst können wir nicht antworten.");
+      return;
+    }
     setStatus("sending");
+    setFehler("");
 
-    const subject = encodeURIComponent("Anfrage Nachhilfe – " + form.name);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nTelefon: ${form.phone || "–"}\n\nNachricht:\n${form.message}`
-    );
-    window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+    try {
+      const res = await fetch("/api/kontakt", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...form, startedAt: startedAt.current }),
+      });
+      const daten = await res.json().catch(() => ({}));
 
-    setStatus("success");
-    setForm({ name: "", phone: "", message: "", consent: false });
-    setTimeout(() => setStatus("idle"), 4000);
+      if (!res.ok || !daten.ok) {
+        setStatus("error");
+        setFehler(daten.fehler || "Das hat nicht geklappt. Bitte ruf uns kurz an.");
+        return;
+      }
+
+      // Erst jetzt leeren: vorher waere der getippte Text bei einem Fehler weg.
+      setStatus("success");
+      setForm(LEER);
+      startedAt.current = null;
+    } catch {
+      setStatus("error");
+      setFehler("Keine Verbindung. Bitte ruf uns kurz an oder schreib per WhatsApp.");
+    }
   }
 
   const inputClass =
@@ -57,17 +92,36 @@ export default function Contact() {
 
             {status === "success" && (
               <div
-                className="mb-6 font-body font-medium text-sm px-4 py-3 rounded-xl flex items-center gap-2"
+                className="mb-6 font-body font-medium text-sm px-4 py-3 rounded-xl flex items-start gap-2"
                 style={{ background: "rgba(0,170,0,0.08)", color: "#00aa00", border: "1px solid rgba(0,170,0,0.15)" }}
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mt-1 shrink-0">
                   <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                Dein Mail-Client wurde geöffnet. Wir melden uns bald!
+                <span>Deine Nachricht ist bei uns angekommen. Wir melden uns innerhalb eines Werktages.</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            {status === "error" && (
+              <div
+                className="mb-6 font-body text-sm px-4 py-3 rounded-xl"
+                style={{ background: "rgba(220,38,38,0.06)", color: "#b91c1c", border: "1px solid rgba(220,38,38,0.18)" }}
+              >
+                <p className="font-medium">{fehler}</p>
+                <p className="mt-1.5 text-dark/60">
+                  Direkt erreichbar:{" "}
+                  <a href={`tel:${BUSINESS.phone}`} className="font-semibold text-primary-deep hover:underline">
+                    {BUSINESS.phoneDisplay}
+                  </a>{" "}
+                  oder{" "}
+                  <a href={`mailto:${BUSINESS.email}`} className="font-semibold text-primary-deep hover:underline">
+                    {BUSINESS.email}
+                  </a>
+                </p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="relative flex flex-col gap-4">
               <div>
                 <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
                   Name *
@@ -76,25 +130,62 @@ export default function Contact() {
                   type="text"
                   required
                   value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  onChange={(e) => aendern("name", e.target.value)}
                   placeholder="Max Mustermann"
                   className={inputClass}
                   style={{ boxShadow: "0 1px 2px rgba(26,26,46,0.04)" }}
                 />
               </div>
-              <div>
-                <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
-                  Telefon <span className="normal-case text-dark/30 font-normal">(optional)</span>
-                </label>
+
+              {/* Honigtopf: fuer Menschen unsichtbar, viele Bots fuellen ihn aus. */}
+              <div aria-hidden="true" className="absolute w-px h-px -m-px overflow-hidden opacity-0 pointer-events-none">
+                <label htmlFor="website">Website</label>
                 <input
-                  type="tel"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  placeholder="+49 ..."
-                  className={inputClass}
-                  style={{ boxShadow: "0 1px 2px rgba(26,26,46,0.04)" }}
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.website}
+                  onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
                 />
               </div>
+
+              {/* Vorher gab es gar kein E-Mail-Feld und die Telefonnummer war
+                  freiwillig — eine Anfrage konnte voellig ohne Rueckkanal
+                  ankommen. Eines von beiden ist jetzt Pflicht. */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => aendern("phone", e.target.value)}
+                    placeholder="+49 ..."
+                    className={inputClass}
+                    style={{ boxShadow: "0 1px 2px rgba(26,26,46,0.04)" }}
+                  />
+                </div>
+                <div>
+                  <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                    E-Mail
+                  </label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => aendern("email", e.target.value)}
+                    placeholder="name@beispiel.de"
+                    className={inputClass}
+                    style={{ boxShadow: "0 1px 2px rgba(26,26,46,0.04)" }}
+                  />
+                </div>
+              </div>
+              <p className="font-body text-dark/40 text-xs -mt-2">
+                Telefon oder E-Mail, damit wir antworten können.
+              </p>
+
               <div>
                 <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
                   Nachricht *
@@ -103,7 +194,7 @@ export default function Contact() {
                   required
                   rows={4}
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onChange={(e) => aendern("message", e.target.value)}
                   placeholder="Welches Fach? Welche Klasse? Was sind eure Ziele?"
                   className={`${inputClass} resize-none`}
                   style={{ boxShadow: "0 1px 2px rgba(26,26,46,0.04)" }}
@@ -114,11 +205,24 @@ export default function Contact() {
                   type="checkbox"
                   required
                   checked={form.consent}
-                  onChange={(e) => setForm({ ...form, consent: e.target.checked })}
+                  onChange={(e) => aendern("consent", e.target.checked)}
                   className="mt-0.5 accent-primary w-4 h-4 shrink-0"
                 />
                 <span className="font-body text-dark/50 text-xs leading-relaxed group-hover:text-dark/70 transition-[color] duration-200">
-                  Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu. *
+                  {/* Vorher nur Text ohne Verweis: eine Einwilligung, deren
+                      Gegenstand man nicht aufrufen kann, ist keine informierte
+                      Einwilligung im Sinne der DSGVO. */}
+                  Ich stimme der Verarbeitung meiner Daten gemäß{" "}
+                  <a
+                    href="/datenschutz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-primary-deep hover:text-primary"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Datenschutzerklärung
+                  </a>{" "}
+                  zu. *
                 </span>
               </label>
               <button
