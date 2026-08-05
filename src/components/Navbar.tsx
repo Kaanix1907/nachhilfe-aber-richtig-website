@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BUSINESS } from "@/lib/data";
+import { ORTE, FAECHER } from "@/lib/seo-pages";
 
 const navLinks: { href: string; label: string; badge?: string }[] = [
-  { href: "#hero", label: "Startseite" },
   { href: "#leistungen", label: "Leistungen" },
   // Absoluter Pfad: die Seite ist der staerkste Suchbegriff des Angebots und
   // bekommt hier ihren Ankertext. Die Praefix-Logik unten laesst "/" in Ruhe.
@@ -14,14 +15,127 @@ const navLinks: { href: string; label: string; badge?: string }[] = [
   { href: "#kontakt", label: "Kontakt" },
 ];
 
+// Elf der vierzehn Seiten waren bis hierher nur ueber den Fusszeilen-Block
+// erreichbar. Fuer eine Suchmaschine ist das die schwaechste Platzierung, die
+// eine Seite bekommen kann, und wer die Seite benutzt, findet sie dort auch
+// nur, wenn er bis ganz nach unten scrollt.
+//
+// Bewusst per Klick statt per Hover: ein reines Hover-Menue laesst sich auf
+// dem Handy nicht bedienen und mit der Tastatur nur ueber Umwege.
+const MENUES = [
+  {
+    id: "faecher",
+    label: "Fächer",
+    eintraege: FAECHER.map((f) => ({ href: `/nachhilfe/${f.slug}`, label: f.name })),
+  },
+  {
+    id: "standorte",
+    label: "Standorte",
+    eintraege: ORTE.map((o) => ({ href: `/nachhilfe/${o.slug}`, label: o.langName })),
+  },
+];
+
+function Aufklappmenu({
+  id,
+  label,
+  eintraege,
+  offen,
+  umschalten,
+  schliessen,
+}: {
+  id: string;
+  label: string;
+  eintraege: { href: string; label: string }[];
+  offen: boolean;
+  umschalten: () => void;
+  schliessen: () => void;
+}) {
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={umschalten}
+        aria-expanded={offen}
+        aria-controls={`menu-${id}`}
+        className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 rounded"
+      >
+        {label}
+        <svg
+          width="11"
+          height="11"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+          className={`transition-transform duration-200 ${offen ? "rotate-180" : ""}`}
+        >
+          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      {/* Immer im DOM, Sichtbarkeit nur ueber die Klasse. Als bedingtes
+          Rendern ({offen && …}) existierten die Links erst nach einem Klick —
+          ein Crawler klickt nicht, und genau deshalb waren die Unterseiten
+          weiterhin nur ueber die Fusszeile erreichbar. `hidden` ist
+          display:none und nimmt die Eintraege dabei sauber aus der
+          Tabulatorreihenfolge und aus dem Screenreader. */}
+      <div
+        id={`menu-${id}`}
+        className={`absolute left-0 top-full mt-3 min-w-[15rem] rounded-2xl bg-white py-2 z-50 ${offen ? "" : "hidden"}`}
+        style={{
+          border: "1px solid rgba(26,26,46,0.08)",
+          boxShadow: "0 4px 12px rgba(26,26,46,0.08), 0 16px 40px rgba(26,26,46,0.10)",
+        }}
+      >
+          {eintraege.map((e) => (
+            <Link
+              key={e.href}
+              href={e.href}
+              onClick={schliessen}
+              className="block px-5 py-2 font-body text-muted text-sm hover:text-primary-deep hover:bg-gray-50 transition-[color,background-color] duration-150 focus-visible:outline-none focus-visible:bg-gray-50 focus-visible:text-primary-deep"
+            >
+              {e.label}
+            </Link>
+          ))}
+          <Link
+            href="/nachhilfe"
+            onClick={schliessen}
+            className="block px-5 py-2 mt-1 border-t border-gray-100 pt-3 font-body text-primary-deep text-sm font-semibold hover:bg-gray-50 transition-[background-color] duration-150 focus-visible:outline-none focus-visible:bg-gray-50"
+          >
+            Alle im Überblick
+          </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [offenesMenu, setOffenesMenu] = useState<string | null>(null);
+  const leiste = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const isSubpage = pathname !== "/";
   const prefix = isSubpage ? "/" : "";
 
+  // Ein aufgeklapptes Menue muss sich auch wieder schliessen lassen, ohne den
+  // Knopf erneut zu treffen — sonst bleibt es beim Weiterklicken offen stehen.
+  useEffect(() => {
+    if (!offenesMenu) return;
+    function beiKlick(e: MouseEvent) {
+      if (!leiste.current?.contains(e.target as Node)) setOffenesMenu(null);
+    }
+    function beiTaste(e: KeyboardEvent) {
+      if (e.key === "Escape") setOffenesMenu(null);
+    }
+    document.addEventListener("mousedown", beiKlick);
+    document.addEventListener("keydown", beiTaste);
+    return () => {
+      document.removeEventListener("mousedown", beiKlick);
+      document.removeEventListener("keydown", beiTaste);
+    };
+  }, [offenesMenu]);
+
   return (
     <header
+      ref={leiste}
       className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
       style={{
         boxShadow: "0 1px 0 rgba(26,26,46,0.08), 0 4px 24px rgba(26,26,46,0.06)",
@@ -47,7 +161,18 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
+          {MENUES.map((m) => (
+            <Aufklappmenu
+              key={m.id}
+              id={m.id}
+              label={m.label}
+              eintraege={m.eintraege}
+              offen={offenesMenu === m.id}
+              umschalten={() => setOffenesMenu(offenesMenu === m.id ? null : m.id)}
+              schliessen={() => setOffenesMenu(null)}
+            />
+          ))}
           {navLinks.map((link) => {
             const isAbsolute = link.href.startsWith("/") && !link.href.startsWith("#");
             const href = isAbsolute ? link.href : `${prefix}${link.href}`;
@@ -132,6 +257,37 @@ export default function Navbar() {
               </a>
             );
           })}
+
+          {/* Am Handy stehen die Listen offen da statt hinter einem zweiten
+              Aufklapp-Schritt: das Menue ist ohnehin schon aufgeklappt, und
+              jeder weitere Griff kostet mehr, als er an Uebersicht bringt. */}
+          {MENUES.map((m) => (
+            <div key={m.id} className="border-t border-gray-100 pt-3 mt-1">
+              <p className="font-body font-semibold text-dark/50 text-xs tracking-widest uppercase mb-2">
+                {m.label}
+              </p>
+              <div className="flex flex-col gap-1.5">
+                {m.eintraege.map((e) => (
+                  <Link
+                    key={e.href}
+                    href={e.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-body text-muted hover:text-primary transition-[color] duration-200 text-[0.95rem]"
+                  >
+                    {e.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+          <Link
+            href="/nachhilfe"
+            onClick={() => setMenuOpen(false)}
+            className="font-body text-primary-deep font-semibold text-[0.95rem] border-t border-gray-100 pt-3 mt-1"
+          >
+            Alle Fächer und Standorte im Überblick
+          </Link>
+
           <a
             href={`${prefix}#kontakt`}
             className="inline-flex items-center justify-center text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,box-shadow] duration-200 active:scale-95"

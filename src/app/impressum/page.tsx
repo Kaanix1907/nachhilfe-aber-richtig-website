@@ -50,10 +50,18 @@ export default function Impressum() {
               boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 8px 32px rgba(26,26,46,0.06)",
             }}
           >
+            {/* Die Seite fuehrt zwei Anschriften: hier die ladungsfaehige nach
+                § 5 DDG, ueberall sonst den Unterrichtsort. Rechtlich ist beides
+                richtig, fuer die lokale Suche war es bis hierher ein Problem —
+                zwei Anschriften auf einer Domain, ohne dass irgendwo steht,
+                wie sie zusammenhaengen. Der Zusatz unten macht es eindeutig. */}
             <Section title="Angaben gemäß § 5 DDG">
               <p className="font-semibold text-dark">{owner}</p>
               <p>{addr.street}</p>
               <p>{addr.city}</p>
+              <p className="pt-3 text-muted/60">
+                {`Dies ist die Anschrift des Unternehmens. Der Unterricht findet statt in der ${addresses.lernort.street}, ${addresses.lernort.city}.`}
+              </p>
             </Section>
 
             <Section title="Kontakt">

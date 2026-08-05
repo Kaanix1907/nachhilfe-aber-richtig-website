@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { INHALT_STAND } from "@/lib/stand";
 import { notFound } from "next/navigation";
 import OrtSeite from "@/components/OrtSeite";
 import FachSeite from "@/components/FachSeite";
@@ -39,6 +40,7 @@ export async function generateMetadata({
       type: "article",
       locale: "de_DE",
       url: `${SITE_URL}/nachhilfe/${slug}`,
+    modifiedTime: INHALT_STAND,
       siteName: BUSINESS.name,
       title: page.title,
       description: page.description,
@@ -47,13 +49,17 @@ export async function generateMetadata({
   };
 }
 
+// Drei Stufen statt zwei: seit es /nachhilfe als Uebersicht gibt, entspricht
+// die Brotkrume dem tatsaechlichen Pfad. Vorher sprang sie von der Startseite
+// direkt aufs Fach und liess die Ebene aus, die die Seiten verbindet.
 function breadcrumbLd(slug: string, name: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Startseite", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name, item: `${SITE_URL}/nachhilfe/${slug}` },
+      { "@type": "ListItem", position: 2, name: "Nachhilfe", item: `${SITE_URL}/nachhilfe` },
+      { "@type": "ListItem", position: 3, name, item: `${SITE_URL}/nachhilfe/${slug}` },
     ],
   };
 }
@@ -107,6 +113,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       name: `Nachhilfe in ${ort.langName}`,
       description: ort.description,
       url: `${SITE_URL}/nachhilfe/${slug}`,
+      dateModified: INHALT_STAND,
       areaServed: { "@type": "Place", name: ort.langName },
       provider: ANBIETER,
       audience: { "@type": "EducationalAudience", educationalRole: "student" },
@@ -117,7 +124,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, `Nachhilfe ${ort.name}`)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, ort.langName)) }}
         />
         <OrtSeite ort={ort} />
       </>
@@ -133,6 +140,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       name: `Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`,
       description: fach.description,
       url: `${SITE_URL}/nachhilfe/${slug}`,
+      dateModified: INHALT_STAND,
       areaServed: ORTE.map((o) => ({ "@type": "Place", name: o.langName })),
       provider: ANBIETER,
       audience: { "@type": "EducationalAudience", educationalRole: "student" },
@@ -143,7 +151,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, `${fach.name}-Nachhilfe`)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, fach.name)) }}
         />
         <FachSeite fach={fach} />
       </>

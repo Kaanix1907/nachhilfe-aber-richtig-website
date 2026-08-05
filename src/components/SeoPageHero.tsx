@@ -8,12 +8,15 @@ export default function SeoPageHero({
   h1,
   lead,
   breadcrumb,
+  breadcrumbParent,
 }: {
   kicker: string;
   h1: React.ReactNode;
   lead: string;
   /** Letzte Stufe der Brotkrume — die Startseite setzt die Komponente selbst. */
   breadcrumb: string;
+  /** Optionale Zwischenstufe, z.B. Startseite / Nachhilfe / Mathematik. */
+  breadcrumbParent?: { label: string; href: string };
 }) {
   return (
     <section
@@ -35,6 +38,17 @@ export default function SeoPageHero({
             Startseite
           </Link>
           <span aria-hidden="true">/</span>
+          {breadcrumbParent && (
+            <>
+              <Link
+                href={breadcrumbParent.href}
+                className="hover:text-white/70 transition-[color] duration-200"
+              >
+                {breadcrumbParent.label}
+              </Link>
+              <span aria-hidden="true">/</span>
+            </>
+          )}
           <span className="text-white/55">{breadcrumb}</span>
         </nav>
 

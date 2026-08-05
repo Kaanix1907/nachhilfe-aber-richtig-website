@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
-import { SeoBlock, SchrittListe, PillenReihe } from "@/components/SeoBlock";
+import { SeoBlock, SchrittListe, PillenReihe, StandHinweis } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER, ORTE } from "@/lib/seo-pages";
 import type { FaqItem } from "@/lib/faq";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     type: "article",
     locale: "de_DE",
     url: `${SITE_URL}/bildung-und-teilhabe`,
+    modifiedTime: INHALT_STAND,
     siteName: BUSINESS.name,
     title: "Kostenlose Nachhilfe über Bildung und Teilhabe in Duisburg",
     description:
@@ -265,6 +267,7 @@ export default function BildungUndTeilhabe() {
             <Zustaendigkeit />
             <FaecherUndOrte />
             <Abschluss />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
 

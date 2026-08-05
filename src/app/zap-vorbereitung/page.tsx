@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
-import { SeoBlock, SchrittListe, PillenReihe, WeiterLink } from "@/components/SeoBlock";
+import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, StandHinweis } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
 import type { FaqItem } from "@/lib/faq";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     type: "article",
     locale: "de_DE",
     url: `${SITE_URL}/zap-vorbereitung`,
+    modifiedTime: INHALT_STAND,
     siteName: BUSINESS.name,
     title: "ZAP-Vorbereitung Duisburg | Zentrale Prüfungen Klasse 10",
     description:
@@ -87,6 +89,7 @@ const courseLd = {
   description:
     "Vorbereitung auf die Zentralen Prüfungen am Ende der Klasse 10 in Nordrhein-Westfalen in Mathematik, Deutsch und Englisch.",
   url: `${SITE_URL}/zap-vorbereitung`,
+  dateModified: INHALT_STAND,
   inLanguage: "de",
   teaches: ["Mathematik", "Deutsch", "Englisch"],
   provider: {
@@ -310,6 +313,7 @@ export default function ZapVorbereitung() {
             <Foerderung />
             <WeitereFaecher />
             <Abschluss />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
 

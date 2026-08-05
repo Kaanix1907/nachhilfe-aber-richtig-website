@@ -53,6 +53,17 @@ export default function Footer() {
             <p className="font-body text-white/40 text-sm leading-[1.75] mb-5">
               Nachhilfe in Duisburg-Rheinhausen, von Klasse 1 bis Abitur.
             </p>
+            {/* Name, Anschrift und Rufnummer gehoeren zusammen auf jede Seite
+                und muessen mit dem Google-Unternehmensprofil wortgleich sein —
+                daran erkennt die lokale Suche denselben Betrieb wieder. Die
+                Anschrift fehlte hier bis 2026-08-05 vollstaendig.
+                Es ist der Unterrichtsort, nicht die ladungsfaehige Anschrift
+                aus dem Impressum; wie beide zusammenhaengen, steht dort. */}
+            <address className="not-italic font-body text-white/40 text-xs leading-[1.8] mb-4">
+              {BUSINESS.addresses.lernort.street}
+              <br />
+              {BUSINESS.addresses.lernort.city}
+            </address>
             <div className="flex flex-col gap-2 mb-6">
               <a
                 href={`tel:${BUSINESS.phone}`}
@@ -97,6 +108,7 @@ export default function Footer() {
               <FooterLink href="/#leistungen">Leistungen</FooterLink>
               <FooterLink href="/#ueber-uns">Über uns</FooterLink>
               <FooterLink href="/#faq">Häufige Fragen</FooterLink>
+              <FooterLink href="/nachhilfe">Alle Fächer und Standorte</FooterLink>
               <FooterLink href="/bildung-und-teilhabe">Bildung und Teilhabe</FooterLink>
               <FooterLink href="/zap-vorbereitung">ZAP-Vorbereitung</FooterLink>
               <FooterLink href="/#kontakt">Kontakt</FooterLink>

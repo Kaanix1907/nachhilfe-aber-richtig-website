@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Footer from "./Footer";
 import SeoPageHero from "./SeoPageHero";
-import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, PillenReihe } from "./SeoBlock";
+import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, PillenReihe, StandHinweis } from "./SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { ORTE, FAECHER, type FachPage } from "@/lib/seo-pages";
 
@@ -144,7 +145,8 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
           kicker={`${fach.name}-Nachhilfe`}
           h1={`Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`}
           lead={`${fach.kurz}-Nachhilfe von Klasse 1 bis zum Abitur — in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
-          breadcrumb={`${fach.name}-Nachhilfe`}
+          breadcrumb={fach.name}
+          breadcrumbParent={{ label: "Nachhilfe", href: "/nachhilfe" }}
         />
 
         <section className="bg-white py-20 md:py-24">
@@ -162,6 +164,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
       </main>

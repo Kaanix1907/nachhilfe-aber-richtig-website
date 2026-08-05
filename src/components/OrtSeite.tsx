@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Footer from "./Footer";
 import SeoPageHero from "./SeoPageHero";
-import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel } from "./SeoBlock";
+import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, StandHinweis } from "./SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER, findOrt, type OrtPage } from "@/lib/seo-pages";
 
@@ -133,7 +134,8 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
           kicker={`Standort ${ort.name}`}
           h1={`Nachhilfe in ${ort.langName}`}
           lead={`Einzel- und Gruppennachhilfe in allen Fächern, von Klasse 1 bis zum Abitur. Unser Lernort liegt in der ${BUSINESS.addresses.lernort.street}, ${BUSINESS.addresses.lernort.city}.`}
-          breadcrumb={`Nachhilfe ${ort.name}`}
+          breadcrumb={ort.langName}
+          breadcrumbParent={{ label: "Nachhilfe", href: "/nachhilfe" }}
         />
 
         <section className="bg-white py-20 md:py-24">
@@ -150,6 +152,7 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
       </main>

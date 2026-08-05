@@ -112,6 +112,21 @@ export function AbschlussKarte({
   );
 }
 
+// Aktualitaetshinweis unter inhaltlichen Seiten. Er beantwortet die Frage,
+// die sich jeder stellt, der auf eine Ratgeberseite kommt: Gilt das noch?
+// Fuer Suchmaschinen und AI-Systeme ist er zugleich ein Frischesignal —
+// undatierte Inhalte verlieren gegen datierte.
+//
+// Das Datum kommt aus lib/stand.ts und wird dort von Hand gepflegt, nicht aus
+// dem git-Verlauf abgeleitet. Warum, steht in der Datei.
+export function StandHinweis({ stand }: { stand: string }) {
+  return (
+    <p className="font-body text-muted/45 text-xs mt-10 pt-6 border-t border-gray-100">
+      Inhalt zuletzt geprüft: {stand}
+    </p>
+  );
+}
+
 export function LinkKachel({ href, titel }: { href: string; titel: string }) {
   return (
     <Link
