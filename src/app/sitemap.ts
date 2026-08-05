@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { ORTE, FAECHER } from "@/lib/seo-pages";
+import { ZAP_FAECHER } from "@/lib/zap-faecher";
+import { RATGEBER } from "@/lib/ratgeber";
 import { INHALT_STAND } from "@/lib/stand";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -41,6 +43,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    // Sammelstelle der Ratgeber-Ebene, wie /nachhilfe hoeher gewichtet als
+    // ihre Unterseiten.
+    {
+      url: `${SITE_URL}/ratgeber`,
+      lastModified: stand,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     {
       url: `${SITE_URL}/material`,
       lastModified: stand,
@@ -55,6 +65,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...FAECHER.map((f) => ({
       url: `${SITE_URL}/nachhilfe/${f.slug}`,
+      lastModified: stand,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    // Schulstufen: eigene Routen neben [slug], deshalb von Hand.
+    ...["grundschule", "abiturvorbereitung"].map((s) => ({
+      url: `${SITE_URL}/nachhilfe/${s}`,
+      lastModified: stand,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...ZAP_FAECHER.map((f) => ({
+      url: `${SITE_URL}/zap-vorbereitung/${f.slug}`,
+      lastModified: stand,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...RATGEBER.map((r) => ({
+      url: `${SITE_URL}/ratgeber/${r.slug}`,
       lastModified: stand,
       changeFrequency: "monthly" as const,
       priority: 0.8,

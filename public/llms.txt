@@ -2,7 +2,7 @@
 
 > Nachhilfeinstitut in Duisburg-Rheinhausen. Einzel- und Gruppenunterricht von
 > Klasse 1 bis zum Abitur, vor Ort und online. Für Familien mit Anspruch auf
-> Bildung und Teilhabe kostenlos — die Abrechnung läuft direkt mit dem
+> Bildung und Teilhabe kostenlos, die Abrechnung läuft direkt mit dem
 > Jobcenter Duisburg beziehungsweise der Stadt Duisburg.
 
 Inhaber und unterrichtende Lehrkraft: Mustafa Kaan Güneren.
@@ -35,8 +35,28 @@ keine Kosten.
 - [Startseite](https://nachhilfe-aber-richtig.de): Angebot, Lehrkräfte, Bewertungen, Kontaktformular
 - [Übersicht aller Fächer und Standorte](https://nachhilfe-aber-richtig.de/nachhilfe)
 - [Bildung und Teilhabe](https://nachhilfe-aber-richtig.de/bildung-und-teilhabe): wer Anspruch hat, wie der Antrag beim Jobcenter Duisburg läuft, welche Unterlagen die Schule bestätigen muss
-- [ZAP-Vorbereitung](https://nachhilfe-aber-richtig.de/zap-vorbereitung): Zentrale Prüfungen am Ende der Klasse 10 in Nordrhein-Westfalen
+- [Übungsmaterial](https://nachhilfe-aber-richtig.de/material): elf eigene Aufgaben- und Lösungshefte als PDF, frei zugänglich ohne Anmeldung
 - [Leistungen im Detail](https://nachhilfe-aber-richtig.de/leistungen.md): maschinenlesbare Fassung dieser Angaben
+
+### Prüfungsvorbereitung
+
+- [ZAP-Vorbereitung](https://nachhilfe-aber-richtig.de/zap-vorbereitung): Zentrale Prüfungen am Ende der Klasse 10 in Nordrhein-Westfalen, mit den Terminen 2027
+- [ZAP Mathematik](https://nachhilfe-aber-richtig.de/zap-vorbereitung/mathe): zwei Prüfungsteile, 120 Minuten (MSA/GYM), erster Teil 30 Minuten ohne Taschenrechner und ohne Formelsammlung
+- [ZAP Deutsch](https://nachhilfe-aber-richtig.de/zap-vorbereitung/deutsch): 150 Minuten (MSA/GYM), davon 30 Minuten Leseverstehen und 120 Minuten Schreibteil
+- [ZAP Englisch](https://nachhilfe-aber-richtig.de/zap-vorbereitung/englisch): Gewichtung MSA/GYM 15/15/10/60 Prozent für Hörverstehen, Leseverstehen, Wortschatz und Schreiben; keine Wörterbücher zugelassen
+
+### Ratgeber für Eltern
+
+- [Übersicht](https://nachhilfe-aber-richtig.de/ratgeber)
+- [Was kostet Nachhilfe?](https://nachhilfe-aber-richtig.de/ratgeber/was-kostet-nachhilfe): Preisfaktoren, Vertragsklauseln, Kostenübernahme durch das Amt
+- [Ab wann ist Nachhilfe sinnvoll?](https://nachhilfe-aber-richtig.de/ratgeber/ab-wann-nachhilfe): Anzeichen, Grenzfälle, Zeitpunkt im Schuljahr
+- [Versetzung gefährdet](https://nachhilfe-aber-richtig.de/ratgeber/versetzung-gefaehrdet): Blauer Brief nach § 50 Abs. 4 Schulgesetz NRW, Ausgleichsregelung, Nachprüfung
+- [Nachhilfe vergleichen](https://nachhilfe-aber-richtig.de/ratgeber/nachhilfe-vergleichen): acht Kriterien zur Auswahl eines Anbieters
+
+### Nach Schulstufe
+
+- [Grundschule, Klasse 1 bis 4](https://nachhilfe-aber-richtig.de/nachhilfe/grundschule)
+- [Abiturvorbereitung](https://nachhilfe-aber-richtig.de/nachhilfe/abiturvorbereitung)
 
 ### Nach Fach
 

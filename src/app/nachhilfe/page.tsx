@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
 import { SeoBlock, AbschlussKarte, WeiterLink, StandHinweis } from "@/components/SeoBlock";
 import { ORTE, FAECHER } from "@/lib/seo-pages";
+import { RATGEBER } from "@/lib/ratgeber";
 import { BUSINESS } from "@/lib/data";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -40,12 +41,27 @@ const breadcrumbLd = {
   ],
 };
 
-// Die Uebersicht als ItemList: sie sagt einer Suchmaschine, dass die elf
+// Zwei Seiten, die weder Fach noch Ort sind. Sie liegen als eigene Routen
+// neben [slug] und muessen deshalb ueberall von Hand mitgefuehrt werden.
+const STUFEN = [
+  {
+    slug: "grundschule",
+    titel: "Grundschule, Klasse 1 bis 4",
+    text: "Lesen, Schreiben und Rechnen tragen alles Spätere. Dazu: was die Schulformempfehlung in Klasse 4 bedeutet und was nicht.",
+  },
+  {
+    slug: "abiturvorbereitung",
+    titel: "Abiturvorbereitung",
+    text: "Zwei Drittel der Abiturpunkte entstehen in der Qualifikationsphase, nicht in der Prüfung. Wo sich Arbeit lohnt und wo nicht.",
+  },
+];
+
+// Die Uebersicht als ItemList: sie sagt einer Suchmaschine, dass die
 // Unterseiten zusammengehoeren und wo ihre Sammelstelle liegt.
 const itemListLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Nachhilfeangebote nach Fach und Standort",
+  name: "Nachhilfeangebote nach Fach, Schulstufe und Standort",
   itemListElement: [
     ...FAECHER.map((fach, i) => ({
       "@type": "ListItem",
@@ -53,9 +69,15 @@ const itemListLd = {
       name: `Nachhilfe in ${fach.name}`,
       url: `${SITE_URL}/nachhilfe/${fach.slug}`,
     })),
-    ...ORTE.map((ort, i) => ({
+    ...STUFEN.map((stufe, i) => ({
       "@type": "ListItem",
       position: FAECHER.length + i + 1,
+      name: stufe.titel,
+      url: `${SITE_URL}/nachhilfe/${stufe.slug}`,
+    })),
+    ...ORTE.map((ort, i) => ({
+      "@type": "ListItem",
+      position: FAECHER.length + STUFEN.length + i + 1,
       name: `Nachhilfe in ${ort.langName}`,
       url: `${SITE_URL}/nachhilfe/${ort.slug}`,
     })),
@@ -90,7 +112,7 @@ export default function NachhilfeUebersicht() {
         <SeoPageHero
           kicker="Überblick"
           h1="Nachhilfe in Duisburg: Fächer und Standorte"
-          lead={`Sechs Fächer, fünf Stadtteile, ein Lernort in der ${BUSINESS.addresses.lernort.street}. Hier steht, was es gibt — und wo Sie weiterlesen, wenn ein Fach oder ein Ort zu Ihnen passt.`}
+          lead={`Sechs Fächer, zwei Schulstufen, fünf Stadtteile, ein Lernort in der ${BUSINESS.addresses.lernort.street}. Hier steht, was es gibt, und wo Sie weiterlesen, wenn etwas davon zu Ihnen passt.`}
           breadcrumb="Nachhilfe"
         />
 
@@ -105,6 +127,14 @@ export default function NachhilfeUebersicht() {
                     titel={fach.name}
                     text={fach.intro[0]?.split(". ").slice(0, 1).join(". ") + "."}
                   />
+                ))}
+              </div>
+            </SeoBlock>
+
+            <SeoBlock kicker="Nach Schulstufe" title="Zwei Stufen mit eigenen Regeln" roh titelAbstand="weit">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {STUFEN.map((s) => (
+                  <Karte key={s.slug} href={`/nachhilfe/${s.slug}`} titel={s.titel} text={s.text} />
                 ))}
               </div>
             </SeoBlock>
@@ -139,6 +169,24 @@ export default function NachhilfeUebersicht() {
                 eine eigene Vorbereitung.
               </p>
               <WeiterLink href="/zap-vorbereitung">Zur ZAP-Vorbereitung</WeiterLink>
+            </SeoBlock>
+
+            {/* Die vier Ratgeber-Beitraege stehen hier einzeln und nicht nur
+                als Sammellink: Sonst haengen sie an genau zwei eingehenden
+                Verweisen, der Sammelseite und einem Nachbarn. */}
+            <SeoBlock kicker="Vorher" title="Noch unentschieden?">
+              <p>
+                Ob Nachhilfe überhaupt das richtige Mittel ist, woraus sich der Preis zusammensetzt
+                und was der Blaue Brief bedeutet: Diese Fragen beantworten wir im Ratgeber
+                ausführlich, ohne Anmeldung und ohne Verkaufstext.
+              </p>
+              <div className="flex flex-col gap-3 pt-1">
+                {RATGEBER.map((r) => (
+                  <WeiterLink key={r.slug} href={`/ratgeber/${r.slug}`}>
+                    {r.h1}
+                  </WeiterLink>
+                ))}
+              </div>
             </SeoBlock>
 
             <AbschlussKarte

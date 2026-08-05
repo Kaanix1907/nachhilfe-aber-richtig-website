@@ -109,6 +109,7 @@ export default function Footer() {
               <FooterLink href="/#ueber-uns">Über uns</FooterLink>
               <FooterLink href="/#faq">Häufige Fragen</FooterLink>
               <FooterLink href="/nachhilfe">Alle Fächer und Standorte</FooterLink>
+              <FooterLink href="/ratgeber">Ratgeber für Eltern</FooterLink>
               <FooterLink href="/material">Kostenloses Übungsmaterial</FooterLink>
               <FooterLink href="/bildung-und-teilhabe">Bildung und Teilhabe</FooterLink>
               <FooterLink href="/zap-vorbereitung">ZAP-Vorbereitung</FooterLink>
@@ -128,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Fächer */}
+          {/* Fächer und Schulstufen */}
           <div>
             <ColumnHeading>Fächer</ColumnHeading>
             <div className="flex flex-col gap-2.5 font-body text-sm">
@@ -137,6 +138,11 @@ export default function Footer() {
                   {f.name}
                 </FooterLink>
               ))}
+              {/* Die beiden Stufenseiten stehen bewusst hier und nicht in der
+                  Navigationsspalte: Wer nach einer Schulstufe sucht, sucht in
+                  derselben Bewegung wie nach einem Fach. */}
+              <FooterLink href="/nachhilfe/grundschule">Grundschule</FooterLink>
+              <FooterLink href="/nachhilfe/abiturvorbereitung">Abiturvorbereitung</FooterLink>
             </div>
           </div>
         </div>

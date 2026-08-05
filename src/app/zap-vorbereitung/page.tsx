@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, StandHinweis } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
+import { ZAP_FAECHER } from "@/lib/zap-faecher";
 import type { FaqItem } from "@/lib/faq";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -43,7 +44,7 @@ const ZAP_FAQ: FaqItem[] = [
   },
   {
     q: "Wann finden die Prüfungen statt?",
-    a: "Im Frühjahr, gestaffelt über mehrere Tage je Fach. Die genauen Termine legt das Schulministerium für jeden Jahrgang neu fest — Ihre Schule nennt sie Ihnen verbindlich. Wir richten den Trainingsplan danach aus.",
+    a: "Im Mai, gestaffelt über mehrere Tage. Für 2027 hat das Schulministerium den 11. Mai für Deutsch, den 13. Mai für Englisch und den 20. Mai für Mathematik festgelegt, Beginn jeweils um 9 Uhr. Nachschreibtermine liegen Ende Mai und Anfang Juni. Verbindlich sind die Angaben Ihrer Schule.",
   },
   {
     q: "Wann sollten wir mit der Vorbereitung anfangen?",
@@ -80,6 +81,20 @@ const breadcrumbLd = {
     { "@type": "ListItem", position: 1, name: "Startseite", item: SITE_URL },
     { "@type": "ListItem", position: 2, name: "ZAP-Vorbereitung", item: `${SITE_URL}/zap-vorbereitung` },
   ],
+};
+
+// Sagt einer Suchmaschine, dass die drei Fachseiten zusammengehoeren und wo
+// ihre Sammelstelle liegt. Ohne das haengen sie als Einzelseiten in der Luft.
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Vorbereitung auf die Zentralen Prüfungen nach Fach",
+  itemListElement: ZAP_FAECHER.map((f, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: `ZAP ${f.fach}`,
+    url: `${SITE_URL}/zap-vorbereitung/${f.slug}`,
+  })),
 };
 
 const courseLd = {
@@ -135,25 +150,39 @@ const courseLd = {
   },
 };
 
+// Kurzfassung je Fach, jeweils mit der einen Zahl, die den Unterschied macht.
+// Die Tiefe steht auf den drei Unterseiten: Pruefungszeiten, Hilfsmittel und
+// Gewichtungen dreimal hier auszubreiten, wuerde diese Seite unlesbar machen
+// und nebenbei mit ihren eigenen Unterseiten um dieselbe Suchanfrage
+// konkurrieren.
 const PRUEFUNGSFAECHER = [
   {
     slug: "mathe",
     fach: "Mathematik",
     inhalt:
-      "Ein prüfungsfreier Teil ohne Taschenrechner und ein Teil mit Hilfsmitteln. Erfahrungsgemäß entscheiden nicht die schweren Aufgaben am Ende, sondern die sicheren Punkte am Anfang — Prozentrechnung, Gleichungen, Flächen und Körper, lineare und quadratische Funktionen.",
+      "Zwei Prüfungsteile mit verschiedenen Regeln: 30 Minuten ohne Taschenrechner und ohne Formelsammlung, danach 90 Minuten mit beidem. Der hilfsmittelfreie Teil entscheidet mehr Noten, als seine Länge vermuten lässt.",
   },
   {
     slug: "deutsch",
     fach: "Deutsch",
     inhalt:
-      "Leseverstehen an einem unbekannten Text und ein eigener längerer Text nach vorgegebenem Format. Wer weiß, wie die Aufgabenstellung gelesen werden will, verliert deutlich weniger Punkte als jemand, der einfach drauflosschreibt.",
+      "150 Minuten, davon 120 für einen einzigen selbst geschriebenen Text. Welche Schreibform es wird, sollte lange vor dem Prüfungstag feststehen und nicht erst in den zehn Minuten Auswahlzeit.",
   },
   {
     slug: "englisch",
     fach: "Englisch",
     inhalt:
-      "Hörverstehen, Leseverstehen und Schreiben. Das Hörverstehen wird am häufigsten unterschätzt: es läuft unter Zeitdruck und lässt sich nur durch regelmäßiges Training verbessern, nicht durch Vokabellernen kurz vorher.",
+      "Vier Bestandteile mit amtlicher Gewichtung. Im Schreibteil zählt die sprachliche Richtigkeit mit 35 Prozent mehr als der Inhalt mit 25 — das überrascht die meisten.",
   },
+];
+
+// Amtliche Termine des Haupttermins 2027. Sie stehen hier statt in einer
+// vagen Formulierung, weil "im Fruehjahr" niemandem hilft, der einen
+// Trainingsplan aufstellen will.
+const TERMINE_2027 = [
+  { fach: "Deutsch", tag: "Dienstag, 11. Mai 2027" },
+  { fach: "Englisch", tag: "Donnerstag, 13. Mai 2027" },
+  { fach: "Mathematik", tag: "Donnerstag, 20. Mai 2027" },
 ];
 
 const ABLAUF = [
@@ -216,8 +245,8 @@ function DreiFaecher() {
               {p.fach}
             </h3>
             <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
-            <WeiterLink href={`/nachhilfe/${p.slug}`} groesse="0.92rem">
-              Zur {p.fach}-Nachhilfe
+            <WeiterLink href={`/zap-vorbereitung/${p.slug}`} groesse="0.92rem">
+              Prüfungsaufbau, Hilfsmittel und Termine in {p.fach}
             </WeiterLink>
           </div>
         ))}
@@ -226,74 +255,50 @@ function DreiFaecher() {
   );
 }
 
-// Der Prüfungsaufbau stand bisher nirgends. Wer als Elternteil wissen will,
-// was auf sein Kind zukommt, findet das sonst nur auf den Seiten des
-// Schulministeriums — in Verwaltungssprache und über mehrere PDF verteilt.
-// Alle Zahlen hier stammen aus den Vorgaben des Landes für den MSA.
-function AufbauDeutsch() {
+// Die Termine standen bisher nur als "im Fruehjahr" auf der Seite. Sie sind
+// amtlich veroeffentlicht, und sie sind das Erste, was Eltern wissen wollen,
+// wenn sie ueberlegen, wann sie anfangen.
+function Termine() {
   return (
-    <SeoBlock kicker="Deutsch im Detail" title="Wie die Deutschprüfung aufgebaut ist">
+    <SeoBlock kicker="Termine" title="Die Prüfungstermine 2027 stehen fest">
       <p>
-        Die Prüfung dauert 150 Minuten und bringt 100 Punkte. Davon entfallen 30 Minuten
-        und 20 Punkte auf das Leseverstehen, 120 Minuten und 80 Punkte auf den Schreibteil.
-        Dazu kommen 10 Minuten Einlesezeit und 10 Minuten, in denen die Schülerinnen und
-        Schüler ihre Aufgabe wählen. Als Hilfsmittel ist ein Rechtschreibwörterbuch
-        zugelassen.
+        Die drei schriftlichen Prüfungen liegen im Mai und beginnen jeweils um 9 Uhr:
       </p>
-      <p>
-        Im Schreibteil stehen drei Aufgabentypen zur Wahl, und diese Wahl entscheidet mehr
-        als die meisten glauben:
-      </p>
-      <ul className="space-y-3 pt-1">
-        {[
-          {
-            t: "Typ 2 — Materialgestütztes Schreiben",
-            d: "Aus mehreren Materialien entsteht ein informierender Text. Wer gern strukturiert und ungern deutet, fährt hier gut.",
-          },
-          {
-            t: "Typ 4a — Analyse und Interpretation",
-            d: "Ein einzelner Text, meist ein Gedicht oder eine Kurzgeschichte, seltener ein Sachtext. Verlangt Deutung und den sicheren Umgang mit sprachlichen Mitteln.",
-          },
-          {
-            t: "Typ 4b — Vergleichende Analyse",
-            d: "Zwei Texte gegenüberstellen. Der anspruchsvollste Typ, weil neben der Analyse auch der Vergleich sprachlich sauber gebaut sein muss.",
-          },
-        ].map((x) => (
-          <li key={x.t} className="flex items-start gap-3">
+      <ul className="space-y-2.5 pt-1">
+        {TERMINE_2027.map((t) => (
+          <li key={t.fach} className="flex items-start gap-3">
             <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
             <span>
-              <strong className="text-dark font-semibold">{x.t}.</strong> {x.d}
+              <strong className="text-dark font-semibold">{t.fach}:</strong> {t.tag}
             </span>
           </li>
         ))}
       </ul>
       <p className="pt-1">
-        Bewertet wird nach Inhalt, Aufbau, Sprache und Darstellung. Für alle drei Typen
-        stellen wir Formulierungshilfen und die Bewertungsbögen kostenlos bereit, mit denen
-        wir selbst korrigieren.
+        Zwischen der ersten und der letzten Prüfung liegen neun Tage. Nachschreibtermine gibt es
+        Ende Mai und Anfang Juni, die mündlichen Prüfungen folgen im Juni. Verbindlich sind die
+        Angaben Ihrer Schule.
       </p>
-      <WeiterLink href="/material">Zum kostenlosen Übungsmaterial</WeiterLink>
+      <p>
+        Von heute aus gerechnet bleibt für den Jahrgang 2027 also noch fast ein ganzes Schuljahr.
+        Das ist der Abstand, in dem sich Lücken noch schließen lassen statt nur Formate zu üben.
+      </p>
     </SeoBlock>
   );
 }
 
-function Wahl() {
-  return (
-    <SeoBlock kicker="Die Wahl" title="Welchen Aufgabentyp soll mein Kind nehmen?">
-      <p>
-        Diese Frage kommt in jeder Vorbereitung, und die ehrliche Antwort lautet: den, den
-        es geübt hat. Die zehn Minuten Wahlzeit in der Prüfung reichen nicht, um sich
-        umzuentscheiden. Wer erst dort merkt, dass ihm das Gedicht nicht liegt, hat schon
-        Zeit verloren.
-      </p>
-      <p>
-        Wir arbeiten deshalb so: In den ersten Terminen probiert Ihr Kind alle drei Typen
-        einmal aus. Danach steht fest, welcher am besten läuft, und der wird geübt. Die
-        anderen beiden bleiben als Rückfalloption, falls das Prüfungsmaterial nicht passt.
-      </p>
-    </SeoBlock>
-  );
-}
+// Der ausfuehrliche Pruefungsaufbau je Fach stand bis 2026-08-05 hier, aber
+// nur fuer Deutsch. Er liegt jetzt auf /zap-vorbereitung/deutsch, zusammen mit
+// den beiden anderen Faechern auf ihren eigenen Seiten. Zwei Gruende: Diese
+// Seite haette dreimal Pruefungszeiten, Hilfsmittel und Gewichtungen tragen
+// muessen, und sie haette dabei mit ihren eigenen Unterseiten um "zap deutsch"
+// konkurriert.
+//
+// Bei der Gelegenheit fielen zwei falsche Angaben auf, die hier standen:
+// Die zehn Zusatzminuten heissen amtlich Bonuszeit und duerfen in Deutsch auf
+// BEIDE Pruefungsteile verteilt werden, nicht nur zum Einlesen. Und die
+// Punkteverteilung 20/80 liess sich in keiner amtlichen Quelle belegen; die
+// Verfuegung nennt nur Zeiten. Sie ist deshalb ersatzlos entfallen.
 
 function WieWirVorbereiten() {
   return (
@@ -385,6 +390,7 @@ export default function ZapVorbereitung() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Navbar />
       <main id="inhalt">
@@ -399,8 +405,7 @@ export default function ZapVorbereitung() {
           <div className="max-w-3xl mx-auto px-4">
             <WasAndersIst />
             <DreiFaecher />
-            <AufbauDeutsch />
-            <Wahl />
+            <Termine />
             <WieWirVorbereiten />
             <Material />
             <Foerderung />

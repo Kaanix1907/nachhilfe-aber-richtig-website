@@ -1,11 +1,11 @@
-# Leistungen — Nachhilfe, aber richtig!
+# Leistungen: Nachhilfe, aber richtig!
 
 Maschinenlesbare Fassung des Angebots. Stand: August 2026.
 
 **Zu den Preisen:** Sie stehen bewusst nicht in dieser Datei und nicht auf der
 Website. Was der Unterricht kostet, hängt von Gruppengröße, Fach und Umfang ab
 und wird im Beratungsgespräch besprochen. Für Familien mit Anspruch auf
-Lernförderung über Bildung und Teilhabe entstehen keine Kosten — dort rechnen
+Lernförderung über Bildung und Teilhabe entstehen keine Kosten, dort rechnen
 wir direkt mit dem Amt ab.
 
 ## Anbieter
@@ -25,7 +25,7 @@ wir direkt mit dem Amt ab.
 ### Gruppenunterricht
 - Gruppengröße: drei bis fünf Schülerinnen und Schüler
 - Ort: Friedrich-Alfred-Straße 14, 47226 Duisburg
-- Geeignet für: den Regelfall — jedes Kind kommt dran, lernt aber zugleich,
+- Geeignet für: den Regelfall, jedes Kind kommt dran, lernt aber zugleich,
   vor anderen zu fragen
 
 ### Einzelunterricht
@@ -80,9 +80,46 @@ Onlineunterricht ortsunabhängig.
 
 - Fächer: Mathematik, Deutsch, Englisch
 - Bundesland: Nordrhein-Westfalen
-- Termine: im Frühjahr, je Fach gestaffelt; die genauen Tage legt das
-  Schulministerium für jeden Jahrgang neu fest
+- Termine 2027: Deutsch 11. Mai, Englisch 13. Mai, Mathematik 20. Mai,
+  Beginn jeweils 9:00 Uhr
+- Format der Vorbereitung: zwei Wochenenden je Fach, je acht Stunden pro Tag
 - Ausführlich: https://nachhilfe-aber-richtig.de/zap-vorbereitung
+
+### Bearbeitungsdauer je Fach (Quelle: ZP10-Verfügung des Landes NRW)
+
+| Fach | MSA und GYM | EESA | erster Prüfungsteil |
+|---|---|---|---|
+| Deutsch | 150 Minuten | 125 Minuten | 30 Minuten Leseverstehen |
+| Englisch | 120 Minuten | 90 Minuten | etwa 20 Minuten Hörverstehen |
+| Mathematik | 120 Minuten | 90 Minuten | 30 Minuten ohne Hilfsmittel |
+
+In allen Fächern zusätzlich zehn Minuten Bonuszeit. In Deutsch und Englisch
+zusätzlich zehn Minuten Auswahlzeit. Wörterbücher sind in Englisch nicht
+zugelassen; in Deutsch liegen Rechtschreibwörterbücher im Prüfungsraum aus.
+
+- ZAP Mathematik: https://nachhilfe-aber-richtig.de/zap-vorbereitung/mathe
+- ZAP Deutsch: https://nachhilfe-aber-richtig.de/zap-vorbereitung/deutsch
+- ZAP Englisch: https://nachhilfe-aber-richtig.de/zap-vorbereitung/englisch
+
+## Abitur (Zentralabitur Nordrhein-Westfalen)
+
+- Schriftliche Prüfungen 2027: 13. April bis 5. Mai
+- Mündliche Prüfungen 2027: 10. Mai bis 2. Juli
+- Ausführlich: https://nachhilfe-aber-richtig.de/nachhilfe/abiturvorbereitung
+
+## Grundschule
+
+- Klassenstufen: 1 bis 4
+- Schwerpunkte: Lesen, Schreiben, Rechnen
+- Unterrichtsform: überwiegend vor Ort, kleine Gruppen oder einzeln
+- Ausführlich: https://nachhilfe-aber-richtig.de/nachhilfe/grundschule
+
+## Kostenloses Material und Ratgeber
+
+- Elf eigene Aufgaben- und Lösungshefte als PDF, ohne Anmeldung:
+  https://nachhilfe-aber-richtig.de/material
+- Ratgeber für Eltern (Kosten, Zeitpunkt, Versetzung, Anbieterauswahl):
+  https://nachhilfe-aber-richtig.de/ratgeber
 
 ## Lehrkräfte
 

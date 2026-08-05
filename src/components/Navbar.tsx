@@ -6,14 +6,19 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BUSINESS } from "@/lib/data";
 import { ORTE, FAECHER } from "@/lib/seo-pages";
+import { ZAP_FAECHER } from "@/lib/zap-faecher";
 
+// "Leistungen" und "Kontakt" sind hier am 2026-08-05 weggefallen. Beide waren
+// Sprungmarken auf der Startseite: Die Faecher stehen jetzt vollstaendig im
+// Aufklappmenue, und "Kontakt" zeigte auf dieselbe Stelle wie der gruene
+// Knopf direkt daneben. Der Platz gehoert jetzt Seiten, die es sonst nirgends
+// in den Seitenkopf geschafft haetten.
 const navLinks: { href: string; label: string; badge?: string }[] = [
-  { href: "#leistungen", label: "Leistungen" },
+  { href: "/ratgeber", label: "Ratgeber" },
+  { href: "/material", label: "Material" },
   // Absoluter Pfad: die Seite ist der staerkste Suchbegriff des Angebots und
   // bekommt hier ihren Ankertext. Die Praefix-Logik unten laesst "/" in Ruhe.
   { href: "/bildung-und-teilhabe", label: "Bildung und Teilhabe" },
-  { href: "/material", label: "Material" },
-  { href: "#kontakt", label: "Kontakt" },
 ];
 
 // Elf der vierzehn Seiten waren bis hierher nur ueber den Fusszeilen-Block
@@ -27,12 +32,27 @@ const MENUES = [
   {
     id: "faecher",
     label: "Fächer",
-    eintraege: FAECHER.map((f) => ({ href: `/nachhilfe/${f.slug}`, label: f.name })),
+    eintraege: [
+      ...FAECHER.map((f) => ({ href: `/nachhilfe/${f.slug}`, label: f.name })),
+      { href: "/nachhilfe/grundschule", label: "Grundschule" },
+      { href: "/nachhilfe/abiturvorbereitung", label: "Abiturvorbereitung" },
+    ],
+    uebersicht: { href: "/nachhilfe", label: "Alle im Überblick" },
+  },
+  {
+    id: "pruefungen",
+    label: "Prüfungen",
+    eintraege: ZAP_FAECHER.map((f) => ({
+      href: `/zap-vorbereitung/${f.slug}`,
+      label: `ZAP ${f.fach}`,
+    })),
+    uebersicht: { href: "/zap-vorbereitung", label: "ZAP-Vorbereitung im Überblick" },
   },
   {
     id: "standorte",
     label: "Standorte",
     eintraege: ORTE.map((o) => ({ href: `/nachhilfe/${o.slug}`, label: o.langName })),
+    uebersicht: { href: "/nachhilfe", label: "Alle im Überblick" },
   },
 ];
 
@@ -40,6 +60,7 @@ function Aufklappmenu({
   id,
   label,
   eintraege,
+  uebersicht,
   offen,
   umschalten,
   schliessen,
@@ -47,6 +68,7 @@ function Aufklappmenu({
   id: string;
   label: string;
   eintraege: { href: string; label: string }[];
+  uebersicht: { href: string; label: string };
   offen: boolean;
   umschalten: () => void;
   schliessen: () => void;
@@ -97,11 +119,11 @@ function Aufklappmenu({
             </Link>
           ))}
           <Link
-            href="/nachhilfe"
+            href={uebersicht.href}
             onClick={schliessen}
             className="block px-5 py-2 mt-1 border-t border-gray-100 pt-3 font-body text-primary-deep text-sm font-semibold hover:bg-gray-50 transition-[background-color] duration-150 focus-visible:outline-none focus-visible:bg-gray-50"
           >
-            Alle im Überblick
+            {uebersicht.label}
           </Link>
       </div>
     </div>
@@ -169,6 +191,7 @@ export default function Navbar() {
               id={m.id}
               label={m.label}
               eintraege={m.eintraege}
+              uebersicht={m.uebersicht}
               offen={offenesMenu === m.id}
               umschalten={() => setOffenesMenu(offenesMenu === m.id ? null : m.id)}
               schliessen={() => setOffenesMenu(null)}
@@ -278,16 +301,16 @@ export default function Navbar() {
                     {e.label}
                   </Link>
                 ))}
+                <Link
+                  href={m.uebersicht.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-body text-primary-deep font-semibold text-[0.95rem] mt-1"
+                >
+                  {m.uebersicht.label}
+                </Link>
               </div>
             </div>
           ))}
-          <Link
-            href="/nachhilfe"
-            onClick={() => setMenuOpen(false)}
-            className="font-body text-primary-deep font-semibold text-[0.95rem] border-t border-gray-100 pt-3 mt-1"
-          >
-            Alle Fächer und Standorte im Überblick
-          </Link>
 
           <a
             href={`${prefix}#kontakt`}
