@@ -181,17 +181,107 @@ function Zustaendigkeit() {
           <p className="text-[0.93rem]">
             Bei Bezug von Bürgergeld. Ihre Teamnummer steht oben rechts auf dem Bewilligungsbescheid.
           </p>
+          <p className="text-[0.9rem] mt-3 text-muted/70">
+            Für Rheinhausen zuständig ist die Geschäftsstelle am Körnerplatz 1, 47226 Duisburg.{" "}
+            <a
+              href="https://jobcenter-du.de/standorte/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-deep hover:underline"
+            >
+              Alle Standorte und Öffnungszeiten
+            </a>
+          </p>
         </div>
         <div className="rounded-2xl p-6" style={kasten}>
           <h3 className="font-heading font-bold text-dark text-base mb-2">Stadt Duisburg</h3>
           <p className="text-[0.93rem]">
             Bei Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem Asylbewerberleistungsgesetz.
           </p>
+          <p className="text-[0.9rem] mt-3 text-muted/70">
+            Amt für Soziales und Wohnen — Bildung und Teilhabe, Beekstraße 38, 47051 Duisburg,
+            Telefon 0203 94000.{" "}
+            <a
+              href="https://www.duisburg.de/vv/produkte/pro_du/dez_iii/50/Bildung_und_Teilhabe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-deep hover:underline"
+            >
+              Formulare und Merkblätter
+            </a>
+          </p>
         </div>
       </div>
       <p>
+        Das Formular für die Nachhilfe heißt bei der Stadt{" "}
+        <strong className="text-dark font-semibold">Anlage 3 — Lernförderung</strong>. Dazu
+        gehören je nach Fall eine Selbstauskunft und ein Fragebogen zur Lernförderung.
+      </p>
+      <p>
         Wenn Sie nicht sicher sind, bringen Sie den Bescheid einfach mit. Wir sehen in
         zwei Minuten nach, wohin der Antrag muss.
+      </p>
+    </SeoBlock>
+  );
+}
+
+// Belege für alles, was oben behauptet wird. Die Seite beschreibt ein
+// Verwaltungsverfahren zu einer Sozialleistung — dann gehören die Fundstellen
+// dazu, damit man es nachlesen kann statt es glauben zu müssen. Alle Adressen
+// am 05.08.2026 auf Erreichbarkeit geprüft.
+function Quellen() {
+  return (
+    <SeoBlock kicker="Zum Nachlesen" title="Rechtsgrundlage und amtliche Quellen">
+      <p>
+        Die Lernförderung steht in{" "}
+        <strong className="text-dark font-semibold">§ 28 Absatz 5 SGB II</strong>. Dort ist
+        sie als „schulische Angebote ergänzende angemessene Lernförderung" beschrieben,
+        die zu gewähren ist, soweit sie geeignet und zusätzlich erforderlich ist, um die
+        wesentlichen Lernziele zu erreichen. Der Gesetzestext stellt ausdrücklich klar,
+        dass es auf eine bestehende Versetzungsgefährdung{" "}
+        <strong className="text-dark font-semibold">nicht</strong> ankommt — ein
+        Missverständnis, an dem immer noch Anträge scheitern.
+      </p>
+      <p>
+        Anders als die übrigen Leistungen des Bildungspakets muss die Lernförderung
+        gesondert beantragt werden (§ 37 Absatz 1 SGB II). Sie ist also nicht mit dem
+        Bürgergeld-Antrag miterledigt.
+      </p>
+      <ul className="space-y-2.5 pt-1">
+        {[
+          {
+            href: "https://www.sozialgesetzbuch-sgb.de/sgbii/28.html",
+            text: "§ 28 SGB II im Wortlaut — Bedarfe für Bildung und Teilhabe",
+          },
+          {
+            href: "https://www.duisburg.de/vv/produkte/pro_du/dez_iii/50/Bildung_und_Teilhabe",
+            text: "Stadt Duisburg: Bildung und Teilhabe, mit allen Formularen zum Herunterladen",
+          },
+          {
+            href: "https://service.duisburg.de/suche/-/vr-bis-detail/dienstleistung/958750/show",
+            text: "Serviceportal Duisburg: Leistungsbeschreibung und Zuständigkeit",
+          },
+          {
+            href: "https://jobcenter-du.de/",
+            text: "Jobcenter Duisburg",
+          },
+        ].map((q) => (
+          <li key={q.href} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <a
+              href={q.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-deep hover:underline"
+            >
+              {q.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="text-[0.9rem] text-muted/60 pt-1">
+        Wir sind Nachhilfeanbieter, keine Rechtsberatung. Verbindlich ist immer der
+        Bescheid der zuständigen Stelle.
       </p>
     </SeoBlock>
   );
@@ -266,6 +356,7 @@ export default function BildungUndTeilhabe() {
             <Ablauf />
             <Zustaendigkeit />
             <FaecherUndOrte />
+            <Quellen />
             <Abschluss />
             <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>

@@ -12,6 +12,7 @@ const navLinks: { href: string; label: string; badge?: string }[] = [
   // Absoluter Pfad: die Seite ist der staerkste Suchbegriff des Angebots und
   // bekommt hier ihren Ankertext. Die Praefix-Logik unten laesst "/" in Ruhe.
   { href: "/bildung-und-teilhabe", label: "Bildung und Teilhabe" },
+  { href: "/material", label: "Material" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

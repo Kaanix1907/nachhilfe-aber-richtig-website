@@ -104,9 +104,23 @@ const courseLd = {
       addressCountry: "DE",
     },
   },
+  // courseWorkload fehlte und ist seit 2024 Pflichtfeld fuer die
+  // Kurs-Darstellung in der Suche. Die Angabe bildet das tatsaechliche
+  // Format ab: je Fach zwei Wochenenden vor der Pruefung, das erste zum
+  // Durchgehen aller Aufgabentypen, das zweite mit einer vollstaendigen
+  // Uebungsklausur unter Pruefungsbedingungen samt Korrektur.
+  // PT8H pro Wochenende, vier Wochenendtage je Fach — deshalb P4D/PT32H.
   hasCourseInstance: {
     "@type": "CourseInstance",
     courseMode: ["Onsite", "Online"],
+    courseWorkload: "PT32H",
+    courseSchedule: {
+      "@type": "Schedule",
+      repeatFrequency: "P1W",
+      repeatCount: 2,
+      byDay: ["https://schema.org/Saturday", "https://schema.org/Sunday"],
+      duration: "PT8H",
+    },
     location: {
       "@type": "Place",
       name: BUSINESS.name,

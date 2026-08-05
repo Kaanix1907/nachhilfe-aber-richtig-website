@@ -109,6 +109,7 @@ export default function Footer() {
               <FooterLink href="/#ueber-uns">Über uns</FooterLink>
               <FooterLink href="/#faq">Häufige Fragen</FooterLink>
               <FooterLink href="/nachhilfe">Alle Fächer und Standorte</FooterLink>
+              <FooterLink href="/material">Kostenloses Übungsmaterial</FooterLink>
               <FooterLink href="/bildung-und-teilhabe">Bildung und Teilhabe</FooterLink>
               <FooterLink href="/zap-vorbereitung">ZAP-Vorbereitung</FooterLink>
               <FooterLink href="/#kontakt">Kontakt</FooterLink>

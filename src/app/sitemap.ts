@@ -41,6 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/material`,
+      lastModified: stand,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...ORTE.map((o) => ({
       url: `${SITE_URL}/nachhilfe/${o.slug}`,
       lastModified: stand,

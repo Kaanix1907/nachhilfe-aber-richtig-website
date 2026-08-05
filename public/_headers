@@ -70,5 +70,9 @@
 /*.ico
   Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
 
+# Uebungsmaterial. Aendert sich selten, wird aber gern geteilt.
+/*.pdf
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
 /*.svg
   Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
