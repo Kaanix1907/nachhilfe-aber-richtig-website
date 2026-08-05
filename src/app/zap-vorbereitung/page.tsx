@@ -226,10 +226,87 @@ function DreiFaecher() {
   );
 }
 
+// Der Prüfungsaufbau stand bisher nirgends. Wer als Elternteil wissen will,
+// was auf sein Kind zukommt, findet das sonst nur auf den Seiten des
+// Schulministeriums — in Verwaltungssprache und über mehrere PDF verteilt.
+// Alle Zahlen hier stammen aus den Vorgaben des Landes für den MSA.
+function AufbauDeutsch() {
+  return (
+    <SeoBlock kicker="Deutsch im Detail" title="Wie die Deutschprüfung aufgebaut ist">
+      <p>
+        Die Prüfung dauert 150 Minuten und bringt 100 Punkte. Davon entfallen 30 Minuten
+        und 20 Punkte auf das Leseverstehen, 120 Minuten und 80 Punkte auf den Schreibteil.
+        Dazu kommen 10 Minuten Einlesezeit und 10 Minuten, in denen die Schülerinnen und
+        Schüler ihre Aufgabe wählen. Als Hilfsmittel ist ein Rechtschreibwörterbuch
+        zugelassen.
+      </p>
+      <p>
+        Im Schreibteil stehen drei Aufgabentypen zur Wahl, und diese Wahl entscheidet mehr
+        als die meisten glauben:
+      </p>
+      <ul className="space-y-3 pt-1">
+        {[
+          {
+            t: "Typ 2 — Materialgestütztes Schreiben",
+            d: "Aus mehreren Materialien entsteht ein informierender Text. Wer gern strukturiert und ungern deutet, fährt hier gut.",
+          },
+          {
+            t: "Typ 4a — Analyse und Interpretation",
+            d: "Ein einzelner Text, meist ein Gedicht oder eine Kurzgeschichte, seltener ein Sachtext. Verlangt Deutung und den sicheren Umgang mit sprachlichen Mitteln.",
+          },
+          {
+            t: "Typ 4b — Vergleichende Analyse",
+            d: "Zwei Texte gegenüberstellen. Der anspruchsvollste Typ, weil neben der Analyse auch der Vergleich sprachlich sauber gebaut sein muss.",
+          },
+        ].map((x) => (
+          <li key={x.t} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>
+              <strong className="text-dark font-semibold">{x.t}.</strong> {x.d}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="pt-1">
+        Bewertet wird nach Inhalt, Aufbau, Sprache und Darstellung. Für alle drei Typen
+        stellen wir Formulierungshilfen und die Bewertungsbögen kostenlos bereit, mit denen
+        wir selbst korrigieren.
+      </p>
+      <WeiterLink href="/material">Zum kostenlosen Übungsmaterial</WeiterLink>
+    </SeoBlock>
+  );
+}
+
+function Wahl() {
+  return (
+    <SeoBlock kicker="Die Wahl" title="Welchen Aufgabentyp soll mein Kind nehmen?">
+      <p>
+        Diese Frage kommt in jeder Vorbereitung, und die ehrliche Antwort lautet: den, den
+        es geübt hat. Die zehn Minuten Wahlzeit in der Prüfung reichen nicht, um sich
+        umzuentscheiden. Wer erst dort merkt, dass ihm das Gedicht nicht liegt, hat schon
+        Zeit verloren.
+      </p>
+      <p>
+        Wir arbeiten deshalb so: In den ersten Terminen probiert Ihr Kind alle drei Typen
+        einmal aus. Danach steht fest, welcher am besten läuft, und der wird geübt. Die
+        anderen beiden bleiben als Rückfalloption, falls das Prüfungsmaterial nicht passt.
+      </p>
+    </SeoBlock>
+  );
+}
+
 function WieWirVorbereiten() {
   return (
     <SeoBlock kicker="Ablauf" title="Wie wir vorbereiten" roh titelAbstand="weit">
       <SchrittListe schritte={ABLAUF} />
+      <p className="font-body text-muted/80 leading-[1.75] pt-5">
+        Vor der Prüfung liegen zwei Wochenenden je Fach. Am ersten gehen wir alle
+        Aufgabentypen durch, an einer Beispielklausur und mit Strategien für die
+        Zeiteinteilung. Am zweiten schreiben die Schülerinnen und Schüler eine vollständige
+        Übungsklausur unter Prüfungsbedingungen, die wir anschließend nach dem Original-
+        Bewertungsraster korrigieren. Wer erst dort zum ersten Mal unter Zeitdruck schreibt,
+        erlebt die echte Prüfung anders als jemand, der es schon einmal hinter sich hat.
+      </p>
     </SeoBlock>
   );
 }
@@ -322,6 +399,8 @@ export default function ZapVorbereitung() {
           <div className="max-w-3xl mx-auto px-4">
             <WasAndersIst />
             <DreiFaecher />
+            <AufbauDeutsch />
+            <Wahl />
             <WieWirVorbereiten />
             <Material />
             <Foerderung />

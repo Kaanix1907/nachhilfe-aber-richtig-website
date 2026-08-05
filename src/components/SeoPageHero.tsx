@@ -67,6 +67,18 @@ export default function SeoPageHero({
           {lead}
         </p>
 
+        {/* Die Bewertung stand bisher nur auf der Startseite. Sie ist das
+            einzige Merkmal, in dem der Betrieb die beiden Ketten am Ort
+            schlaegt: der Studienkreis Rheinhausen fuehrt 4,6 aus elf
+            Bewertungen, die Schuelerhilfe 4,1. Zahl statt Adjektiv, und sie
+            steht so auch im JSON-LD der Startseite. */}
+        <p className="font-body text-sm text-white/50 mt-5 flex items-center gap-2">
+          <span aria-hidden="true" className="text-[#ffc107] tracking-tight">
+            ★★★★★
+          </span>
+          5,0 von 5 bei Google, aus 23 Bewertungen
+        </p>
+
         <div className="flex flex-col sm:flex-row gap-3 mt-8">
           <Link
             href="/#kontakt"
