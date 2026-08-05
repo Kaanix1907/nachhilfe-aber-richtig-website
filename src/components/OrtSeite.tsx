@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import SeoPageHero from "./SeoPageHero";
 import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, StandHinweis } from "./SeoBlock";
 import { BUSINESS } from "@/lib/data";
+import { FaqListe } from "./FAQ";
+import { ORT_FAQ } from "@/lib/seo-faq";
 import { FAECHER, findOrt, type OrtPage } from "@/lib/seo-pages";
 
 // Die Abschnitte stehen als eigene Komponenten, nicht als ein langer
@@ -110,6 +112,16 @@ function Foerderung() {
   );
 }
 
+function Fragen({ ort }: { ort: OrtPage }) {
+  const fragen = ORT_FAQ[ort.slug];
+  if (!fragen?.length) return null;
+  return (
+    <SeoBlock kicker="Fragen & Antworten" title={`Häufige Fragen aus ${ort.name}`} roh titelAbstand="weit">
+      <FaqListe items={fragen} />
+    </SeoBlock>
+  );
+}
+
 function Nachbarorte({ nachbarn }: { nachbarn: OrtPage[] }) {
   if (nachbarn.length === 0) return null;
   return (
@@ -145,6 +157,7 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
             <Unterrichtsformen />
             <Anfahrt ort={ort} />
             <Foerderung />
+            <Fragen ort={ort} />
             <Nachbarorte nachbarn={nachbarn} />
             <AbschlussKarte
               titel="Erste Stunde kostenlos"

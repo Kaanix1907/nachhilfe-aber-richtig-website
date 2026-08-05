@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import OrtSeite from "@/components/OrtSeite";
 import FachSeite from "@/components/FachSeite";
 import { ORTE, FAECHER, findOrt, findFach } from "@/lib/seo-pages";
+import { FACH_FAQ, ORT_FAQ } from "@/lib/seo-faq";
 import { BUSINESS } from "@/lib/data";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -67,6 +68,24 @@ function breadcrumbLd(slug: string, name: string) {
 // Schema.org erwartet die Rufnummer in E.164, also ohne Leerzeichen.
 const TELEFON_E164 = BUSINESS.phone.replace(/\s/g, "");
 
+// FAQPage nur ausgeben, wenn dieselben Fragen auch sichtbar auf der Seite
+// stehen. Markup ohne sichtbare Entsprechung ist ein Richtlinienverstoss —
+// genau der Fehler, der auf dieser Seite am 04.08.2026 schon einmal auftrat.
+// Beide Seiten lesen aus derselben Quelle, deshalb kann es nicht auseinander
+// laufen.
+function faqLd(fragen: { q: string; a: string }[] | undefined) {
+  if (!fragen?.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: fragen.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
 // EINE Betriebs-Entitaet fuer die gesamte Seite, ueberall per @id referenziert.
 //
 // Vorher legte jede Ortsseite ein eigenes LocalBusiness mit eigener @id an —
@@ -126,6 +145,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, ort.langName)) }}
         />
+        {faqLd(ORT_FAQ[slug]) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd(ORT_FAQ[slug])) }}
+          />
+        )}
         <OrtSeite ort={ort} />
       </>
     );
@@ -153,6 +178,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(slug, fach.name)) }}
         />
+        {faqLd(FACH_FAQ[slug]) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd(FACH_FAQ[slug])) }}
+          />
+        )}
         <FachSeite fach={fach} />
       </>
     );

@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import SeoPageHero from "./SeoPageHero";
 import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, PillenReihe, StandHinweis } from "./SeoBlock";
 import { BUSINESS } from "@/lib/data";
+import { FaqListe } from "./FAQ";
+import { FACH_FAQ } from "@/lib/seo-faq";
 import { ORTE, FAECHER, type FachPage } from "@/lib/seo-pages";
 
 // Abschnitte als eigene Komponenten — siehe Kommentar in OrtSeite.tsx.
@@ -122,6 +124,16 @@ function Standorte({ fach }: { fach: FachPage }) {
   );
 }
 
+function Fragen({ fach }: { fach: FachPage }) {
+  const fragen = FACH_FAQ[fach.slug];
+  if (!fragen?.length) return null;
+  return (
+    <SeoBlock kicker="Fragen & Antworten" title={`Was Eltern uns zu ${fach.name} fragen`} roh titelAbstand="weit">
+      <FaqListe items={fragen} />
+    </SeoBlock>
+  );
+}
+
 function WeitereFaecher({ fach }: { fach: FachPage }) {
   return (
     <SeoBlock kicker="Weitere Fächer" title="Nachhilfe in anderen Fächern">
@@ -157,6 +169,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
             <Ansatz fach={fach} />
             <Foerderung fach={fach} />
             <Standorte fach={fach} />
+            <Fragen fach={fach} />
             <WeitereFaecher fach={fach} />
             <AbschlussKarte
               titel={`${fach.name} einmal ausprobieren`}

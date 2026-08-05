@@ -33,6 +33,19 @@ function Item({ item, index }: { item: FaqItem; index: number }) {
   );
 }
 
+// Dieselben Aufklapp-Elemente ohne eigene Section, zum Einsetzen in den
+// Textfluss der Fach- und Ortsseiten. Die grosse Fassung darunter bringt ihren
+// eigenen Kopfbereich mit und wuerde dort einen zweiten Seitentitel erzeugen.
+export function FaqListe({ items }: { items: FaqItem[] }) {
+  return (
+    <div className="flex flex-col gap-3">
+      {items.map((item, i) => (
+        <Item key={item.q} item={item} index={i} />
+      ))}
+    </div>
+  );
+}
+
 export default function FAQ({
   items = FAQ_ITEMS,
   title = "Häufige Fragen",
