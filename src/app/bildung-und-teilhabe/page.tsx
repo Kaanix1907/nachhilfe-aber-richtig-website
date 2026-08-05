@@ -249,7 +249,7 @@ export default function BildungUndTeilhabe() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
           kicker="Bildung und Teilhabe"
           h1="Kostenlose Nachhilfe über Bildung und Teilhabe in Duisburg"

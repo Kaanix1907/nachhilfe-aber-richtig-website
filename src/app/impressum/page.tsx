@@ -31,7 +31,7 @@ export default function Impressum() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-28 pb-20">
+      <main id="inhalt" className="min-h-screen bg-white pt-28 pb-20">
         <div className="max-w-3xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">

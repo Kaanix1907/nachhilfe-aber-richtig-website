@@ -122,11 +122,20 @@ export default function Contact() {
             )}
 
             <form onSubmit={handleSubmit} className="relative flex flex-col gap-4">
+              {/* label/input haengen ueber id+htmlFor zusammen. Vorher standen
+                  die Labels nur daneben — ein Screenreader las "Eingabefeld,
+                  Text" ohne Feldnamen (WCAG 2.2 A, 4.1.2 und 3.3.2). */}
               <div>
-                <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                <label
+                  htmlFor="kontakt-name"
+                  className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase"
+                >
                   Name *
                 </label>
                 <input
+                  id="kontakt-name"
+                  name="name"
+                  autoComplete="name"
                   type="text"
                   required
                   value={form.name}
@@ -156,10 +165,16 @@ export default function Contact() {
                   ankommen. Eines von beiden ist jetzt Pflicht. */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                  <label
+                    htmlFor="kontakt-telefon"
+                    className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase"
+                  >
                     Telefon
                   </label>
                   <input
+                    id="kontakt-telefon"
+                    name="phone"
+                    autoComplete="tel"
                     type="tel"
                     value={form.phone}
                     onChange={(e) => aendern("phone", e.target.value)}
@@ -169,10 +184,16 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                  <label
+                    htmlFor="kontakt-email"
+                    className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase"
+                  >
                     E-Mail
                   </label>
                   <input
+                    id="kontakt-email"
+                    name="email"
+                    autoComplete="email"
                     type="email"
                     value={form.email}
                     onChange={(e) => aendern("email", e.target.value)}
@@ -187,10 +208,15 @@ export default function Contact() {
               </p>
 
               <div>
-                <label className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase">
+                <label
+                  htmlFor="kontakt-nachricht"
+                  className="font-body text-dark/60 text-xs font-semibold block mb-1.5 tracking-wide uppercase"
+                >
                   Nachricht *
                 </label>
                 <textarea
+                  id="kontakt-nachricht"
+                  name="message"
                   required
                   rows={4}
                   value={form.message}
@@ -228,7 +254,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full text-white font-body font-bold text-base py-4 rounded-xl transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-px active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed mt-1"
+                className="w-full text-white font-body font-bold text-base py-4 rounded-xl transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-px active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed mt-1"
                 style={{
                   background: "#25abd6",
                   boxShadow: "0 2px 8px rgba(37,171,214,0.30), 0 1px 2px rgba(37,171,214,0.20)",

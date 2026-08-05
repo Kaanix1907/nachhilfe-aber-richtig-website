@@ -29,14 +29,14 @@ export default function BildungTeilhabe() {
         </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
-          <FoerderCard logo={{ src: "/logo-jobcenter.jpeg", alt: "Jobcenter Duisburg", width: 140 }}>
+          <FoerderCard logo={{ src: "/logo-jobcenter.webp", alt: "Jobcenter Duisburg", width: 140 }}>
             Familien, die <strong className="text-dark font-semibold">Bürgergeld</strong> beziehen,
             sind über das <strong className="text-dark font-semibold">Jobcenter Duisburg</strong>{" "}
             für Bildung und Teilhabe berechtigt und können unsere Nachhilfe{" "}
             <strong className="text-dark font-semibold">kostenfrei</strong> nutzen.
           </FoerderCard>
 
-          <FoerderCard logo={{ src: "/logo-stadt-duisburg.png", alt: "Stadt Duisburg", width: 120 }}>
+          <FoerderCard logo={{ src: "/logo-stadt-duisburg.webp", alt: "Stadt Duisburg", width: 120 }}>
             Wer <strong className="text-dark font-semibold">Wohngeld</strong> oder den{" "}
             <strong className="text-dark font-semibold">Kinderzuschlag</strong> von der{" "}
             <strong className="text-dark font-semibold">Stadt Duisburg</strong>{" "}

@@ -58,36 +58,58 @@ function breadcrumbLd(slug: string, name: string) {
   };
 }
 
+// Schema.org erwartet die Rufnummer in E.164, also ohne Leerzeichen.
+const TELEFON_E164 = BUSINESS.phone.replace(/\s/g, "");
+
+// EINE Betriebs-Entitaet fuer die gesamte Seite, ueberall per @id referenziert.
+//
+// Vorher legte jede Ortsseite ein eigenes LocalBusiness mit eigener @id an —
+// bei fuenf Ortsseiten also fuenf Betriebe, alle mit derselben Anschrift und
+// derselben Geokoordinate. Fuer eine Suchmaschine sind das fuenf konkurrierende
+// Kandidaten fuer denselben Laden.
+//
+// Der Kommentar an der alten Stelle begruendete das mit dem lokalen
+// Kartenblock. Der speist sich aber aus dem Google-Unternehmensprofil, nicht
+// aus LocalBusiness-Auszeichnungen auf beliebigen Unterseiten — zusaetzliche
+// Entitaeten bringen dort nichts und schaffen nur Mehrdeutigkeit.
+//
+// Die Kerndaten stehen hier mit drin, nicht nur die @id: eine nackte Referenz
+// waere nur aufloesbar, wenn die Startseite mitgelesen wird.
+const ANBIETER = {
+  "@type": ["EducationalOrganization", "LocalBusiness"],
+  "@id": `${SITE_URL}/#business`,
+  name: BUSINESS.name,
+  url: SITE_URL,
+  telephone: TELEFON_E164,
+  email: BUSINESS.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: BUSINESS.addresses.lernort.street,
+    addressLocality: "Duisburg",
+    addressRegion: "Nordrhein-Westfalen",
+    postalCode: "47226",
+    addressCountry: "DE",
+  },
+} as const;
+
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   const ort = findOrt(slug);
   if (ort) {
-    // Eigenes LocalBusiness je Ort: areaServed ist hier genau ein Ort, nicht
-    // die volle Liste der Startseite. Das ist das Signal, das Google fuer den
-    // lokalen Kartenblock auswertet.
+    // Dasselbe Muster wie bei den Fachseiten: eine Leistung, erbracht von der
+    // einen Betriebs-Entitaet, angeboten fuer genau diesen Ort. Kein zweiter
+    // Betrieb — siehe die Begruendung an ANBIETER.
     const ld = {
       "@context": "https://schema.org",
-      "@type": ["LocalBusiness", "EducationalOrganization"],
-      "@id": `${SITE_URL}/nachhilfe/${slug}#business`,
-      name: `${BUSINESS.name} — Nachhilfe ${ort.langName}`,
-      url: `${SITE_URL}/nachhilfe/${slug}`,
-      telephone: "+4915208854910",
-      email: BUSINESS.email,
-      priceRange: "€€",
+      "@type": "Service",
+      serviceType: "Nachhilfeunterricht",
+      name: `Nachhilfe in ${ort.langName}`,
       description: ort.description,
-      image: `${SITE_URL}/og-image.png`,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: BUSINESS.addresses.lernort.street,
-        addressLocality: "Duisburg",
-        addressRegion: "Nordrhein-Westfalen",
-        postalCode: "47226",
-        addressCountry: "DE",
-      },
-      geo: { "@type": "GeoCoordinates", latitude: 51.41399, longitude: 6.71306 },
+      url: `${SITE_URL}/nachhilfe/${slug}`,
       areaServed: { "@type": "Place", name: ort.langName },
-      parentOrganization: { "@type": "EducationalOrganization", name: BUSINESS.name, url: SITE_URL },
+      provider: ANBIETER,
+      audience: { "@type": "EducationalAudience", educationalRole: "student" },
     };
 
     return (
@@ -112,19 +134,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       description: fach.description,
       url: `${SITE_URL}/nachhilfe/${slug}`,
       areaServed: ORTE.map((o) => ({ "@type": "Place", name: o.langName })),
-      provider: {
-        "@type": "EducationalOrganization",
-        name: BUSINESS.name,
-        url: SITE_URL,
-        telephone: "+4915208854910",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: BUSINESS.addresses.lernort.street,
-          addressLocality: "Duisburg",
-          postalCode: "47226",
-          addressCountry: "DE",
-        },
-      },
+      provider: ANBIETER,
       audience: { "@type": "EducationalAudience", educationalRole: "student" },
     };
 

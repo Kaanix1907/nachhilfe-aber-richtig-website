@@ -293,7 +293,7 @@ export default function ZapVorbereitung() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
           kicker="Prüfungsvorbereitung"
           h1="ZAP-Vorbereitung in Duisburg: Zentrale Prüfungen Klasse 10"

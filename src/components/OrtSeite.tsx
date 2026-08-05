@@ -128,7 +128,7 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
           kicker={`Standort ${ort.name}`}
           h1={`Nachhilfe in ${ort.langName}`}

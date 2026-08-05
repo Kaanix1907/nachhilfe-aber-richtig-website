@@ -141,10 +141,10 @@ export function GefoerdertDurchRow() {
     <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
       <span className="font-body text-xs md:text-sm text-white/60 md:text-white/40 tracking-wide">Gefördert durch</span>
       <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
-        <Image src="/logo-jobcenter.jpeg" alt="Jobcenter Duisburg" width={130} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
+        <Image src="/logo-jobcenter.webp" alt="Jobcenter Duisburg" width={130} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
       </div>
       <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
-        <Image src="/logo-stadt-duisburg.png" alt="Stadt Duisburg" width={110} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
+        <Image src="/logo-stadt-duisburg.webp" alt="Stadt Duisburg" width={110} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
       </div>
     </div>
   );

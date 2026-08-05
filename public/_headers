@@ -13,14 +13,46 @@
 # Antragsverfahren wieder loesbar.
 # 180 Tage statt einem Jahr, damit ein Fehler nicht ein Jahr nachwirkt.
 
+# Zur Content-Security-Policy — was sie hier leistet und was nicht:
+#
+# `script-src` MUSS 'unsafe-inline' enthalten. Next legt 111 Inline-Scripts
+# fuer die Hydration in die Seite, und mit `output: "export"` gibt es keinen
+# Server, der pro Anfrage eine Nonce vergeben koennte. Damit ist der
+# XSS-Schutz der Policy weitgehend entwertet — das ist eine bewusste
+# Inkaufnahme, keine Nachlaessigkeit.
+#
+# Ihr echter Gewinn liegt in den uebrigen Direktiven: `frame-ancestors`
+# (Clickjacking), `base-uri` (ein eingeschleustes <base> koennte sonst jeden
+# relativen Pfad umlenken), `form-action` (verhindert, dass ein manipuliertes
+# Formular woandershin sendet) und `object-src` (Plugin-Einbettung).
+#
+# Die beiden externen Quellen sind am laufenden System gemessen, nicht
+# angenommen: das Script kommt von scripts.simpleanalyticscdn.com, die
+# Messung selbst geht als GIF-Pixel an queue.simpleanalyticscdn.com — also
+# `img-src`, nicht `connect-src`. Cloudflares email-decode.min.js liegt unter
+# /cdn-cgi/ und damit unter 'self'.
+# `data:` in img-src deckt das SVG-Rauschmuster im Hero.
+
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=15552000
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://scripts.simpleanalyticscdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://queue.simpleanalyticscdn.com; font-src 'self'; connect-src 'self' https://queue.simpleanalyticscdn.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+# Der Build schreibt den Inhalts-Hash in den Dateinamen (2xab-xvyqpdlq.css).
+# Aendert sich der Inhalt, aendert sich der Name — dieselbe Adresse liefert
+# also nie einen anderen Inhalt und darf entsprechend unbegrenzt gecacht
+# werden. Ohne diese Regel greift der Cloudflare-Standard von vier Stunden,
+# und Wiederbesucher laden Woche fuer Woche dieselben 400 KB neu.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # Public-Assets aendern sich praktisch nie — lange cachen.
+# Anders als oben tragen sie KEINEN Hash im Namen (logo.webp bleibt
+# logo.webp), deshalb hier kein `immutable`: eine ausgetauschte Datei muss
+# nach spaetestens einem Tag beim Besucher ankommen.
 # HTML-Seiten bekommen bewusst KEIN no-store (bricht bfcache).
 
 /*.png

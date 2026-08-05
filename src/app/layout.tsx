@@ -105,6 +105,17 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${bioRhyme.variable} ${cabin.variable}`}>
       <body className="antialiased">
+        {/* Erstes fokussierbares Element der Seite. Ohne ihn muss sich jeder,
+            der mit der Tastatur navigiert, auf JEDER Seite erst durch die
+            komplette Navigation tabben (WCAG 2.2 A, 2.4.1 Bypass Blocks).
+            Unsichtbar, bis er den Fokus bekommt. Ziel ist das <main> jeder
+            Seite, das dafuer id="inhalt" traegt. */}
+        <a
+          href="#inhalt"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:rounded-xl focus:bg-white focus:text-dark focus:font-body focus:font-semibold focus:text-sm focus:shadow-xl focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-primary-deep"
+        >
+          Zum Inhalt springen
+        </a>
         {/* SimpleAnalytics — privacy-first, kein Cookie-Banner nötig */}
         <Script
           async

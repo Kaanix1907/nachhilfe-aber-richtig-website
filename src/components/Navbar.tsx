@@ -30,11 +30,18 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <a href={`${prefix}#hero`} className="flex items-center gap-3">
+          {/* `priority` statt des Next-Standards `loading="lazy"`: das Logo
+              steht above the fold und ist auf Unterseiten der LCP-Kandidat —
+              ein verzoegertes Laden kostet dort direkt Ladezeit.
+              WebP mit 108x96 (2x der Anzeigehoehe von 48px) statt der 317x282
+              grossen PNG: 47 KB -> 5,7 KB. `logo.png` bleibt unangetastet,
+              weil `Organization.logo` im JSON-LD darauf verweist. */}
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt={BUSINESS.name}
             width={54}
             height={48}
+            priority
             className="object-contain h-12 w-auto"
           />
         </a>
@@ -71,7 +78,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <a
           href={`${prefix}#kontakt`}
-          className="hidden md:inline-flex items-center gap-2 text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 active:scale-95"
+          className="hidden md:inline-flex items-center gap-2 text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 active:scale-95"
           style={{
             background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
             boxShadow: "0 2px 10px rgba(0,170,0,0.35), 0 1px 2px rgba(0,0,0,0.1)",
@@ -83,7 +90,7 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-dark rounded-lg transition-[background-color] duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          className="md:hidden p-2 text-dark rounded-lg transition-[background-color] duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2"
           aria-label="Menü öffnen"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

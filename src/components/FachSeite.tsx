@@ -139,7 +139,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
           kicker={`${fach.name}-Nachhilfe`}
           h1={`Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`}

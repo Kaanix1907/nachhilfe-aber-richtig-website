@@ -38,10 +38,31 @@ const jsonLd = {
   image: "https://nachhilfe-aber-richtig.de/og-image.png",
   telephone: "+4915208854910",
   email: "info@nachhilfe-aber-richtig.de",
+  // Eigene @id, damit die Person ueber Seiten hinweg referenzierbar ist und
+  // nicht als namenloses Beiwerk der Firma gilt. `knowsAbout` nennt nur die
+  // Faecher, fuer die es auch eine Seite gibt.
+  //
+  // Bewusst OHNE hasCredential/alumniOf: der konkrete Abschluss liegt mir
+  // nicht belegt vor, und eine erfundene Qualifikation waere in einem Feld,
+  // das Vertrauen erzeugen soll, genau das falsche.
   founder: {
     "@type": "Person",
+    "@id": "https://nachhilfe-aber-richtig.de/#inhaber",
     name: "Mustafa Kaan Güneren",
+    jobTitle: "Inhaber und Nachhilfelehrer",
+    worksFor: { "@id": "https://nachhilfe-aber-richtig.de/#business" },
+    knowsAbout: [
+      "Mathematik",
+      "Deutsch",
+      "Englisch",
+      "Physik",
+      "Chemie",
+      "Biologie",
+      "Zentrale Prüfungen Klasse 10 (ZP10)",
+      "Bildung und Teilhabe",
+    ],
   },
+  employee: { "@id": "https://nachhilfe-aber-richtig.de/#inhaber" },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Friedrich-Alfred-Straße 14",
@@ -129,7 +150,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Navbar />
-      <main>
+      <main id="inhalt">
         <Hero />
         <Services />
         <AngebotUebersicht />
