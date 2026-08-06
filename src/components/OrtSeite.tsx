@@ -67,6 +67,37 @@ function Unterrichtsformen({ ort }: { ort: OrtPage }) {
   );
 }
 
+// Schulen stehen nur auf der Seite des Stadtteils, in dem sie liegen. Eine
+// Sammelliste auf allen fuenf Seiten waere derselbe Fehler wie der geteilte
+// Unterrichtsformen-Block, der am 2026-08-06 rausgeflogen ist.
+function Schulen({ ort }: { ort: OrtPage }) {
+  if (!ort.schulen?.length) return null;
+  return (
+    <SeoBlock kicker="Schulen" title={`Von welchen Schulen in ${ort.name} unsere Schüler kommen`}>
+      <p>
+        {ort.schulen.length === 1
+          ? `In ${ort.name} liegt eine weiterführende Schule, deren Schülerinnen und Schüler regelmäßig bei uns sitzen:`
+          : `In ${ort.name} liegen mehrere weiterführende Schulen, deren Schülerinnen und Schüler regelmäßig bei uns sitzen:`}
+      </p>
+      <ul className="space-y-2.5 pt-1">
+        {ort.schulen.map((s) => (
+          <li key={s.name} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>
+              <strong className="text-dark font-semibold">{s.name}</strong>, {s.anschrift}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="pt-1">
+        Dazu kommen Grundschulen aus der Umgebung und die Duisburger Berufskollegs. Wir sind
+        keine Kooperationspartner dieser Schulen und treten auch nicht in ihrem Auftrag auf;
+        die Nennung sagt nur, woher unsere Schülerinnen und Schüler kommen.
+      </p>
+    </SeoBlock>
+  );
+}
+
 function Anfahrt({ ort }: { ort: OrtPage }) {
   return (
     <SeoBlock kicker="Anfahrt" title={`So finden Sie uns von ${ort.name} aus`}>
@@ -157,6 +188,7 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
           <div className="max-w-3xl mx-auto px-4">
             <Ueberblick ort={ort} />
             <Faecher ort={ort} />
+            <Schulen ort={ort} />
             <Unterrichtsformen ort={ort} />
             <Anfahrt ort={ort} />
             <Foerderung ort={ort} />

@@ -149,6 +149,42 @@ export const FACH_FAQ: Record<string, FaqItem[]> = {
 // Schulen im Viertel, Buslinien, Fahrzeiten. Diese Antworten würden die
 // Seiten wirklich unterscheiden.
 export const ORT_FAQ: Record<string, FaqItem[]> = {
+  hochemmerich: [
+    {
+      q: "Wie weit ist es von Hochemmerich zum Lernort?",
+      a: "Zu Fuß unter zehn Minuten. Der Lernort liegt in der Friedrich-Alfred-Straße 14 im Bezirk Rheinhausen. Wer lieber mit dem Bus kommt, steigt an der Haltestelle Stüning direkt vor dem Haus aus.",
+    },
+    {
+      q: "Kann mein Kind allein kommen?",
+      a: "Aus Hochemmerich tun das die meisten ab der weiterführenden Schule. Bei Grundschulkindern entscheiden Sie das natürlich selbst; wir sagen Ihnen Bescheid, wenn eine Stunde ausfällt, damit niemand umsonst losläuft.",
+    },
+    {
+      q: "Gibt es Parkplätze, wenn ich mein Kind bringe?",
+      a: "Ja, Stellplätze sind vorhanden. Für den kurzen Weg aus Hochemmerich brauchen die meisten sie allerdings nicht.",
+    },
+    {
+      q: "Welche Fächer werden unterrichtet?",
+      a: "Mathematik, Deutsch, Englisch, Physik, Chemie und Biologie, von Klasse 1 bis zum Abitur. Dazu die Vorbereitung auf die Zentralen Prüfungen der Klasse 10 und auf das Abitur.",
+    },
+  ],
+  bergheim: [
+    {
+      q: "Wie komme ich von Bergheim zum Lernort?",
+      a: "Zu Fuß in etwa einer Viertelstunde, mit dem Rad oder dem Bus schneller. Die Haltestelle Stüning liegt direkt vor dem Haus, dort halten die Linien 912, 920, 922, 924 und die Nachtlinie NE 2.",
+    },
+    {
+      q: "Unterrichten Sie Schüler vom Krupp-Gymnasium und der Heinrich-Heine-Gesamtschule?",
+      a: "Ja, beide Schulen liegen am Flutweg in Bergheim, und von beiden kommen regelmäßig Schülerinnen und Schüler zu uns. Eine Kooperation mit den Schulen besteht nicht, wir arbeiten unabhängig von ihnen.",
+    },
+    {
+      q: "Lohnt sich der Weg für ein Grundschulkind?",
+      a: "Eine Viertelstunde zu Fuß ist je nach Alter und Tageszeit viel. Aus Bergheim empfehlen wir in der Grundschule feste Termine am frühen Nachmittag oder die Onlineform. Ältere Schülerinnen und Schüler kommen problemlos allein.",
+    },
+    {
+      q: "Gibt es Parkplätze?",
+      a: "Ja, Stellplätze sind vorhanden. Bringen und Abholen mit dem Auto ist also unkompliziert.",
+    },
+  ],
   rheinhausen: [
     {
       q: "Wo genau findet der Unterricht statt?",

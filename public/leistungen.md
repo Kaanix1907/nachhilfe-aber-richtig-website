@@ -18,6 +18,8 @@ wir direkt mit dem Amt ab.
 - E-Mail: info@nachhilfe-aber-richtig.de
 - Website: https://nachhilfe-aber-richtig.de
 - Unterrichtszeiten: Montag bis Freitag, 13:00–17:00 Uhr
+- Anfahrt: Bushaltestelle Stüning direkt vor dem Haus, Linien 912, 920, 922,
+  924 und NE 2; eigene Stellplätze vorhanden
 - Bewertung: 5,0 von 5 bei Google, 23 Bewertungen
 
 ## Unterrichtsformen
@@ -61,8 +63,9 @@ Grundschule, Realschule, Gesamtschule, Gymnasium, Berufskolleg.
 
 ## Einzugsgebiet
 
-Duisburg-Rheinhausen (Unterrichtsort), Duisburg-Friemersheim,
-Duisburg-Rumeln-Kaldenhausen, Duisburg-Homberg, Moers.
+Duisburg-Rheinhausen (Unterrichtsort), Duisburg-Hochemmerich,
+Duisburg-Bergheim, Duisburg-Friemersheim, Duisburg-Rumeln-Kaldenhausen,
+Duisburg-Homberg, Moers.
 Onlineunterricht ortsunabhängig.
 
 ## Bildung und Teilhabe

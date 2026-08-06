@@ -30,6 +30,16 @@ export type OrtPage = {
    * `anfahrt`-Feld darueber, nicht auf erfundene Statistiken.
    */
   formHinweis: string;
+  /**
+   * Schulen, von denen Schuelerinnen und Schueler kommen. Bewusst NUR dort,
+   * wo die Schule auch steht: Krupp und Heinrich-Heine liegen beide am
+   * Flutweg in Bergheim, das Albert-Einstein-Gymnasium in
+   * Rumeln-Kaldenhausen. Auf allen fuenf Seiten dieselbe Liste zu zeigen,
+   * haette die Doppelung wieder eingefuehrt, die am 2026-08-06 rausgeflogen
+   * ist. Namen und Anschriften am selben Tag gegen duisburg.de und die
+   * Schulseiten geprueft.
+   */
+  schulen?: { name: string; anschrift: string }[];
   /** Umliegende Orte fuer die interne Verlinkung. */
   nachbarn: string[];
 };
@@ -48,10 +58,14 @@ export const ORTE: OrtPage[] = [
       "Rheinhausen ist ein Stadtteil, in dem viele Familien Anspruch auf Lernförderung über Bildung und Teilhabe haben. Wir rechnen direkt mit dem Jobcenter Duisburg und der Stadt Duisburg ab — für berechtigte Familien entstehen keine Kosten.",
     ],
     anfahrt:
-      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Der Lernort liegt im Bezirk Rheinhausen und ist aus Hochemmerich, Bergheim und Rheinhausen-Mitte fußläufig oder mit dem Bus erreichbar.",
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Die Bushaltestelle Stüning liegt praktisch vor der Tür, dort halten die Linien 912, 920, 922, 924 und die Nachtlinie NE 2. Eigene Stellplätze sind vorhanden, Bringen und Abholen mit dem Auto ist also unkompliziert.",
     formHinweis:
       "Aus Rheinhausen ist der Weg kurz genug, dass Präsenzunterricht der Normalfall bleibt: zu Fuß, mit dem Rad oder wenige Minuten mit dem Bus. Die Onlineform ist hier vor allem der Ersatz, wenn jemand krank ist oder der Nachmittag einmal nicht passt.",
-    nachbarn: ["friemersheim", "rumeln-kaldenhausen", "homberg", "moers"],
+    schulen: [
+      { name: "Lise-Meitner-Gesamtschule", anschrift: "Lessingstraße 3, Rheinhausen-Mitte" },
+      { name: "Green Gesamtschule", anschrift: "Körnerplatz 2, früher Gesamtschule Körnerplatz" },
+    ],
+    nachbarn: ["hochemmerich", "bergheim", "friemersheim", "rumeln-kaldenhausen", "homberg", "moers"],
   },
   {
     slug: "friemersheim",
@@ -66,10 +80,10 @@ export const ORTE: OrtPage[] = [
       "Wenn der Anfahrtsweg trotzdem nicht passt, etwa weil der Nachmittag eng getaktet ist, gibt es dieselbe Nachhilfe online. Gleiche Lehrkraft, gleiches Konzept, nur ohne Fahrtzeit.",
     ],
     anfahrt:
-      "Unser Lernort in der Friedrich-Alfred-Straße 14 liegt im Nachbarstadtteil Rheinhausen-Mitte, gut mit dem Bus oder dem Rad erreichbar.",
+      "Unser Lernort in der Friedrich-Alfred-Straße 14 liegt im Nachbarstadtteil Rheinhausen-Mitte. Die Haltestelle Stüning liegt direkt davor, mit dem Rad ist der Weg genauso kurz. Stellplätze sind vorhanden.",
     formHinweis:
       "Friemersheim liegt im selben Bezirk, die Anfahrt fällt entsprechend kurz aus. Deshalb sitzen die meisten hier im Präsenzunterricht, und die Onlineform ist die Ausweichlösung für Wochen, in denen der Nachmittag eng liegt.",
-    nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "moers"],
+    nachbarn: ["rheinhausen", "hochemmerich", "rumeln-kaldenhausen", "moers"],
   },
   {
     slug: "rumeln-kaldenhausen",
@@ -84,10 +98,13 @@ export const ORTE: OrtPage[] = [
       "Für Familien mit Anspruch auf Bildung und Teilhabe übernehmen wir den Papierkram, den der Antrag auf Lernförderung mit sich bringt, und rechnen anschließend direkt mit dem Amt ab.",
     ],
     anfahrt:
-      "Der Lernort in der Friedrich-Alfred-Straße 14 in Rheinhausen ist von Rumeln-Kaldenhausen mit dem Bus oder dem Auto in kurzer Zeit zu erreichen. Alternativ unterrichten wir online.",
+      "Der Lernort in der Friedrich-Alfred-Straße 14 in Rheinhausen ist von Rumeln-Kaldenhausen mit dem Bus oder dem Auto in kurzer Zeit zu erreichen; die Haltestelle Stüning liegt direkt vor dem Haus, Stellplätze gibt es ebenfalls. Alternativ unterrichten wir online.",
     formHinweis:
       "Aus Rumeln-Kaldenhausen kommen Anfahrt und Onlineunterricht etwa gleich häufig vor. Wer mit dem Bus oder dem Auto kommt, ist in kurzer Zeit da; wer den Weg sparen will, bekommt online dieselbe Lehrkraft und dasselbe Konzept.",
-    nachbarn: ["rheinhausen", "friemersheim", "moers"],
+    schulen: [
+      { name: "Albert-Einstein-Gymnasium", anschrift: "Schulallee 11, Rumeln-Kaldenhausen" },
+    ],
+    nachbarn: ["rheinhausen", "bergheim", "friemersheim", "moers"],
   },
   {
     slug: "homberg",
@@ -102,7 +119,7 @@ export const ORTE: OrtPage[] = [
       "Für Homberger Familien, denen die Fahrt regelmäßig zu weit ist, ist die Onlinenachhilfe die naheliegende Lösung. Sie läuft mit denselben Lehrkräften wie der Unterricht vor Ort.",
     ],
     anfahrt:
-      "Unser Lernort liegt in der Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — von Homberg aus über die linksrheinische Verbindung erreichbar, ohne Brücke.",
+      "Unser Lernort liegt in der Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen, von Homberg aus über die linksrheinische Verbindung erreichbar, ohne Brücke. Vor dem Haus liegt die Bushaltestelle Stüning, Stellplätze sind vorhanden.",
     formHinweis:
       "Von Homberg aus führt der Weg linksrheinisch und ohne Brücke, was die Anfahrt planbar macht, aber länger als aus dem Bezirk. Wo der Nachmittag eng liegt, ist die Onlineform deshalb oft die praktischere Wahl.",
     nachbarn: ["rheinhausen", "moers", "rumeln-kaldenhausen"],
@@ -120,10 +137,50 @@ export const ORTE: OrtPage[] = [
       "Wer aus dem westlichen Moers kommt, nutzt in der Regel unsere Onlinenachhilfe. Der Unterricht ist derselbe, nur ohne den Weg über die Stadtgrenze.",
     ],
     anfahrt:
-      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — direkt hinter der Stadtgrenze zu Moers, mit dem Auto oder Bus in kurzer Zeit erreichbar.",
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen, direkt hinter der Stadtgrenze zu Moers. Mit dem Auto in kurzer Zeit erreichbar, Stellplätze sind vorhanden; wer mit dem Bus kommt, steigt an der Haltestelle Stüning direkt vor dem Haus aus.",
     formHinweis:
       "Die Stadtgrenze ist hier keine Entfernung: Der Lernort liegt gleich dahinter, mit dem Auto oder Bus in kurzer Zeit erreichbar. Präsenzunterricht ist von Moers aus also gut machbar, online steht als Alternative bereit.",
     nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "homberg"],
+  },
+  {
+    slug: "hochemmerich",
+    name: "Hochemmerich",
+    langName: "Duisburg-Hochemmerich",
+    title: "Nachhilfe in Duisburg-Hochemmerich | Zu Fuß erreichbar",
+    description:
+      "Nachhilfe für Hochemmerich: alle Fächer von Klasse 1 bis Abitur, keine zehn Minuten zu Fuß vom Lernort in der Friedrich-Alfred-Straße. Probestunde gratis.",
+    intro: [
+      "Hochemmerich ist der Stadtteil, aus dem der Weg zu uns am kürzesten ist. Vom Lernort in der Friedrich-Alfred-Straße 14 sind es zu Fuß keine zehn Minuten, mit dem Rad entsprechend weniger.",
+      "Das klingt nach einer Nebensache und ist im Alltag der Unterschied zwischen Hingehen und Gefahrenwerden. Kinder aus Hochemmerich kommen nach der Schule allein zu uns, ohne dass jemand am Nachmittag den Fahrdienst übernehmen muss.",
+      "Unterrichtet wird von Klasse 1 bis zum Abitur, in Gruppen von drei bis fünf oder einzeln. Alle Hauptfächer, dazu Physik, Chemie und Biologie in der Mittel- und Oberstufe.",
+    ],
+    anfahrt:
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Von Hochemmerich aus zu Fuß in unter zehn Minuten zu erreichen. Wer trotzdem mit dem Bus kommt, steigt an der Haltestelle Stüning direkt vor dem Haus aus; Stellplätze sind vorhanden.",
+    formHinweis:
+      "Bei einem Fußweg von unter zehn Minuten stellt sich die Frage nach der Unterrichtsform kaum: Präsenzunterricht ist hier der Normalfall. Die Onlineform bleibt für Krankheitswochen und für Nachmittage, an denen sonst nichts geht.",
+    nachbarn: ["rheinhausen", "bergheim", "friemersheim", "rumeln-kaldenhausen"],
+  },
+  {
+    slug: "bergheim",
+    name: "Bergheim",
+    langName: "Duisburg-Bergheim",
+    title: "Nachhilfe in Duisburg-Bergheim | Klasse 1 bis Abitur",
+    description:
+      "Nachhilfe für Bergheim: alle Fächer, Klasse 1 bis Abitur. Etwa eine Viertelstunde zu Fuß vom Lernort in Rheinhausen. Auch für Krupp-Gymnasium und Heinrich-Heine-Gesamtschule.",
+    intro: [
+      "Bergheim liegt südlich unseres Lernorts, zu Fuß etwa eine Viertelstunde, mit dem Rad oder dem Bus deutlich schneller. Für Familien aus Bergheim ist die Friedrich-Alfred-Straße damit gut erreichbar, ohne dass der Nachmittag daran hängt.",
+      "Am Flutweg stehen gleich zwei weiterführende Schulen nebeneinander, das Krupp-Gymnasium und die Heinrich-Heine-Gesamtschule. Beide Schulformen begleiten wir von der Erprobungsstufe bis zum Abschluss.",
+      "Im Gymnasium geht es bei uns meist um Mathematik und die Naturwissenschaften ab Klasse 9, an der Gesamtschule häufiger um die Vorbereitung auf die Zentralen Prüfungen am Ende der Klasse 10.",
+    ],
+    anfahrt:
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen. Von Bergheim aus zu Fuß in etwa einer Viertelstunde, mit dem Bus über die Haltestelle Stüning direkt vor dem Haus. Stellplätze sind vorhanden.",
+    formHinweis:
+      "Eine Viertelstunde zu Fuß ist für ältere Schülerinnen und Schüler kein Hindernis, für Grundschulkinder je nach Tageszeit schon. In der Grundschule empfehlen wir aus Bergheim deshalb feste Termine am frühen Nachmittag oder die Onlineform.",
+    schulen: [
+      { name: "Krupp-Gymnasium Europaschule", anschrift: "Flutweg 62" },
+      { name: "Heinrich-Heine-Gesamtschule", anschrift: "Flutweg 56" },
+    ],
+    nachbarn: ["rheinhausen", "hochemmerich", "friemersheim", "homberg"],
   },
 ];
 
