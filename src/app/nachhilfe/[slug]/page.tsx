@@ -161,7 +161,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const ld = {
       "@context": "https://schema.org",
       "@type": "Service",
-      serviceType: `${fach.name}-Nachhilfe`,
+      serviceType: `Nachhilfe in ${fach.name}`,
       name: `Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`,
       description: fach.description,
       url: `${SITE_URL}/nachhilfe/${slug}`,

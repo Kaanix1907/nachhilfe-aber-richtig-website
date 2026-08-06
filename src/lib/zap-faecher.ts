@@ -185,7 +185,7 @@ export const ZAP_FAECHER: ZapFach[] = [
         text: "Erst alle drei einmal schreiben, dann entscheiden. Ab da wird geübt, was gewählt wurde, statt überall ein bisschen.",
       },
       {
-        titel: "Nach dem Original-Raster korrigieren",
+        titel: "Nach dem Originalraster korrigieren",
         text: "Wir bewerten mit denselben Bögen wie in der Prüfung: Inhalt, Aufbau, Sprache und Darstellung getrennt. Wer sieht, in welcher Spalte die Punkte hängen bleiben, schreibt beim nächsten Mal anders.",
       },
       {

@@ -88,11 +88,11 @@ function Ansatz({ fach }: { fach: FachPage }) {
 
 function Foerderung({ fach }: { fach: FachPage }) {
   return (
-    <SeoBlock kicker="Förderung" title={`${fach.name}-Nachhilfe kostenlos über Bildung und Teilhabe`}>
+    <SeoBlock kicker="Förderung" title={`Nachhilfe in ${fach.name} kostenlos über Bildung und Teilhabe`}>
       <p>
         Bezieht Ihre Familie Bürgergeld, Wohngeld, Kinderzuschlag oder Sozialhilfe, besteht
         Anspruch auf außerschulische Lernförderung. Dann übernimmt das Amt die Kosten für
-        die {fach.kurz}-Nachhilfe vollständig.
+        die Nachhilfe in {fach.name} vollständig.
       </p>
       <p>
         Wir sind auf diese Abrechnung eingerichtet, rechnen direkt mit dem Jobcenter
@@ -105,7 +105,7 @@ function Foerderung({ fach }: { fach: FachPage }) {
 
 function Standorte({ fach }: { fach: FachPage }) {
   return (
-    <SeoBlock kicker="Standorte" title={`Wo Sie ${fach.kurz}-Nachhilfe bei uns bekommen`}>
+    <SeoBlock kicker="Standorte" title={`Wo Sie Nachhilfe in ${fach.name} bekommen`}>
       <p>
         Unser Lernort liegt in der {BUSINESS.addresses.lernort.street},{" "}
         {BUSINESS.addresses.lernort.city}. Von dort betreuen wir Schülerinnen und Schüler
@@ -116,7 +116,7 @@ function Standorte({ fach }: { fach: FachPage }) {
           <LinkKachel
             key={o.slug}
             href={`/nachhilfe/${o.slug}`}
-            titel={`${fach.kurz}-Nachhilfe ${o.name}`}
+            titel={`Nachhilfe in ${fach.name}, ${o.name}`}
           />
         ))}
       </div>
@@ -154,9 +154,9 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
       <Navbar />
       <main id="inhalt">
         <SeoPageHero
-          kicker={`${fach.name}-Nachhilfe`}
+          kicker={`Nachhilfe in ${fach.name}`}
           h1={`Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`}
-          lead={`${fach.kurz}-Nachhilfe von Klasse 1 bis zum Abitur, in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
+          lead={`Nachhilfe in ${fach.name} von Klasse 1 bis zum Abitur, in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
           breadcrumb={fach.name}
           breadcrumbParent={{ label: "Nachhilfe", href: "/nachhilfe" }}
         />

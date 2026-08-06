@@ -17,7 +17,7 @@ import type { FaqItem } from "./faq";
 export const FACH_FAQ: Record<string, FaqItem[]> = {
   mathe: [
     {
-      q: "Ab welcher Klasse ist Mathe-Nachhilfe sinnvoll?",
+      q: "Ab welcher Klasse ist Nachhilfe in Mathematik sinnvoll?",
       a: "Wir unterrichten ab der ersten Klasse. In der Grundschule geht es meist um das Zahlverständnis und die schriftlichen Rechenverfahren. Ab Klasse 5 sind es Brüche und negative Zahlen, ab Klasse 8 Gleichungen und Funktionen. Je früher eine Lücke auffällt, desto weniger Stoff hängt daran.",
     },
     {
@@ -61,7 +61,7 @@ export const FACH_FAQ: Record<string, FaqItem[]> = {
   ],
   englisch: [
     {
-      q: "Ab wann sollte man mit Englisch-Nachhilfe anfangen?",
+      q: "Ab wann sollte man mit Nachhilfe in Englisch anfangen?",
       a: "Sobald Vokabeln und Grammatik nicht mehr zusammenpassen. Englisch verzeiht Lücken lange, weil sich vieles aus dem Zusammenhang erschließen lässt. Ab Klasse 8 kippt das, wenn Zeitformen und Satzbau gefordert sind statt nur Wortschatz.",
     },
     {
@@ -101,7 +101,7 @@ export const FACH_FAQ: Record<string, FaqItem[]> = {
   ],
   chemie: [
     {
-      q: "Ab welcher Klasse ist Chemie-Nachhilfe sinnvoll?",
+      q: "Ab welcher Klasse ist Nachhilfe in Chemie sinnvoll?",
       a: "Sobald Reaktionsgleichungen aufgestellt werden, meist ab Klasse 8 oder 9. Wer dort den Anschluss verliert, bekommt ihn in der Oberstufe schwer zurück, weil die organische Chemie auf dem Atombau aufsetzt.",
     },
     {
@@ -131,7 +131,7 @@ export const FACH_FAQ: Record<string, FaqItem[]> = {
       a: "Nein. Zentral geprüft werden Mathematik, Deutsch und Englisch. In der Oberstufe kann Biologie Abiturfach werden.",
     },
     {
-      q: "Wie bereitet man sich auf eine Biologie-Klausur in der Oberstufe vor?",
+      q: "Wie bereitet man sich auf eine Biologieklausur in der Oberstufe vor?",
       a: "Mit Aufgaben, nicht mit dem Heft. Oberstufenklausuren verlangen die Auswertung von Material: Diagramme, Versuchsbeschreibungen, Stammbäume. Das muss man geübt haben, sonst kostet es in der Klausur zu viel Zeit.",
     },
   ],

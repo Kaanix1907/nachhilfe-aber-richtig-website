@@ -204,9 +204,9 @@ export const FAECHER: FachPage[] = [
     slug: "mathe",
     name: "Mathematik",
     kurz: "Mathe",
-    title: "Mathe-Nachhilfe Duisburg-Rheinhausen | Klasse 1 bis Abitur",
+    title: "Nachhilfe in Mathematik | Duisburg, Klasse 1 bis Abitur",
     description:
-      "Mathe-Nachhilfe in Duisburg: von Bruchrechnen über Gleichungen bis Analysis. Kleingruppen oder Einzelunterricht, Klasse 1 bis Abitur. Probestunde kostenlos.",
+      "Nachhilfe in Mathematik in Duisburg: von Bruchrechnen über Gleichungen bis Analysis. Kleingruppen oder Einzelunterricht, Klasse 1 bis Abitur. Probestunde kostenlos.",
     intro: [
       "Mathematik ist das Fach, für das uns Eltern am häufigsten anrufen. Der Grund ist fast immer derselbe: Der Stoff baut aufeinander auf. Wer in Klasse 6 die Bruchrechnung nicht sicher beherrscht, scheitert in Klasse 8 an den Gleichungen, nicht wegen der Gleichungen, sondern wegen der Brüche.",
       "Deshalb fangen wir nicht beim aktuellen Kapitel an, sondern dort, wo die Lücke tatsächlich sitzt. Das kostet in den ersten Wochen Zeit und spart sie danach doppelt ein.",
@@ -236,9 +236,9 @@ export const FAECHER: FachPage[] = [
     slug: "deutsch",
     name: "Deutsch",
     kurz: "Deutsch",
-    title: "Deutsch-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Deutsch | Duisburg, bis zum Abitur",
     description:
-      "Deutsch-Nachhilfe in Duisburg: Rechtschreibung, Grammatik, Textanalyse, Aufsatz. Auch für Kinder mit Deutsch als zweiter Sprache. Erste Stunde gratis.",
+      "Nachhilfe in Deutsch in Duisburg: Rechtschreibung, Grammatik, Textanalyse, Aufsatz. Auch für Kinder mit Deutsch als zweiter Sprache. Erste Stunde gratis.",
     intro: [
       "Deutsch ist das Fach mit den unterschiedlichsten Baustellen. Bei dem einen Kind hakt es an der Rechtschreibung, beim nächsten am Textverständnis, beim dritten daran, einen Gedanken in einen ordentlichen Satz zu bringen. Ein Standardprogramm hilft hier niemandem.",
       "Ein großer Teil unserer Schülerinnen und Schüler wächst zweisprachig auf. Für sie ist Deutsch kein Fach wie jedes andere, sondern die Sprache, in der auch alle übrigen Fächer unterrichtet werden. Wer hier aufholt, verbessert nebenbei die Noten in Sachkunde, Geschichte und Biologie mit.",
@@ -268,9 +268,9 @@ export const FAECHER: FachPage[] = [
     slug: "englisch",
     name: "Englisch",
     kurz: "Englisch",
-    title: "Englisch-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Englisch | Duisburg, bis zum Abitur",
     description:
-      "Englisch-Nachhilfe in Duisburg: Grammatik, Vokabeln, Textproduktion und Sprechen. Von der Grundschule bis zum Abitur, in Kleingruppen oder einzeln.",
+      "Nachhilfe in Englisch in Duisburg: Grammatik, Vokabeln, Textproduktion und Sprechen. Von der Grundschule bis zum Abitur, in Kleingruppen oder einzeln.",
     intro: [
       "Englisch verzeiht Lücken lange und dann auf einmal nicht mehr. Solange Vokabeln abgefragt werden, kommt man mit Auswendiglernen durch. Sobald eigene Texte verlangt werden, fällt auf, wer die Zeitformen nie wirklich verstanden hat.",
       "Wir setzen deshalb früh an der Grammatik an und verbinden sie sofort mit dem Schreiben und Sprechen. Regeln allein bringen im Englischunterricht wenig, wenn sie nicht in einem Satz landen.",
@@ -300,9 +300,9 @@ export const FAECHER: FachPage[] = [
     slug: "physik",
     name: "Physik",
     kurz: "Physik",
-    title: "Physik-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Physik | Duisburg, bis zum Abitur",
     description:
-      "Physik-Nachhilfe in Duisburg: Mechanik, Elektrizität, Optik bis Quantenphysik. Für Mittelstufe, Oberstufe und Abiturvorbereitung. Probestunde kostenlos.",
+      "Nachhilfe in Physik in Duisburg: Mechanik, Elektrizität, Optik bis Quantenphysik. Für Mittelstufe, Oberstufe und Abiturvorbereitung. Probestunde kostenlos.",
     intro: [
       "Physik scheitert selten an der Physik. Sie scheitert meistens an der Mathematik dahinter: Formeln umstellen, Einheiten umrechnen, aus einer Textaufgabe die richtigen Größen herauslesen.",
       "Wir prüfen deshalb zu Beginn, ob das mathematische Handwerkszeug sitzt. Ist das geklärt, wird Physik für die meisten Schülerinnen und Schüler deutlich zugänglicher, als sie erwartet haben.",
@@ -328,9 +328,9 @@ export const FAECHER: FachPage[] = [
     slug: "chemie",
     name: "Chemie",
     kurz: "Chemie",
-    title: "Chemie-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Chemie | Duisburg, bis zum Abitur",
     description:
-      "Chemie-Nachhilfe in Duisburg: Reaktionsgleichungen, Stöchiometrie, organische Chemie. Für Mittelstufe, Oberstufe und Abiturvorbereitung.",
+      "Nachhilfe in Chemie in Duisburg: Reaktionsgleichungen, Stöchiometrie, organische Chemie. Für Mittelstufe, Oberstufe und Abiturvorbereitung.",
     intro: [
       "In Chemie entscheidet sich früh, ob es läuft: Wer das Periodensystem und den Aufbau der Atome verstanden hat, kann sich fast alles Weitere herleiten. Wer es auswendig lernt, steht spätestens bei den Reaktionsgleichungen.",
       "Wir arbeiten deshalb konsequent vom Prinzip zur Aufgabe, nicht umgekehrt. Das dauert am Anfang länger und macht das Fach danach berechenbar.",
@@ -356,9 +356,9 @@ export const FAECHER: FachPage[] = [
     slug: "biologie",
     name: "Biologie",
     kurz: "Bio",
-    title: "Biologie-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Biologie | Duisburg, bis zum Abitur",
     description:
-      "Biologie-Nachhilfe in Duisburg: Zellbiologie, Genetik, Ökologie, Neurobiologie. Von der Mittelstufe bis zur Abiturvorbereitung. Erste Stunde gratis.",
+      "Nachhilfe in Biologie in Duisburg: Zellbiologie, Genetik, Ökologie, Neurobiologie. Von der Mittelstufe bis zur Abiturvorbereitung. Erste Stunde gratis.",
     intro: [
       "Biologie gilt als Lernfach, und genau daran scheitern viele. In der Oberstufe reicht Auswendiglernen nicht mehr, weil in den Klausuren Zusammenhänge erklärt und unbekannte Materialien ausgewertet werden müssen.",
       "Wir üben deshalb weniger das Aufsagen und mehr das Erklären: Warum folgt aus diesem Befund jene Schlussfolgerung? Genau das wird in den Prüfungen verlangt.",

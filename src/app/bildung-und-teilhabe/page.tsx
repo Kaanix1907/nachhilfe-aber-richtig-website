@@ -214,7 +214,7 @@ function Zustaendigkeit() {
       </div>
       <p>
         Das Formular für die Nachhilfe heißt bei der Stadt{" "}
-        <strong className="text-dark font-semibold">Anlage 3 — Lernförderung</strong>. Dazu
+        <strong className="text-dark font-semibold">Anlage 3 Lernförderung</strong>. Dazu
         gehören je nach Fall eine Selbstauskunft und ein Fragebogen zur Lernförderung.
       </p>
       <p>
@@ -245,7 +245,7 @@ function Quellen() {
       <p>
         Anders als die übrigen Leistungen des Bildungspakets muss die Lernförderung
         gesondert beantragt werden (§ 37 Absatz 1 SGB II). Sie ist also nicht mit dem
-        Bürgergeld-Antrag miterledigt.
+        Bürgergeldantrag miterledigt.
       </p>
       <ul className="space-y-2.5 pt-1">
         {[
