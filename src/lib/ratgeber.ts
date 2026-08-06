@@ -270,7 +270,7 @@ export const RATGEBER: RatgeberSeite[] = [
         absaetze: [
           "Wenn die Leistungen in einem Fach nicht mehr ausreichen und damit von der letzten Zeugnisnote abweichen, muss die Schule die Eltern schriftlich benachrichtigen. Das steht in § 50 Absatz 4 des Schulgesetzes Nordrhein-Westfalen. Umgangssprachlich heißt diese Mitteilung Blauer Brief, im Amtsdeutsch Mahnung.",
           "Die Benachrichtigung geht spätestens zehn Wochen vor dem Versetzungstermin heraus. Das ist der eigentliche Inhalt der Nachricht: Es sind noch zehn Schulwochen, und die Entscheidung fällt erst am Ende.",
-          "Umgekehrt gilt eine Regel, die kaum jemand kennt: Unterbleibt eine Benachrichtigung, obwohl ein Fach hätte abgemahnt werden müssen, bleibt die schwache Leistung in diesem Fach bei der Versetzungsentscheidung unberücksichtigt. Ein fehlender Brief allein begründet allerdings keinen Anspruch auf Versetzung. Wenn Sie den Verdacht haben, dass eine Mahnung fehlt, fragen Sie bei der Schule nach, und zwar vor der Versetzungskonferenz.",
+          "Umgekehrt gilt: Unterbleibt eine Benachrichtigung, obwohl ein Fach hätte abgemahnt werden müssen, bleibt die schwache Leistung in diesem Fach bei der Versetzungsentscheidung unberücksichtigt. Ein fehlender Brief allein begründet allerdings keinen Anspruch auf Versetzung. Wenn Sie den Verdacht haben, dass eine Mahnung fehlt, fragen Sie bei der Schule nach, und zwar vor der Versetzungskonferenz.",
         ],
       },
       {
@@ -287,8 +287,8 @@ export const RATGEBER: RatgeberSeite[] = [
         titel: "Die Nachprüfung am Ende der Sommerferien",
         absaetze: [
           "Wird ein Kind ab Klasse 7 nicht versetzt, ist eine Nachprüfung möglich. Die Schulleitung lässt dazu zu, wenn in einem einzigen Fach die Verbesserung von mangelhaft auf ausreichend genügen würde, um die Versetzungsbedingungen zu erfüllen. Kommen mehrere Fächer in Frage, wählt die Schülerin oder der Schüler.",
-          "Der Termin ist der eigentliche Punkt: Die Nachprüfung findet in der letzten Woche vor Unterrichtsbeginn des neuen Schuljahres statt. Zwischen dem Zeugnis und der Prüfung liegen also die kompletten Sommerferien.",
-          "Das ist mehr Zeit, als die meisten Familien annehmen, und weniger, als es klingt. Sechs Wochen reichen, um ein Fach von mangelhaft auf ausreichend zu bringen, wenn ab der ersten Ferienwoche gearbeitet wird. Sie reichen nicht, wenn zwei Wochen vor Schulbeginn angefangen wird.",
+          "Am Termin hängt alles: Die Nachprüfung findet in der letzten Woche vor Unterrichtsbeginn des neuen Schuljahres statt. Zwischen dem Zeugnis und der Prüfung liegen also die kompletten Sommerferien.",
+          "Sechs Ferienwochen sind viel Zeit, wenn Ihr Kind in der ersten davon anfängt. Wer zwei Wochen vor Schulbeginn beginnt, hat in aller Regel zu wenig übrig. Was in Ihrem Fall reicht, hängt daran, wie tief die Lücke reicht; das sagen wir Ihnen nach der ersten Stunde.",
         ],
       },
       {
@@ -301,7 +301,7 @@ export const RATGEBER: RatgeberSeite[] = [
           },
           {
             titel: "Mit der Fachlehrkraft sprechen",
-            text: "Nicht um zu verhandeln, sondern um zwei Dinge zu erfahren: Woran genau liegt es, und welche Leistungen stehen bis zum Schuljahresende noch an. Danach wissen Sie, worauf sich Arbeit lohnt.",
+            text: "Fragen Sie zwei Dinge: Woran genau liegt es, und welche Leistungen stehen bis zum Schuljahresende noch an. Danach wissen Sie, worauf sich Arbeit lohnt. Verhandeln bringt an dieser Stelle nichts.",
           },
           {
             titel: "Auf ein Fach konzentrieren",
@@ -313,7 +313,7 @@ export const RATGEBER: RatgeberSeite[] = [
           },
           {
             titel: "Die Nachprüfung mitdenken",
-            text: "Falls es doch nicht reicht, ist der Sommer die zweite Chance und nicht das Ende. Wer das früh weiß, verliert im Juli keine drei Wochen an Schockstarre.",
+            text: "Falls es doch nicht reicht, ist der Sommer die zweite Chance. Wer das schon im Mai weiß, verliert im Juli keine drei Wochen.",
           },
         ],
       },

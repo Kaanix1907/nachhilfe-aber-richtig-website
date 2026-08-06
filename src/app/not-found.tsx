@@ -36,7 +36,7 @@ export default function NotFound() {
             </h1>
             <p className="font-body text-muted/75 leading-[1.8] text-[1.05rem]">
               Vielleicht hat sich die Adresse geändert, vielleicht ist ein Tippfehler
-              hineingerutscht. Unten steht alles, was es bei uns gibt — und wenn Sie
+              hineingerutscht. Unten steht alles, was es bei uns gibt. Und wenn Sie
               schneller ans Ziel wollen, rufen Sie einfach an.
             </p>
           </div>

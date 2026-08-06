@@ -49,7 +49,7 @@ export function FaqListe({ items }: { items: FaqItem[] }) {
 export default function FAQ({
   items = FAQ_ITEMS,
   title = "Häufige Fragen",
-  intro = "Was Eltern uns am häufigsten fragen — von den Kosten über Bildung und Teilhabe bis zum Ablauf.",
+  intro = "Was Eltern uns am häufigsten fragen, von den Kosten über Bildung und Teilhabe bis zum Ablauf.",
 }: {
   items?: FaqItem[];
   title?: string;

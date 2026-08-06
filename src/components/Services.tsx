@@ -62,8 +62,8 @@ export default function Services() {
             Unsere Leistungen
           </h2>
           <p className="font-body text-muted/75 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
-            Wir bieten die passende Lösung für jedes Kind — flexibel, fair und
-            mit echtem Mehrwert.
+            Drei Formen, zwischen denen Sie wählen: in der Kleingruppe, einzeln
+            oder online.
           </p>
         </FadeIn>
 

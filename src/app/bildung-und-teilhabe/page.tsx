@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: BUSINESS.name,
     title: "Kostenlose Nachhilfe über Bildung und Teilhabe in Duisburg",
     description:
-      "Lernförderung über Bildung und Teilhabe: Anspruch, Antrag und Ablauf in Duisburg — Schritt für Schritt erklärt.",
+      "Lernförderung über Bildung und Teilhabe: Anspruch, Antrag und Ablauf in Duisburg, Schritt für Schritt erklärt.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Bildung und Teilhabe Nachhilfe Duisburg" }],
   },
 };
@@ -40,7 +40,7 @@ const BUT_FAQ: FaqItem[] = [
   },
   {
     q: "Muss mein Kind versetzungsgefährdet sein?",
-    a: "Nein. Die frühere Auslegung, wonach nur die drohende Nichtversetzung zählt, gilt seit der Reform des Bildungspakets nicht mehr. Lernförderung ist bereits dann möglich, wenn wesentliche Lernziele gefährdet sind — das bestätigt die Schule auf dem Antragsformular.",
+    a: "Nein. Die frühere Auslegung, wonach nur die drohende Nichtversetzung zählt, gilt seit der Reform des Bildungspakets nicht mehr. Lernförderung ist bereits dann möglich, wenn wesentliche Lernziele gefährdet sind. Das bestätigt die Schule auf dem Antragsformular.",
   },
   {
     q: "Wo stelle ich den Antrag in Duisburg?",
@@ -60,7 +60,7 @@ const BUT_FAQ: FaqItem[] = [
   },
   {
     q: "Für welche Fächer gilt die Förderung?",
-    a: "Für die Fächer, in denen die Schule Förderbedarf bestätigt — in der Praxis meist Mathematik, Deutsch oder Englisch. Wir unterrichten darüber hinaus auch Physik, Chemie und Biologie.",
+    a: "Für die Fächer, in denen die Schule Förderbedarf bestätigt, in der Praxis meist Mathematik, Deutsch oder Englisch. Wir unterrichten darüber hinaus auch Physik, Chemie und Biologie.",
   },
   {
     q: "Was passiert, wenn die Bewilligung ausläuft?",
@@ -90,7 +90,7 @@ const breadcrumbLd = {
 const SCHRITTE = [
   {
     titel: "Leistungsbescheid heraussuchen",
-    text: "Bürgergeld, Wohngeld, Kinderzuschlag, Sozialhilfe oder Asylbewerberleistungen — der Bescheid ist der Nachweis, dass Anspruch besteht. Er sagt Ihnen auch, welche Stelle zuständig ist.",
+    text: "Bürgergeld, Wohngeld, Kinderzuschlag, Sozialhilfe oder Asylbewerberleistungen. Der Bescheid ist der Nachweis, dass Anspruch besteht. Er sagt Ihnen auch, welche Stelle zuständig ist.",
   },
   {
     titel: "Antrag auf Lernförderung besorgen",
@@ -106,7 +106,7 @@ const SCHRITTE = [
   },
   {
     titel: "Antrag einreichen und starten",
-    text: "Sobald der Antrag eingereicht ist, kann Ihr Kind loslegen. Die Abrechnung läuft anschließend direkt zwischen uns und dem Amt — Sie zahlen nichts.",
+    text: "Sobald der Antrag eingereicht ist, kann Ihr Kind loslegen. Die Abrechnung läuft anschließend direkt zwischen uns und dem Amt. Sie zahlen nichts.",
   },
 ];
 
@@ -124,13 +124,13 @@ function Ueberblick() {
       <p>
         Das Bildungspaket des Bundes umfasst mehrere Leistungen für Kinder aus Familien
         mit geringem Einkommen. Eine davon heißt im Amtsdeutsch{" "}
-        <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>{" "}
-        — gemeint ist Nachhilfe.
+        <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>.{" "}
+        Gemeint ist Nachhilfe.
       </p>
       <p>
         Diese Leistung wird nicht ausgezahlt, sondern direkt mit dem Anbieter abgerechnet.
         Deshalb ist es wichtig, dass die Nachhilfe bei einer Stelle stattfindet, die mit
-        dem Amt abrechnen kann. Wir tun das seit Jahren — sowohl mit dem Jobcenter
+        dem Amt abrechnen kann. Wir tun das seit Jahren, sowohl mit dem Jobcenter
         Duisburg als auch mit der Stadt Duisburg.
       </p>
       <p>Für die Familie heißt das: kein Vorstrecken, keine Rechnung, keine Zuzahlung.</p>
@@ -152,7 +152,7 @@ function Anspruch() {
       </ul>
       <p>
         Dazu muss die Schule bestätigen, dass Ihr Kind Förderbedarf hat. Ein drohendes
-        Sitzenbleiben ist dafür nicht mehr nötig — es genügt, dass wesentliche Lernziele
+        Sitzenbleiben ist dafür nicht mehr nötig. Es genügt, dass wesentliche Lernziele
         gefährdet sind.
       </p>
     </SeoBlock>
@@ -199,7 +199,7 @@ function Zustaendigkeit() {
             Bei Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem Asylbewerberleistungsgesetz.
           </p>
           <p className="text-[0.9rem] mt-3 text-muted/75">
-            Amt für Soziales und Wohnen — Bildung und Teilhabe, Beekstraße 38, 47051 Duisburg,
+            Amt für Soziales und Wohnen, Bildung und Teilhabe, Beekstraße 38, 47051 Duisburg,
             Telefon 0203 94000.{" "}
             <a
               href="https://www.duisburg.de/vv/produkte/pro_du/dez_iii/50/Bildung_und_Teilhabe"
@@ -239,8 +239,8 @@ function Quellen() {
         die zu gewähren ist, soweit sie geeignet und zusätzlich erforderlich ist, um die
         wesentlichen Lernziele zu erreichen. Der Gesetzestext stellt ausdrücklich klar,
         dass es auf eine bestehende Versetzungsgefährdung{" "}
-        <strong className="text-dark font-semibold">nicht</strong> ankommt — ein
-        Missverständnis, an dem immer noch Anträge scheitern.
+        <strong className="text-dark font-semibold">nicht</strong> ankommt. An diesem
+        Missverständnis scheitern immer noch Anträge.
       </p>
       <p>
         Anders als die übrigen Leistungen des Bildungspakets muss die Lernförderung
@@ -251,7 +251,7 @@ function Quellen() {
         {[
           {
             href: "https://www.sozialgesetzbuch-sgb.de/sgbii/28.html",
-            text: "§ 28 SGB II im Wortlaut — Bedarfe für Bildung und Teilhabe",
+            text: "§ 28 SGB II im Wortlaut: Bedarfe für Bildung und Teilhabe",
           },
           {
             href: "https://www.duisburg.de/vv/produkte/pro_du/dez_iii/50/Bildung_und_Teilhabe",
@@ -312,7 +312,7 @@ function Abschluss() {
         </h2>
         <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
           Bringen Sie den Bescheid mit, den Rest sortieren wir gemeinsam. Die Probestunde
-          ist kostenlos — auch bevor der Antrag durch ist.
+          ist kostenlos, auch bevor der Antrag durch ist.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a

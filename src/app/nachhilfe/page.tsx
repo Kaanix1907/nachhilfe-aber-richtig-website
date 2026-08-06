@@ -112,7 +112,7 @@ export default function NachhilfeUebersicht() {
         <SeoPageHero
           kicker="Überblick"
           h1="Nachhilfe in Duisburg: Fächer und Standorte"
-          lead={`Sechs Fächer, zwei Schulstufen, fünf Stadtteile, ein Lernort in der ${BUSINESS.addresses.lernort.street}. Hier steht, was es gibt, und wo Sie weiterlesen, wenn etwas davon zu Ihnen passt.`}
+          lead={`Sechs Fächer, zwei Schulstufen, sieben Stadtteile, ein Lernort in der ${BUSINESS.addresses.lernort.street}. Hier steht, was es gibt, und wo Sie weiterlesen, wenn etwas davon zu Ihnen passt.`}
           breadcrumb="Nachhilfe"
         />
 
@@ -165,7 +165,7 @@ export default function NachhilfeUebersicht() {
               <p className="pt-4">
                 <strong className="text-dark font-semibold">Zentrale Prüfungen Klasse 10.</strong>{" "}
                 Die ZP10 entscheidet über den Abschluss und darüber, ob es in die Oberstufe geht.
-                Geprüft wird der Stoff mehrerer Schuljahre in festen Aufgabenformaten — dafür gibt es
+                Geprüft wird der Stoff mehrerer Schuljahre in festen Aufgabenformaten. Dafür gibt es
                 eine eigene Vorbereitung.
               </p>
               <WeiterLink href="/zap-vorbereitung">Zur ZAP-Vorbereitung</WeiterLink>
@@ -191,7 +191,7 @@ export default function NachhilfeUebersicht() {
 
             <AbschlussKarte
               titel="Erste Stunde kostenlos"
-              text="Unverbindlich ausprobieren, ob es passt — in jedem Fach und von jedem Stadtteil aus."
+              text="Unverbindlich ausprobieren, ob es passt, in jedem Fach und von jedem Stadtteil aus."
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />

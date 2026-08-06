@@ -73,7 +73,7 @@ export default function Contact() {
             Gratis Probestunde buchen
           </h2>
           <p className="font-body text-muted/75 text-lg max-w-xl mx-auto leading-[1.7]">
-            Kontaktiere uns — wir melden uns innerhalb eines Werktages bei dir.
+            Kontaktiere uns. Wir melden uns innerhalb eines Werktages bei dir.
           </p>
         </FadeIn>
 

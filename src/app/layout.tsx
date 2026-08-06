@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     siteName: BUSINESS.name,
     title: "Nachhilfe, aber richtig! | Duisburg-Rheinhausen",
     description:
-      "Professionelle Nachhilfe für Klasse 1 bis Abitur. Bildung & Teilhabe möglich — kostenlos für berechtigte Familien. Probestunde gratis!",
+      "Professionelle Nachhilfe für Klasse 1 bis Abitur. Bildung & Teilhabe möglich, kostenlos für berechtigte Familien. Probestunde gratis!",
     images: [
       {
         url: "/og-image.png",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nachhilfe, aber richtig! | Duisburg-Rheinhausen",
     description:
-      "Professionelle Nachhilfe für Klasse 1 bis Abitur. Bildung & Teilhabe möglich — kostenlos für berechtigte Familien.",
+      "Professionelle Nachhilfe für Klasse 1 bis Abitur. Bildung & Teilhabe möglich, kostenlos für berechtigte Familien.",
     images: ["/og-image.png"],
   },
   robots: {

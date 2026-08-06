@@ -51,7 +51,7 @@ const ZAP_FAQ: FaqItem[] = [
   },
   {
     q: "Womit üben Sie?",
-    a: "Mit echten Prüfungsaufgaben vergangener Jahrgänge. Wir haben dafür eigene Aufgaben- und Lösungshefte zusammengestellt, geordnet nach Themengebiet statt nach Prüfungsjahr — so lässt sich gezielt an einer Schwachstelle arbeiten und nicht nur der Reihe nach abarbeiten.",
+    a: "Mit echten Prüfungsaufgaben vergangener Jahrgänge. Wir haben dafür eigene Aufgaben- und Lösungshefte zusammengestellt, geordnet nach Themengebiet statt nach Prüfungsjahr. So lässt sich gezielt an einer Schwachstelle arbeiten und nicht nur der Reihe nach abarbeiten.",
   },
   {
     q: "Kann die ZAP-Vorbereitung über Bildung und Teilhabe laufen?",
@@ -171,7 +171,7 @@ const PRUEFUNGSFAECHER = [
     slug: "englisch",
     fach: "Englisch",
     inhalt:
-      "Vier Bestandteile mit amtlicher Gewichtung. Im Schreibteil zählt die sprachliche Richtigkeit mit 35 Prozent mehr als der Inhalt mit 25 — das überrascht die meisten.",
+      "Vier Bestandteile mit amtlicher Gewichtung. Im Schreibteil zählt die sprachliche Richtigkeit mit 35 Prozent mehr als der Inhalt mit 25. Das überrascht die meisten.",
   },
 ];
 
@@ -187,7 +187,7 @@ const TERMINE_2027 = [
 const ABLAUF = [
   {
     titel: "Standortbestimmung",
-    text: "Ihr Kind schreibt eine vollständige Prüfung aus einem früheren Jahrgang unter echten Bedingungen. Danach wissen wir beide, wo es steht — nicht gefühlt, sondern in Punkten.",
+    text: "Ihr Kind schreibt eine vollständige Prüfung aus einem früheren Jahrgang unter echten Bedingungen. Danach wissen wir beide, wo es steht, nicht gefühlt, sondern in Punkten.",
   },
   {
     titel: "Lücken schließen",
@@ -326,7 +326,7 @@ function Material() {
       <p>
         Das klingt nach einer Kleinigkeit und ist im Training der entscheidende
         Unterschied: Wer bei quadratischen Funktionen unsicher ist, übt zwanzig Aufgaben
-        zu quadratischen Funktionen am Stück — statt sie über acht Prüfungsjahrgänge
+        zu quadratischen Funktionen am Stück, statt sie über acht Prüfungsjahrgänge
         zusammenzusuchen und dazwischen Themen zu rechnen, die längst sitzen.
       </p>
     </SeoBlock>
@@ -368,7 +368,7 @@ export default function ZapVorbereitung() {
         <SeoPageHero
           kicker="Prüfungsvorbereitung"
           h1="ZAP-Vorbereitung in Duisburg: Zentrale Prüfungen Klasse 10"
-          lead="Gezieltes Training für die ZP10 in Mathematik, Deutsch und Englisch — mit echten Prüfungsaufgaben aus vergangenen Jahrgängen, in Kleingruppen oder einzeln."
+          lead="Gezieltes Training für die ZP10 in Mathematik, Deutsch und Englisch, mit echten Prüfungsaufgaben aus vergangenen Jahrgängen, in Kleingruppen oder einzeln."
           breadcrumb="ZAP-Vorbereitung"
         />
 

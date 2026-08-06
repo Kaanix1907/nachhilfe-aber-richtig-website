@@ -11,15 +11,15 @@ import FadeIn from "./FadeIn";
 const PUNKTE = [
   {
     titel: "Erweitertes Führungszeugnis, vor der ersten Stunde",
-    text: "Wer bei uns unterrichtet, legt ein erweitertes Führungszeugnis vor — nicht irgendwann, sondern bevor er zum ersten Mal mit einem Kind in einem Raum sitzt. Für uns ist das keine Formalie, sondern die Grundbedingung.",
+    text: "Wer bei uns unterrichtet, legt ein erweitertes Führungszeugnis vor, nicht irgendwann, sondern bevor er zum ersten Mal mit einem Kind in einem Raum sitzt. Für uns ist das keine Formalie, sondern die Grundbedingung.",
   },
   {
     titel: "Lehramtsstudierende und Lehrkräfte, keine Aushilfen",
-    text: "Unsere Leute kommen aus dem Lehramt oder unterrichten bereits. Sie wissen nicht nur, wie der Stoff geht, sondern auch, wie man ihn jemandem erklärt, der ihn gerade nicht versteht. Das ist ein Unterschied, den man in der ersten Stunde merkt.",
+    text: "Unsere Leute kommen aus dem Lehramt oder unterrichten bereits. Sie wissen, wie der Stoff geht, und dazu, wie man ihn jemandem erklärt, der ihn gerade nicht versteht. Das ist ein Unterschied, den man in der ersten Stunde merkt.",
   },
   {
     titel: "Niemand unterrichtet ein Fach, das er nicht sicher beherrscht",
-    text: "Wer Mathematik gibt, gibt Mathematik. Wir besetzen keine Stunde mit jemandem, der sich das Thema am Abend vorher angelesen hat — auch dann nicht, wenn es terminlich einfacher wäre.",
+    text: "Wer Mathematik gibt, gibt Mathematik. Wir besetzen keine Stunde mit jemandem, der sich das Thema am Abend vorher angelesen hat, auch dann nicht, wenn es terminlich einfacher wäre.",
   },
   {
     titel: "Drei bis fünf Kinder pro Gruppe",

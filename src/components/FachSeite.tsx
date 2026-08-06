@@ -66,7 +66,7 @@ function ZentralePruefungen({ fach }: { fach: FachPage }) {
       <p>
         {fach.name} ist eines der drei Fächer, in denen am Ende der Klasse 10 in
         Nordrhein-Westfalen zentral geprüft wird. Die Aufgaben kommen landesweit
-        einheitlich vom Schulministerium, nicht von der eigenen Lehrkraft — geprüft wird
+        einheitlich vom Schulministerium, nicht von der eigenen Lehrkraft. Geprüft wird
         der Stoff mehrerer Schuljahre.
       </p>
       <WeiterLink href="/zap-vorbereitung">Zur ZAP-Vorbereitung</WeiterLink>
@@ -80,7 +80,7 @@ function Ansatz({ fach }: { fach: FachPage }) {
       <p>{fach.ansatz}</p>
       <p>
         Unterrichtet wird von geprüften Lehramtsstudierenden und Lehrkräften mit
-        erweitertem Führungszeugnis — und nur in Fächern, die sie sicher beherrschen.
+        erweitertem Führungszeugnis, und nur in Fächern, die sie sicher beherrschen.
       </p>
     </SeoBlock>
   );
@@ -156,7 +156,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
         <SeoPageHero
           kicker={`${fach.name}-Nachhilfe`}
           h1={`Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`}
-          lead={`${fach.kurz}-Nachhilfe von Klasse 1 bis zum Abitur — in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
+          lead={`${fach.kurz}-Nachhilfe von Klasse 1 bis zum Abitur, in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
           breadcrumb={fach.name}
           breadcrumbParent={{ label: "Nachhilfe", href: "/nachhilfe" }}
         />

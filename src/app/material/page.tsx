@@ -116,7 +116,7 @@ export default function MaterialSeite() {
               <p className="font-body text-muted/80 leading-[1.75] mb-6">
                 In Teil 2 der Deutschprüfung wählen die Schülerinnen und Schüler zwischen drei
                 Aufgabentypen. Für jeden gibt es hier die Satzbausteine und das Bewertungsraster,
-                mit dem wir korrigieren — wer weiß, wonach bewertet wird, schreibt anders.
+                mit dem wir korrigieren. Wer weiß, wonach bewertet wird, schreibt anders.
               </p>
               <div className="grid gap-4">
                 {deutsch.map((m) => (
@@ -157,7 +157,7 @@ export default function MaterialSeite() {
 
             <AbschlussKarte
               titel="Fragen zum Material?"
-              text="Wenn beim Üben etwas hängen bleibt, klären wir das in der kostenlosen Probestunde — auch ohne dass Sie danach bleiben müssen."
+              text="Wenn beim Üben etwas hängen bleibt, klären wir das in der kostenlosen Probestunde, auch ohne dass Sie danach bleiben müssen."
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />

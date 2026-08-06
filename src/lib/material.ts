@@ -28,7 +28,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "zap-deutsch-tipps-und-tricks.pdf",
     titel: "ZP10 Deutsch: Tipps und Tricks",
     beschreibung:
-      "Was in der Prüfung Punkte bringt und was sie kostet — Zeiteinteilung, häufige Fehler und die Stellen, an denen erfahrungsgemäß Punkte liegen bleiben.",
+      "Was in der Prüfung Punkte bringt und was sie kostet: Zeiteinteilung, häufige Fehler und die Stellen, an denen erfahrungsgemäß Punkte liegen bleiben.",
     seiten: 5,
     fach: "Deutsch",
     stufe: "Klasse 10",
@@ -37,7 +37,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "formulierungshilfen-materialgestuetztes-schreiben.pdf",
     titel: "Formulierungshilfen: Materialgestütztes Schreiben",
     beschreibung:
-      "Satzbausteine für den Aufgabentyp 2 der ZP10 — Einleitung, Überleitungen, Belegen aus dem Material, Schluss.",
+      "Satzbausteine für den Aufgabentyp 2 der ZP10: Einleitung, Überleitungen, Belegen aus dem Material, Schluss.",
     seiten: 6,
     fach: "Deutsch",
     stufe: "Klasse 10",
@@ -46,7 +46,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "formulierungshilfen-gedichtanalyse.pdf",
     titel: "Formulierungshilfen: Gedichtanalyse",
     beschreibung:
-      "Satzbausteine für den Aufgabentyp 4a — vom Einleitungssatz über die Beschreibung sprachlicher Mittel bis zur Deutung.",
+      "Satzbausteine für den Aufgabentyp 4a, vom Einleitungssatz über die Beschreibung sprachlicher Mittel bis zur Deutung.",
     seiten: 6,
     fach: "Deutsch",
     stufe: "Klasse 10",
@@ -55,7 +55,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "formulierungshilfen-vergleichende-analyse.pdf",
     titel: "Formulierungshilfen: Vergleichende Analyse",
     beschreibung:
-      "Satzbausteine für den Aufgabentyp 4b — Gemeinsamkeiten und Unterschiede zweier Texte sprachlich sauber gegenüberstellen.",
+      "Satzbausteine für den Aufgabentyp 4b: Gemeinsamkeiten und Unterschiede zweier Texte sprachlich sauber gegenüberstellen.",
     seiten: 6,
     fach: "Deutsch",
     stufe: "Klasse 10",
@@ -64,7 +64,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "bewertungsbogen-materialgestuetztes-schreiben.pdf",
     titel: "Bewertungsbogen: Materialgestütztes Schreiben",
     beschreibung:
-      "Das Raster, mit dem wir korrigieren. Wer weiß, wonach bewertet wird, schreibt anders — deshalb geben wir es vorher heraus.",
+      "Das Raster, mit dem wir korrigieren. Wer weiß, wonach bewertet wird, schreibt anders. Deshalb geben wir es vorher heraus.",
     seiten: 3,
     fach: "Deutsch",
     stufe: "Klasse 10",
@@ -109,7 +109,7 @@ export const MATERIAL: MaterialEintrag[] = [
     datei: "kurvendiskussion-aufgaben.pdf",
     titel: "Kurvendiskussion: Aufgabensammlung",
     beschreibung:
-      "Nullstellen, Extrema, Wendepunkte, Symmetrie und Verhalten im Unendlichen — die vollständige Kurvendiskussion an Übungsaufgaben.",
+      "Nullstellen, Extrema, Wendepunkte, Symmetrie und Verhalten im Unendlichen: die vollständige Kurvendiskussion an Übungsaufgaben.",
     seiten: 7,
     fach: "Mathematik",
     stufe: "Oberstufe",
