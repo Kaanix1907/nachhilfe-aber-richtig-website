@@ -47,7 +47,7 @@ export default function Hero() {
             <span className="font-semibold text-white">kostenlos über Bildung und Teilhabe</span>.
           </p>
 
-          <p className="font-body text-sm md:text-base text-white/55 md:text-white/35 mb-4 md:mb-10 tracking-wide">
+          <p className="font-body text-sm md:text-base text-white/60 md:text-white/60 mb-4 md:mb-10 tracking-wide">
             {BUSINESS.slogan}
           </p>
 
@@ -55,7 +55,7 @@ export default function Hero() {
             <a
               href="#kontakt"
               className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-6 md:px-8 py-3.5 md:py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-              style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+              style={{ background: "linear-gradient(135deg,#008a00,#006e00)", boxShadow: "0 4px 20px rgba(0,110,0,0.40)" }}
             >
               Gratis Probestunde buchen
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

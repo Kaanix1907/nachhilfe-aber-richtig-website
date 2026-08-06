@@ -39,7 +39,7 @@ export function SeoBlock({
       >
         {title}
       </h2>
-      {roh ? children : <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4">{children}</div>}
+      {roh ? children : <div className="font-body text-muted/75 leading-[1.8] text-[0.97rem] space-y-4">{children}</div>}
     </FadeIn>
   );
 }
@@ -100,7 +100,7 @@ export function AbschlussKarte({
         <Link
           href={href}
           className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-          style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+          style={{ background: "linear-gradient(135deg,#008a00,#006e00)", boxShadow: "0 4px 20px rgba(0,110,0,0.40)" }}
         >
           {knopfText}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -121,7 +121,7 @@ export function AbschlussKarte({
 // dem git-Verlauf abgeleitet. Warum, steht in der Datei.
 export function StandHinweis({ stand }: { stand: string }) {
   return (
-    <p className="font-body text-muted/45 text-xs mt-10 pt-6 border-t border-gray-100">
+    <p className="font-body text-muted/75 text-xs mt-10 pt-6 border-t border-gray-100">
       Inhalt zuletzt geprüft: {stand}
     </p>
   );
@@ -134,7 +134,7 @@ export function LinkKachel({ href, titel }: { href: string; titel: string }) {
       className="group flex items-center justify-between gap-3 bg-white rounded-xl border border-gray-100 px-5 py-4 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/25"
       style={{ boxShadow: "0 1px 3px rgba(26,26,46,0.05), 0 4px 12px rgba(26,26,46,0.05)" }}
     >
-      <span className="font-heading font-bold text-[0.98rem] text-dark group-hover:text-primary transition-[color] duration-300">
+      <span className="font-heading font-bold text-[0.98rem] text-dark group-hover:text-primary-deep transition-[color] duration-300">
         {titel}
       </span>
       {/* Klassen bewusst am SVG statt an einem Wrapper: so bleibt das
@@ -159,7 +159,7 @@ export function PillenReihe({
         <Link
           key={e.href}
           href={e.href}
-          className="inline-flex items-center font-body font-semibold text-[0.9rem] text-dark px-5 py-2.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+          className="inline-flex items-center font-body font-semibold text-[0.9rem] text-dark px-5 py-2.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary-deep"
         >
           {e.label}
         </Link>
@@ -191,7 +191,7 @@ export function SchrittListe({ schritte }: { schritte: { titel: string; text: st
             <h3 className="font-heading font-bold text-dark text-[1.02rem] mb-1.5" style={{ letterSpacing: "-0.01em" }}>
               {s.titel}
             </h3>
-            <p className="font-body text-muted/70 leading-[1.75] text-[0.94rem]">{s.text}</p>
+            <p className="font-body text-muted/75 leading-[1.75] text-[0.94rem]">{s.text}</p>
           </div>
         </li>
       ))}

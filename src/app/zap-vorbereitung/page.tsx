@@ -3,9 +3,8 @@ import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
-import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
-import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, StandHinweis } from "@/components/SeoBlock";
+import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, AbschlussKarte, StandHinweis } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
 import { ZAP_FAECHER } from "@/lib/zap-faecher";
@@ -244,7 +243,7 @@ function DreiFaecher() {
             <h3 className="font-heading font-bold text-dark text-[1.05rem] mb-2.5" style={{ letterSpacing: "-0.01em" }}>
               {p.fach}
             </h3>
-            <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
+            <p className="font-body text-muted/75 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
             <WeiterLink href={`/zap-vorbereitung/${p.slug}`} groesse="0.92rem">
               Prüfungsaufbau, Hilfsmittel und Termine in {p.fach}
             </WeiterLink>
@@ -356,34 +355,6 @@ function WeitereFaecher() {
   );
 }
 
-function Abschluss() {
-  return (
-    <FadeIn direction="up">
-      <div
-        className="rounded-3xl p-8 md:p-10 text-center"
-        style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
-      >
-        <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
-          Mit einer Standortbestimmung anfangen
-        </h2>
-        <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
-          Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht
-          und wie viel Zeit noch nötig ist.
-        </p>
-        <a
-          href="/#kontakt"
-          className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-          style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
-        >
-          Termin vereinbaren
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-      </div>
-    </FadeIn>
-  );
-}
 
 export default function ZapVorbereitung() {
   return (
@@ -410,7 +381,12 @@ export default function ZapVorbereitung() {
             <Material />
             <Foerderung />
             <WeitereFaecher />
-            <Abschluss />
+            <AbschlussKarte
+              titel="Mit einer Standortbestimmung anfangen"
+              text="Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht und wie viel Zeit noch nötig ist."
+              knopfText="Termin vereinbaren"
+              href="/#kontakt"
+            />
             <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>

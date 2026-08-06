@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export default function StayInSchool() {
   return (
     <section className="relative py-24 overflow-hidden" style={{ background: "#0f1729" }}>
@@ -20,7 +18,7 @@ export default function StayInSchool() {
           <div
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-body font-bold text-white text-sm"
             style={{
-              background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
+              background: "linear-gradient(135deg, #008a00 0%, #006e00 100%)",
               boxShadow: "0 4px 16px rgba(0,170,0,0.3)",
               letterSpacing: "0.02em",
             }}
@@ -80,7 +78,7 @@ export default function StayInSchool() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 bg-black/20 p-3 rounded-xl border border-white/5">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                  <path d="M5 10l3 3 7-7" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 10l3 3 7-7" stroke="#008a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <span className="font-body font-semibold text-white">Bürgergeld</span>
               </li>
@@ -116,19 +114,19 @@ export default function StayInSchool() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 bg-black/20 p-3 rounded-xl border border-white/5">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                  <path d="M5 10l3 3 7-7" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 10l3 3 7-7" stroke="#008a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <span className="font-body font-semibold text-white">Wohngeld</span>
               </li>
               <li className="flex items-center gap-3 bg-black/20 p-3 rounded-xl border border-white/5">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                  <path d="M5 10l3 3 7-7" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 10l3 3 7-7" stroke="#008a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <span className="font-body font-semibold text-white">Kinderzuschlag</span>
               </li>
               <li className="flex items-center gap-3 bg-black/20 p-3 rounded-xl border border-white/5">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0">
-                  <path d="M5 10l3 3 7-7" stroke="#00aa00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 10l3 3 7-7" stroke="#008a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <span className="font-body font-semibold text-white">Sozialhilfe (nach SGB XII)</span>
               </li>

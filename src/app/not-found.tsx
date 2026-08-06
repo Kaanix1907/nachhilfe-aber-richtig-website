@@ -34,7 +34,7 @@ export default function NotFound() {
             >
               Diese Seite gibt es nicht mehr
             </h1>
-            <p className="font-body text-muted/70 leading-[1.8] text-[1.05rem]">
+            <p className="font-body text-muted/75 leading-[1.8] text-[1.05rem]">
               Vielleicht hat sich die Adresse geändert, vielleicht ist ein Tippfehler
               hineingerutscht. Unten steht alles, was es bei uns gibt — und wenn Sie
               schneller ans Ziel wollen, rufen Sie einfach an.
@@ -46,8 +46,8 @@ export default function NotFound() {
               href="/#kontakt"
               className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2"
               style={{
-                background: "linear-gradient(135deg,#00aa00,#008a00)",
-                boxShadow: "0 4px 20px rgba(0,170,0,0.40)",
+                background: "linear-gradient(135deg,#008a00,#006e00)",
+                boxShadow: "0 4px 20px rgba(0,110,0,0.40)",
               }}
             >
               Gratis Probestunde buchen

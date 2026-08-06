@@ -61,7 +61,7 @@ const REVIEW_VARIANTS: Record<ReviewCardProps["variant"], {
     avatarSize: "w-6 h-6",
     avatarText: "text-[10px]",
     nameText: "text-[11.5px] leading-tight truncate",
-    timeText: "text-white/55 text-[10px]",
+    timeText: "text-white/60 text-[10px]",
     starSize: 9,
     body: "font-body text-white/75 text-[11.5px] leading-[1.55] line-clamp-3",
   },
@@ -75,7 +75,7 @@ const REVIEW_VARIANTS: Record<ReviewCardProps["variant"], {
     avatarSize: "w-8 h-8",
     avatarText: "text-xs",
     nameText: "text-sm",
-    timeText: "text-white/30 text-xs",
+    timeText: "text-white/60 text-xs",
     starSize: 12,
     body: "font-body text-white/60 text-sm leading-[1.6]",
   },
@@ -126,7 +126,7 @@ export function GoogleHeader({ rating, total, variant }: GoogleHeaderProps) {
             {rating.toFixed(1)}
           </span>
         </div>
-        <span className={`font-body ${isMobile ? "text-white/55 text-[10px]" : "text-white/35 text-xs"}`}>
+        <span className={`font-body ${isMobile ? "text-white/60 text-[10px]" : "text-white/60 text-xs"}`}>
           {total} Google Bewertungen
         </span>
       </div>
@@ -139,7 +139,7 @@ const FUNDING_PILL_STYLE: CSSProperties = { boxShadow: "0 4px 14px rgba(0,0,0,0.
 export function GefoerdertDurchRow() {
   return (
     <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
-      <span className="font-body text-xs md:text-sm text-white/60 md:text-white/40 tracking-wide">Gefördert durch</span>
+      <span className="font-body text-xs md:text-sm text-white/60 md:text-white/60 tracking-wide">Gefördert durch</span>
       <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
         <Image src="/logo-jobcenter.webp" alt="Jobcenter Duisburg" width={130} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
       </div>

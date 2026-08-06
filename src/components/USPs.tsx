@@ -72,7 +72,7 @@ export default function USPs() {
 
         {/* Header */}
         <FadeIn className="mb-16">
-          <span className="inline-block bg-white/8 text-white/55 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
+          <span className="inline-block bg-white/8 text-white/60 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 border border-white/10 tracking-widest uppercase">
             Unsere Stärken
           </span>
           <h2
@@ -124,7 +124,7 @@ export default function USPs() {
                 <h3 className="font-heading font-bold text-xl text-white mb-3" style={{ letterSpacing: "-0.01em" }}>
                   {usp.title}
                 </h3>
-                <p className="font-body text-white/55 leading-[1.75] text-[0.95rem]">
+                <p className="font-body text-white/60 leading-[1.75] text-[0.95rem]">
                   {usp.description}
                 </p>
               </div></FadeIn>

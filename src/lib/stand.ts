@@ -15,7 +15,7 @@
 // müssen dasselbe sagen — widersprechen sie sich, ist keines mehr glaubhaft.
 
 /** ISO-Datum der letzten inhaltlichen Durchsicht. */
-export const INHALT_STAND = "2026-08-04";
+export const INHALT_STAND = "2026-08-06";
 
 const MONATE = [
   "Januar", "Februar", "März", "April", "Mai", "Juni",

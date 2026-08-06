@@ -80,7 +80,7 @@ function Aufklappmenu({
         onClick={umschalten}
         aria-expanded={offen}
         aria-controls={`menu-${id}`}
-        className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 rounded"
+        className="font-body text-muted hover:text-primary-deep transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 rounded"
       >
         {label}
         <svg
@@ -204,7 +204,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={href}
-                className="relative font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1.5"
+                className="relative font-body text-muted hover:text-primary-deep transition-[color] duration-200 font-medium text-sm tracking-wide inline-flex items-center gap-1.5"
               >
                 {link.label}
                 {link.badge && (
@@ -229,8 +229,8 @@ export default function Navbar() {
           href={`${prefix}#kontakt`}
           className="hidden md:inline-flex items-center gap-2 text-white font-body font-semibold text-sm px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-deep focus-visible:ring-offset-2 active:scale-95"
           style={{
-            background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
-            boxShadow: "0 2px 10px rgba(0,170,0,0.35), 0 1px 2px rgba(0,0,0,0.1)",
+            background: "linear-gradient(135deg, #008a00 0%, #006e00 100%)",
+            boxShadow: "0 2px 10px rgba(0,110,0,0.35), 0 1px 2px rgba(0,0,0,0.1)",
           }}
         >
           Gratis Probestunde
@@ -266,7 +266,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={href}
-                className="font-body text-muted hover:text-primary transition-[color] duration-200 font-medium text-base py-1 inline-flex items-center gap-2"
+                className="font-body text-muted hover:text-primary-deep transition-[color] duration-200 font-medium text-base py-1 inline-flex items-center gap-2"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -287,7 +287,7 @@ export default function Navbar() {
               jeder weitere Griff kostet mehr, als er an Uebersicht bringt. */}
           {MENUES.map((m) => (
             <div key={m.id} className="border-t border-gray-100 pt-3 mt-1">
-              <p className="font-body font-semibold text-dark/50 text-xs tracking-widest uppercase mb-2">
+              <p className="font-body font-semibold text-dark/80 text-xs tracking-widest uppercase mb-2">
                 {m.label}
               </p>
               <div className="flex flex-col gap-1.5">
@@ -296,7 +296,7 @@ export default function Navbar() {
                     key={e.href}
                     href={e.href}
                     onClick={() => setMenuOpen(false)}
-                    className="font-body text-muted hover:text-primary transition-[color] duration-200 text-[0.95rem]"
+                    className="font-body text-muted hover:text-primary-deep transition-[color] duration-200 text-[0.95rem]"
                   >
                     {e.label}
                   </Link>
@@ -316,8 +316,8 @@ export default function Navbar() {
             href={`${prefix}#kontakt`}
             className="inline-flex items-center justify-center text-white font-body font-semibold px-5 py-3 rounded-full mt-2 transition-[transform,box-shadow] duration-200 active:scale-95"
             style={{
-              background: "linear-gradient(135deg, #00aa00 0%, #008a00 100%)",
-              boxShadow: "0 2px 10px rgba(0,170,0,0.35)",
+              background: "linear-gradient(135deg, #008a00 0%, #006e00 100%)",
+              boxShadow: "0 2px 10px rgba(0,110,0,0.35)",
             }}
             onClick={() => setMenuOpen(false)}
           >

@@ -42,7 +42,7 @@ const cardAccents = [
   { gradient: "linear-gradient(135deg, #25abd6, #1d8fb5)", glow: "rgba(37,171,214,0.08)" },
   { gradient: "linear-gradient(135deg, #655c9e, #8b5cf6)", glow: "rgba(101,92,158,0.08)" },
   { gradient: "linear-gradient(135deg, #25abd6, #655c9e)", glow: "rgba(37,171,214,0.06)" },
-  { gradient: "linear-gradient(135deg, #00aa00, #008a00)", glow: "rgba(0,170,0,0.06)" },
+  { gradient: "linear-gradient(135deg, #008a00, #006e00)", glow: "rgba(0,170,0,0.06)" },
 ];
 
 export default function Services() {
@@ -61,7 +61,7 @@ export default function Services() {
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             Unsere Leistungen
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
             Wir bieten die passende Lösung für jedes Kind — flexibel, fair und
             mit echtem Mehrwert.
           </p>
@@ -101,10 +101,10 @@ export default function Services() {
                   {serviceIcons[service.id]}
                 </div>
 
-                <h3 className="font-heading font-bold text-lg text-dark mb-2.5 group-hover:text-primary transition-[color] duration-300" style={{ letterSpacing: "-0.01em" }}>
+                <h3 className="font-heading font-bold text-lg text-dark mb-2.5 group-hover:text-primary-deep transition-[color] duration-300" style={{ letterSpacing: "-0.01em" }}>
                   {service.title}
                 </h3>
-                <p className="font-body text-muted/65 text-sm leading-[1.7]">
+                <p className="font-body text-muted/75 text-sm leading-[1.7]">
                   {service.description}
                 </p>
               </div>

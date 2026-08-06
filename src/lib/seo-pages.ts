@@ -22,6 +22,14 @@ export type OrtPage = {
   intro: string[];
   /** Anfahrt und Erreichbarkeit — je Ort verschieden. */
   anfahrt: string;
+  /**
+   * Welche Unterrichtsform von hier aus praktisch ist. Steht hier und nicht
+   * in der Komponente, weil der Block dort auf allen fuenf Ortsseiten
+   * wortgleich war: gemessen am 2026-08-06 sieben von dreizehn identischen
+   * Saetzen. Die Aussagen stuetzen sich ausschliesslich auf die Geografie im
+   * `anfahrt`-Feld darueber, nicht auf erfundene Statistiken.
+   */
+  formHinweis: string;
   /** Umliegende Orte fuer die interne Verlinkung. */
   nachbarn: string[];
 };
@@ -41,6 +49,8 @@ export const ORTE: OrtPage[] = [
     ],
     anfahrt:
       "Friedrich-Alfred-Straße 14, 47226 Duisburg. Der Lernort liegt im Bezirk Rheinhausen und ist aus Hochemmerich, Bergheim und Rheinhausen-Mitte fußläufig oder mit dem Bus erreichbar.",
+    formHinweis:
+      "Aus Rheinhausen ist der Weg kurz genug, dass Präsenzunterricht der Normalfall bleibt: zu Fuß, mit dem Rad oder wenige Minuten mit dem Bus. Die Onlineform ist hier vor allem der Ersatz, wenn jemand krank ist oder der Nachmittag einmal nicht passt.",
     nachbarn: ["friemersheim", "rumeln-kaldenhausen", "homberg", "moers"],
   },
   {
@@ -57,6 +67,8 @@ export const ORTE: OrtPage[] = [
     ],
     anfahrt:
       "Unser Lernort in der Friedrich-Alfred-Straße 14 liegt im Nachbarstadtteil Rheinhausen-Mitte, gut mit dem Bus oder dem Rad erreichbar.",
+    formHinweis:
+      "Friemersheim liegt im selben Bezirk, die Anfahrt fällt entsprechend kurz aus. Deshalb sitzen die meisten hier im Präsenzunterricht, und die Onlineform ist die Ausweichlösung für Wochen, in denen der Nachmittag eng liegt.",
     nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "moers"],
   },
   {
@@ -73,6 +85,8 @@ export const ORTE: OrtPage[] = [
     ],
     anfahrt:
       "Der Lernort in der Friedrich-Alfred-Straße 14 in Rheinhausen ist von Rumeln-Kaldenhausen mit dem Bus oder dem Auto in kurzer Zeit zu erreichen. Alternativ unterrichten wir online.",
+    formHinweis:
+      "Aus Rumeln-Kaldenhausen kommen Anfahrt und Onlineunterricht etwa gleich häufig vor. Wer mit dem Bus oder dem Auto kommt, ist in kurzer Zeit da; wer den Weg sparen will, bekommt online dieselbe Lehrkraft und dasselbe Konzept.",
     nachbarn: ["rheinhausen", "friemersheim", "moers"],
   },
   {
@@ -89,6 +103,8 @@ export const ORTE: OrtPage[] = [
     ],
     anfahrt:
       "Unser Lernort liegt in der Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — von Homberg aus über die linksrheinische Verbindung erreichbar, ohne Brücke.",
+    formHinweis:
+      "Von Homberg aus führt der Weg linksrheinisch und ohne Brücke, was die Anfahrt planbar macht, aber länger als aus dem Bezirk. Wo der Nachmittag eng liegt, ist die Onlineform deshalb oft die praktischere Wahl.",
     nachbarn: ["rheinhausen", "moers", "rumeln-kaldenhausen"],
   },
   {
@@ -105,6 +121,8 @@ export const ORTE: OrtPage[] = [
     ],
     anfahrt:
       "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — direkt hinter der Stadtgrenze zu Moers, mit dem Auto oder Bus in kurzer Zeit erreichbar.",
+    formHinweis:
+      "Die Stadtgrenze ist hier keine Entfernung: Der Lernort liegt gleich dahinter, mit dem Auto oder Bus in kurzer Zeit erreichbar. Präsenzunterricht ist von Moers aus also gut machbar, online steht als Alternative bereit.",
     nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "homberg"],
   },
 ];

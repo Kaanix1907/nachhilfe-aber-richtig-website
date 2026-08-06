@@ -14,7 +14,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-white/40 hover:text-white transition-[color] duration-200 w-fit"
+      className="text-white/60 hover:text-white transition-[color] duration-200 w-fit"
     >
       {children}
     </Link>
@@ -50,7 +50,7 @@ export default function Footer() {
             >
               {BUSINESS.name}
             </h3>
-            <p className="font-body text-white/40 text-sm leading-[1.75] mb-5">
+            <p className="font-body text-white/60 text-sm leading-[1.75] mb-5">
               Nachhilfe in Duisburg-Rheinhausen, von Klasse 1 bis Abitur.
             </p>
             {/* Name, Anschrift und Rufnummer gehoeren zusammen auf jede Seite
@@ -59,7 +59,7 @@ export default function Footer() {
                 Anschrift fehlte hier bis 2026-08-05 vollstaendig.
                 Es ist der Unterrichtsort, nicht die ladungsfaehige Anschrift
                 aus dem Impressum; wie beide zusammenhaengen, steht dort. */}
-            <address className="not-italic font-body text-white/40 text-xs leading-[1.8] mb-4">
+            <address className="not-italic font-body text-white/60 text-xs leading-[1.8] mb-4">
               {BUSINESS.addresses.lernort.street}
               <br />
               {BUSINESS.addresses.lernort.city}
@@ -67,7 +67,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2 mb-6">
               <a
                 href={`tel:${BUSINESS.phone}`}
-                className="font-body text-white/40 text-xs hover:text-primary transition-[color] duration-200 flex items-center gap-2"
+                className="font-body text-white/60 text-xs hover:text-primary transition-[color] duration-200 flex items-center gap-2"
               >
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 1.5h2.5l1 2.5L4 5a6.5 6.5 0 003 3l1-1.5 2.5 1V11a.75.75 0 01-.75.75A10.25 10.25 0 011.25 2.25.75.75 0 012 1.5z" stroke="currentColor" strokeWidth="1"/>
@@ -76,7 +76,7 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${BUSINESS.email}`}
-                className="font-body text-white/40 text-xs hover:text-primary transition-[color] duration-200 flex items-center gap-2"
+                className="font-body text-white/60 text-xs hover:text-primary transition-[color] duration-200 flex items-center gap-2"
               >
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <rect x="1" y="2.5" width="10" height="7" rx="1" stroke="currentColor" strokeWidth="1"/>
@@ -91,12 +91,12 @@ export default function Footer() {
               {BUSINESS.hours
                 .filter((h) => h.time !== "Geschlossen")
                 .map((h) => (
-                  <div key={h.day} className="flex justify-between text-white/40 max-w-[190px]">
+                  <div key={h.day} className="flex justify-between text-white/60 max-w-[190px]">
                     <span>{h.day}</span>
-                    <span className="tabular-nums text-white/55">{h.time}</span>
+                    <span className="tabular-nums text-white/85">{h.time}</span>
                   </div>
                 ))}
-              <div className="text-white/25 text-xs mt-1">Sa &amp; So: Geschlossen</div>
+              <div className="text-white/60 text-xs mt-1">Sa &amp; So: Geschlossen</div>
             </div>
           </div>
 
@@ -154,13 +154,13 @@ export default function Footer() {
         />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 font-body text-xs text-white/25">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 font-body text-xs text-white/60">
           <span>© {new Date().getFullYear()} {BUSINESS.name}</span>
           <div className="flex gap-6">
-            <Link href="/impressum" className="hover:text-white/60 transition-[color] duration-200">
+            <Link href="/impressum" className="hover:text-white transition-[color] duration-200">
               Impressum
             </Link>
-            <Link href="/datenschutz" className="hover:text-white/60 transition-[color] duration-200">
+            <Link href="/datenschutz" className="hover:text-white transition-[color] duration-200">
               Datenschutz
             </Link>
           </div>

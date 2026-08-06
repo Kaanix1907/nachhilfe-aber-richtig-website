@@ -151,7 +151,7 @@ function Faecher() {
           { href: "/nachhilfe/englisch", label: "Englisch" },
         ]}
       />
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
         <p>
           In der Grundschule geht es fast immer um Lesen, Schreiben und Rechnen. Englisch kommt
           dazu, spielt aber selten die Hauptrolle.

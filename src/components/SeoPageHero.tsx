@@ -33,7 +33,7 @@ export default function SeoPageHero({
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4">
-        <nav aria-label="Brotkrumennavigation" className="font-body text-xs text-white/35 mb-6 flex flex-wrap items-center gap-2">
+        <nav aria-label="Brotkrumennavigation" className="font-body text-xs text-white/60 mb-6 flex flex-wrap items-center gap-2">
           <Link href="/" className="hover:text-white/70 transition-[color] duration-200">
             Startseite
           </Link>
@@ -49,7 +49,7 @@ export default function SeoPageHero({
               <span aria-hidden="true">/</span>
             </>
           )}
-          <span className="text-white/55">{breadcrumb}</span>
+          <span className="text-white/60">{breadcrumb}</span>
         </nav>
 
         <span className="inline-block bg-white/10 text-white/75 font-body font-semibold text-xs px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-white/15">
@@ -72,7 +72,7 @@ export default function SeoPageHero({
             schlaegt: der Studienkreis Rheinhausen fuehrt 4,6 aus elf
             Bewertungen, die Schuelerhilfe 4,1. Zahl statt Adjektiv, und sie
             steht so auch im JSON-LD der Startseite. */}
-        <p className="font-body text-sm text-white/50 mt-5 flex items-center gap-2">
+        <p className="font-body text-sm text-white/60 mt-5 flex items-center gap-2">
           <span aria-hidden="true" className="text-[#ffc107] tracking-tight">
             ★★★★★
           </span>
@@ -83,7 +83,7 @@ export default function SeoPageHero({
           <Link
             href="/#kontakt"
             className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-7 py-3.5 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-            style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+            style={{ background: "linear-gradient(135deg,#008a00,#006e00)", boxShadow: "0 4px 20px rgba(0,110,0,0.40)" }}
           >
             Gratis Probestunde buchen
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

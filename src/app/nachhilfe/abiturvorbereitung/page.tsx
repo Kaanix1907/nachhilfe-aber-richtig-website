@@ -177,7 +177,7 @@ function Faecher() {
           { href: "/nachhilfe/biologie", label: "Biologie" },
         ]}
       />
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
         <p>
           In der Oberstufe unterrichten wir einzeln oder in sehr kleinen Gruppen. Der Grund ist
           praktisch: Zwei Schüler derselben Jahrgangsstufe sitzen selten im selben Kurs mit

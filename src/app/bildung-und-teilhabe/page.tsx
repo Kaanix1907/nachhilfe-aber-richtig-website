@@ -181,7 +181,7 @@ function Zustaendigkeit() {
           <p className="text-[0.93rem]">
             Bei Bezug von Bürgergeld. Ihre Teamnummer steht oben rechts auf dem Bewilligungsbescheid.
           </p>
-          <p className="text-[0.9rem] mt-3 text-muted/70">
+          <p className="text-[0.9rem] mt-3 text-muted/75">
             Für Rheinhausen zuständig ist die Geschäftsstelle am Körnerplatz 1, 47226 Duisburg.{" "}
             <a
               href="https://jobcenter-du.de/standorte/"
@@ -198,7 +198,7 @@ function Zustaendigkeit() {
           <p className="text-[0.93rem]">
             Bei Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem Asylbewerberleistungsgesetz.
           </p>
-          <p className="text-[0.9rem] mt-3 text-muted/70">
+          <p className="text-[0.9rem] mt-3 text-muted/75">
             Amt für Soziales und Wohnen — Bildung und Teilhabe, Beekstraße 38, 47051 Duisburg,
             Telefon 0203 94000.{" "}
             <a
@@ -235,7 +235,7 @@ function Quellen() {
       <p>
         Die Lernförderung steht in{" "}
         <strong className="text-dark font-semibold">§ 28 Absatz 5 SGB II</strong>. Dort ist
-        sie als „schulische Angebote ergänzende angemessene Lernförderung" beschrieben,
+        sie als „schulische Angebote ergänzende angemessene Lernförderung“ beschrieben,
         die zu gewähren ist, soweit sie geeignet und zusätzlich erforderlich ist, um die
         wesentlichen Lernziele zu erreichen. Der Gesetzestext stellt ausdrücklich klar,
         dass es auf eine bestehende Versetzungsgefährdung{" "}
@@ -279,7 +279,7 @@ function Quellen() {
           </li>
         ))}
       </ul>
-      <p className="text-[0.9rem] text-muted/60 pt-1">
+      <p className="text-[0.9rem] text-muted/75 pt-1">
         Wir sind Nachhilfeanbieter, keine Rechtsberatung. Verbindlich ist immer der
         Bescheid der zuständigen Stelle.
       </p>
@@ -318,7 +318,7 @@ function Abschluss() {
           <a
             href={`tel:${BUSINESS.phone}`}
             className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-            style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
+            style={{ background: "linear-gradient(135deg,#008a00,#006e00)", boxShadow: "0 4px 20px rgba(0,110,0,0.40)" }}
           >
             {BUSINESS.phoneDisplay}
           </a>

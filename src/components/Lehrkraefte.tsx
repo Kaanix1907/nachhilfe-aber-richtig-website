@@ -38,7 +38,7 @@ export default function Lehrkraefte() {
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             Wer bei uns unterrichtet
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg leading-[1.7]">
             Sie geben Ihr Kind in fremde Hände. Deshalb hier ausführlich, wem genau.
           </p>
         </FadeIn>
@@ -66,7 +66,7 @@ export default function Lehrkraefte() {
                   <h3 className="font-heading font-bold text-dark text-[1.04rem] mb-2" style={{ letterSpacing: "-0.01em" }}>
                     {p.titel}
                   </h3>
-                  <p className="font-body text-muted/70 leading-[1.8] text-[0.95rem]">{p.text}</p>
+                  <p className="font-body text-muted/75 leading-[1.8] text-[0.95rem]">{p.text}</p>
                 </div>
               </div>
             </FadeIn>

@@ -86,7 +86,7 @@ function Blatt({ m }: { m: MaterialEintrag }) {
         </span>
       </div>
       <p className="font-body text-muted/75 text-[0.93rem] leading-[1.65] mb-3">{m.beschreibung}</p>
-      <p className="font-body text-muted/45 text-xs">
+      <p className="font-body text-muted/75 text-xs">
         {m.stufe} · {m.seiten} Seiten
       </p>
     </a>

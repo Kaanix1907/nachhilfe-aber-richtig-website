@@ -109,14 +109,14 @@ function Aufbau({ seite }: { seite: ZapFach }) {
               </h3>
               <span className="font-body font-semibold text-primary-deep text-[0.9rem]">{t.zeit}</span>
             </div>
-            <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem]">{t.inhalt}</p>
-            <p className="font-body text-muted/55 leading-[1.7] text-[0.88rem] mt-3 pt-3 border-t border-gray-100">
+            <p className="font-body text-muted/75 leading-[1.8] text-[0.94rem]">{t.inhalt}</p>
+            <p className="font-body text-muted/75 leading-[1.7] text-[0.88rem] mt-3 pt-3 border-t border-gray-100">
               <span className="font-semibold text-dark/70">Hilfsmittel:</span> {t.hilfsmittel}
             </p>
           </div>
         ))}
       </div>
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
         <p>
           Die gesamte Bearbeitungszeit beträgt{" "}
           <strong className="text-dark font-semibold">{seite.gesamt.msa}</strong> am Mittleren
@@ -168,7 +168,7 @@ function Gewichtung({ seite }: { seite: ZapFach }) {
           </tbody>
         </table>
       </div>
-      <p className="font-body text-muted/55 text-[0.86rem] leading-[1.7] pt-4">
+      <p className="font-body text-muted/75 text-[0.86rem] leading-[1.7] pt-4">
         MSA steht für den Mittleren Schulabschluss, GYM für die Anforderungen mit gymnasialer
         Differenzierung, EESA für den Erweiterten Ersten Schulabschluss.
       </p>
@@ -257,7 +257,7 @@ function Weiter({ seite }: { seite: ZapFach }) {
           label: `ZAP ${f.fach}`,
         }))}
       />
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.97rem] space-y-4 pt-6">
         <p>
           Geht es nicht um die Prüfung, sondern um laufende Noten, sind Sie auf der{" "}
           <strong className="text-dark font-semibold">{seite.fach}-Seite</strong> richtiger.

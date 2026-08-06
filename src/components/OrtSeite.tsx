@@ -26,8 +26,9 @@ function Faecher({ ort }: { ort: OrtPage }) {
   return (
     <SeoBlock kicker="Fächer" title={`Welche Fächer wir in ${ort.name} unterrichten`}>
       <p>
-        Wir decken die Hauptfächer und die Naturwissenschaften ab. Zu jedem Fach steht,
-        woran es erfahrungsgemäß hakt und wie wir es angehen:
+        Für Schülerinnen und Schüler aus {ort.name} unterrichten wir die Hauptfächer und die
+        Naturwissenschaften. Zu jedem Fach steht auf einer eigenen Seite, woran es
+        erfahrungsgemäß hakt und wie wir es angehen:
       </p>
       <div className="grid sm:grid-cols-2 gap-3 pt-2">
         {FAECHER.map((fach) => (
@@ -38,28 +39,30 @@ function Faecher({ ort }: { ort: OrtPage }) {
   );
 }
 
-function Unterrichtsformen() {
+// Dieser Block stand bis zum 2026-08-06 als vier ausformulierte Absaetze hier
+// und war damit auf allen fuenf Ortsseiten wortgleich: sieben der dreizehn
+// identischen Saetze kamen von hier. Die ausfuehrliche Beschreibung liegt
+// jetzt einmal auf der Startseite; hier steht nur noch, was von DIESEM Ort aus
+// praktisch ist, plus drei Zeilen zur Einordnung.
+function Unterrichtsformen({ ort }: { ort: OrtPage }) {
   return (
-    <SeoBlock kicker="Unterrichtsformen" title="So läuft der Unterricht ab">
-      <p>
-        <strong className="text-dark font-semibold">Kleingruppe mit drei bis fünf Schülern.</strong>{" "}
-        Die häufigste Form und das beste Preis-Leistungs-Verhältnis. Jedes Kind kommt dran,
-        gleichzeitig lernt es, Fragen vor anderen zu stellen.
-      </p>
-      <p>
-        <strong className="text-dark font-semibold">Einzelunterricht.</strong>{" "}
-        Wenn größere Lücken aufzuholen sind, eine Prüfung ansteht oder ein Kind in der
-        Gruppe untergeht. Das gesamte Tempo richtet sich nach einem einzigen Schüler.
-      </p>
-      <p>
-        <strong className="text-dark font-semibold">Onlinenachhilfe.</strong>{" "}
-        Gleiche Lehrkräfte, gleiches Konzept, kein Anfahrtsweg. Sinnvoll bei engem
-        Nachmittag, weiterem Wohnort oder Krankheit.
-      </p>
-      <p>
-        Unterrichtet wird von geprüften Lehramtsstudierenden und Lehrkräften — alle mit
-        erweitertem Führungszeugnis.
-      </p>
+    <SeoBlock kicker="Unterrichtsformen" title={`Welche Form von ${ort.name} aus passt`}>
+      <p>{ort.formHinweis}</p>
+      <ul className="space-y-2.5 pt-1">
+        {[
+          { t: "Kleingruppe, drei bis fünf Schüler", d: "der Regelfall" },
+          { t: "Einzelunterricht", d: "bei größeren Lücken oder vor einer Prüfung" },
+          { t: "Online", d: "dieselbe Lehrkraft, kein Anfahrtsweg" },
+        ].map((f) => (
+          <li key={f.t} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>
+              <strong className="text-dark font-semibold">{f.t}:</strong> {f.d}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <WeiterLink href="/#leistungen">Die drei Formen ausführlich</WeiterLink>
     </SeoBlock>
   );
 }
@@ -93,17 +96,17 @@ function Anfahrt({ ort }: { ort: OrtPage }) {
   );
 }
 
-function Foerderung() {
+// Ebenfalls gekuerzt am 2026-08-06: Die vollstaendige Erklaerung steht auf
+// /bildung-und-teilhabe, hier reicht der Verweis. Zwei weitere wortgleiche
+// Saetze weniger auf fuenf Seiten.
+function Foerderung({ ort }: { ort: OrtPage }) {
   return (
-    <SeoBlock kicker="Förderung" title="Kostenlose Lernförderung über Bildung und Teilhabe">
+    <SeoBlock kicker="Förderung" title="Wenn das Amt die Kosten trägt">
       <p>
-        Familien, die Bürgergeld, Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach
-        dem Asylbewerberleistungsgesetz beziehen, haben Anspruch auf außerschulische
-        Lernförderung. Die Kosten trägt dann das Amt, nicht die Familie.
-      </p>
-      <p>
-        Wir rechnen direkt mit dem Jobcenter Duisburg beziehungsweise der Stadt Duisburg ab
-        und helfen beim Antrag — inklusive der Formulare, die der Anbieter ausfüllen muss.
+        Bei Bürgergeld, Wohngeld, Kinderzuschlag, Sozialhilfe oder Leistungen nach dem
+        Asylbewerberleistungsgesetz besteht Anspruch auf außerschulische Lernförderung. Auch
+        für Familien aus {ort.name} rechnen wir dann direkt mit dem Amt ab, Sie gehen nicht
+        in Vorleistung.
       </p>
       <WeiterLink href="/bildung-und-teilhabe">
         Antrag auf Lernförderung Schritt für Schritt
@@ -154,14 +157,14 @@ export default function OrtSeite({ ort }: { ort: OrtPage }) {
           <div className="max-w-3xl mx-auto px-4">
             <Ueberblick ort={ort} />
             <Faecher ort={ort} />
-            <Unterrichtsformen />
+            <Unterrichtsformen ort={ort} />
             <Anfahrt ort={ort} />
-            <Foerderung />
+            <Foerderung ort={ort} />
             <Fragen ort={ort} />
             <Nachbarorte nachbarn={nachbarn} />
             <AbschlussKarte
               titel="Erste Stunde kostenlos"
-              text={`Unverbindlich ausprobieren, ob es passt — für Schülerinnen und Schüler aus ${ort.name} wie für alle anderen.`}
+              text={`Neunzig Minuten ausprobieren, ob es passt. Für Schülerinnen und Schüler aus ${ort.name} wie für alle anderen.`}
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />

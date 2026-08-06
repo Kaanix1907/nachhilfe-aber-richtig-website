@@ -17,7 +17,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="font-heading font-bold text-xl text-dark mb-3" style={{ letterSpacing: "-0.02em" }}>
         {title}
       </h2>
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.95rem] space-y-1">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.95rem] space-y-1">
         {children}
       </div>
     </div>
@@ -59,7 +59,7 @@ export default function Impressum() {
               <p className="font-semibold text-dark">{owner}</p>
               <p>{addr.street}</p>
               <p>{addr.city}</p>
-              <p className="pt-3 text-muted/60">
+              <p className="pt-3 text-muted/75">
                 {`Dies ist die Anschrift des Unternehmens. Der Unterricht findet statt in der ${addresses.lernort.street}, ${addresses.lernort.city}.`}
               </p>
             </Section>

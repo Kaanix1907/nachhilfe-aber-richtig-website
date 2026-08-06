@@ -16,7 +16,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="font-heading font-bold text-xl text-dark mb-3" style={{ letterSpacing: "-0.02em" }}>
         {title}
       </h2>
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.95rem] space-y-3">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.95rem] space-y-3">
         {children}
       </div>
     </div>
@@ -111,7 +111,7 @@ export default function Datenschutz() {
             <Section title="5. Hosting">
               <p>
                 Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
-                gehostet (Dienst „Cloudflare Pages"). Beim Aufruf der Website werden automatisch
+                gehostet (Dienst „Cloudflare Pages“). Beim Aufruf der Website werden automatisch
                 Server-Logfiles (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
                 nicht mit anderen Datenquellen zusammengeführt und nach spätestens 30 Tagen gelöscht.
               </p>

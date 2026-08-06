@@ -75,7 +75,7 @@ function Kurzantwort({ text }: { text: string }) {
         border: "1px solid rgba(37,171,214,0.18)",
       }}
     >
-      <p className="font-body font-semibold text-dark/50 text-xs tracking-widest uppercase mb-3">
+      <p className="font-body font-semibold text-dark/80 text-xs tracking-widest uppercase mb-3">
         Kurz gesagt
       </p>
       <p className="font-body text-dark/85 leading-[1.8] text-[1rem]">{text}</p>
@@ -122,7 +122,7 @@ function Abschnitt({ a }: { a: RatgeberAbschnitt }) {
 function Hinweis({ text }: { text: string }) {
   return (
     <div className="rounded-2xl p-6 mb-14 bg-gray-50 border border-gray-100">
-      <p className="font-body text-muted/70 leading-[1.75] text-[0.9rem]">{text}</p>
+      <p className="font-body text-muted/75 leading-[1.75] text-[0.9rem]">{text}</p>
     </div>
   );
 }

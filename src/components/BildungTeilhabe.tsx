@@ -21,7 +21,7 @@ export default function BildungTeilhabe() {
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-dark mb-3" style={{ letterSpacing: "-0.03em" }}>
             Bildung und Teilhabe: Nachhilfe in Duisburg kostenlos
           </h2>
-          <p className="font-body text-muted/65 text-lg leading-[1.7] max-w-2xl">
+          <p className="font-body text-muted/75 text-lg leading-[1.7] max-w-2xl">
             Über das staatliche Förderprogramm <strong className="text-dark font-semibold">Bildung und Teilhabe</strong> können
             berechtigte Familien unsere Nachhilfe vollständig kostenlos nutzen. Im Amtsdeutsch
             heißt die Leistung <strong className="text-dark font-semibold">außerschulische Lernförderung</strong>.
@@ -54,7 +54,7 @@ export default function BildungTeilhabe() {
             }}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
-              <path d="M10 2l2 4 4.5.6-3.25 3.1.77 4.5L10 12 6 14.2l.77-4.5L3.5 6.6 8 6l2-4z" fill="#00aa00" fillOpacity="0.15" stroke="#00aa00" strokeWidth="1.4" strokeLinejoin="round"/>
+              <path d="M10 2l2 4 4.5.6-3.25 3.1.77 4.5L10 12 6 14.2l.77-4.5L3.5 6.6 8 6l2-4z" fill="#008a00" fillOpacity="0.15" stroke="#008a00" strokeWidth="1.4" strokeLinejoin="round"/>
             </svg>
             <div>
               <p className="font-body font-semibold text-dark text-sm">Wir helfen beim Antrag</p>
@@ -80,7 +80,7 @@ export default function BildungTeilhabe() {
             </a>
             <Link
               href="/bildung-und-teilhabe"
-              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-dark px-6 py-3 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-dark px-6 py-3 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary-deep"
             >
               So läuft der Antrag
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
