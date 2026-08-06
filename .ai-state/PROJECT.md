@@ -52,4 +52,4 @@ verlinkt. Wer am Chat selbst arbeiten will, ist hier falsch.
 - Live: https://nachhilfe-aber-richtig.de
 - Repo: `Kaanix1907/nachhilfe-aber-richtig-website`
 - Lexi (eigene App): https://lexi.nachhilfe-aber-richtig.de
-- Kontakt: info@nachhilfe-aber-richtig.de · +49 157 53337648
+- Kontakt: info@nachhilfe-aber-richtig.de · +49 155 60209935 (Quelle: `src/lib/data.ts`)
