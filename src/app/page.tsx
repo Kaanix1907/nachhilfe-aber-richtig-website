@@ -10,7 +10,7 @@ import AngebotUebersicht from "@/components/AngebotUebersicht";
 import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
-import { SITE_URL } from "@/lib/schema";
+import { SITE_URL, GOOGLE_PROFIL } from "@/lib/schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -103,6 +103,8 @@ const jsonLd = {
   areaServed: [
     { "@type": "City", name: "Duisburg" },
     { "@type": "City", name: "Rheinhausen" },
+    { "@type": "City", name: "Hochemmerich" },
+    { "@type": "City", name: "Bergheim" },
     { "@type": "City", name: "Moers" },
     { "@type": "City", name: "Homberg" },
     { "@type": "City", name: "Rumeln-Kaldenhausen" },
@@ -118,9 +120,7 @@ const jsonLd = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stay in School", description: "Kostenlose Lernförderung über Bildung und Teilhabe", provider: { "@id": `${SITE_URL}/#business` } } },
     ],
   },
-  sameAs: [
-    "https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko",
-  ],
+  sameAs: [GOOGLE_PROFIL],
 };
 
 // FAQ-Schema aus derselben Quelle wie die sichtbare FAQ-Sektion.

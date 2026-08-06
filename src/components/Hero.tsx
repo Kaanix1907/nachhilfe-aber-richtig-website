@@ -1,3 +1,4 @@
+import { GOOGLE_PROFIL } from "@/lib/schema";
 import { BUSINESS, ALL_REVIEWS } from "@/lib/data";
 import {
   GefoerdertDurchRow,
@@ -6,7 +7,7 @@ import {
 } from "./Hero.parts";
 
 const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko";
+  GOOGLE_PROFIL;
 
 export default function Hero() {
   const reviews = ALL_REVIEWS;

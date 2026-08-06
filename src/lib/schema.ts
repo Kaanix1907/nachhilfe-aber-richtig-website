@@ -23,6 +23,14 @@ export const POSTANSCHRIFT_LERNORT = {
 } as const;
 
 /**
+ * Der Google-Eintrag des Betriebs. Bewusst als place_id-Adresse und nicht als
+ * `g.page`-Kurzlink: Der Kurzlink laesst sich im Profil aendern, die place_id
+ * bleibt. Beides zeigt auf denselben Eintrag.
+ */
+export const GOOGLE_PROFIL =
+  "https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko";
+
+/**
  * DIE eine Betriebs-Entitaet der Seite, ueberall per @id referenziert.
  * Die Kerndaten stehen mit drin und nicht nur die @id: eine nackte Referenz
  * waere nur aufloesbar, wenn die Startseite mitgelesen wird.
@@ -35,6 +43,7 @@ export const ANBIETER = {
   telephone: TELEFON_E164,
   email: BUSINESS.email,
   address: POSTANSCHRIFT_LERNORT,
+  sameAs: [GOOGLE_PROFIL],
 } as const;
 
 /**

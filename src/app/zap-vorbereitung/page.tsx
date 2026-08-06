@@ -8,6 +8,7 @@ import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, AbschlussKarte, StandH
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
 import { ZAP_FAECHER } from "@/lib/zap-faecher";
+import { ANBIETER } from "@/lib/schema";
 import type { FaqItem } from "@/lib/faq";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -106,18 +107,7 @@ const courseLd = {
   dateModified: INHALT_STAND,
   inLanguage: "de",
   teaches: ["Mathematik", "Deutsch", "Englisch"],
-  provider: {
-    "@type": "EducationalOrganization",
-    name: BUSINESS.name,
-    url: SITE_URL,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: BUSINESS.addresses.lernort.street,
-      addressLocality: "Duisburg",
-      postalCode: "47226",
-      addressCountry: "DE",
-    },
-  },
+  provider: ANBIETER,
   // courseWorkload fehlte und ist seit 2024 Pflichtfeld fuer die
   // Kurs-Darstellung in der Suche. Die Angabe bildet das tatsaechliche
   // Format ab: je Fach zwei Wochenenden vor der Pruefung, das erste zum

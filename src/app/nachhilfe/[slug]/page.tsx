@@ -6,6 +6,7 @@ import FachSeite from "@/components/FachSeite";
 import { ORTE, FAECHER, findOrt, findFach } from "@/lib/seo-pages";
 import { FACH_FAQ, ORT_FAQ } from "@/lib/seo-faq";
 import { BUSINESS } from "@/lib/data";
+import { ANBIETER, faqLd } from "@/lib/schema";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
 
@@ -65,57 +66,6 @@ function breadcrumbLd(slug: string, name: string) {
   };
 }
 
-// Schema.org erwartet die Rufnummer in E.164, also ohne Leerzeichen.
-const TELEFON_E164 = BUSINESS.phone.replace(/\s/g, "");
-
-// FAQPage nur ausgeben, wenn dieselben Fragen auch sichtbar auf der Seite
-// stehen. Markup ohne sichtbare Entsprechung ist ein Richtlinienverstoss —
-// genau der Fehler, der auf dieser Seite am 04.08.2026 schon einmal auftrat.
-// Beide Seiten lesen aus derselben Quelle, deshalb kann es nicht auseinander
-// laufen.
-function faqLd(fragen: { q: string; a: string }[] | undefined) {
-  if (!fragen?.length) return null;
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: fragen.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-}
-
-// EINE Betriebs-Entitaet fuer die gesamte Seite, ueberall per @id referenziert.
-//
-// Vorher legte jede Ortsseite ein eigenes LocalBusiness mit eigener @id an —
-// bei fuenf Ortsseiten also fuenf Betriebe, alle mit derselben Anschrift und
-// derselben Geokoordinate. Fuer eine Suchmaschine sind das fuenf konkurrierende
-// Kandidaten fuer denselben Laden.
-//
-// Der Kommentar an der alten Stelle begruendete das mit dem lokalen
-// Kartenblock. Der speist sich aber aus dem Google-Unternehmensprofil, nicht
-// aus LocalBusiness-Auszeichnungen auf beliebigen Unterseiten — zusaetzliche
-// Entitaeten bringen dort nichts und schaffen nur Mehrdeutigkeit.
-//
-// Die Kerndaten stehen hier mit drin, nicht nur die @id: eine nackte Referenz
-// waere nur aufloesbar, wenn die Startseite mitgelesen wird.
-const ANBIETER = {
-  "@type": ["EducationalOrganization", "LocalBusiness"],
-  "@id": `${SITE_URL}/#business`,
-  name: BUSINESS.name,
-  url: SITE_URL,
-  telephone: TELEFON_E164,
-  email: BUSINESS.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: BUSINESS.addresses.lernort.street,
-    addressLocality: "Duisburg",
-    addressRegion: "Nordrhein-Westfalen",
-    postalCode: "47226",
-    addressCountry: "DE",
-  },
-} as const;
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
