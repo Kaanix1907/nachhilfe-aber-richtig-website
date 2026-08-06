@@ -6,8 +6,13 @@ export const BUSINESS = {
   owner: "Mustafa Kaan Güneren",
   slogan: "In Rekordzeit zu besseren Noten!",
   email: "info@nachhilfe-aber-richtig.de",
-  phone: "+49 152 0885 4910",
-  phoneDisplay: "+49 152 0885 4910",
+  // Die geschaeftliche Rufnummer, nicht die private des Inhabers. Bis zum
+  // 06.08.2026 stand hier +49 152 0885 4910 — das ist der Privatanschluss.
+  // Wer das aendert, aendert damit Impressum, Fusszeile, Kontaktbereich,
+  // alle Ortsseiten und das JSON-LD gleichzeitig; die beiden Stellen, die
+  // die Nummer NICHT von hier lesen, stehen in page.tsx und llms.txt.
+  phone: "+49 155 60209935",
+  phoneDisplay: "+49 155 60209935",
   vatId: "DE331112267",
   addresses: {
     lernort: {

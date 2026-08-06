@@ -10,7 +10,7 @@ import AngebotUebersicht from "@/components/AngebotUebersicht";
 import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
-import { SITE_URL, GOOGLE_PROFIL } from "@/lib/schema";
+import { SITE_URL, GOOGLE_PROFIL, TELEFON_E164 } from "@/lib/schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,7 +37,9 @@ const jsonLd = {
   url: "https://nachhilfe-aber-richtig.de",
   logo: "https://nachhilfe-aber-richtig.de/logo.png",
   image: "https://nachhilfe-aber-richtig.de/og-image.png",
-  telephone: "+4915208854910",
+  // Aus data.ts abgeleitet, nicht abgeschrieben: die hier fruehere Kopie
+  // ueberlebte den Wechsel der Rufnummer am 06.08.2026 um ein Haar.
+  telephone: TELEFON_E164,
   email: "info@nachhilfe-aber-richtig.de",
   // Eigene @id, damit die Person ueber Seiten hinweg referenzierbar ist und
   // nicht als namenloses Beiwerk der Firma gilt. `knowsAbout` nennt nur die

@@ -14,7 +14,7 @@ wir direkt mit dem Amt ab.
 - Inhaber und unterrichtende Lehrkraft: Mustafa Kaan Güneren
 - Unterrichtsort: Friedrich-Alfred-Straße 14, 47226 Duisburg
 - Ladungsfähige Anschrift: Steinacker 29, 47228 Duisburg
-- Telefon: +49 152 0885 4910
+- Telefon: +49 155 60209935
 - E-Mail: info@nachhilfe-aber-richtig.de
 - Website: https://nachhilfe-aber-richtig.de
 - Unterrichtszeiten: Montag bis Freitag, 13:00–17:00 Uhr

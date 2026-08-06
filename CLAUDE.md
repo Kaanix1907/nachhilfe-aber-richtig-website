@@ -92,9 +92,13 @@ Persistentes Rate-Limit (Upstash) ist dann Pflicht, nicht optional.
 
 ### Kontakt
 - **Email:** info@nachhilfe-aber-richtig.de
-- **Telefon:** +49 157 53337648
+- **Telefon:** +49 155 60209935 (geschäftlich; NICHT der Privatanschluss
+  +49 152 0885 4910, der bis 06.08.2026 faelschlich auf der Seite stand)
 - **Lernort:** Friedrich-Alfred-Straße 14, 47226 Duisburg
-- **Geschäftsadresse:** Rheinstraße 19, 47226 Duisburg
+- **Geschäftsadresse:** Steinacker 29, 47228 Duisburg
+
+Diese vier Angaben stehen im Code ausschliesslich in `src/lib/data.ts`.
+Hier sind sie Kopie, nicht Quelle: laufen sie auseinander, gilt `data.ts`.
 
 ### Öffnungszeiten
 | Tag | Zeiten |
