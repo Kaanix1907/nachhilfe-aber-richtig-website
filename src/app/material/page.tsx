@@ -10,7 +10,7 @@ import { BUSINESS } from "@/lib/data";
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
 
 export const metadata: Metadata = {
-  title: { absolute: "Kostenloses Übungsmaterial: ZP10 Deutsch und Mathematik | Zum Herunterladen" },
+  title: { absolute: "Kostenloses Übungsmaterial für die ZP10 | Zum Herunterladen" },
   description:
     "Formulierungshilfen und Bewertungsbögen für die Zentralen Prüfungen Klasse 10, dazu Übungshefte für Mathematik von Klasse 4 bis Oberstufe. Kostenlos, ohne Anmeldung.",
   alternates: { canonical: `${SITE_URL}/material` },

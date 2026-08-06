@@ -257,7 +257,7 @@ export const RATGEBER: RatgeberSeite[] = [
     h1: "Versetzung gefährdet: was der Blaue Brief bedeutet",
     title: "Versetzung gefährdet in NRW | Blauer Brief und Nachprüfung",
     description:
-      "Was die Benachrichtigung nach § 50 Abs. 4 Schulgesetz NRW bedeutet, welche Frist gilt, wann ausgeglichen werden kann und wie die Nachprüfung am Ende der Sommerferien funktioniert.",
+      "Was die Mahnung nach § 50 Abs. 4 Schulgesetz NRW bedeutet, welche Frist gilt und wie die Nachprüfung am Ende der Sommerferien funktioniert.",
     lead: "Der Blaue Brief ist keine Entscheidung, sondern eine Frist. Ab dem Tag, an dem er ankommt, bleiben mindestens zehn Wochen.",
     teaser:
       "Frist, Ausgleichsregelung und die Nachprüfung am Ende der Sommerferien, mit den Paragrafen dazu.",

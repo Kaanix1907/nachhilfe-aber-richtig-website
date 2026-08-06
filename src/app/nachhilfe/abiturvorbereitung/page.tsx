@@ -21,7 +21,7 @@ import type { FaqItem } from "@/lib/faq";
 export const metadata: Metadata = {
   title: { absolute: "Abiturvorbereitung Duisburg | Zentralabitur NRW" },
   description:
-    "Vorbereitung auf das Zentralabitur in NRW: warum Block I zwei Drittel der Punkte bringt, wie die Prüfungen ablaufen und wann 2027 geschrieben wird. Lernort in Duisburg-Rheinhausen.",
+    "Zentralabitur NRW: warum Block I zwei Drittel der Punkte bringt, wie die Prüfungen ablaufen und wann 2027 geschrieben wird. Lernort in Duisburg.",
   alternates: { canonical: `${SITE_URL}/nachhilfe/abiturvorbereitung` },
   openGraph: {
     type: "article",

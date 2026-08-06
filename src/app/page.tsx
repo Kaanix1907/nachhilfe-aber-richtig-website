@@ -10,6 +10,7 @@ import AngebotUebersicht from "@/components/AngebotUebersicht";
 import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
+import { SITE_URL } from "@/lib/schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -111,10 +112,10 @@ const jsonLd = {
     "@type": "OfferCatalog",
     name: "Nachhilfeangebote",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gruppennachhilfe", description: "Nachhilfe in 3-5er Gruppen — bestes Preis-Leistungs-Verhältnis" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Einzelnachhilfe", description: "Intensive 1:1 Betreuung durch qualifizierte Lehrkräfte" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Onlinenachhilfe", description: "Professionelle Nachhilfe von zu Hause aus" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stay in School", description: "Kostenloses Programm via Bildung und Teilhabe" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gruppennachhilfe", description: "Nachhilfe in Gruppen von drei bis fünf Schülern", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Einzelnachhilfe", description: "Intensive Einzelbetreuung durch qualifizierte Lehrkräfte", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Onlinenachhilfe", description: "Nachhilfe von zu Hause aus, dieselben Lehrkräfte wie vor Ort", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stay in School", description: "Kostenlose Lernförderung über Bildung und Teilhabe", provider: { "@id": `${SITE_URL}/#business` } } },
     ],
   },
   sameAs: [

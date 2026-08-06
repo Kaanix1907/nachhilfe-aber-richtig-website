@@ -166,7 +166,7 @@ export const ORTE: OrtPage[] = [
     langName: "Duisburg-Bergheim",
     title: "Nachhilfe in Duisburg-Bergheim | Klasse 1 bis Abitur",
     description:
-      "Nachhilfe für Bergheim: alle Fächer, Klasse 1 bis Abitur. Etwa eine Viertelstunde zu Fuß vom Lernort in Rheinhausen. Auch für Krupp-Gymnasium und Heinrich-Heine-Gesamtschule.",
+      "Nachhilfe für Duisburg-Bergheim: alle Fächer, Klasse 1 bis Abitur. Eine Viertelstunde zu Fuß, auch für Krupp-Gymnasium und Heinrich-Heine-Gesamtschule.",
     intro: [
       "Bergheim liegt südlich unseres Lernorts, zu Fuß etwa eine Viertelstunde, mit dem Rad oder dem Bus deutlich schneller. Für Familien aus Bergheim ist die Friedrich-Alfred-Straße damit gut erreichbar, ohne dass der Nachmittag daran hängt.",
       "Am Flutweg stehen gleich zwei weiterführende Schulen nebeneinander, das Krupp-Gymnasium und die Heinrich-Heine-Gesamtschule. Beide Schulformen begleiten wir von der Erprobungsstufe bis zum Abschluss.",

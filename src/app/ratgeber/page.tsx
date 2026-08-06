@@ -17,7 +17,7 @@ import { RATGEBER } from "@/lib/ratgeber";
 export const metadata: Metadata = {
   title: { absolute: "Ratgeber Nachhilfe: Kosten, Zeitpunkt, Versetzung, Auswahl" },
   description:
-    "Vier Texte für Eltern: woraus sich der Preis für Nachhilfe zusammensetzt, ab wann sie sinnvoll ist, was der Blaue Brief bedeutet und woran man einen guten Anbieter erkennt.",
+    "Vier Texte für Eltern: woraus sich der Preis für Nachhilfe zusammensetzt, ab wann sie sinnvoll ist und was der Blaue Brief wirklich bedeutet.",
   alternates: { canonical: `${SITE_URL}/ratgeber` },
   openGraph: {
     type: "website",
