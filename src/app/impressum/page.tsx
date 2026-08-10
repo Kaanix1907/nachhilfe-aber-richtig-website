@@ -66,7 +66,21 @@ export default function Impressum() {
 
             <Section title="Kontakt">
               <p>Telefon: <a href={`tel:${phone}`} className="text-primary-deep hover:underline">{phoneDisplay}</a></p>
-              <p>E-Mail: <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a></p>
+              {/* Cloudflare "Email Address Obfuscation" (Scrape Shield) ersetzt E-Mail-Adressen
+                  zonenweit durch einen __cf_email__-Platzhalter; sichtbar wird die Adresse erst,
+                  wenn Cloudflares JavaScript im Browser laeuft. Ohne JS stand hier
+                  "[email protected]" — auf der EINEN Seite, auf der § 5 DDG die Adresse
+                  "staendig verfuegbar" verlangt. Der email_off-Marker nimmt genau diese Stelle
+                  aus; auf allen anderen Seiten bleibt der Spam-Schutz aktiv.
+                  Die Marker muessen im ausgelieferten HTML stehen; ein JSX-Kommentar landet
+                  dort nicht, daher die beiden leeren Spans mit dem HTML-Kommentar darin.
+                  Beide Spans zusammen aendern; einzeln stehend heben sie sich nicht auf. */}
+              <p>
+                E-Mail:{" "}
+                <span dangerouslySetInnerHTML={{ __html: "<!--email_off-->" }} />
+                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>
+                <span dangerouslySetInnerHTML={{ __html: "<!--/email_off-->" }} />
+              </p>
             </Section>
 
             <Section title="Umsatzsteuer-ID">
