@@ -22,6 +22,24 @@ export type OrtPage = {
   intro: string[];
   /** Anfahrt und Erreichbarkeit — je Ort verschieden. */
   anfahrt: string;
+  /**
+   * Welche Unterrichtsform von hier aus praktisch ist. Steht hier und nicht
+   * in der Komponente, weil der Block dort auf allen fuenf Ortsseiten
+   * wortgleich war: gemessen am 2026-08-06 sieben von dreizehn identischen
+   * Saetzen. Die Aussagen stuetzen sich ausschliesslich auf die Geografie im
+   * `anfahrt`-Feld darueber, nicht auf erfundene Statistiken.
+   */
+  formHinweis: string;
+  /**
+   * Schulen, von denen Schuelerinnen und Schueler kommen. Bewusst NUR dort,
+   * wo die Schule auch steht: Krupp und Heinrich-Heine liegen beide am
+   * Flutweg in Bergheim, das Albert-Einstein-Gymnasium in
+   * Rumeln-Kaldenhausen. Auf allen fuenf Seiten dieselbe Liste zu zeigen,
+   * haette die Doppelung wieder eingefuehrt, die am 2026-08-06 rausgeflogen
+   * ist. Namen und Anschriften am selben Tag gegen duisburg.de und die
+   * Schulseiten geprueft.
+   */
+  schulen?: { name: string; anschrift: string }[];
   /** Umliegende Orte fuer die interne Verlinkung. */
   nachbarn: string[];
 };
@@ -35,13 +53,19 @@ export const ORTE: OrtPage[] = [
     description:
       "Nachhilfe in Duisburg-Rheinhausen: Einzel- und Gruppenunterricht in allen Fächern, Klasse 1 bis Abitur. Lernort Friedrich-Alfred-Straße. Probestunde gratis.",
     intro: [
-      "Unser Lernort liegt mitten in Rheinhausen, in der Friedrich-Alfred-Straße 14. Wer hier zur Schule geht, kommt zu Fuß, mit dem Rad oder in wenigen Minuten mit dem Bus zu uns — das ist der Grund, warum die meisten unserer Schülerinnen und Schüler aus Rheinhausen und den angrenzenden Stadtteilen kommen.",
+      "Unser Lernort liegt mitten in Rheinhausen, in der Friedrich-Alfred-Straße 14. Wer hier zur Schule geht, kommt zu Fuß, mit dem Rad oder in wenigen Minuten mit dem Bus zu uns. Das ist der Grund, warum die meisten unserer Schülerinnen und Schüler aus Rheinhausen und den angrenzenden Stadtteilen kommen.",
       "Wir unterrichten von Klasse 1 bis zum Abitur: Grundschulkinder beim Lesen, Schreiben und Rechnen, Realschülerinnen und Gesamtschüler in der Mittelstufe, Gymnasiasten in der Oberstufe und in der Abiturvorbereitung. In Gruppen von drei bis fünf oder einzeln, je nachdem, was das Kind braucht.",
-      "Rheinhausen ist ein Stadtteil, in dem viele Familien Anspruch auf Lernförderung über Bildung und Teilhabe haben. Wir rechnen direkt mit dem Jobcenter Duisburg und der Stadt Duisburg ab — für berechtigte Familien entstehen keine Kosten.",
+      "Rheinhausen ist ein Stadtteil, in dem viele Familien Anspruch auf Lernförderung über Bildung und Teilhabe haben. Wir rechnen direkt mit dem Jobcenter Duisburg und der Stadt Duisburg ab. Für berechtigte Familien entstehen keine Kosten.",
     ],
     anfahrt:
-      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Der Lernort liegt im Bezirk Rheinhausen und ist aus Hochemmerich, Bergheim und Rheinhausen-Mitte fußläufig oder mit dem Bus erreichbar.",
-    nachbarn: ["friemersheim", "rumeln-kaldenhausen", "homberg", "moers"],
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Die Bushaltestelle Stüning liegt praktisch vor der Tür, dort halten die Linien 912, 920, 922, 924 und die Nachtlinie NE 2. Eigene Stellplätze sind vorhanden, Bringen und Abholen mit dem Auto ist also unkompliziert.",
+    formHinweis:
+      "Aus Rheinhausen ist der Weg kurz genug, dass Präsenzunterricht der Normalfall bleibt: zu Fuß, mit dem Rad oder wenige Minuten mit dem Bus. Die Onlineform ist hier vor allem der Ersatz, wenn jemand krank ist oder der Nachmittag einmal nicht passt.",
+    schulen: [
+      { name: "Lise-Meitner-Gesamtschule", anschrift: "Lessingstraße 3, Rheinhausen-Mitte" },
+      { name: "Green Gesamtschule", anschrift: "Körnerplatz 2, früher Gesamtschule Körnerplatz" },
+    ],
+    nachbarn: ["hochemmerich", "bergheim", "friemersheim", "rumeln-kaldenhausen", "homberg", "moers"],
   },
   {
     slug: "friemersheim",
@@ -51,13 +75,15 @@ export const ORTE: OrtPage[] = [
     description:
       "Nachhilfe für Friemersheim: alle Fächer von Klasse 1 bis Abitur, kleine Gruppen oder Einzelunterricht. Lernort in Rheinhausen, wenige Minuten entfernt.",
     intro: [
-      "Friemersheim gehört wie unser Lernort zum Bezirk Rheinhausen. Der Weg zu uns in die Friedrich-Alfred-Straße ist kurz — für die meisten Familien aus Friemersheim eine Sache von wenigen Minuten.",
-      "Wir arbeiten mit Kindern aus allen Schulformen: Grundschule, Realschule, Gesamtschule, Gymnasium und Berufskolleg. Der Unterricht richtet sich nach dem, was in der Schule gerade ansteht — nicht nach einem festen Lehrplan von der Stange.",
+      "Friemersheim gehört wie unser Lernort zum Bezirk Rheinhausen. Der Weg zu uns in die Friedrich-Alfred-Straße ist kurz, für die meisten Familien aus Friemersheim eine Sache von wenigen Minuten.",
+      "Wir arbeiten mit Kindern aus allen Schulformen: Grundschule, Realschule, Gesamtschule, Gymnasium und Berufskolleg. Der Unterricht richtet sich nach dem, was in der Schule gerade ansteht, nicht nach einem festen Lehrplan von der Stange.",
       "Wenn der Anfahrtsweg trotzdem nicht passt, etwa weil der Nachmittag eng getaktet ist, gibt es dieselbe Nachhilfe online. Gleiche Lehrkraft, gleiches Konzept, nur ohne Fahrtzeit.",
     ],
     anfahrt:
-      "Unser Lernort in der Friedrich-Alfred-Straße 14 liegt im Nachbarstadtteil Rheinhausen-Mitte, gut mit dem Bus oder dem Rad erreichbar.",
-    nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "moers"],
+      "Unser Lernort in der Friedrich-Alfred-Straße 14 liegt im Nachbarstadtteil Rheinhausen-Mitte. Die Haltestelle Stüning liegt direkt davor, mit dem Rad ist der Weg genauso kurz. Stellplätze sind vorhanden.",
+    formHinweis:
+      "Friemersheim liegt im selben Bezirk, die Anfahrt fällt entsprechend kurz aus. Deshalb sitzen die meisten hier im Präsenzunterricht, und die Onlineform ist die Ausweichlösung für Wochen, in denen der Nachmittag eng liegt.",
+    nachbarn: ["rheinhausen", "hochemmerich", "rumeln-kaldenhausen", "moers"],
   },
   {
     slug: "rumeln-kaldenhausen",
@@ -67,13 +93,18 @@ export const ORTE: OrtPage[] = [
     description:
       "Nachhilfe für Rumeln-Kaldenhausen: Mathematik, Deutsch, Englisch und mehr, Klasse 1 bis Abitur. Kleingruppen mit drei bis fünf Schülern. Probestunde gratis.",
     intro: [
-      "Rumeln-Kaldenhausen ist der südwestlichste Stadtteil von Duisburg und gehört zum Bezirk Rheinhausen. Familien von hier fahren zu uns in die Friedrich-Alfred-Straße oder nutzen die Onlinenachhilfe — beides kommt bei uns etwa gleich häufig vor.",
+      "Rumeln-Kaldenhausen ist der südwestlichste Stadtteil von Duisburg und gehört zum Bezirk Rheinhausen. Familien von hier fahren zu uns in die Friedrich-Alfred-Straße oder nutzen die Onlinenachhilfe. Beides kommt bei uns etwa gleich häufig vor.",
       "Unser Schwerpunkt liegt auf den Fächern, in denen es am häufigsten klemmt: Mathematik, Deutsch und Englisch, dazu Physik, Chemie und Biologie in der Mittel- und Oberstufe.",
       "Für Familien mit Anspruch auf Bildung und Teilhabe übernehmen wir den Papierkram, den der Antrag auf Lernförderung mit sich bringt, und rechnen anschließend direkt mit dem Amt ab.",
     ],
     anfahrt:
-      "Der Lernort in der Friedrich-Alfred-Straße 14 in Rheinhausen ist von Rumeln-Kaldenhausen mit dem Bus oder dem Auto in kurzer Zeit zu erreichen. Alternativ unterrichten wir online.",
-    nachbarn: ["rheinhausen", "friemersheim", "moers"],
+      "Der Lernort in der Friedrich-Alfred-Straße 14 in Rheinhausen ist von Rumeln-Kaldenhausen mit dem Bus oder dem Auto in kurzer Zeit zu erreichen; die Haltestelle Stüning liegt direkt vor dem Haus, Stellplätze gibt es ebenfalls. Alternativ unterrichten wir online.",
+    formHinweis:
+      "Aus Rumeln-Kaldenhausen kommen Anfahrt und Onlineunterricht etwa gleich häufig vor. Wer mit dem Bus oder dem Auto kommt, ist in kurzer Zeit da; wer den Weg sparen will, bekommt online dieselbe Lehrkraft und dasselbe Konzept.",
+    schulen: [
+      { name: "Albert-Einstein-Gymnasium", anschrift: "Schulallee 11, Rumeln-Kaldenhausen" },
+    ],
+    nachbarn: ["rheinhausen", "bergheim", "friemersheim", "moers"],
   },
   {
     slug: "homberg",
@@ -83,12 +114,14 @@ export const ORTE: OrtPage[] = [
     description:
       "Nachhilfe für Duisburg-Homberg: alle Fächer, Klasse 1 bis Abitur, vor Ort in Rheinhausen oder online. Bildung und Teilhabe möglich. Probestunde kostenlos.",
     intro: [
-      "Homberg liegt nördlich von Rheinhausen auf derselben Rheinseite. Familien von dort erreichen unseren Lernort in der Friedrich-Alfred-Straße ohne Rheinquerung — das ist der praktische Unterschied zu Nachhilfeangeboten auf der anderen Uferseite.",
+      "Homberg liegt nördlich von Rheinhausen auf derselben Rheinseite. Familien von dort erreichen unseren Lernort in der Friedrich-Alfred-Straße ohne Rheinquerung. Das ist der praktische Unterschied zu Nachhilfeangeboten auf der anderen Uferseite.",
       "Wir unterrichten alle Hauptfächer und die Naturwissenschaften, von der Grundschule bis zur Abiturvorbereitung. Wer nur punktuell Hilfe braucht, etwa vor einer Klassenarbeit oder einer Nachprüfung, bekommt sie auch für einen begrenzten Zeitraum.",
       "Für Homberger Familien, denen die Fahrt regelmäßig zu weit ist, ist die Onlinenachhilfe die naheliegende Lösung. Sie läuft mit denselben Lehrkräften wie der Unterricht vor Ort.",
     ],
     anfahrt:
-      "Unser Lernort liegt in der Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — von Homberg aus über die linksrheinische Verbindung erreichbar, ohne Brücke.",
+      "Unser Lernort liegt in der Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen, von Homberg aus über die linksrheinische Verbindung erreichbar, ohne Brücke. Vor dem Haus liegt die Bushaltestelle Stüning, Stellplätze sind vorhanden.",
+    formHinweis:
+      "Von Homberg aus führt der Weg linksrheinisch und ohne Brücke, was die Anfahrt planbar macht, aber länger als aus dem Bezirk. Wo der Nachmittag eng liegt, ist die Onlineform deshalb oft die praktischere Wahl.",
     nachbarn: ["rheinhausen", "moers", "rumeln-kaldenhausen"],
   },
   {
@@ -100,12 +133,54 @@ export const ORTE: OrtPage[] = [
       "Nachhilfe für Schüler aus Moers: Mathematik, Deutsch, Englisch, Naturwissenschaften. Vor Ort im benachbarten Rheinhausen oder online. Erste Stunde gratis.",
     intro: [
       "Moers grenzt direkt an Duisburg-Rheinhausen. Für Familien aus dem östlichen Moers ist unser Lernort in der Friedrich-Alfred-Straße oft näher als Angebote in der Moerser Innenstadt.",
-      "Wir unterrichten Kinder und Jugendliche aller Schulformen von Klasse 1 bis zum Abitur — in Kleingruppen von drei bis fünf oder im Einzelunterricht, wenn mehr Ruhe nötig ist.",
+      "Wir unterrichten Kinder und Jugendliche aller Schulformen von Klasse 1 bis zum Abitur, in Kleingruppen von drei bis fünf oder im Einzelunterricht, wenn mehr Ruhe nötig ist.",
       "Wer aus dem westlichen Moers kommt, nutzt in der Regel unsere Onlinenachhilfe. Der Unterricht ist derselbe, nur ohne den Weg über die Stadtgrenze.",
     ],
     anfahrt:
-      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen — direkt hinter der Stadtgrenze zu Moers, mit dem Auto oder Bus in kurzer Zeit erreichbar.",
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen, direkt hinter der Stadtgrenze zu Moers. Mit dem Auto in kurzer Zeit erreichbar, Stellplätze sind vorhanden; wer mit dem Bus kommt, steigt an der Haltestelle Stüning direkt vor dem Haus aus.",
+    formHinweis:
+      "Die Stadtgrenze ist hier keine Entfernung: Der Lernort liegt gleich dahinter, mit dem Auto oder Bus in kurzer Zeit erreichbar. Präsenzunterricht ist von Moers aus also gut machbar, online steht als Alternative bereit.",
     nachbarn: ["rheinhausen", "rumeln-kaldenhausen", "homberg"],
+  },
+  {
+    slug: "hochemmerich",
+    name: "Hochemmerich",
+    langName: "Duisburg-Hochemmerich",
+    title: "Nachhilfe in Duisburg-Hochemmerich | Zu Fuß erreichbar",
+    description:
+      "Nachhilfe für Hochemmerich: alle Fächer von Klasse 1 bis Abitur, keine zehn Minuten zu Fuß vom Lernort in der Friedrich-Alfred-Straße. Probestunde gratis.",
+    intro: [
+      "Hochemmerich ist der Stadtteil, aus dem der Weg zu uns am kürzesten ist. Vom Lernort in der Friedrich-Alfred-Straße 14 sind es zu Fuß keine zehn Minuten, mit dem Rad entsprechend weniger.",
+      "Das klingt nach einer Nebensache und ist im Alltag der Unterschied zwischen Hingehen und Gefahrenwerden. Kinder aus Hochemmerich kommen nach der Schule allein zu uns, ohne dass jemand am Nachmittag den Fahrdienst übernehmen muss.",
+      "Unterrichtet wird von Klasse 1 bis zum Abitur, in Gruppen von drei bis fünf oder einzeln. Alle Hauptfächer, dazu Physik, Chemie und Biologie in der Mittel- und Oberstufe.",
+    ],
+    anfahrt:
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg. Von Hochemmerich aus zu Fuß in unter zehn Minuten zu erreichen. Wer trotzdem mit dem Bus kommt, steigt an der Haltestelle Stüning direkt vor dem Haus aus; Stellplätze sind vorhanden.",
+    formHinweis:
+      "Bei einem Fußweg von unter zehn Minuten stellt sich die Frage nach der Unterrichtsform kaum: Präsenzunterricht ist hier der Normalfall. Die Onlineform bleibt für Krankheitswochen und für Nachmittage, an denen sonst nichts geht.",
+    nachbarn: ["rheinhausen", "bergheim", "friemersheim", "rumeln-kaldenhausen"],
+  },
+  {
+    slug: "bergheim",
+    name: "Bergheim",
+    langName: "Duisburg-Bergheim",
+    title: "Nachhilfe in Duisburg-Bergheim | Klasse 1 bis Abitur",
+    description:
+      "Nachhilfe für Duisburg-Bergheim: alle Fächer, Klasse 1 bis Abitur. Eine Viertelstunde zu Fuß, auch für Krupp-Gymnasium und Heinrich-Heine-Gesamtschule.",
+    intro: [
+      "Bergheim liegt südlich unseres Lernorts, zu Fuß etwa eine Viertelstunde, mit dem Rad oder dem Bus deutlich schneller. Für Familien aus Bergheim ist die Friedrich-Alfred-Straße damit gut erreichbar, ohne dass der Nachmittag daran hängt.",
+      "Am Flutweg stehen gleich zwei weiterführende Schulen nebeneinander, das Krupp-Gymnasium und die Heinrich-Heine-Gesamtschule. Beide Schulformen begleiten wir von der Erprobungsstufe bis zum Abschluss.",
+      "Im Gymnasium geht es bei uns meist um Mathematik und die Naturwissenschaften ab Klasse 9, an der Gesamtschule häufiger um die Vorbereitung auf die Zentralen Prüfungen am Ende der Klasse 10.",
+    ],
+    anfahrt:
+      "Friedrich-Alfred-Straße 14, 47226 Duisburg-Rheinhausen. Von Bergheim aus zu Fuß in etwa einer Viertelstunde, mit dem Bus über die Haltestelle Stüning direkt vor dem Haus. Stellplätze sind vorhanden.",
+    formHinweis:
+      "Eine Viertelstunde zu Fuß ist für ältere Schülerinnen und Schüler kein Hindernis, für Grundschulkinder je nach Tageszeit schon. In der Grundschule empfehlen wir aus Bergheim deshalb feste Termine am frühen Nachmittag oder die Onlineform.",
+    schulen: [
+      { name: "Krupp-Gymnasium Europaschule", anschrift: "Flutweg 62" },
+      { name: "Heinrich-Heine-Gesamtschule", anschrift: "Flutweg 56" },
+    ],
+    nachbarn: ["rheinhausen", "hochemmerich", "friemersheim", "homberg"],
   },
 ];
 
@@ -129,11 +204,11 @@ export const FAECHER: FachPage[] = [
     slug: "mathe",
     name: "Mathematik",
     kurz: "Mathe",
-    title: "Mathe-Nachhilfe Duisburg-Rheinhausen | Klasse 1 bis Abitur",
+    title: "Nachhilfe in Mathematik | Duisburg, Klasse 1 bis Abitur",
     description:
-      "Mathe-Nachhilfe in Duisburg: von Bruchrechnen über Gleichungen bis Analysis. Kleingruppen oder Einzelunterricht, Klasse 1 bis Abitur. Probestunde kostenlos.",
+      "Nachhilfe in Mathematik in Duisburg: von Bruchrechnen über Gleichungen bis Analysis. Kleingruppen oder Einzelunterricht, Klasse 1 bis Abitur. Probestunde kostenlos.",
     intro: [
-      "Mathematik ist das Fach, für das uns Eltern am häufigsten anrufen. Der Grund ist fast immer derselbe: Der Stoff baut aufeinander auf. Wer in Klasse 6 die Bruchrechnung nicht sicher beherrscht, scheitert in Klasse 8 an den Gleichungen — nicht wegen der Gleichungen, sondern wegen der Brüche.",
+      "Mathematik ist das Fach, für das uns Eltern am häufigsten anrufen. Der Grund ist fast immer derselbe: Der Stoff baut aufeinander auf. Wer in Klasse 6 die Bruchrechnung nicht sicher beherrscht, scheitert in Klasse 8 an den Gleichungen, nicht wegen der Gleichungen, sondern wegen der Brüche.",
       "Deshalb fangen wir nicht beim aktuellen Kapitel an, sondern dort, wo die Lücke tatsächlich sitzt. Das kostet in den ersten Wochen Zeit und spart sie danach doppelt ein.",
     ],
     themen: [
@@ -155,15 +230,15 @@ export const FAECHER: FachPage[] = [
       },
     ],
     ansatz:
-      "Wir rechnen nicht vor, sondern lassen rechnen. Die Lehrkraft erklärt einen Weg, das Kind geht ihn selbst — und erklärt am Ende zurück, warum er funktioniert. Wer einen Rechenweg erklären kann, hat ihn verstanden.",
+      "Wir rechnen nicht vor, sondern lassen rechnen. Die Lehrkraft erklärt einen Weg, das Kind geht ihn selbst und erklärt am Ende zurück, warum er funktioniert. Wer einen Rechenweg erklären kann, hat ihn verstanden.",
   },
   {
     slug: "deutsch",
     name: "Deutsch",
     kurz: "Deutsch",
-    title: "Deutsch-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Deutsch | Duisburg, bis zum Abitur",
     description:
-      "Deutsch-Nachhilfe in Duisburg: Rechtschreibung, Grammatik, Textanalyse, Aufsatz. Auch für Kinder mit Deutsch als zweiter Sprache. Erste Stunde gratis.",
+      "Nachhilfe in Deutsch in Duisburg: Rechtschreibung, Grammatik, Textanalyse, Aufsatz. Auch für Kinder mit Deutsch als zweiter Sprache. Erste Stunde gratis.",
     intro: [
       "Deutsch ist das Fach mit den unterschiedlichsten Baustellen. Bei dem einen Kind hakt es an der Rechtschreibung, beim nächsten am Textverständnis, beim dritten daran, einen Gedanken in einen ordentlichen Satz zu bringen. Ein Standardprogramm hilft hier niemandem.",
       "Ein großer Teil unserer Schülerinnen und Schüler wächst zweisprachig auf. Für sie ist Deutsch kein Fach wie jedes andere, sondern die Sprache, in der auch alle übrigen Fächer unterrichtet werden. Wer hier aufholt, verbessert nebenbei die Noten in Sachkunde, Geschichte und Biologie mit.",
@@ -187,17 +262,17 @@ export const FAECHER: FachPage[] = [
       },
     ],
     ansatz:
-      "Wir arbeiten an echten Texten aus dem Unterricht, nicht an erfundenen Übungsblättern. Was das Kind nächste Woche in der Klassenarbeit braucht, üben wir diese Woche — mit denselben Aufgabentypen und derselben Bewertungslogik.",
+      "Wir arbeiten an echten Texten aus dem Unterricht, nicht an erfundenen Übungsblättern. Was das Kind nächste Woche in der Klassenarbeit braucht, üben wir diese Woche, mit denselben Aufgabentypen und derselben Bewertungslogik.",
   },
   {
     slug: "englisch",
     name: "Englisch",
     kurz: "Englisch",
-    title: "Englisch-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Englisch | Duisburg, bis zum Abitur",
     description:
-      "Englisch-Nachhilfe in Duisburg: Grammatik, Vokabeln, Textproduktion und Sprechen. Von der Grundschule bis zum Abitur, in Kleingruppen oder einzeln.",
+      "Nachhilfe in Englisch in Duisburg: Grammatik, Vokabeln, Textproduktion und Sprechen. Von der Grundschule bis zum Abitur, in Kleingruppen oder einzeln.",
     intro: [
-      "Englisch verzeiht Lücken lange — und dann auf einmal nicht mehr. Solange Vokabeln abgefragt werden, kommt man mit Auswendiglernen durch. Sobald eigene Texte verlangt werden, fällt auf, wer die Zeitformen nie wirklich verstanden hat.",
+      "Englisch verzeiht Lücken lange und dann auf einmal nicht mehr. Solange Vokabeln abgefragt werden, kommt man mit Auswendiglernen durch. Sobald eigene Texte verlangt werden, fällt auf, wer die Zeitformen nie wirklich verstanden hat.",
       "Wir setzen deshalb früh an der Grammatik an und verbinden sie sofort mit dem Schreiben und Sprechen. Regeln allein bringen im Englischunterricht wenig, wenn sie nicht in einem Satz landen.",
     ],
     themen: [
@@ -219,15 +294,15 @@ export const FAECHER: FachPage[] = [
       },
     ],
     ansatz:
-      "In der Stunde wird Englisch gesprochen, sobald es geht. Auch fehlerhaft — Hauptsache, die Hemmschwelle fällt. Wer sich traut zu sprechen, schreibt anschließend auch freier.",
+      "In der Stunde wird Englisch gesprochen, sobald es geht. Auch fehlerhaft. Hauptsache, die Hemmschwelle fällt. Wer sich traut zu sprechen, schreibt anschließend auch freier.",
   },
   {
     slug: "physik",
     name: "Physik",
     kurz: "Physik",
-    title: "Physik-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Physik | Duisburg, bis zum Abitur",
     description:
-      "Physik-Nachhilfe in Duisburg: Mechanik, Elektrizität, Optik bis Quantenphysik. Für Mittelstufe, Oberstufe und Abiturvorbereitung. Probestunde kostenlos.",
+      "Nachhilfe in Physik in Duisburg: Mechanik, Elektrizität, Optik bis Quantenphysik. Für Mittelstufe, Oberstufe und Abiturvorbereitung. Probestunde kostenlos.",
     intro: [
       "Physik scheitert selten an der Physik. Sie scheitert meistens an der Mathematik dahinter: Formeln umstellen, Einheiten umrechnen, aus einer Textaufgabe die richtigen Größen herauslesen.",
       "Wir prüfen deshalb zu Beginn, ob das mathematische Handwerkszeug sitzt. Ist das geklärt, wird Physik für die meisten Schülerinnen und Schüler deutlich zugänglicher, als sie erwartet haben.",
@@ -253,9 +328,9 @@ export const FAECHER: FachPage[] = [
     slug: "chemie",
     name: "Chemie",
     kurz: "Chemie",
-    title: "Chemie-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Chemie | Duisburg, bis zum Abitur",
     description:
-      "Chemie-Nachhilfe in Duisburg: Reaktionsgleichungen, Stöchiometrie, organische Chemie. Für Mittelstufe, Oberstufe und Abiturvorbereitung.",
+      "Nachhilfe in Chemie in Duisburg: Reaktionsgleichungen, Stöchiometrie, organische Chemie. Für Mittelstufe, Oberstufe und Abiturvorbereitung.",
     intro: [
       "In Chemie entscheidet sich früh, ob es läuft: Wer das Periodensystem und den Aufbau der Atome verstanden hat, kann sich fast alles Weitere herleiten. Wer es auswendig lernt, steht spätestens bei den Reaktionsgleichungen.",
       "Wir arbeiten deshalb konsequent vom Prinzip zur Aufgabe, nicht umgekehrt. Das dauert am Anfang länger und macht das Fach danach berechenbar.",
@@ -275,17 +350,17 @@ export const FAECHER: FachPage[] = [
       },
     ],
     ansatz:
-      "Reaktionsgleichungen üben wir bis sie sitzen — sie sind die Sprache des Fachs. Wer sie fließend liest und schreibt, versteht auch Aufgaben, die er vorher nie gesehen hat.",
+      "Reaktionsgleichungen üben wir bis sie sitzen. Sie sind die Sprache des Fachs. Wer sie fließend liest und schreibt, versteht auch Aufgaben, die er vorher nie gesehen hat.",
   },
   {
     slug: "biologie",
     name: "Biologie",
     kurz: "Bio",
-    title: "Biologie-Nachhilfe Duisburg-Rheinhausen | Bis zum Abitur",
+    title: "Nachhilfe in Biologie | Duisburg, bis zum Abitur",
     description:
-      "Biologie-Nachhilfe in Duisburg: Zellbiologie, Genetik, Ökologie, Neurobiologie. Von der Mittelstufe bis zur Abiturvorbereitung. Erste Stunde gratis.",
+      "Nachhilfe in Biologie in Duisburg: Zellbiologie, Genetik, Ökologie, Neurobiologie. Von der Mittelstufe bis zur Abiturvorbereitung. Erste Stunde gratis.",
     intro: [
-      "Biologie gilt als Lernfach — und genau daran scheitern viele. In der Oberstufe reicht Auswendiglernen nicht mehr, weil in den Klausuren Zusammenhänge erklärt und unbekannte Materialien ausgewertet werden müssen.",
+      "Biologie gilt als Lernfach, und genau daran scheitern viele. In der Oberstufe reicht Auswendiglernen nicht mehr, weil in den Klausuren Zusammenhänge erklärt und unbekannte Materialien ausgewertet werden müssen.",
       "Wir üben deshalb weniger das Aufsagen und mehr das Erklären: Warum folgt aus diesem Befund jene Schlussfolgerung? Genau das wird in den Prüfungen verlangt.",
     ],
     themen: [
@@ -303,7 +378,7 @@ export const FAECHER: FachPage[] = [
       },
     ],
     ansatz:
-      "Wir arbeiten mit Skizzen. Wer einen Vorgang aufzeichnen und dabei erklären kann, hat ihn verstanden — und behält ihn deutlich länger als eine auswendig gelernte Definition.",
+      "Wir arbeiten mit Skizzen. Wer einen Vorgang aufzeichnen und dabei erklären kann, hat ihn verstanden und behält ihn deutlich länger als eine auswendig gelernte Definition.",
   },
 ];
 

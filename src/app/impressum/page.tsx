@@ -17,7 +17,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="font-heading font-bold text-xl text-dark mb-3" style={{ letterSpacing: "-0.02em" }}>
         {title}
       </h2>
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.95rem] space-y-1">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.95rem] space-y-1">
         {children}
       </div>
     </div>
@@ -31,7 +31,7 @@ export default function Impressum() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-28 pb-20">
+      <main id="inhalt" className="min-h-screen bg-white pt-28 pb-20">
         <div className="max-w-3xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">
@@ -50,15 +50,37 @@ export default function Impressum() {
               boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 8px 32px rgba(26,26,46,0.06)",
             }}
           >
+            {/* Die Seite fuehrt zwei Anschriften: hier die ladungsfaehige nach
+                § 5 DDG, ueberall sonst den Unterrichtsort. Rechtlich ist beides
+                richtig, fuer die lokale Suche war es bis hierher ein Problem —
+                zwei Anschriften auf einer Domain, ohne dass irgendwo steht,
+                wie sie zusammenhaengen. Der Zusatz unten macht es eindeutig. */}
             <Section title="Angaben gemäß § 5 DDG">
               <p className="font-semibold text-dark">{owner}</p>
               <p>{addr.street}</p>
               <p>{addr.city}</p>
+              <p className="pt-3 text-muted/75">
+                {`Dies ist die Anschrift des Unternehmens. Der Unterricht findet statt in der ${addresses.lernort.street}, ${addresses.lernort.city}.`}
+              </p>
             </Section>
 
             <Section title="Kontakt">
               <p>Telefon: <a href={`tel:${phone}`} className="text-primary-deep hover:underline">{phoneDisplay}</a></p>
-              <p>E-Mail: <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a></p>
+              {/* Cloudflare "Email Address Obfuscation" (Scrape Shield) ersetzt E-Mail-Adressen
+                  zonenweit durch einen __cf_email__-Platzhalter; sichtbar wird die Adresse erst,
+                  wenn Cloudflares JavaScript im Browser laeuft. Ohne JS stand hier
+                  "[email protected]" — auf der EINEN Seite, auf der § 5 DDG die Adresse
+                  "staendig verfuegbar" verlangt. Der email_off-Marker nimmt genau diese Stelle
+                  aus; auf allen anderen Seiten bleibt der Spam-Schutz aktiv.
+                  Die Marker muessen im ausgelieferten HTML stehen; ein JSX-Kommentar landet
+                  dort nicht, daher die beiden leeren Spans mit dem HTML-Kommentar darin.
+                  Beide Spans zusammen aendern; einzeln stehend heben sie sich nicht auf. */}
+              <p>
+                E-Mail:{" "}
+                <span dangerouslySetInnerHTML={{ __html: "<!--email_off-->" }} />
+                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>
+                <span dangerouslySetInnerHTML={{ __html: "<!--/email_off-->" }} />
+              </p>
             </Section>
 
             <Section title="Umsatzsteuer-ID">

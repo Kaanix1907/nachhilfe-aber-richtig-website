@@ -44,7 +44,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Wer unterrichtet bei Ihnen?",
-    a: "Geprüfte Lehramtsstudierende und Lehrkräfte, alle mit erweitertem Führungszeugnis. Wir wählen sorgfältig aus und schulen regelmäßig nach — bei uns unterrichtet niemand ein Fach, das er nicht sicher beherrscht.",
+    a: "Geprüfte Lehramtsstudierende und Lehrkräfte, alle mit erweitertem Führungszeugnis. Wir wählen sorgfältig aus und schulen regelmäßig nach. Bei uns unterrichtet niemand ein Fach, das er nicht sicher beherrscht.",
   },
   {
     q: "Gibt es eine kostenlose Probestunde?",
@@ -52,6 +52,6 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Gibt es Nachhilfe auch online?",
-    a: "Ja. Unsere Onlinenachhilfe läuft mit denselben Lehrkräften und demselben Konzept wie vor Ort — sinnvoll bei weiterem Anfahrtsweg, engem Zeitplan oder Krankheit.",
+    a: "Ja. Unsere Onlinenachhilfe läuft mit denselben Lehrkräften und demselben Konzept wie vor Ort. Sinnvoll bei weiterem Anfahrtsweg, engem Zeitplan oder Krankheit.",
   },
 ];

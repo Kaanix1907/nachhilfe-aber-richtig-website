@@ -10,6 +10,7 @@ import AngebotUebersicht from "@/components/AngebotUebersicht";
 import Lehrkraefte from "@/components/Lehrkraefte";
 import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
+import { SITE_URL, GOOGLE_PROFIL, TELEFON_E164 } from "@/lib/schema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -36,12 +37,35 @@ const jsonLd = {
   url: "https://nachhilfe-aber-richtig.de",
   logo: "https://nachhilfe-aber-richtig.de/logo.png",
   image: "https://nachhilfe-aber-richtig.de/og-image.png",
-  telephone: "+4915208854910",
+  // Aus data.ts abgeleitet, nicht abgeschrieben: die hier fruehere Kopie
+  // ueberlebte den Wechsel der Rufnummer am 06.08.2026 um ein Haar.
+  telephone: TELEFON_E164,
   email: "info@nachhilfe-aber-richtig.de",
+  // Eigene @id, damit die Person ueber Seiten hinweg referenzierbar ist und
+  // nicht als namenloses Beiwerk der Firma gilt. `knowsAbout` nennt nur die
+  // Faecher, fuer die es auch eine Seite gibt.
+  //
+  // Bewusst OHNE hasCredential/alumniOf: der konkrete Abschluss liegt mir
+  // nicht belegt vor, und eine erfundene Qualifikation waere in einem Feld,
+  // das Vertrauen erzeugen soll, genau das falsche.
   founder: {
     "@type": "Person",
+    "@id": "https://nachhilfe-aber-richtig.de/#inhaber",
     name: "Mustafa Kaan Güneren",
+    jobTitle: "Inhaber und Nachhilfelehrer",
+    worksFor: { "@id": "https://nachhilfe-aber-richtig.de/#business" },
+    knowsAbout: [
+      "Mathematik",
+      "Deutsch",
+      "Englisch",
+      "Physik",
+      "Chemie",
+      "Biologie",
+      "Zentrale Prüfungen Klasse 10 (ZP10)",
+      "Bildung und Teilhabe",
+    ],
   },
+  employee: { "@id": "https://nachhilfe-aber-richtig.de/#inhaber" },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Friedrich-Alfred-Straße 14",
@@ -81,6 +105,8 @@ const jsonLd = {
   areaServed: [
     { "@type": "City", name: "Duisburg" },
     { "@type": "City", name: "Rheinhausen" },
+    { "@type": "City", name: "Hochemmerich" },
+    { "@type": "City", name: "Bergheim" },
     { "@type": "City", name: "Moers" },
     { "@type": "City", name: "Homberg" },
     { "@type": "City", name: "Rumeln-Kaldenhausen" },
@@ -90,15 +116,13 @@ const jsonLd = {
     "@type": "OfferCatalog",
     name: "Nachhilfeangebote",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gruppennachhilfe", description: "Nachhilfe in 3-5er Gruppen — bestes Preis-Leistungs-Verhältnis" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Einzelnachhilfe", description: "Intensive 1:1 Betreuung durch qualifizierte Lehrkräfte" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Onlinenachhilfe", description: "Professionelle Nachhilfe von zu Hause aus" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stay in School", description: "Kostenloses Programm via Bildung und Teilhabe" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gruppennachhilfe", description: "Nachhilfe in Gruppen von drei bis fünf Schülern", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Einzelnachhilfe", description: "Intensive Einzelbetreuung durch qualifizierte Lehrkräfte", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Onlinenachhilfe", description: "Nachhilfe von zu Hause aus, dieselben Lehrkräfte wie vor Ort", provider: { "@id": `${SITE_URL}/#business` } } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stay in School", description: "Kostenlose Lernförderung über Bildung und Teilhabe", provider: { "@id": `${SITE_URL}/#business` } } },
     ],
   },
-  sameAs: [
-    "https://www.google.com/maps/place/?q=place_id:ChIJHWy-OVi_uEcR4TNsTTb7wko",
-  ],
+  sameAs: [GOOGLE_PROFIL],
 };
 
 // FAQ-Schema aus derselben Quelle wie die sichtbare FAQ-Sektion.
@@ -129,7 +153,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Navbar />
-      <main>
+      <main id="inhalt">
         <Hero />
         <Services />
         <AngebotUebersicht />

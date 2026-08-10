@@ -14,10 +14,10 @@ function Kachel({ href, titel, unter }: { href: string; titel: string; unter: st
       style={{ boxShadow: "0 1px 3px rgba(26,26,46,0.06), 0 4px 12px rgba(26,26,46,0.05)" }}
     >
       <span className="min-w-0">
-        <span className="block font-heading font-bold text-[1.02rem] text-dark group-hover:text-primary transition-[color] duration-300" style={{ letterSpacing: "-0.01em" }}>
+        <span className="block font-heading font-bold text-[1.02rem] text-dark group-hover:text-primary-deep transition-[color] duration-300" style={{ letterSpacing: "-0.01em" }}>
           {titel}
         </span>
-        <span className="block font-body text-muted/55 text-[0.82rem] mt-0.5">{unter}</span>
+        <span className="block font-body text-muted/75 text-[0.82rem] mt-0.5">{unter}</span>
       </span>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 text-primary opacity-45 group-hover:opacity-100 group-hover:translate-x-0.5 transition-[opacity,transform] duration-300">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -38,7 +38,7 @@ export default function AngebotUebersicht() {
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             In welchen Fächern wir unterrichten
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
             Zu jedem Fach steht, woran es erfahrungsgemäß hakt und wie wir es angehen.
           </p>
         </FadeIn>
@@ -62,7 +62,7 @@ export default function AngebotUebersicht() {
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             Woher unsere Schüler kommen
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
             Unser Lernort liegt in Rheinhausen. Wer weiter weg wohnt, nutzt die
             Onlinenachhilfe mit denselben Lehrkräften.
           </p>
@@ -94,7 +94,7 @@ export default function AngebotUebersicht() {
             </Link>
             <Link
               href="/zap-vorbereitung"
-              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-dark px-7 py-3.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+              className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-dark px-7 py-3.5 rounded-full border border-gray-200 transition-[border-color,color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary-deep"
             >
               ZAP-Vorbereitung Klasse 10
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">

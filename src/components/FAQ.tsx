@@ -25,7 +25,7 @@ function Item({ item, index }: { item: FaqItem; index: number }) {
             </svg>
           </span>
         </summary>
-        <p className="font-body text-muted/70 text-[0.95rem] leading-[1.8] px-6 pb-6 pr-16">
+        <p className="font-body text-muted/75 text-[0.95rem] leading-[1.8] px-6 pb-6 pr-16">
           {item.a}
         </p>
       </details>
@@ -33,10 +33,23 @@ function Item({ item, index }: { item: FaqItem; index: number }) {
   );
 }
 
+// Dieselben Aufklapp-Elemente ohne eigene Section, zum Einsetzen in den
+// Textfluss der Fach- und Ortsseiten. Die grosse Fassung darunter bringt ihren
+// eigenen Kopfbereich mit und wuerde dort einen zweiten Seitentitel erzeugen.
+export function FaqListe({ items }: { items: FaqItem[] }) {
+  return (
+    <div className="flex flex-col gap-3">
+      {items.map((item, i) => (
+        <Item key={item.q} item={item} index={i} />
+      ))}
+    </div>
+  );
+}
+
 export default function FAQ({
   items = FAQ_ITEMS,
   title = "Häufige Fragen",
-  intro = "Was Eltern uns am häufigsten fragen — von den Kosten über Bildung und Teilhabe bis zum Ablauf.",
+  intro = "Was Eltern uns am häufigsten fragen, von den Kosten über Bildung und Teilhabe bis zum Ablauf.",
 }: {
   items?: FaqItem[];
   title?: string;
@@ -52,7 +65,7 @@ export default function FAQ({
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             {title}
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg leading-[1.7]">
             {intro}
           </p>
         </FadeIn>

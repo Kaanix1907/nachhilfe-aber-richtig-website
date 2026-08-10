@@ -11,15 +11,15 @@ import FadeIn from "./FadeIn";
 const PUNKTE = [
   {
     titel: "Erweitertes Führungszeugnis, vor der ersten Stunde",
-    text: "Wer bei uns unterrichtet, legt ein erweitertes Führungszeugnis vor — nicht irgendwann, sondern bevor er zum ersten Mal mit einem Kind in einem Raum sitzt. Für uns ist das keine Formalie, sondern die Grundbedingung.",
+    text: "Wer bei uns unterrichtet, legt ein erweitertes Führungszeugnis vor, nicht irgendwann, sondern bevor er zum ersten Mal mit einem Kind in einem Raum sitzt. Für uns ist das keine Formalie, sondern die Grundbedingung.",
   },
   {
     titel: "Lehramtsstudierende und Lehrkräfte, keine Aushilfen",
-    text: "Unsere Leute kommen aus dem Lehramt oder unterrichten bereits. Sie wissen nicht nur, wie der Stoff geht, sondern auch, wie man ihn jemandem erklärt, der ihn gerade nicht versteht. Das ist ein Unterschied, den man in der ersten Stunde merkt.",
+    text: "Unsere Leute kommen aus dem Lehramt oder unterrichten bereits. Sie wissen, wie der Stoff geht, und dazu, wie man ihn jemandem erklärt, der ihn gerade nicht versteht. Das ist ein Unterschied, den man in der ersten Stunde merkt.",
   },
   {
     titel: "Niemand unterrichtet ein Fach, das er nicht sicher beherrscht",
-    text: "Wer Mathematik gibt, gibt Mathematik. Wir besetzen keine Stunde mit jemandem, der sich das Thema am Abend vorher angelesen hat — auch dann nicht, wenn es terminlich einfacher wäre.",
+    text: "Wer Mathematik gibt, gibt Mathematik. Wir besetzen keine Stunde mit jemandem, der sich das Thema am Abend vorher angelesen hat, auch dann nicht, wenn es terminlich einfacher wäre.",
   },
   {
     titel: "Drei bis fünf Kinder pro Gruppe",
@@ -38,7 +38,7 @@ export default function Lehrkraefte() {
           <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-4" style={{ letterSpacing: "-0.03em" }}>
             Wer bei uns unterrichtet
           </h2>
-          <p className="font-body text-muted/70 text-base md:text-lg leading-[1.7]">
+          <p className="font-body text-muted/75 text-base md:text-lg leading-[1.7]">
             Sie geben Ihr Kind in fremde Hände. Deshalb hier ausführlich, wem genau.
           </p>
         </FadeIn>
@@ -66,7 +66,7 @@ export default function Lehrkraefte() {
                   <h3 className="font-heading font-bold text-dark text-[1.04rem] mb-2" style={{ letterSpacing: "-0.01em" }}>
                     {p.titel}
                   </h3>
-                  <p className="font-body text-muted/70 leading-[1.8] text-[0.95rem]">{p.text}</p>
+                  <p className="font-body text-muted/75 leading-[1.8] text-[0.95rem]">{p.text}</p>
                 </div>
               </div>
             </FadeIn>

@@ -1,8 +1,11 @@
 import Navbar from "./Navbar";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Footer from "./Footer";
 import SeoPageHero from "./SeoPageHero";
-import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, PillenReihe } from "./SeoBlock";
+import { SeoBlock, WeiterLink, AbschlussKarte, LinkKachel, PillenReihe, StandHinweis } from "./SeoBlock";
 import { BUSINESS } from "@/lib/data";
+import { FaqListe } from "./FAQ";
+import { FACH_FAQ } from "@/lib/seo-faq";
 import { ORTE, FAECHER, type FachPage } from "@/lib/seo-pages";
 
 // Abschnitte als eigene Komponenten — siehe Kommentar in OrtSeite.tsx.
@@ -63,7 +66,7 @@ function ZentralePruefungen({ fach }: { fach: FachPage }) {
       <p>
         {fach.name} ist eines der drei Fächer, in denen am Ende der Klasse 10 in
         Nordrhein-Westfalen zentral geprüft wird. Die Aufgaben kommen landesweit
-        einheitlich vom Schulministerium, nicht von der eigenen Lehrkraft — geprüft wird
+        einheitlich vom Schulministerium, nicht von der eigenen Lehrkraft. Geprüft wird
         der Stoff mehrerer Schuljahre.
       </p>
       <WeiterLink href="/zap-vorbereitung">Zur ZAP-Vorbereitung</WeiterLink>
@@ -77,7 +80,7 @@ function Ansatz({ fach }: { fach: FachPage }) {
       <p>{fach.ansatz}</p>
       <p>
         Unterrichtet wird von geprüften Lehramtsstudierenden und Lehrkräften mit
-        erweitertem Führungszeugnis — und nur in Fächern, die sie sicher beherrschen.
+        erweitertem Führungszeugnis, und nur in Fächern, die sie sicher beherrschen.
       </p>
     </SeoBlock>
   );
@@ -85,11 +88,11 @@ function Ansatz({ fach }: { fach: FachPage }) {
 
 function Foerderung({ fach }: { fach: FachPage }) {
   return (
-    <SeoBlock kicker="Förderung" title={`${fach.name}-Nachhilfe kostenlos über Bildung und Teilhabe`}>
+    <SeoBlock kicker="Förderung" title={`Nachhilfe in ${fach.name} kostenlos über Bildung und Teilhabe`}>
       <p>
         Bezieht Ihre Familie Bürgergeld, Wohngeld, Kinderzuschlag oder Sozialhilfe, besteht
         Anspruch auf außerschulische Lernförderung. Dann übernimmt das Amt die Kosten für
-        die {fach.kurz}-Nachhilfe vollständig.
+        die Nachhilfe in {fach.name} vollständig.
       </p>
       <p>
         Wir sind auf diese Abrechnung eingerichtet, rechnen direkt mit dem Jobcenter
@@ -102,7 +105,7 @@ function Foerderung({ fach }: { fach: FachPage }) {
 
 function Standorte({ fach }: { fach: FachPage }) {
   return (
-    <SeoBlock kicker="Standorte" title={`Wo Sie ${fach.kurz}-Nachhilfe bei uns bekommen`}>
+    <SeoBlock kicker="Standorte" title={`Wo Sie Nachhilfe in ${fach.name} bekommen`}>
       <p>
         Unser Lernort liegt in der {BUSINESS.addresses.lernort.street},{" "}
         {BUSINESS.addresses.lernort.city}. Von dort betreuen wir Schülerinnen und Schüler
@@ -113,10 +116,20 @@ function Standorte({ fach }: { fach: FachPage }) {
           <LinkKachel
             key={o.slug}
             href={`/nachhilfe/${o.slug}`}
-            titel={`${fach.kurz}-Nachhilfe ${o.name}`}
+            titel={`Nachhilfe in ${fach.name}, ${o.name}`}
           />
         ))}
       </div>
+    </SeoBlock>
+  );
+}
+
+function Fragen({ fach }: { fach: FachPage }) {
+  const fragen = FACH_FAQ[fach.slug];
+  if (!fragen?.length) return null;
+  return (
+    <SeoBlock kicker="Fragen & Antworten" title={`Was Eltern uns zu ${fach.name} fragen`} roh titelAbstand="weit">
+      <FaqListe items={fragen} />
     </SeoBlock>
   );
 }
@@ -139,12 +152,13 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
-          kicker={`${fach.name}-Nachhilfe`}
+          kicker={`Nachhilfe in ${fach.name}`}
           h1={`Nachhilfe in ${fach.name} in Duisburg-Rheinhausen`}
-          lead={`${fach.kurz}-Nachhilfe von Klasse 1 bis zum Abitur — in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
-          breadcrumb={`${fach.name}-Nachhilfe`}
+          lead={`Nachhilfe in ${fach.name} von Klasse 1 bis zum Abitur, in Kleingruppen von drei bis fünf Schülern, im Einzelunterricht oder online. Die erste Stunde ist kostenlos.`}
+          breadcrumb={fach.name}
+          breadcrumbParent={{ label: "Nachhilfe", href: "/nachhilfe" }}
         />
 
         <section className="bg-white py-20 md:py-24">
@@ -155,6 +169,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
             <Ansatz fach={fach} />
             <Foerderung fach={fach} />
             <Standorte fach={fach} />
+            <Fragen fach={fach} />
             <WeitereFaecher fach={fach} />
             <AbschlussKarte
               titel={`${fach.name} einmal ausprobieren`}
@@ -162,6 +177,7 @@ export default function FachSeite({ fach }: { fach: FachPage }) {
               knopfText="Probestunde vereinbaren"
               href="/#kontakt"
             />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
       </main>

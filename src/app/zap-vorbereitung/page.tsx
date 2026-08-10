@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { INHALT_STAND, standAnzeige } from "@/lib/stand";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SeoPageHero from "@/components/SeoPageHero";
-import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
-import { SeoBlock, SchrittListe, PillenReihe, WeiterLink } from "@/components/SeoBlock";
+import { SeoBlock, SchrittListe, PillenReihe, WeiterLink, AbschlussKarte, StandHinweis } from "@/components/SeoBlock";
 import { BUSINESS } from "@/lib/data";
 import { FAECHER } from "@/lib/seo-pages";
+import { ZAP_FAECHER } from "@/lib/zap-faecher";
+import { ANBIETER } from "@/lib/schema";
 import type { FaqItem } from "@/lib/faq";
 
 const SITE_URL = "https://nachhilfe-aber-richtig.de";
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
     type: "article",
     locale: "de_DE",
     url: `${SITE_URL}/zap-vorbereitung`,
+    modifiedTime: INHALT_STAND,
     siteName: BUSINESS.name,
     title: "ZAP-Vorbereitung Duisburg | Zentrale Prüfungen Klasse 10",
     description:
@@ -41,7 +44,7 @@ const ZAP_FAQ: FaqItem[] = [
   },
   {
     q: "Wann finden die Prüfungen statt?",
-    a: "Im Frühjahr, gestaffelt über mehrere Tage je Fach. Die genauen Termine legt das Schulministerium für jeden Jahrgang neu fest — Ihre Schule nennt sie Ihnen verbindlich. Wir richten den Trainingsplan danach aus.",
+    a: "Im Mai, gestaffelt über mehrere Tage. Für 2027 hat das Schulministerium den 11. Mai für Deutsch, den 13. Mai für Englisch und den 20. Mai für Mathematik festgelegt, Beginn jeweils um 9 Uhr. Nachschreibtermine liegen Ende Mai und Anfang Juni. Verbindlich sind die Angaben Ihrer Schule.",
   },
   {
     q: "Wann sollten wir mit der Vorbereitung anfangen?",
@@ -49,7 +52,7 @@ const ZAP_FAQ: FaqItem[] = [
   },
   {
     q: "Womit üben Sie?",
-    a: "Mit echten Prüfungsaufgaben vergangener Jahrgänge. Wir haben dafür eigene Aufgaben- und Lösungshefte zusammengestellt, geordnet nach Themengebiet statt nach Prüfungsjahr — so lässt sich gezielt an einer Schwachstelle arbeiten und nicht nur der Reihe nach abarbeiten.",
+    a: "Mit echten Prüfungsaufgaben vergangener Jahrgänge. Wir haben dafür eigene Aufgaben- und Lösungshefte zusammengestellt, geordnet nach Themengebiet statt nach Prüfungsjahr. So lässt sich gezielt an einer Schwachstelle arbeiten und nicht nur der Reihe nach abarbeiten.",
   },
   {
     q: "Kann die ZAP-Vorbereitung über Bildung und Teilhabe laufen?",
@@ -80,6 +83,20 @@ const breadcrumbLd = {
   ],
 };
 
+// Sagt einer Suchmaschine, dass die drei Fachseiten zusammengehoeren und wo
+// ihre Sammelstelle liegt. Ohne das haengen sie als Einzelseiten in der Luft.
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Vorbereitung auf die Zentralen Prüfungen nach Fach",
+  itemListElement: ZAP_FAECHER.map((f, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: `ZAP ${f.fach}`,
+    url: `${SITE_URL}/zap-vorbereitung/${f.slug}`,
+  })),
+};
+
 const courseLd = {
   "@context": "https://schema.org",
   "@type": "Course",
@@ -87,23 +104,27 @@ const courseLd = {
   description:
     "Vorbereitung auf die Zentralen Prüfungen am Ende der Klasse 10 in Nordrhein-Westfalen in Mathematik, Deutsch und Englisch.",
   url: `${SITE_URL}/zap-vorbereitung`,
+  dateModified: INHALT_STAND,
   inLanguage: "de",
   teaches: ["Mathematik", "Deutsch", "Englisch"],
-  provider: {
-    "@type": "EducationalOrganization",
-    name: BUSINESS.name,
-    url: SITE_URL,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: BUSINESS.addresses.lernort.street,
-      addressLocality: "Duisburg",
-      postalCode: "47226",
-      addressCountry: "DE",
-    },
-  },
+  provider: ANBIETER,
+  // courseWorkload fehlte und ist seit 2024 Pflichtfeld fuer die
+  // Kurs-Darstellung in der Suche. Die Angabe bildet das tatsaechliche
+  // Format ab: je Fach zwei Wochenenden vor der Pruefung, das erste zum
+  // Durchgehen aller Aufgabentypen, das zweite mit einer vollstaendigen
+  // Uebungsklausur unter Pruefungsbedingungen samt Korrektur.
+  // PT8H pro Wochenende, vier Wochenendtage je Fach — deshalb P4D/PT32H.
   hasCourseInstance: {
     "@type": "CourseInstance",
     courseMode: ["Onsite", "Online"],
+    courseWorkload: "PT32H",
+    courseSchedule: {
+      "@type": "Schedule",
+      repeatFrequency: "P1W",
+      repeatCount: 2,
+      byDay: ["https://schema.org/Saturday", "https://schema.org/Sunday"],
+      duration: "PT8H",
+    },
     location: {
       "@type": "Place",
       name: BUSINESS.name,
@@ -118,31 +139,45 @@ const courseLd = {
   },
 };
 
+// Kurzfassung je Fach, jeweils mit der einen Zahl, die den Unterschied macht.
+// Die Tiefe steht auf den drei Unterseiten: Pruefungszeiten, Hilfsmittel und
+// Gewichtungen dreimal hier auszubreiten, wuerde diese Seite unlesbar machen
+// und nebenbei mit ihren eigenen Unterseiten um dieselbe Suchanfrage
+// konkurrieren.
 const PRUEFUNGSFAECHER = [
   {
     slug: "mathe",
     fach: "Mathematik",
     inhalt:
-      "Ein prüfungsfreier Teil ohne Taschenrechner und ein Teil mit Hilfsmitteln. Erfahrungsgemäß entscheiden nicht die schweren Aufgaben am Ende, sondern die sicheren Punkte am Anfang — Prozentrechnung, Gleichungen, Flächen und Körper, lineare und quadratische Funktionen.",
+      "Zwei Prüfungsteile mit verschiedenen Regeln: 30 Minuten ohne Taschenrechner und ohne Formelsammlung, danach 90 Minuten mit beidem. Der hilfsmittelfreie Teil entscheidet mehr Noten, als seine Länge vermuten lässt.",
   },
   {
     slug: "deutsch",
     fach: "Deutsch",
     inhalt:
-      "Leseverstehen an einem unbekannten Text und ein eigener längerer Text nach vorgegebenem Format. Wer weiß, wie die Aufgabenstellung gelesen werden will, verliert deutlich weniger Punkte als jemand, der einfach drauflosschreibt.",
+      "150 Minuten, davon 120 für einen einzigen selbst geschriebenen Text. Welche Schreibform es wird, sollte lange vor dem Prüfungstag feststehen und nicht erst in den zehn Minuten Auswahlzeit.",
   },
   {
     slug: "englisch",
     fach: "Englisch",
     inhalt:
-      "Hörverstehen, Leseverstehen und Schreiben. Das Hörverstehen wird am häufigsten unterschätzt: es läuft unter Zeitdruck und lässt sich nur durch regelmäßiges Training verbessern, nicht durch Vokabellernen kurz vorher.",
+      "Vier Bestandteile mit amtlicher Gewichtung. Im Schreibteil zählt die sprachliche Richtigkeit mit 35 Prozent mehr als der Inhalt mit 25. Das überrascht die meisten.",
   },
+];
+
+// Amtliche Termine des Haupttermins 2027. Sie stehen hier statt in einer
+// vagen Formulierung, weil "im Fruehjahr" niemandem hilft, der einen
+// Trainingsplan aufstellen will.
+const TERMINE_2027 = [
+  { fach: "Deutsch", tag: "Dienstag, 11. Mai 2027" },
+  { fach: "Englisch", tag: "Donnerstag, 13. Mai 2027" },
+  { fach: "Mathematik", tag: "Donnerstag, 20. Mai 2027" },
 ];
 
 const ABLAUF = [
   {
     titel: "Standortbestimmung",
-    text: "Ihr Kind schreibt eine vollständige Prüfung aus einem früheren Jahrgang unter echten Bedingungen. Danach wissen wir beide, wo es steht — nicht gefühlt, sondern in Punkten.",
+    text: "Ihr Kind schreibt eine vollständige Prüfung aus einem früheren Jahrgang unter echten Bedingungen. Danach wissen wir beide, wo es steht, nicht gefühlt, sondern in Punkten.",
   },
   {
     titel: "Lücken schließen",
@@ -198,9 +233,9 @@ function DreiFaecher() {
             <h3 className="font-heading font-bold text-dark text-[1.05rem] mb-2.5" style={{ letterSpacing: "-0.01em" }}>
               {p.fach}
             </h3>
-            <p className="font-body text-muted/70 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
-            <WeiterLink href={`/nachhilfe/${p.slug}`} groesse="0.92rem">
-              Zur {p.fach}-Nachhilfe
+            <p className="font-body text-muted/75 leading-[1.8] text-[0.94rem] mb-3">{p.inhalt}</p>
+            <WeiterLink href={`/zap-vorbereitung/${p.slug}`} groesse="0.92rem">
+              Prüfungsaufbau, Hilfsmittel und Termine in {p.fach}
             </WeiterLink>
           </div>
         ))}
@@ -209,10 +244,63 @@ function DreiFaecher() {
   );
 }
 
+// Die Termine standen bisher nur als "im Fruehjahr" auf der Seite. Sie sind
+// amtlich veroeffentlicht, und sie sind das Erste, was Eltern wissen wollen,
+// wenn sie ueberlegen, wann sie anfangen.
+function Termine() {
+  return (
+    <SeoBlock kicker="Termine" title="Die Prüfungstermine 2027 stehen fest">
+      <p>
+        Die drei schriftlichen Prüfungen liegen im Mai und beginnen jeweils um 9 Uhr:
+      </p>
+      <ul className="space-y-2.5 pt-1">
+        {TERMINE_2027.map((t) => (
+          <li key={t.fach} className="flex items-start gap-3">
+            <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>
+              <strong className="text-dark font-semibold">{t.fach}:</strong> {t.tag}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="pt-1">
+        Zwischen der ersten und der letzten Prüfung liegen neun Tage. Nachschreibtermine gibt es
+        Ende Mai und Anfang Juni, die mündlichen Prüfungen folgen im Juni. Verbindlich sind die
+        Angaben Ihrer Schule.
+      </p>
+      <p>
+        Von heute aus gerechnet bleibt für den Jahrgang 2027 also noch fast ein ganzes Schuljahr.
+        Das ist der Abstand, in dem sich Lücken noch schließen lassen statt nur Formate zu üben.
+      </p>
+    </SeoBlock>
+  );
+}
+
+// Der ausfuehrliche Pruefungsaufbau je Fach stand bis 2026-08-05 hier, aber
+// nur fuer Deutsch. Er liegt jetzt auf /zap-vorbereitung/deutsch, zusammen mit
+// den beiden anderen Faechern auf ihren eigenen Seiten. Zwei Gruende: Diese
+// Seite haette dreimal Pruefungszeiten, Hilfsmittel und Gewichtungen tragen
+// muessen, und sie haette dabei mit ihren eigenen Unterseiten um "zap deutsch"
+// konkurriert.
+//
+// Bei der Gelegenheit fielen zwei falsche Angaben auf, die hier standen:
+// Die zehn Zusatzminuten heissen amtlich Bonuszeit und duerfen in Deutsch auf
+// BEIDE Pruefungsteile verteilt werden, nicht nur zum Einlesen. Und die
+// Punkteverteilung 20/80 liess sich in keiner amtlichen Quelle belegen; die
+// Verfuegung nennt nur Zeiten. Sie ist deshalb ersatzlos entfallen.
+
 function WieWirVorbereiten() {
   return (
     <SeoBlock kicker="Ablauf" title="Wie wir vorbereiten" roh titelAbstand="weit">
       <SchrittListe schritte={ABLAUF} />
+      <p className="font-body text-muted/80 leading-[1.75] pt-5">
+        Vor der Prüfung liegen zwei Wochenenden je Fach. Am ersten gehen wir alle
+        Aufgabentypen durch, an einer Beispielklausur und mit Strategien für die
+        Zeiteinteilung. Am zweiten schreiben die Schülerinnen und Schüler eine vollständige
+        Übungsklausur unter Prüfungsbedingungen, die wir anschließend nach dem Original-
+        Bewertungsraster korrigieren. Wer erst dort zum ersten Mal unter Zeitdruck schreibt,
+        erlebt die echte Prüfung anders als jemand, der es schon einmal hinter sich hat.
+      </p>
     </SeoBlock>
   );
 }
@@ -228,7 +316,7 @@ function Material() {
       <p>
         Das klingt nach einer Kleinigkeit und ist im Training der entscheidende
         Unterschied: Wer bei quadratischen Funktionen unsicher ist, übt zwanzig Aufgaben
-        zu quadratischen Funktionen am Stück — statt sie über acht Prüfungsjahrgänge
+        zu quadratischen Funktionen am Stück, statt sie über acht Prüfungsjahrgänge
         zusammenzusuchen und dazwischen Themen zu rechnen, die längst sitzen.
       </p>
     </SeoBlock>
@@ -257,47 +345,20 @@ function WeitereFaecher() {
   );
 }
 
-function Abschluss() {
-  return (
-    <FadeIn direction="up">
-      <div
-        className="rounded-3xl p-8 md:p-10 text-center"
-        style={{ background: "linear-gradient(135deg, #0f0c29 0%, #2d1f5e 70%, #1e3a4f 100%)" }}
-      >
-        <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3" style={{ letterSpacing: "-0.025em" }}>
-          Mit einer Standortbestimmung anfangen
-        </h2>
-        <p className="font-body text-white/60 leading-[1.75] text-[0.97rem] mb-7 max-w-md mx-auto">
-          Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht
-          und wie viel Zeit noch nötig ist.
-        </p>
-        <a
-          href="/#kontakt"
-          className="inline-flex items-center justify-center gap-2 text-white font-body font-bold text-sm md:text-base px-8 py-4 rounded-full transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 active:scale-95"
-          style={{ background: "linear-gradient(135deg,#00aa00,#008a00)", boxShadow: "0 4px 20px rgba(0,170,0,0.40)" }}
-        >
-          Termin vereinbaren
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-      </div>
-    </FadeIn>
-  );
-}
 
 export default function ZapVorbereitung() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Navbar />
-      <main>
+      <main id="inhalt">
         <SeoPageHero
           kicker="Prüfungsvorbereitung"
           h1="ZAP-Vorbereitung in Duisburg: Zentrale Prüfungen Klasse 10"
-          lead="Gezieltes Training für die ZP10 in Mathematik, Deutsch und Englisch — mit echten Prüfungsaufgaben aus vergangenen Jahrgängen, in Kleingruppen oder einzeln."
+          lead="Gezieltes Training für die ZP10 in Mathematik, Deutsch und Englisch, mit echten Prüfungsaufgaben aus vergangenen Jahrgängen, in Kleingruppen oder einzeln."
           breadcrumb="ZAP-Vorbereitung"
         />
 
@@ -305,11 +366,18 @@ export default function ZapVorbereitung() {
           <div className="max-w-3xl mx-auto px-4">
             <WasAndersIst />
             <DreiFaecher />
+            <Termine />
             <WieWirVorbereiten />
             <Material />
             <Foerderung />
             <WeitereFaecher />
-            <Abschluss />
+            <AbschlussKarte
+              titel="Mit einer Standortbestimmung anfangen"
+              text="Die erste Stunde ist kostenlos. Danach wissen Sie in Punkten, wo Ihr Kind steht und wie viel Zeit noch nötig ist."
+              knopfText="Termin vereinbaren"
+              href="/#kontakt"
+            />
+            <StandHinweis stand={standAnzeige(INHALT_STAND)} />
           </div>
         </section>
 

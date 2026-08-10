@@ -16,7 +16,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="font-heading font-bold text-xl text-dark mb-3" style={{ letterSpacing: "-0.02em" }}>
         {title}
       </h2>
-      <div className="font-body text-muted/70 leading-[1.8] text-[0.95rem] space-y-3">
+      <div className="font-body text-muted/75 leading-[1.8] text-[0.95rem] space-y-3">
         {children}
       </div>
     </div>
@@ -30,7 +30,7 @@ export default function Datenschutz() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-28 pb-20">
+      <main id="inhalt" className="min-h-screen bg-white pt-28 pb-20">
         <div className="max-w-3xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">
@@ -89,9 +89,9 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="4. Web-Analyse (Simple Analytics)">
+            <Section title="4. Webanalyse (Simple Analytics)">
               <p>
-                Zur Reichweitenmessung verwenden wir Simple Analytics, einen cookielosen Web-Analyse-Dienst der
+                Zur Reichweitenmessung verwenden wir Simple Analytics, einen cookielosen Webanalysedienst der
                 Simple Analytics B.V. (Niederlande, EU). Simple Analytics setzt keine Cookies und erstellt keine
                 personenbezogenen Profile; es werden ausschließlich aggregierte, anonyme Statistiken über die
                 Nutzung unserer Website erhoben.
@@ -111,8 +111,8 @@ export default function Datenschutz() {
             <Section title="5. Hosting">
               <p>
                 Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
-                gehostet (Dienst „Cloudflare Pages"). Beim Aufruf der Website werden automatisch
-                Server-Logfiles (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
+                gehostet (Dienst „Cloudflare Pages“). Beim Aufruf der Website werden automatisch
+                Serverprotokolle (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
                 nicht mit anderen Datenquellen zusammengeführt und nach spätestens 30 Tagen gelöscht.
               </p>
               <p>
@@ -160,10 +160,10 @@ export default function Datenschutz() {
 
             <Section title="7. Cookies">
               <p>
-                Diese Website setzt keine Tracking- oder Marketing-Cookies ein. Es werden ausschließlich
+                Diese Website setzt keine Tracking- oder Cookies für Marketing ein. Es werden ausschließlich
                 technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
-                Auch der eingesetzte Web-Analyse-Dienst (Simple Analytics) arbeitet cookielos, sodass für die
-                Reichweitenmessung kein Cookie-Einwilligungsbanner erforderlich ist.
+                Auch der eingesetzte Webanalysedienst (Simple Analytics) arbeitet cookielos, sodass für die
+                Reichweitenmessung kein Einwilligungsbanner erforderlich ist.
               </p>
             </Section>
 

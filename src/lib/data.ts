@@ -6,8 +6,13 @@ export const BUSINESS = {
   owner: "Mustafa Kaan Güneren",
   slogan: "In Rekordzeit zu besseren Noten!",
   email: "info@nachhilfe-aber-richtig.de",
-  phone: "+49 152 0885 4910",
-  phoneDisplay: "+49 152 0885 4910",
+  // Die geschaeftliche Rufnummer, nicht die private des Inhabers. Bis zum
+  // 06.08.2026 stand hier +49 152 0885 4910 — das ist der Privatanschluss.
+  // Wer das aendert, aendert damit Impressum, Fusszeile, Kontaktbereich,
+  // alle Ortsseiten und das JSON-LD gleichzeitig; die beiden Stellen, die
+  // die Nummer NICHT von hier lesen, stehen in page.tsx und llms.txt.
+  phone: "+49 155 60209935",
+  phoneDisplay: "+49 155 60209935",
   vatId: "DE331112267",
   addresses: {
     lernort: {
@@ -42,7 +47,7 @@ export const SERVICES = [
     id: "gruppe",
     title: "Gruppennachhilfe",
     description:
-      "Nachhilfe in 3–5er Gruppen — das beste Preis-Leistungs-Verhältnis. Schüler lernen gemeinsam und unterstützen sich gegenseitig.",
+      "Drei bis fünf Schüler pro Gruppe. Das günstigste Format, und Kinder erklären einander oft besser, als eine Lehrkraft es könnte.",
     icon: "👥",
   },
   {
@@ -71,12 +76,12 @@ export const SERVICES = [
 export const UPSPS = [
   {
     title: "Kostenlose Probestunde",
-    description: "Überzeuge dich selbst — ohne Risiko und ohne Verpflichtung.",
+    description: "Überzeuge dich selbst, ohne Risiko und ohne Verpflichtung.",
   },
   {
     title: "Geprüfte Lehramtsstudenten",
     description:
-      "Alle Lehrer werden sorgfältig geprüft — inklusive erweitertem Führungszeugnis.",
+      "Wir prüfen jede Lehrkraft, erweitertes Führungszeugnis eingeschlossen.",
   },
   {
     title: "Staatlich gefördert",
