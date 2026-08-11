@@ -3,18 +3,6 @@
 **Format:** [ ] TODO | [~] IN_PROGRESS | [x] DONE
 
 ## Aktiv
-- [ ] **Cloudflare Web Analytics abschalten** (Mustafa, Dashboard) *(offen seit 2026-08-11)*
-      Cloudflare injiziert `static.cloudflareinsights.com/beacon.min.js` in jede Response, die
-      CSP der Seite blockt es. Es liefert also keine Daten, erzeugt aber bei jedem Aufruf einen
-      Konsolenfehler und kostet 8 Lighthouse-Best-Practices-Punkte (100 → 92). Besucherzahlen
-      kommen ohnehin von Simple Analytics. Entscheidung am 11.08. gefallen: abschalten.
-- [ ] **Deploy-Branch auf `main` umstellen** (Mustafa, Cloudflare-Pages-Dashboard) *(offen seit 2026-08-11)*
-      Cloudflare Pages baut aus `cloudflare-migration`, nicht aus `main`. Dadurch lag `main`
-      14 Commits zurück und trug im Impressum noch die **Privatnummer** statt der Geschäfts-
-      nummer — wer diesen Stand veröffentlicht hätte, hätte eine private Handynummer ins
-      Impressum gestellt. Mit PR #16 sind beide Stände wieder gleich; solange der Produktions-
-      Branch aber ein Feature-Branch bleibt, läuft dieselbe Divergenz wieder auf.
-      `cloudflare-migration` erst löschen, NACHDEM Pages auf `main` zeigt.
 - [ ] **PR #7 Datenschutz-Text freigeben** (Mustafa, DSGVO) → dann mergen
 - [ ] **PR #4 auf GlitchTip umbiegen** (Entscheid 16.07.): Projekt `nachhilfe` in GlitchTip anlegen (existiert noch nicht), dash-lose DSN, Datenschutz-Sektion „Fehler-Monitoring"
 - [ ] 🚩 **Lexi: Impressum + Datenschutz fehlen** (beide 404, Seite ist öffentlich) — §5 DDG, anderes Repo
@@ -31,6 +19,17 @@
 - [ ] Social Media Links (Facebook, Instagram) mit echten URLs befüllen
 
 ## Abgeschlossen
+- [x] **Cloudflare Web Analytics abgeschaltet** — 2026-08-11. Cloudflare injizierte
+      `static.cloudflareinsights.com/beacon.min.js` in jede Response; die CSP der Seite blockte
+      es. Es lieferte also keine Daten (Dashboard: 0 Seitenaufrufe, 0 Besuche), erzeugte aber
+      bei jedem Aufruf einen Konsolenfehler und kostete 8 Lighthouse-Best-Practices-Punkte
+      (100 → 92). Im Dashboard auf „Disable" gestellt; am ausgelieferten HTML gegengeprüft —
+      das Beacon steht weder auf der Startseite noch im Impressum.
+- [x] **Deploy-Branch auf `main` umgestellt** — 2026-08-11 (Cloudflare Pages → Branch control).
+      Pages baute aus `cloudflare-migration`; dadurch lag `main` 14 Commits zurück und trug im
+      Impressum noch die Privatnummer statt der Geschäftsnummer. Vor der Umstellung geprüft,
+      dass sich beide Stände nur noch in zwei `.ai-state/`-Dateien unterscheiden — die Seite
+      bleibt also identisch. `cloudflare-migration` kann jetzt weg.
 - [x] Mobile-Hero-Cleanup (Glows mobil verkleinert, Text-Opacities erhöht, Cards heller) + Marquee-Bug-Fix (`w-max` ergänzt, Animation 60s, prefers-reduced-motion) — deployed 2026-05-03
 - [x] Lexi Phase 2 Code: Rate Limit (Upstash), Anonymer Modus + Migration, Usage-Counter — deployed
 - [x] Vercel CLI v52 Upgrade
