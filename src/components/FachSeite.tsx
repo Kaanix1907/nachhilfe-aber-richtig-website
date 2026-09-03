@@ -80,7 +80,7 @@ function Ansatz({ fach }: { fach: FachPage }) {
       <p>{fach.ansatz}</p>
       <p>
         Unterrichtet wird von geprüften Lehramtsstudierenden und Lehrkräften mit
-        erweitertem Führungszeugnis, und nur in Fächern, die sie sicher beherrschen.
+        Erfahrung im deutschen Schulsystem, und nur in Fächern, die sie sicher beherrschen.
       </p>
     </SeoBlock>
   );

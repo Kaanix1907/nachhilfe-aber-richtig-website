@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import AngebotUebersicht from "@/components/AngebotUebersicht";
 import Lehrkraefte from "@/components/Lehrkraefte";
-import { ALL_REVIEWS } from "@/lib/data";
 import { FAQ_ITEMS } from "@/lib/faq";
 import { SITE_URL, GOOGLE_PROFIL, TELEFON_E164 } from "@/lib/schema";
 import type { Metadata } from "next";
@@ -16,7 +15,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Nachhilfe in Duisburg-Rheinhausen | Ab Klasse 1 bis Abitur",
   description:
-    "Nachhilfe in Duisburg-Rheinhausen: Einzel- und Gruppenunterricht, alle Fächer, Klasse 1 bis Abitur. 5,0 Sterne bei Google. Probestunde kostenlos.",
+    "Nachhilfe in Duisburg-Rheinhausen: Einzel- und Gruppenunterricht, alle Fächer, Klasse 1 bis Abitur. Kostenübernahme über Bildung und Teilhabe möglich. Probestunde kostenlos.",
   alternates: {
     canonical: "https://nachhilfe-aber-richtig.de",
   },
@@ -89,19 +88,19 @@ const jsonLd = {
   priceRange: "€€",
   description:
     "Professionelle Nachhilfe in Duisburg-Rheinhausen für Schüler ab Klasse 1 bis Abitur. Gruppen- & Einzelnachhilfe in allen Fächern. Bildung & Teilhabe möglich.",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "23",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: ALL_REVIEWS.map((r) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: r.name },
-    reviewRating: { "@type": "Rating", ratingValue: String(r.stars) },
-    reviewBody: r.text,
-  })),
+  // Kein `aggregateRating` und kein `review` mehr (Rechts-Inventur 2026-09-03, R2).
+  //
+  // Zwei Gruende, beide unabhaengig voneinander ausreichend:
+  // 1. Die Werte waren fest verdrahtet ("5.0", "23") und damit am Tag der naechsten
+  //    Google-Bewertung falsch, ohne dass es jemandem auffaellt.
+  // 2. Selbst vergebene Bewertungen ueber das eigene Unternehmen auf der eigenen Seite
+  //    sind bei Google fuer Rich Results ohnehin nicht zulaessig — der Block brachte
+  //    nichts und trug das ganze UWG-Risiko (Anhang Nr. 23b/c zu § 3 Abs. 3 UWG).
+  //    `reviewBody` gab dazu die sprachlich geglaetteten Fassungen als woertliche
+  //    Aeusserung aus.
+  //
+  // Die Bewertungen stehen weiter auf der Seite — zitiert, mit Herkunftshinweis
+  // (`Hero.parts.BewertungsHinweis`) und Link aufs Google-Profil.
   areaServed: [
     { "@type": "City", name: "Duisburg" },
     { "@type": "City", name: "Rheinhausen" },
