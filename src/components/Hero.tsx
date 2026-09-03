@@ -11,8 +11,6 @@ const GOOGLE_REVIEWS_URL =
 
 export default function Hero() {
   const reviews = ALL_REVIEWS;
-  const rating = 5.0;
-  const total = 23;
 
   return (
     <section
@@ -74,10 +72,10 @@ export default function Hero() {
 
           <GefoerdertDurchRow />
 
-          <MobileReviewsScroll reviews={reviews} rating={rating} total={total} googleUrl={GOOGLE_REVIEWS_URL} />
+          <MobileReviewsScroll reviews={reviews} googleUrl={GOOGLE_REVIEWS_URL} />
         </div>
 
-        <DesktopReviewsScroll reviews={reviews} rating={rating} total={total} googleUrl={GOOGLE_REVIEWS_URL} />
+        <DesktopReviewsScroll reviews={reviews} googleUrl={GOOGLE_REVIEWS_URL} />
 
       </div>
     </section>

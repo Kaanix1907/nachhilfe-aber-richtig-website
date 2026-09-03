@@ -9,9 +9,15 @@ import FadeIn from "./FadeIn";
 // nur belegt statt behauptet. Nichts hinzuerfunden.
 
 const PUNKTE = [
+  // Der erste Punkt hiess bis zum 2026-09-03 "Erweitertes Führungszeugnis, vor der ersten
+  // Stunde" — und war die einzige Aussage dieser Seite, die NICHT belegt war (Rechts-
+  // Inventur, R6: fuer beide Lehrkraefte liegt keines vor, ein Verfahren dafuer gibt es
+  // nicht). Ein Versprechen ueber die Sicherheit von Kindern ist die schlechteste Stelle
+  // fuer eine Behauptung. **Der Punkt kommt zurueck, sobald die Zeugnisse vorliegen** —
+  // § 30a BZRG, ein Antrag beim Buergeramt, dann ist er wahr.
   {
-    titel: "Erweitertes Führungszeugnis, vor der ersten Stunde",
-    text: "Wer bei uns unterrichtet, legt ein erweitertes Führungszeugnis vor, nicht irgendwann, sondern bevor er zum ersten Mal mit einem Kind in einem Raum sitzt. Für uns ist das keine Formalie, sondern die Grundbedingung.",
+    titel: "Immer derselbe Ansprechpartner",
+    text: "Der Inhaber unterrichtet selbst und kennt jedes Kind. Wer anruft, landet nicht in einer Zentrale und muss nicht erklären, wer er ist. Bei Fragen zum Lernstand antwortet jemand, der in der Stunde dabei war.",
   },
   {
     titel: "Lehramtsstudierende und Lehrkräfte, keine Aushilfen",

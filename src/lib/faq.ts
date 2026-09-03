@@ -44,7 +44,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Wer unterrichtet bei Ihnen?",
-    a: "Geprüfte Lehramtsstudierende und Lehrkräfte, alle mit erweitertem Führungszeugnis. Wir wählen sorgfältig aus und schulen regelmäßig nach. Bei uns unterrichtet niemand ein Fach, das er nicht sicher beherrscht.",
+    a: "Lehramtsstudierende und Lehrkräfte. Wir wählen im persönlichen Gespräch aus, nicht per Bewerbungsbogen. Bei uns unterrichtet niemand ein Fach, das er nicht sicher beherrscht.",
   },
   {
     q: "Gibt es eine kostenlose Probestunde?",

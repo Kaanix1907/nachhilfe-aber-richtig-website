@@ -200,7 +200,7 @@ export const ORT_FAQ: Record<string, FaqItem[]> = {
     },
     {
       q: "Wer unterrichtet?",
-      a: "Geprüfte Lehramtsstudierende und Lehrkräfte, alle mit erweitertem Führungszeugnis, und nur in Fächern, die sie sicher beherrschen.",
+      a: "Lehramtsstudierende und Lehrkräfte, ausgewählt im persönlichen Gespräch, und nur in Fächern, die sie sicher beherrschen.",
     },
   ],
   friemersheim: [

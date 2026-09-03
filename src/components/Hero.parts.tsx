@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
-import Image from "next/image";
 
-type Review = { name: string; time: string; stars: number; text: string };
+type Review = { name: string; stars: number; text: string };
 
 export function GoogleGLogo({ size }: { size: number }) {
   return (
@@ -96,7 +95,6 @@ export function ReviewCard({ review, variant }: ReviewCardProps) {
           </div>
           <div className={isMobile ? "min-w-0" : undefined}>
             <div className={`font-body font-semibold text-white ${v.nameText}`}>{review.name}</div>
-            <div className={`font-body ${v.timeText}`}>{review.time}</div>
           </div>
         </div>
         <div className={`flex items-center ${isMobile ? "gap-px" : "gap-0.5"} shrink-0`}>
@@ -109,12 +107,19 @@ export function ReviewCard({ review, variant }: ReviewCardProps) {
 }
 
 type GoogleHeaderProps = {
-  rating: number;
-  total: number;
   variant: "mobile" | "desktop";
 };
 
-export function GoogleHeader({ rating, total, variant }: GoogleHeaderProps) {
+/**
+ * Kopf des Bewertungsblocks — OHNE Kennzahl.
+ *
+ * Bis zum 2026-09-03 stand hier eine fest verdrahtete "5,0" und "23 Google Bewertungen"
+ * (`Hero.tsx`), waehrend darunter 20 Eintraege lagen. Eine Zahl, die im Code steht, ist am
+ * Tag ihrer Aenderung bei Google falsch und faellt niemandem auf — sie behauptet aber
+ * weiter etwas Ueberpruefbares. Der Stand steht jetzt dort, wo er stimmt: beim Anbieter.
+ * Wer die Zahl auf der Seite haben will, braucht einen belegten Stand MIT Datum.
+ */
+export function GoogleHeader({ variant }: GoogleHeaderProps) {
   const isMobile = variant === "mobile";
   return (
     <div className={`flex items-center ${isMobile ? "gap-2.5" : "gap-3 mb-1"}`}>
@@ -122,46 +127,81 @@ export function GoogleHeader({ rating, total, variant }: GoogleHeaderProps) {
       <div>
         <div className={`flex items-center ${isMobile ? "gap-0.5" : "gap-1"}`}>
           <StarRow count={5} size={isMobile ? 12 : 14} />
-          <span className={`font-heading font-bold text-white ${isMobile ? "text-xs" : "text-sm"} ml-1`}>
-            {rating.toFixed(1)}
-          </span>
         </div>
         <span className={`font-body ${isMobile ? "text-white/60 text-[10px]" : "text-white/60 text-xs"}`}>
-          {total} Google Bewertungen
+          Bewertungen auf Google
         </span>
       </div>
     </div>
   );
 }
 
+/**
+ * Pflichthinweis nach § 5b Abs. 3 UWG.
+ *
+ * Wer Verbraucherbewertungen zeigt, muss sagen, OB und WIE er sicherstellt, dass sie von
+ * echten Kunden stammen. Fehlt der Hinweis, ist die Darstellung eine irrefuehrende
+ * Unterlassung; behauptet man eine Pruefung, die es nicht gibt, greift Anhang Nr. 23b zu
+ * § 3 Abs. 3 UWG (per se verboten). Hier gilt die Wahrheit: geprueft wird von Google, nicht
+ * von uns — und die Texte sind sprachlich geglaettet.
+ */
+export function BewertungsHinweis({ variant }: GoogleHeaderProps) {
+  const isMobile = variant === "mobile";
+  return (
+    // 11px bei 45 % Deckkraft ergaben auf dem Hero-Verlauf rund 3,2:1 — unter der
+    // AA-Schwelle von 4,5:1 und damit genau das "im Kleingedruckten versteckt", das
+    // § 5b Abs. 3 UWG nicht zulaesst ("klar und verstaendlich"). Gemessen an der Vorschau
+    // am 2026-09-03. Mit 70 % sind es rund 7,9:1.
+    <p className={`font-body text-white/70 ${isMobile ? "text-[10px] leading-snug mt-2" : "text-[11px] leading-snug mt-2"}`}>
+      Zitiert vom öffentlichen Google-Profil. Eine eigene Prüfung, ob die Verfasser den
+      Unterricht tatsächlich in Anspruch genommen haben, findet nicht statt — es gilt allein
+      das Verfahren von Google. Tippfehler wurden korrigiert, der Inhalt nicht verändert.
+    </p>
+  );
+}
+
 const FUNDING_PILL_STYLE: CSSProperties = { boxShadow: "0 4px 14px rgba(0,0,0,0.35)" };
 
+/**
+ * Kostenuebernahme — als Aussage, nicht als Wappen (Rechts-Inventur 2026-09-03, R3).
+ *
+ * Hier stand "Gefördert durch" mit den Logos von Jobcenter und Stadt Duisburg auf weissen
+ * Kacheln. Zwei Probleme in einer Zeile:
+ *
+ * 1. **Gefoerdert wird die FAMILIE, nicht der Betrieb.** Bildung und Teilhabe ist eine
+ *    Leistung nach SGB II/XII an die Leistungsberechtigten. Wir sind der Anbieter, der
+ *    abrechnet — kein Foerderempfaenger.
+ * 2. **Fremde Logos ohne erkennbare Gestattung**, praesentiert wie Zertifikate. Das liest
+ *    sich als behoerdliche Zulassung; eine solche gibt es nicht.
+ *
+ * Die Sache selbst ist ein echtes Argument und bleibt — nur richtig benannt. Wer die Logos
+ * zurueck will, braucht eine schriftliche Gestattung der jeweiligen Stelle.
+ */
 export function GefoerdertDurchRow() {
   return (
     <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
-      <span className="font-body text-xs md:text-sm text-white/60 md:text-white/60 tracking-wide">Gefördert durch</span>
-      <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
-        <Image src="/logo-jobcenter.webp" alt="Jobcenter Duisburg" width={130} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
+      <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
+        <span className="font-body text-xs md:text-sm font-semibold text-dark">
+          Kostenübernahme über Bildung und Teilhabe möglich
+        </span>
       </div>
-      <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-white" style={FUNDING_PILL_STYLE}>
-        <Image src="/logo-stadt-duisburg.webp" alt="Stadt Duisburg" width={110} height={34} className="object-contain" style={{ height: 24, width: "auto" }} />
-      </div>
+      <span className="font-body text-[11px] md:text-xs text-white/55 tracking-wide">
+        Abrechnung direkt mit Jobcenter oder Stadt Duisburg
+      </span>
     </div>
   );
 }
 
 type ReviewsScrollProps = {
   reviews: Review[];
-  rating: number;
-  total: number;
   googleUrl: string;
 };
 
-export function MobileReviewsScroll({ reviews, rating, total, googleUrl }: ReviewsScrollProps) {
+export function MobileReviewsScroll({ reviews, googleUrl }: ReviewsScrollProps) {
   return (
     <div className="md:hidden mt-5">
       <div className="flex items-center justify-between mb-3">
-        <GoogleHeader rating={rating} total={total} variant="mobile" />
+        <GoogleHeader variant="mobile" />
         <a
           href={googleUrl}
           target="_blank"
@@ -185,14 +225,16 @@ export function MobileReviewsScroll({ reviews, rating, total, googleUrl }: Revie
           ))}
         </div>
       </div>
+
+      <BewertungsHinweis variant="mobile" />
     </div>
   );
 }
 
-export function DesktopReviewsScroll({ reviews, rating, total, googleUrl }: ReviewsScrollProps) {
+export function DesktopReviewsScroll({ reviews, googleUrl }: ReviewsScrollProps) {
   return (
     <div className="hidden md:flex flex-col gap-4">
-      <GoogleHeader rating={rating} total={total} variant="desktop" />
+      <GoogleHeader variant="desktop" />
 
       <div className="relative overflow-hidden" style={{ height: 440 }}>
         <div className="absolute top-0 left-0 right-0 h-10 z-10 pointer-events-none"
@@ -215,9 +257,11 @@ export function DesktopReviewsScroll({ reviews, rating, total, googleUrl }: Revi
         style={{ background: "rgba(37,171,214,0.12)", border: "1px solid rgba(37,171,214,0.3)", color: "#25abd6" }}
       >
         <GoogleGLogo size={16} />
-        Alle {total} Bewertungen auf Google ansehen
+        Alle Bewertungen auf Google ansehen
         <ExternalLinkIcon size={14} />
       </a>
+
+      <BewertungsHinweis variant="desktop" />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { BUSINESS } from "@/lib/data";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import { Section, DiensteUndHosting, RechteUndFristen } from "./datenschutz.parts";
 
 // Nur "Datenschutz": das Template im Root-Layout haengt den Firmennamen an.
 export const metadata: Metadata = {
@@ -10,18 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://nachhilfe-aber-richtig.de/datenschutz" },
 };
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-10">
-      <h2 className="font-heading font-bold text-xl text-dark mb-3" style={{ letterSpacing: "-0.02em" }}>
-        {title}
-      </h2>
-      <div className="font-body text-muted/75 leading-[1.8] text-[0.95rem] space-y-3">
-        {children}
-      </div>
-    </div>
-  );
-}
 
 export default function Datenschutz() {
   const { owner, addresses, email } = BUSINESS;
@@ -73,124 +62,13 @@ export default function Datenschutz() {
               </p>
             </Section>
 
-            <Section title="3. Kontaktformular">
-              <p>
-                Wenn Sie uns über das Kontaktformular eine Anfrage senden, werden Ihre Angaben aus dem Formular
-                (Name, Telefonnummer, E-Mail-Adresse, Nachricht) zur Bearbeitung der Anfrage und für den Fall
-                von Anschlussfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
-              </p>
-              <p>
-                Die Übermittlung an unser Postfach erfolgt über einen Dienstleister für den E-Mail-Versand;
-                Einzelheiten dazu finden Sie in Abschnitt 6.
-              </p>
-              <p>
-                Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. b DSGVO
-                (Vertragsanbahnung).
-              </p>
-            </Section>
+            <DiensteUndHosting />
 
-            <Section title="4. Webanalyse (Simple Analytics)">
-              <p>
-                Zur Reichweitenmessung verwenden wir Simple Analytics, einen cookielosen Webanalysedienst der
-                Simple Analytics B.V. (Niederlande, EU). Simple Analytics setzt keine Cookies und erstellt keine
-                personenbezogenen Profile; es werden ausschließlich aggregierte, anonyme Statistiken über die
-                Nutzung unserer Website erhoben.
-              </p>
-              <p>
-                Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer datensparsamen
-                Reichweitenmessung).
-              </p>
-              <p>
-                Weitere Informationen:{" "}
-                <a href="https://simpleanalytics.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  simpleanalytics.com/privacy-policy
-                </a>
-              </p>
-            </Section>
+            <RechteUndFristen />
 
-            <Section title="5. Hosting">
+            <Section title="12. Aktualität">
               <p>
-                Diese Website wird bei Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA
-                gehostet (Dienst „Cloudflare Pages“). Beim Aufruf der Website werden automatisch
-                Serverprotokolle (IP-Adresse, Browsertyp, Referrer, Datum/Uhrzeit) erfasst. Diese Daten werden
-                nicht mit anderen Datenquellen zusammengeführt und nach spätestens 30 Tagen gelöscht.
-              </p>
-              <p>
-                Cloudflare verarbeitet diese Daten in unserem Auftrag. Wir haben mit Cloudflare einen Vertrag
-                zur Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Da Cloudflare, Inc. ihren Sitz in
-                den USA hat, sind Datenübermittlungen in ein Drittland über die Standardvertragsklauseln (SCC)
-                der EU-Kommission abgesichert. Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO
-                (berechtigtes Interesse an einem sicheren und leistungsfähigen Betrieb dieser Website).
-              </p>
-              <p>
-                Datenschutzerklärung von Cloudflare:{" "}
-                <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  cloudflare.com/privacypolicy
-                </a>
-              </p>
-            </Section>
-
-            <Section title="6. E-Mail-Versand des Kontaktformulars">
-              <p>
-                Für die Zustellung der über das Kontaktformular abgesendeten Anfragen an unser Postfach nutzen
-                wir den Versanddienst Brevo, betrieben von der Brevo GmbH, Köpenicker Straße 126,
-                10179 Berlin (Tochtergesellschaft der Sendinblue SAS, 17 rue de Salneuve, 75017 Paris,
-                Frankreich). Übermittelt werden ausschließlich die von Ihnen im Formular eingegebenen
-                Angaben (Name, Telefonnummer, E-Mail-Adresse, Nachricht).
-              </p>
-              <p>
-                Brevo verarbeitet diese Daten in unserem Auftrag. Wir haben mit Brevo einen Vertrag zur
-                Auftragsverarbeitung nach Art. 28 DSGVO abgeschlossen. Die Verarbeitung findet auf Servern
-                innerhalb der Europäischen Union statt; eine Übermittlung in ein Drittland ist damit nicht
-                verbunden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden
-                des Formulars) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
-              </p>
-              <p>
-                Datenschutzerklärung von Brevo:{" "}
-                <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-primary-deep hover:underline">
-                  brevo.com/de/legal/privacypolicy
-                </a>
-              </p>
-              <p>
-                Wenn Sie diese Übermittlung vermeiden möchten, erreichen Sie uns jederzeit auch direkt
-                telefonisch oder per E-Mail an{" "}
-                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>.
-              </p>
-            </Section>
-
-            <Section title="7. Cookies">
-              <p>
-                Diese Website setzt keine Tracking- oder Cookies für Marketing ein. Es werden ausschließlich
-                technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
-                Auch der eingesetzte Webanalysedienst (Simple Analytics) arbeitet cookielos, sodass für die
-                Reichweitenmessung kein Einwilligungsbanner erforderlich ist.
-              </p>
-            </Section>
-
-            <Section title="8. Ihre Rechte">
-              <p>Sie haben jederzeit das Recht auf:</p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
-                <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-                <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
-                <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-              </ul>
-              <p>
-                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{" "}
-                <a href={`mailto:${email}`} className="text-primary-deep hover:underline">{email}</a>
-              </p>
-              <p>
-                Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs steht Ihnen
-                das Recht auf Beschwerde bei einer Aufsichtsbehörde zu. Zuständig ist die{" "}
-                <span className="font-semibold text-dark">Landesbeauftragte für Datenschutz und Informationsfreiheit NRW</span>.
-              </p>
-            </Section>
-
-            <Section title="9. Aktualität">
-              <p>
-                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 16. Juli 2026. Durch die
+                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 3. September 2026. Durch die
                 Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es
                 notwendig werden, diese Datenschutzerklärung zu ändern.
               </p>
